@@ -19,6 +19,16 @@ categories: [freebie, frontend, backend]
 
 - Initial release
 
+### [2019-11-28]
+
+#### Added
+
+- 新增 `总结` 区块
+
+#### Changed
+
+- 更新 `步骤` 区块的内容
+
 ## 说明
 
 ------
@@ -32,7 +42,7 @@ categories: [freebie, frontend, backend]
 
 ### 上传 hexo 配置
 
-> **先捋一下思路:** 将 laptop 的 hexo 源配置文件, 使用 git 无缝同步到 pc 上, 使得 pc 也可以更新博客.
+> **先捋一下思路:** 将 `laptop` 的 `hexo` 源配置文件, 使用 `git` 无缝同步到 `pc` 上, 使得 `pc` 也可以更新博客.
 
 - \[**laptop**]: 初始化 git
 
@@ -99,7 +109,7 @@ git push --set-upstream origin branch/hexo
 
 ```bash
 # 拉取 blog 仓库
-# 此时已经设置了默认分支为 branch/hexo, 而不是 master
+# 此时已经设置了默认分支为 branch/hexo, 而不是 master, 所以拉取的是 branch/hexo 下的内容
 git clone https://github.com/ddzy/blog.git
 ```
 
@@ -118,7 +128,7 @@ npm install
 hexo g -d
 ```
 
-浏览器打开博客, 可以看到, 此时页面是空白的, 这是由于 `laptop` 的 `hexo` 源目录中 `theme` 目录下的各个主题都是单独的 `git` 文件夹, 因此在之前使用 `git push --set-upstream origin branch/hexo` 的时候, 并没有将主题文件夹上传上去, 导致文件夹是空白的, 进而页面显示空白.
+浏览器打开博客, 可以看到, 此时页面是空白的, 这是由于 `laptop` 的 `hexo` 源目录中 `theme` 目录下的各个主题都是单独的 `git` 文件夹, 因此在之前使用 `git push --set-upstream origin branch/hexo` 的时候, 会被忽略, 并没有将主题文件夹上传上去, 导致文件夹是空白的, 进而页面显示空白.
 
 **解决方法** 是使用 `submodule` 来管理子 `git` 模块.
 
@@ -131,6 +141,7 @@ hexo g -d
 cd blog/
 
 # 注意: 要提前将喜欢的主题 fork 到自己仓库下, 便于后续的更改和提交
+# 将主题仓库下载至 blog/themes 目录下, 文件夹命名为 Nlvi
 git submodule add https://github.com/ddzy/hexo-theme-Nlvi themes/Nlvi
 ```
 
@@ -155,7 +166,7 @@ git commit -m ":construction: use submodule to manage the child git repo"
 git push origin branch/hexo
 ```
 
-可以看到, 此时 `branch/hexo` 仓库的 `themes` 文件夹下是由内容的:
+可以看到, 此时 `branch/hexo` 仓库的 `themes` 文件夹下是有内容的:
 
 ![git submodule结果](https://oos.blog.yyge.top/2019/11/27/hexo%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/images/22.png?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim)
 
@@ -179,6 +190,28 @@ git submodule update
 ```
 
 最后, 再执行 `hexo g -d` 命令, 即可将主题文件生成至 `master`.
+
+## 总结
+
+------
+
+### 文章更新流程
+
+```bash
+git fetch origin branch/hexo
+git diff
+git merge --no-ff origin/branch/hexo
+
+# update article...
+
+git add .
+git commit -m ":construction: update article named `xxx`"
+git push
+
+# send article to website...
+
+hexo g -d
+```
 
 ## 参考
 
