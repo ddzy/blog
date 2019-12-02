@@ -5,7 +5,7 @@ tags: [hexo, git]
 categories: [freebie, frontend, backend]
 ---
 
-想在公司的大屏 PC 上更新博客, 方便省事, 但是相关的 Hexo 源文件都在笔记本上, 所以就需要在两者之间同步配置文件, 故将过程记录下来.
+想在公司的大屏 `PC` 上更新博客, 方便省事, 但是相关的 `Hexo` 源文件都在笔记本上, 所以就需要在两者之间同步配置文件, 故将过程记录下来.
 
 
 <!-- more -->
@@ -19,15 +19,11 @@ categories: [freebie, frontend, backend]
 
 - Initial release
 
-### [2019-11-28]
-
-#### Added
-
-- 新增 `总结` 区块
+### [2019-12-1]
 
 #### Changed
 
-- 更新 `步骤` 区块的内容
+- 更新文章格式
 
 ## 说明
 
