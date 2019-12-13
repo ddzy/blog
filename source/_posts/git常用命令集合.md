@@ -73,6 +73,13 @@ pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令,
 - 新增`删除远程的某个标签`
 - 新增`将本地的所有标签推送至远程`
 
+### [2019-12-13]
+
+#### Added
+
+- 新增 `删除origin仓库的深层文件夹`
+- 新增 `git push -f`强制推送到Gitlab出错
+
 ## 记录
 
 ------
@@ -338,3 +345,25 @@ git push origin -d v1.0.0
 ```bash
 git push origin --tag
 ```
+
+- 删除 `origin` 仓库的深层文件夹
+
+原本使用比较熟悉的 `git rm -r --cached xxx` 来删除, 但是发现并不能删除文件, 报 `fatal: pathspec 'xxx/xxx' did not match any files` 的错误, 也就是说远程的文件夹不存在, 这不可能啊??? 于是改用另一个命令:
+
+```bash
+git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch xxx/xxx' --prune -empty --tag-name-filter cat -- --all
+```
+
+但是随即出现了 `fatal: bad revision 'rm'` 错误, 原因是 Windows 系统下要使用双引号, 将其改为:
+
+```bash
+git filter-branch --force --index-filter "git rm -r --cached --ignore-unmatch xxx/xxx" --prune -empty --tag-name-filter cat -- --all
+```
+
+- `git push -f` 强制推送到 `Gitlab` 出错
+
+使用 `git filter-branch --force ...` 命令删除 origin 仓库的无用文件夹之后, 想强制推送并覆盖 Gitlab 的远程分支, 出现了 `remote: GitLab: You are not allowed to force push code to a protected branch on this project` 的错误.
+
+**原因是**: master 分支被保护了, 处于 `protected` 状态.
+
+**解决办法是**: 接触保护, 并将其置为 `unprotected` 状态.
