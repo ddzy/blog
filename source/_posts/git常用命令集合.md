@@ -80,6 +80,13 @@ pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令,
 - 新增 `删除origin仓库的深层文件夹`
 - 新增 `git push -f`强制推送到Gitlab出错
 
+### [2019-12-19]
+
+#### Added
+
+- 新增 `Fatal: out of memory, malloc failed (tried to allocate 1514190 bytes)`
+- 新增 `Fatal: another git process seems to be running in this repository`
+
 ## 记录
 
 ------
@@ -367,3 +374,21 @@ git filter-branch --force --index-filter "git rm -r --cached --ignore-unmatch xx
 **原因是**: master 分支被保护了, 处于 `protected` 状态.
 
 **解决办法是**: 接触保护, 并将其置为 `unprotected` 状态.
+
+- **Fatal: out of memory, malloc failed (tried to allocate 1514190 bytes)**
+
+**问题背景**: 想将本地的文章推送到 github 仓库, 执行完 `hexo g -d` 命令之后, 出现了这样的错误.
+
+**产生原因**: 文件大小超出了 git 传输的最大限制.
+
+**解决办法**: 既然超出了, 那就调大一些呗, 使用 `git config http.postbuffer 88888888` 来设置即可.
+
+- **Fatal: another git process seems to be running in this repository**
+
+**问题背景**:
+
+VS Code 突然崩溃, 打开新的 git 进程准备推送代码的时候出现这个问题
+
+**解决办法**:
+
+将 `.git` 或者 `.deploygit` 文件夹下的 `index.lock` 文件删除即可
