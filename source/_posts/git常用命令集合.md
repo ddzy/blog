@@ -87,6 +87,16 @@ pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令,
 - 新增 `Fatal: out of memory, malloc failed (tried to allocate 1514190 bytes)`
 - 新增 `Fatal: another git process seems to be running in this repository`
 
+### [2019-12-20]
+
+#### Added
+
+- 新增命令: `重命名本地分支的标签`
+
+#### Changed
+
+- [更新](#更新) 区块新增区块折叠, 避免篇幅过长
+
 ## 记录
 
 ------
@@ -333,6 +343,13 @@ git ls-remote --tag
 
 ```bash
 git tag v1.0.0 -m "release v1.0.0"
+```
+
+- 重命名本地分支的标签
+
+```bash
+git tag oldTagName newTagName
+git tag -d oldTagName
 ```
 
 - 删除本地的某个标签
