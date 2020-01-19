@@ -19,6 +19,12 @@ categories: [frontend]
 
 - Initial release
 
+### [2020-1-15]
+
+#### Added
+
+- 新增问题: `Warning: React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.`
+
 ## 记录
 
 ------
@@ -50,3 +56,11 @@ categories: [frontend]
 **原因**: 未及时清理副作用
 
 **解决**: `componentWillUnmount` 中清理 `定时器` | `监听器` | `setState` 等.
+
+### 2. 其它
+
+#### 2.1 Warning: React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+**产生原因**:
+
+**解决办法**:
