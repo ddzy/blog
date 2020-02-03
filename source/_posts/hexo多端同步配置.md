@@ -25,6 +25,12 @@ categories: [freebie, frontend, backend]
 
 - 更新文章格式
 
+### [2020-2-3]
+
+#### Added
+
+- 新增问题: `'themes/Nlvi' already exists in the index`
+
 ## 说明
 
 ------
@@ -165,6 +171,20 @@ git push origin branch/hexo
 可以看到, 此时 `branch/hexo` 仓库的 `themes` 文件夹下是有内容的:
 
 ![git submodule结果](https://oos.blog.yyge.top/2019/11/27/hexo%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/images/22.png?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim)
+
+- \[**注意**]: 'themes/Nlvi' already exists in the index
+
+`git submodule add` 之后可能会出现上述错误, 这是由于指定的文件夹名称已存在, 所以需要干掉它:
+
+```bash
+git rm -r themes/xxxx
+```
+
+接着再添加子模块:
+
+```bash
+git submodule add https://github.com/ddzy/hexo-theme-Nlvi themes/Nlvi
+```
 
 ### 第二次测试
 
