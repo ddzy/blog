@@ -430,4 +430,7 @@ https://www.cnblogs.com/elian/p/10083317.html
 
 # 对照各个参数即可
 tree --help
+
+# 推荐使用
+$ tree -L 2 -I "node_modules" -o ./result.txt --dirsfirst
 ```
