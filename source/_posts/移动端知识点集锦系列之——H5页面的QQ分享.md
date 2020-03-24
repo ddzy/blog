@@ -13,6 +13,10 @@ categories: [frontend]
 
 ---
 
+### [2020-3-24]
+
+- Initial release
+
 ## 方式一
 
 ---
