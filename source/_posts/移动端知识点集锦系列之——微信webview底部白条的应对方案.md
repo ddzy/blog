@@ -13,6 +13,10 @@ categories: [frontend]
 
 ---
 
+### [2020-3-24]
+
+- Initial release
+
 ## 场景一: 页面内纯外链跳转
 
 ---
