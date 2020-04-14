@@ -109,6 +109,12 @@ pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令,
 
 - 更新命令: `git打印文件夹结构`
 
+### [2020-4-14]
+
+#### Added
+
+- 新增命令: `强制覆盖本地分支`
+
 ## 记录
 
 ------
@@ -433,4 +439,17 @@ tree --help
 
 # 推荐使用
 $ tree -L 2 -I "node_modules" -o ./result.txt --dirsfirst
+```
+
+- 强制覆盖本地分支
+
+问题背景: 使用 `jenkins` 作自动化部署时, 本地回退了一次 `commit`, `jenkins` 构建报错, 提示 `git pull` 失败.
+
+解决办法: 自动化部署的时候, 可以直接使用远程分支覆盖本地分支:
+
+```bash
+git fetch --all
+# 强制覆盖
+git reset --hard origin/master
+git pull
 ```
