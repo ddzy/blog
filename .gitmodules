@@ -1,6 +1,3 @@
-[submodule "themes\\nlvi"]
-	path = themes\\nlvi
-	url = https://github.com/ddzy/hexo-theme-Nlvi.git
 [submodule "themes/Nlvi"]
 	path = themes/Nlvi
 	url = https://github.com/ddzy/hexo-theme-Nlvi
