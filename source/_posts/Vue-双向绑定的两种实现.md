@@ -19,4 +19,42 @@ categories: [frontend]
 
 - Initital release
 
-##
+## 几个要点
+
+------
+
+- 输入框变化 -> JS 对象改变 -> 视图改变
+- JS 对象变化 ->输入框改变 -> 视图改变
+
+## defineProperty
+
+------
+
+```html
+<p id="userInputShow"></p>
+<input type="text" id="userInput">
+```
+
+```js
+const data = {
+  value: '',
+};
+const oInputShow = document.querySelector('#userInputShow');
+const oInput = document.querySelector('#userInput');
+
+Object.defineProperty(data, 'value', {
+  configurable: true,
+  enumerable: true,
+  get() {
+    return this.value;
+  },
+  set(value) {
+    oInputShow.innerHTML = value;
+    oInput.value = value;
+  },
+});
+
+oInput.addEventListener('input', (e) => {
+  data.value = e.target.value;
+});
+```
