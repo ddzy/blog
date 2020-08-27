@@ -58,3 +58,29 @@ oInput.addEventListener('input', (e) => {
   data.value = e.target.value;
 });
 ```
+
+## Proxy
+
+------
+
+```js
+const data = {
+  value: '',
+};
+const oInput = document.querySelector('#userInput');
+const oInputShow = document.querySelector('#userInputShow');
+
+const proxy = new Proxy(data, {
+  get(obj, prop) {
+    return obj[prop];
+  },
+  set(obj, prop, v) {
+    obj[prop] = v;
+    oInputShow.innerHTML = v;
+    oInput.value = v;
+  },
+});
+oInput.addEventListener('input', (e) => {
+  proxy.value = e.target.value;
+});
+```
