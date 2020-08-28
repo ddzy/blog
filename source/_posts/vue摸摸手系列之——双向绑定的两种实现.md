@@ -1,5 +1,5 @@
 ---
-title: Vue 双向绑定的两种实现
+title: vue摸摸手系列之——双向绑定的两种实现
 date: 2020-08-27 15:42:56
 tags: [vue, js]
 categories: [frontend]
