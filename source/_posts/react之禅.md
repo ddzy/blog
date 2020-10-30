@@ -18,6 +18,12 @@ categories: [frontend]
 
 - Initial release
 
+### [2020-10-30]
+
+#### Changed
+
+- 更新文章链接
+
 ## 前言
 
 ------
@@ -43,11 +49,11 @@ categories: [frontend]
 
 | Name                                               | Link                                                                                                                                                                                                      | Github                                                                    |
 | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| react之禅系列之——react几大更新阶段                 | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94react%E5%87%A0%E5%A4%A7%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5/)                        | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/3)  |
-| react之禅系列之——fiber的几个重要属性               | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94fiber%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7/)               | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/4)  |
-| react之禅系列之——ReactDOM.render流程简单梳理       | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94ReactDOM-render%E6%B5%81%E7%A8%8B%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86/)              | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/5)  |
-| react之禅系列之——fiber的updateQueue的基本结构      | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94fiber%E7%9A%84updateQueue%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/)             | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/6)  |
-| react之禅系列之——fiber.tag重要类型汇总             | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94fiber-tag%E9%87%8D%E8%A6%81%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB/)                    | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/7)  |
-| react之禅系列之——函数组件(FunctionComponent)的更新 | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6-FunctionComponent-%E7%9A%84%E6%9B%B4%E6%96%B0/) | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/8)  |
-| react之禅系列之——hooks存储结构                     | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94hooks%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/)                                          | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/10) |
-| react之禅系列之——hooks运行机制                     | [博客地址](https://blog.yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94hooks%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/)                                          | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/11) |
+| react之禅系列之——react几大更新阶段                 | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94react%E5%87%A0%E5%A4%A7%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5/)                        | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/3)  |
+| react之禅系列之——fiber的几个重要属性               | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94fiber%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7/)               | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/4)  |
+| react之禅系列之——ReactDOM.render流程简单梳理       | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94ReactDOM-render%E6%B5%81%E7%A8%8B%E7%AE%80%E5%8D%95%E6%A2%B3%E7%90%86/)              | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/5)  |
+| react之禅系列之——fiber的updateQueue的基本结构      | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94fiber%E7%9A%84updateQueue%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/)             | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/6)  |
+| react之禅系列之——fiber.tag重要类型汇总             | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94fiber-tag%E9%87%8D%E8%A6%81%E7%B1%BB%E5%9E%8B%E6%B1%87%E6%80%BB/)                    | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/7)  |
+| react之禅系列之——函数组件(FunctionComponent)的更新 | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6-FunctionComponent-%E7%9A%84%E6%9B%B4%E6%96%B0/) | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/8)  |
+| react之禅系列之——hooks存储结构                     | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94hooks%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/)                                          | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/10) |
+| react之禅系列之——hooks运行机制                     | [博客地址](https://yyge.top/blog/2019/07/17/react%E4%B9%8B%E7%A6%85%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94hooks%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/)                                          | [github同步更新](https://github.com/ddzy/react-reading-sources/issues/11) |
