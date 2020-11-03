@@ -57,6 +57,12 @@ categories: [frontend, backend]
   - `CDN`应在`DNS解析`后
   - `检查浏览器缓存`应在DNS解析前
 
+### [2020-11-3]
+
+#### Changed
+
+- 优化 `DNS解析过程`
+
 ## 一、过程
 
 ------
@@ -95,10 +101,10 @@ categories: [frontend, backend]
   - 检查路由器缓存
   - 检查运营商提供的本地DNS服务器(`localDNS`)缓存, 不具有权威性
   - 检查是否在`本地区域配置文件`中, 返回解析结果, 具有权威性
-  - 本地DNS服务器
-    - 转发模式
+  - 本地DNS服务器(`localDNS`)
+    - 转发模式(`递归查询`)
       - 依次寻找上一级DNS服务器解析
-    - 非转发模式
+    - 非转发模式(`迭代查询`)
       - 本地DNS发送请求到根DNS
       - 根DNS返回`顶级域名服务器`(.com、.top、...)地址
       - 本地DNS联系该`顶级域名服务器`来具体子级域名(xx.com、xxx.xx.com)
@@ -108,7 +114,7 @@ categories: [frontend, backend]
 - CDN
   - 提取url中的域名
   - 本地DNS服务器解析
-  - 将域名解析权交给CNAME指向的CDN的DNS负载均衡系统
+  - 将域名解析权交给 CNAME 指向的 CDN 的 DNS 负载均衡系统
   - DNS负载均衡返回离用户最近的IP地址给本地DNS服务器
   - 本地DNS返回IP地址给用户
 - TLS/SSL四次握手
