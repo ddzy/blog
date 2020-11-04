@@ -21,6 +21,12 @@ categories: [frontend, backend]
 
 - 更改文章`title`
 
+### [2020-11-4]
+
+#### Changed
+
+- 更新关系图解
+
 ## 引言
 
 ------
@@ -42,7 +48,7 @@ categories: [frontend, backend]
 
 一张简单脑图看懂关系网:
 
-![TCP/IP协议族简单图解](https://oos.blog.yyge.top/2019/3/4/HTTP-%E8%80%81%E5%A4%A7%E5%93%A5TCP-IP/images/1.png?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim)
+![TCP/IP协议族简单图解](https://oos.blog.yyge.top/2019/3/4/HTTP%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E8%80%81%E5%A4%A7%E5%93%A5TCP-IP/images/1.png?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim)
 
 -------------------------------------------
 -------------------------------------------
