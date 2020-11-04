@@ -24,6 +24,12 @@ categories: [frontend, backend]
   - tags
   - categories
 
+### [2020-11-4]
+
+#### Added
+
+- 新增状态码对应的英文描述
+
 ## 引言
 
 ------
@@ -34,12 +40,12 @@ categories: [frontend, backend]
 
 ------
 
-| Status Code | Meaning                                    |
-| ----------- | ------------------------------------------ |
-| 200         | server端正确处理了client发送的请求         |
-| 304         | server端的资源未发生改变                   |
-| 401         | client身份认证错误                         |
-| 403         | client的访问资源请求被拒绝, server权限问题 |
-| 404         | server不存在请求的资源                     |
-| 500         | server发生错误                             |
-| 503         | server无法处理请求                         |
+| Status Code | Description           | Meaning                                    |
+| ----------- | --------------------- | ------------------------------------------ |
+| 200         | OK                    | server端正确处理了client发送的请求         |
+| 304         | Not Modified          | server端的资源未发生改变                   |
+| 401         | Unauthorized          | client身份认证错误                         |
+| 403         | Forbbiden             | client的访问资源请求被拒绝, server权限问题 |
+| 404         | Not Found             | server不存在请求的资源                     |
+| 500         | Internal Server Error | server发生错误                             |
+| 503         | Service Unavailable   | server无法处理请求                         |
