@@ -63,6 +63,12 @@ categories: [frontend, backend]
 
 - 优化 `DNS解析过程`
 
+### [2020-11-7]
+
+#### Changed
+
+- 优化 `DNS 解析过程`
+
 ## 一、过程
 
 ------
@@ -101,13 +107,12 @@ categories: [frontend, backend]
   - 检查路由器缓存
   - 检查运营商提供的本地DNS服务器(`localDNS`)缓存, 不具有权威性
   - 检查是否在`本地区域配置文件`中, 返回解析结果, 具有权威性
-  - 本地DNS服务器(`localDNS`)
-    - 转发模式(`递归查询`)
-      - 依次寻找上一级DNS服务器解析
-    - 非转发模式(`迭代查询`)
-      - 本地DNS发送请求到根DNS
-      - 根DNS返回`顶级域名服务器`(.com、.top、...)地址
-      - 本地DNS联系该`顶级域名服务器`来具体子级域名(xx.com、xxx.xx.com)
+  - `localDNS` 进行转发 or 非转发
+    - 转发模式: `localDNS` 将域名解析请求转发给 `CNAME` 指向的 `CDN` 的 DNS 负载均衡系统
+    - 非转发模式: 进行下一步
+  - `localDNS` 进行递归 or 迭代查询
+    - 递归查询:`localDNS` 向 `rootDNS` 发起域名解析请求 => `rootDNS` 再去找顶级 DNS 服务器 => 顶级 DNS 找权威 DNS => 权威 DNS 将解析到的结果原路返回给 `localDNS`
+    - 迭代查询:`localDNS` 向 rootDNS 发起域名解析请求 => rootDNS 返回顶级 DNS 服务器的地址给 `localDNS` => `localDNS` 再去找顶级 DNS => ... => 最终得到解析结果
   - 本地DNS服务器接收到IP地址
     - 写入缓存
   - 返回给客户端
