@@ -43,11 +43,17 @@ categories: [frontend, backend]
 
 - 更改文章`title`
 
+### [2020-11-11]
+
+#### Changed
+
+- 更改 URL 组成
+
 ## 引言
 
 ------
 
-每天都在和`web`打交道, 脑子里充斥着各种业务, 对url这块也没有很深的了解
+每天都在和 `web` 打交道, 脑子里充斥着各种业务, 对 `url` 这块也没有很深的了解
 
 ## 记录
 
@@ -55,12 +61,13 @@ categories: [frontend, backend]
 
 > http(s)://www.yyge.top:80/index.php?name=duan&age=20...
 
-总的来说, 包括四大部分:
+总的来说, 包括五大部分:
 
 - 协议
-- 主机
-- 虚拟目录
-- url参数
+- 主机(域名)
+- 端口号
+- 虚拟资源目录
+- 查询参数
 
 | Partial           | Meaning              |
 | ----------------- | -------------------- |
@@ -69,4 +76,4 @@ categories: [frontend, backend]
 | yyge.top          | 域名                 |
 | :80               | 端口号               |
 | /index.php        | 虚拟资源目录         |
-| ?name=duan&age=20 | url参数              |
+| ?name=duan&age=20 | 查询参数             |
