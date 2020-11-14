@@ -69,6 +69,12 @@ categories: [frontend, backend]
 
 - 优化 `DNS 解析过程`
 
+### [2020-11-14]
+
+#### Fixed
+
+- `SSL` 握手应在 `TCP` 握手之后
+
 ## 一、过程
 
 ------
@@ -122,11 +128,6 @@ categories: [frontend, backend]
   - 将域名解析权交给 CNAME 指向的 CDN 的 DNS 负载均衡系统
   - DNS负载均衡返回离用户最近的IP地址给本地DNS服务器
   - 本地DNS返回IP地址给用户
-- TLS/SSL四次握手
-  - Client Hello(随机数X, 支持的加密方法)
-  - Server Hello(rsa公钥, 随机选取客户端支持的加密方法, 随机数Y, 证书)
-  - Client生成随机数secret, 发送使用公钥加密后的secret
-  - Server通过私钥解密secret, 利用X、Y、secret生成`session-key`(唯一的对话密钥)
 - TCP三次握手
   - 客户端发送SYN(seq = x)到服务器, 进入`SYN-SEND`状态
   - 服务端发送SYN + (ACK = x + 1) + (seq = y)到服务器, 进入`SYN-RECEIVED`状态
@@ -142,6 +143,11 @@ categories: [frontend, backend]
     - 连续ARQ
       - 滑动窗口机制
         - 控制流量
+- TLS/SSL四次握手
+  - Client Hello(随机数X, 支持的加密方法)
+  - Server Hello(rsa公钥, 随机选取客户端支持的加密方法, 随机数Y, 证书)
+  - Client生成随机数secret, 发送使用公钥加密后的secret
+  - Server通过私钥解密secret, 利用X、Y、secret生成`session-key`(唯一的对话密钥)
 - IP、ICMP
   - IP
     - 寻址
