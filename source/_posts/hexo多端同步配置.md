@@ -31,6 +31,12 @@ categories: [freebie, frontend, backend]
 
 - 新增问题: `'themes/Nlvi' already exists in the index`
 
+### [2020-11-25]
+
+#### Changed
+
+- 更新问题: `'themes/Nlvi' already exists in the index'` 的解决方式
+
 ## 说明
 
 ------
@@ -177,7 +183,7 @@ git push origin branch/hexo
 `git submodule add` 之后可能会出现上述错误, 这是由于指定的文件夹名称已存在, 所以需要干掉它:
 
 ```bash
-git rm -r themes/xxxx
+git rm -r --cached themes/Nlvi
 ```
 
 接着再添加子模块:
