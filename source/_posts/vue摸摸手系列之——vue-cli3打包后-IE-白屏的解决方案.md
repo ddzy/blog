@@ -16,3 +16,34 @@ vue-cli3 打包后的项目在本地 & 测试服预览时, Chrome、Firefox 等�
 ### [2020-12-2]
 
 - Initial release
+
+### [2020-12-3]
+
+#### Added
+
+- 构建文章主体部分
+
+## 出现原因
+
+------
+
+vue-cli3 不会使用 babel 编译 `node_modules` 目录下的代码, 当 node_modules 下有 ES6 的代码时, IE 会无法识别, 进而导致报错:
+
+- SCRIPT1001
+- SCRIPT1002
+- ...
+
+## 解决方案
+
+------
+
+配置 `vue.config.js`, 将 `element-ui` 加入到编译队列:
+
+```js
+// vue.config.js
+module.exports = {
+  ...
+  transpileDependencies: ["element-ui/src"]
+  ...
+}
+```
