@@ -17,6 +17,12 @@ categories: [frontend, translation]
 
 - Initital release
 
+### [2020-12-15]
+
+#### Changed
+
+- 更新文章标题
+
 ## 前置知识
 
 ------

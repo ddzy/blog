@@ -11,6 +11,18 @@ https://medium.com/styled-components/how-styled-components-works-618a69970421
 
 <!-- more -->
 
+## 更新
+
+------
+
+### [2020-12-25]
+
+- Initial release
+
+## 概述
+
+------
+
 现在的前端开发特别是 React 社区, CSS-in-JS 越来越常见了. [styled-components](https://www.styled-components.com/) 凭借着以下几种特性 [脱颖而出](https://github.com/tuchk4/awesome-css-in-js#libraries):
 
 - 它基于 [标记模板](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates) 语法
