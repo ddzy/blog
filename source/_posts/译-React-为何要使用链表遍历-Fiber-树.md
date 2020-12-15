@@ -1,5 +1,5 @@
 ---
-title: '[译]: React 为何要使用链表遍历 Fiber 树'
+title: [译]: React 为何要使用链表遍历 Fiber 树
 date: 2020-11-29 08:46:12
 tags: [react, fiber, linked-list]
 categories: [frontend, translation]
