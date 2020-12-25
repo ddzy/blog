@@ -272,7 +272,94 @@ yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin
 yarn add @babel/polyfill @babel/runtime
 ```
 
-2.
+2. 配置 `webpack.config.ts`
+
+```diff
+import * as Webpack from 'webpack';
+
+export default {
+  ...
+- entry: './src/main.ts',
++ entry: ['@babel/polyfill', './src/main.ts'],
+  module: {
+		rules: [
+      ...
++			{
++				test: /\.ts|js$/,
++				exclude: /node_modules/,
++				use: [
++					{
++						loader: 'babel-loader',
++					},
++				],
++			},
+      ...
+		],
+	},
++  resolve: {
++		extensions: ['.ts', '.js'],
++		plugins: [
++			// 将 tsconfig 中配置的路径别名映射到 webpack.resolve.alias 上
++     // 在 .vue 文件中可以通过诸如 @/components/xxx.vue 的形式来引入组件
++			new TsconfigPathsPlugin(),
++		],
++	},
+  ...
+} as Webpack.Configuration;
+```
+
+3. 配置 `babel.config.json`
+
+```json
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": false
+      }
+    ],
+    [
+      "@babel/preset-typescript",
+      {
+        "allExtensions": true
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-transform-runtime"]
+  ]
+}
+```
+
+4. 配置 `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "CommonJS",
+    "target": "ES5",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    // 路径别名
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+```
 
 ## 集成 Vue
 
