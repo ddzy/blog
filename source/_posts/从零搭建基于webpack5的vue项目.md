@@ -702,4 +702,67 @@ module.exports = {
 
 ## 集成 Husky & lint-staged
 
+---
+
+### 所需依赖
+
+| Name        | Version | Link                                  |
+| ----------- | ------- | ------------------------------------- |
+| husky       | 4.3.6   | https://github.com/typicode/husky     |
+| lint-staged | 10.5.3  | https://github.com/okonet/lint-staged |
+
+### 构建流程
+
+1. 安装相关依赖
+
+```bash
+yarn add --dev husky lint-staged
+```
+
+2. 配置 `package.json`
+
+```diff
+{
++  "husky": {
++    "hooks": {
++      "pre-commit": "lint-staged"
++    }
++  },
++  "lint-staged": {
++    "src/**/*.{ts,vue}": [
++      "prettier --write",
++      "eslint --fix"
++    ]
++  },
+}
+```
+
 ## 集成 VS Code
+
+---
+
+主要是在 `VS Code` 中集成 `prettier`, 便于在开发时进行代码的格式化
+
+### 所需依赖
+
+| Name                      | Description                | Link                                        |
+| ------------------------- | -------------------------- | ------------------------------------------- |
+| Prettier - Code formatter | VS Code 上的 Prettier 插件 | https://github.com/prettier/prettier-vscode |
+
+### 构建流程
+
+1. 安装插件
+
+略
+
+2. 配置 `.vscode`
+
+在项目根目录下新建 `.vscode` 文件夹, 并创建 `settings.json` 文件:
+
+```json
+{
+  // 当在 VS Code 中进行右键 -> 格式化的时候, 读取的本地配置
+  // 这里直接读取项目的 prettier 配置文件
+  "prettier.configPath": ".prettierrc.js"
+}
+```
