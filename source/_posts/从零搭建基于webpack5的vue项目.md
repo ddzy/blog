@@ -365,6 +365,73 @@ export default {
 
 ---
 
+### 所需依赖
+
+| Name                   | Version | Link                                                                 |
+| ---------------------- | ------- | -------------------------------------------------------------------- |
+| vue                    | 2.6.12  | https://github.com/vuejs/vue                                         |
+| vue-class-component    | 7.2.6   | https://github.com/vuejs/vue-class-component                         |
+| vue-property-decorator | 9.1.2   | https://github.com/kaorun343/vue-property-decorator                  |
+| vue-loader             | 15.9.6  | https://github.com/vuejs/vue-loader                                  |
+| vue-template-compiler  | 2.6.12  | https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler |
+
+### 配置流程
+
+1. 安装依赖
+
+```bash
+yarn add vue vue-class-component vue-property-decorator
+
+yarn add --dev vue-loader vue-template-compiler
+```
+
+2. 配置 `webpack.config.ts`
+
+```diff
+import * as Webpack from 'webpack';
++ const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
+
+export default {
+  ...
+	module: {
+		rules: [
+      ...
++			{
++				test: /\.vue$/,
++				use: [
++					{
++						loader: 'vue-loader',
++					},
++				],
++			},
+      ...
+		],
+	},
+  plugins: [
+    ...
++   new VueLoaderPlugin(),
++   // 全局注入 Vue, 避免在每个 .vue 文件中重复引入
++		new Webpack.ProvidePlugin({
++			Vue: ['vue/dist/vue.esm.js', 'default'],
++		}),
+    ...
+  ],
+  resolve: {
+-   extensions: ['.ts', '.js'],
++   extensions: ['.ts', '.js', '.vue'],
+  },
+  ...
+} as Webpack.Configuration;
+```
+
+3. 配置全局的 TS 声明文件
+
+在 `src/@types/` 目录下存放全局的 TS 声明文件(`*.d.ts`):
+
+```txt
+
+```
+
 ## 集成图片
 
 ---

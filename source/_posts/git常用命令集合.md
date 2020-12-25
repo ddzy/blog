@@ -5,15 +5,13 @@ tags: [frontend, git]
 categories: [github]
 ---
 
-pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令, 之前也有总结过, 今天抽空汇总一下.
-
+pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令, 之前也有总结过, 今天抽空汇总一下.
 
 <!-- more -->
 
-
 ## 更新
 
-------
+---
 
 ### [2019-3-16]
 
@@ -78,7 +76,7 @@ pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令,
 #### Added
 
 - 新增 `删除origin仓库的深层文件夹`
-- 新增 `git push -f`强制推送到Gitlab出错
+- 新增 `git push -f`强制推送到 Gitlab 出错
 
 ### [2019-12-19]
 
@@ -115,9 +113,15 @@ pr的时候遇到了分支合并的种种问题, 延申出了一些常用命令,
 
 - 新增命令: `强制覆盖本地分支`
 
+### [2020-12-25]
+
+#### Changed
+
+- 更新命令: `git 打印文件夹结构`
+
 ## 记录
 
-------
+---
 
 - 提交操作
 
@@ -126,7 +130,7 @@ git add .
 git commit -m "xxx"
 ```
 
-- 撤销某次push
+- 撤销某次 push
 
 ```bash
 git reset [id]
@@ -141,13 +145,13 @@ git reset --hard [id]
 git push -f
 ```
 
-- 撤销某次add
+- 撤销某次 add
 
 ```bash
 git reset HEAD
 ```
 
-- 撤销某次commit
+- 撤销某次 commit
 
 ```bash
 git reset --hard [id]
@@ -255,7 +259,7 @@ git stash list
 git stash pop
 ```
 
-- 原仓库与fork仓库合并
+- 原仓库与 fork 仓库合并
 
 ```bash
 # 同步原仓库与本地仓库
@@ -270,14 +274,14 @@ git merge upstream/(master | branch/docs | xxx)
 git push origin (master | branch/docs | xxx) -f
 ```
 
-- 撤销merge
+- 撤销 merge
 
 ```bash
 git [reflog | log]
 git reset --hard [id]
 ```
 
-- 合并merge冲突
+- 合并 merge 冲突
 
 ```bash
 git fetch upstream [xxx]
@@ -287,14 +291,14 @@ git add .
 git commit -m [xxx]
 ```
 
-- 新建并关联origin分支
+- 新建并关联 origin 分支
 
 ```bash
 git checkout -b [xxx]
 git push --set-upstream origin [xxx]
 ```
 
-- 查看commit历史
+- 查看 commit 历史
 
 ```bash
 # 当前分支
@@ -309,7 +313,7 @@ git reflog
 git branch -vv
 ```
 
-- 删除origin中的某个文件
+- 删除 origin 中的某个文件
 
 ```bash
 # 忘记加入.gitignore
@@ -321,7 +325,7 @@ git commit -m
 git push origin [xxx]
 ```
 
-- clone远程仓库的指定分支
+- clone 远程仓库的指定分支
 
 ```bash
 git clone -b [xxx] [remote address]
@@ -439,6 +443,8 @@ tree --help
 
 # 推荐使用
 $ tree -L 2 -I "node_modules" -o ./result.txt --dirsfirst
+# 排除多个文件夹
+$ tree -L 2 -I "node_modules|dist|xxx" -o ./result.txt --dirsfirst
 ```
 
 - 强制覆盖本地分支
