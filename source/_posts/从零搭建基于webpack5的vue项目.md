@@ -484,8 +484,10 @@ webpack5 内置了 `asset` 模块, 用来代替 `file-loader` & `url-loader` & `
 import * as Webpack from 'webpack';
 
 export default {
+  ...
 	module: {
 		rules: [
+      ...
 +			{
 +				test: /\.png|jpg|gif|jpeg|svg/,
 +				type: 'asset',
@@ -498,14 +500,46 @@ export default {
 +					filename: 'images/[base]',
 +				},
 +			},
+      ...
 		],
 	},
+  ...
 } as Webpack.Configuration;
 ```
 
 ## 集成其它文件
 
 ---
+
+### 所需依赖
+
+webpack5 内置了 `asset` 模块, 用来代替 `file-loader` & `url-loader` & `raw-loader` 处理静态资源
+
+### 配置流程
+
+1. 配置 `webpack.config.ts`
+
+```diff
+import * as Webpack from 'webpack';
+
+export default {
+  ...
+	module: {
+		rules: [
+      ...
++			{
++				test: /\.txt|xlsx/,
++				type: 'asset',
++				generator: {
++					filename: 'files/[base]',
++				},
++			},
+      ...
+		],
+	},
+  ...
+} as Webpack.Configuration;
+```
 
 ## 集成 ESlint
 
