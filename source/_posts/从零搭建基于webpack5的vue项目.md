@@ -424,12 +424,48 @@ export default {
 } as Webpack.Configuration;
 ```
 
-3. 配置全局的 TS 声明文件
+3. 配置全局的 `TS` 声明文件
 
 在 `src/@types/` 目录下存放全局的 TS 声明文件(`*.d.ts`):
 
-```txt
+```
+|-- src
+|   |-- @types
+|   |   |-- files.d.ts
+|   |   |-- global.d.ts
+|   |   |-- images.d.ts
+|   |   |-- vue.d.ts
+```
 
+```ts
+// ----------files.d.ts-----------
+// 声明一些原始格式的文件
+declare module "*.txt";
+declare module "*.xlsx";
+
+// ---------images.d.ts-----------
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
+declare module "*.gif";
+declare module "*.svg";
+
+// ---------global.d.ts-----------
+// 配合 Webpack.ProvidePlugin 使用, 前面已配置好了
+import Vue from "vue";
+
+declare global {
+  const Vue: typeof Vue;
+}
+
+// --------vue.d.ts---------------
+declare module "*.vue" {
+  import Vue from "vue";
+  export default Vue;
+}
+declare module "vue/types/vue" {
+  interface Vue {}
+}
 ```
 
 ## 集成图片
