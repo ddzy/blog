@@ -83,6 +83,7 @@ webpack5.x 发布至今已经将近一个月了, v5 版本内置了一些常用�
 ---
 
 ```
+|-- .vscode
 |-- dist  // 打包输出目录
 |-- src   // 源码目录
 |   |-- @types    // ts 全局声明文件(*.d.ts)
@@ -118,7 +119,7 @@ webpack5.x 发布至今已经将近一个月了, v5 版本内置了一些常用�
 
 ### 配置流程
 
-1. 安装依赖
+1. 安装相关依赖
 
 ```bash
 yarn add --dev webpack-dev-server
@@ -199,7 +200,7 @@ export default {
 
 ### 配置流程
 
-1. 安装依赖
+1. 安装相关依赖
 
 ```bash
 yarn add --dev html-webpack-plugin
@@ -239,7 +240,7 @@ export default {
 
 ### 配置流程
 
-1. 安装依赖
+1. 安装相关依赖
 
 ```bash
 yarn add --dev sass sass-loader node-sass postcss mini-css-extract-plugin
@@ -307,7 +308,7 @@ export default {
 
 ### 配置流程
 
-1. 安装依赖
+1. 安装相关依赖
 
 ```bash
 yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators @babel/plugin-transform-runtime @babel/preset-env @babel/preset-typescript babel-loader typescript tsconfig-paths-webpack-plugin
@@ -420,7 +421,7 @@ export default {
 
 ### 配置流程
 
-1. 安装依赖
+1. 安装相关依赖
 
 ```bash
 yarn add vue vue-class-component vue-property-decorator
@@ -600,7 +601,13 @@ export default {
 
 ### 配置流程
 
-1. 配置 `.eslintrc.js`
+1. 安装相关依赖
+
+```bash
+yarn add --dev eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser
+```
+
+2. 配置 `.eslintrc.js`
 
 ```js
 module.exports = {
@@ -619,7 +626,7 @@ module.exports = {
 };
 ```
 
-2. 配置 `package.json`
+3. 配置 `package.json`
 
 ```diff
 {
@@ -646,7 +653,13 @@ module.exports = {
 
 ### 配置流程
 
-1. 配置 `.eslintrc.js`
+1. 安装相关依赖
+
+```bash
+yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+2. 配置 `.eslintrc.js`
 
 ```diff
 module.exports = {
@@ -669,7 +682,7 @@ module.exports = {
 };
 ```
 
-2. 配置 `.prettierrc.js`
+3. 配置 `.prettierrc.js`
 
 ```js
 module.exports = {
@@ -684,7 +697,7 @@ module.exports = {
 };
 ```
 
-3. 配置 `package.json`
+4. 配置 `package.json`
 
 ```diff
 {
