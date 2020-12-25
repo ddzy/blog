@@ -21,11 +21,54 @@ categories: [frontend, freebie]
 
 ---
 
-> 项目地址: https://github.com/ddzy/vue2-webpack5-template
-
 webpack5.x 发布至今已经将近一个月了, v5 版本内置了一些常用的插件, 比如 `HotModuleReplacementPlugin`、`ProvidePlugin`、`DefinePlugin` 等..., 较 v4 版本有很大的变化.
 
-## 主依赖
+> 项目地址: https://github.com/ddzy/vue2-webpack5-template
+
+也可以通过安装脚手架工具, 来查看模板源码:
+
+> 脚手架地址: https://github.com/ddzy/vue2-webpack5-cli
+
+## 目录
+
+- 更新
+  - [2020-12-24]
+- 概述
+- 目录
+- 项目主依赖
+- 项目结构
+- 集成本地开发环境
+  - 所需依赖
+  - 配置流程
+- 集成模块热替换
+  - 所需依赖
+  - 配置流程
+- 集成 HTML
+  - 所需依赖
+  - 配置流程
+- 集成 SCSS
+  - 所需依赖
+  - 配置流程
+- 集成 TS + Babel
+  - 所需依赖
+  - 配置流程
+- 集成 Vue
+  - 所需依赖
+  - 配置流程
+- 集成图片
+  - 所需依赖
+  - 配置流程
+- 集成其它文件
+  - 所需依赖
+  - 配置流程
+- 集成 ESlint
+  - 所需依赖
+  - 配置流程
+- 集成 prettier
+- 集成 Husky
+- 集成 VS Code
+
+## 项目主依赖
 
 ---
 
@@ -545,10 +588,118 @@ export default {
 
 ---
 
+### 所需依赖
+
+| Name                             | Version | Link                                                   |
+| -------------------------------- | ------- | ------------------------------------------------------ |
+| eslint                           | 7.16.0  | https://github.com/eslint/eslint                       |
+| eslint-plugin-vue                | 7.3.0   | https://github.com/vuejs/eslint-plugin-vue             |
+| vue-eslint-parser                | 7.3.0   | https://github.com/vuejs/vue-eslint-parser             |
+| @typescript-eslint/eslint-plugin | 4.11.0  | https://github.com/typescript-eslint/typescript-eslint |
+| @typescript-eslint/parser        | 4.11.0  | https://github.com/typescript-eslint/typescript-eslint |
+
+### 配置流程
+
+1. 配置 `.eslintrc.js`
+
+```js
+module.exports = {
+  parser: "vue-eslint-parser", // 解析 .vue 文件
+  parserOptions: {
+    parser: "@typescript-eslint/parser", // 解析 .vue 文件里面的 script 标签
+  },
+  plugins: ["@typescript-eslint"],
+  extends: ["plugin:vue/recommended", "plugin:@typescript-eslint/recommended"],
+  rules: {
+    // 定义其它校验规则
+    "@typescript-eslint/no-extra-semi": ["error"],
+    "@typescript-eslint/semi": ["error"],
+    "@typescript-eslint/no-empty-interface": 0,
+  },
+};
+```
+
+2. 配置 `package.json`
+
+```diff
+{
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
+    "start": "cross-env NODE_ENV=development webpack serve",
+    "serve": "yarn start",
++   "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\" \"src/**/*.vue\"",
+  },
+}
+```
+
 ## 集成 prettier
 
 ---
 
-## 集成 Husky
+### 所需依赖
+
+| Name                   | Version | Link                                               |
+| ---------------------- | ------- | -------------------------------------------------- |
+| prettier               | 2.2.1   | https://github.com/prettier/prettier               |
+| eslint-config-prettier | 7.1.0   | https://github.com/prettier/eslint-config-prettier |
+| eslint-plugin-prettier | 3.3.0   | https://github.com/prettier/eslint-plugin-prettier |
+
+### 配置流程
+
+1. 配置 `.eslintrc.js`
+
+```diff
+module.exports = {
+	parser: 'vue-eslint-parser', // 解析 .vue 文件
+	parserOptions: {
+		parser: '@typescript-eslint/parser', // 解析 .vue 文件里面的 script 标签
+	},
+	plugins: ['@typescript-eslint'],
+	extends: [
+		'plugin:vue/recommended',
++		'plugin:prettier/recommended',
++		'prettier/@typescript-eslint',
+		'plugin:@typescript-eslint/recommended',
+	],
+	rules: {
+		'@typescript-eslint/no-extra-semi': ['error'],
+		'@typescript-eslint/semi': ['error'],
+		'@typescript-eslint/no-empty-interface': 0,
+	},
+};
+```
+
+2. 配置 `.prettierrc.js`
+
+```js
+module.exports = {
+  semi: true, // 语句后加分号
+  trailingComma: "all", // 尾随逗号(none |es5 | all)
+  singleQuote: true, // 使用单引号
+  printWidth: 80, // 每一行的最大长度, 尽量和编辑器保持一致
+  tabWidth: 2, // Tab 缩进的长度
+  useTabs: true, // 使用 Tab 缩进
+  endOfLine: "auto", // 文件尾部换行的形式
+  arrowParens: "always", // 箭头函数参数使用小括号包裹
+};
+```
+
+3. 配置 `package.json`
+
+```diff
+{
+  ...
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
+    "start": "cross-env NODE_ENV=development webpack serve",
+    "serve": "yarn start",
+    "lint": "eslint --fix \"src/**/*.{js,ts}\" \"src/**/*.vue\"",
++   "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\" \"src/**/*.vue\" ./*.{js,ts}"
+  },
+  ...
+}
+```
+
+## 集成 Husky & lint-staged
 
 ## 集成 VS Code
