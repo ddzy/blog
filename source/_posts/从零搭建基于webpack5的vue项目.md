@@ -21,40 +21,258 @@ categories: [frontend, freebie]
 
 ---
 
+> 项目地址: https://github.com/ddzy/vue2-webpack5-template
+
 webpack5.x 发布至今已经将近一个月了, v5 版本内置了一些常用的插件, 比如 `HotModuleReplacementPlugin`、`ProvidePlugin`、`DefinePlugin` 等..., 较 v4 版本有很大的变化.
 
 ## 主依赖
 
 ---
 
-| Name    | Version | Link                               |
-| ------- | ------- | ---------------------------------- |
-| vue     | 2.6.12  | https://github.com/vuejs/vue       |
-| webpack | 5.10.3  | https://github.com/webpack/webpack |
+| Name        | Version | Link                                   |
+| ----------- | ------- | -------------------------------------- |
+| vue         | 2.6.12  | https://github.com/vuejs/vue           |
+| webpack     | 5.10.3  | https://github.com/webpack/webpack     |
+| webpack-cli | 4.2.0   | https://github.com/webpack/webpack-cli |
+
+## 项目结构
+
+---
+
+```
+|-- dist  // 打包输出目录
+|-- src   // 源码目录
+|   |-- @types    // ts 全局声明文件(*.d.ts)
+|   |-- assets
+|   |-- components
+|   |-- utils
+|   |-- views
+|   |-- app.vue
+|   |-- index.html
+|   -- main.ts
+|-- LICENSE
+|-- README.md
+|-- .browserslistrc
+|-- .eslintrc.js
+|-- .gitignore
+|-- .prettierrc.js
+|-- babel.config.json
+|-- package.json
+|-- tsconfig.json
+|-- webpack.config.ts
+|-- yarn.lock
+```
 
 ## 集成本地开发环境
 
 ---
 
+### 所需依赖
+
+| Name               | Version | Link                                          |
+| ------------------ | ------- | --------------------------------------------- |
+| webpack-dev-server | 3.11.0  | https://github.com/webpack/webpack-dev-server |
+
+### 配置流程
+
+1. 安装依赖
+
+```bash
+yarn add --dev webpack-dev-server
+```
+
+2. 配置 `webpack.config.ts`
+
+```ts
+import * as Webpack from "webpack";
+
+export default {
+  ...
+	devServer: {
+		contentBase: path.resolve(__dirname, 'dist'),
+		open: true,
+		port: 8888,
+		compress: true,
+		clientLogLevel: 'silent',
+		noInfo: true,
+	},
+  ...
+} as Webpack.Configuration;;
+```
+
+3. 配置 `package.json`
+
+```json
+{
+  ...
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
+    "start": "cross-env NODE_ENV=development webpack serve",
+    "serve": "yarn start",
+  }
+  ...
+}
+```
+
 ## 集成模块热替换
 
 ---
+
+### 所需依赖
+
+略
+
+### 配置流程
+
+1. 配置 `webpack.config.ts`
+
+```ts
+import * as Webpack from "webpack";
+```
+
+```diff
+export default {
+  ...
+  plugins: [
++   new Webpack.HotModuleReplacementPlugin(),
+  ],
+	devServer: {
++   hot: true,
+	},
+  ...
+};
+
+```
 
 ## 集成 HTML
 
 ---
 
+### 所需依赖
+
+| Name                | Version       | Link                                            |
+| ------------------- | ------------- | ----------------------------------------------- |
+| html-webpack-plugin | 5.0.0-alpha.3 | https://github.com/jantimon/html-webpack-plugin |
+
+### 配置流程
+
+1. 安装依赖
+
+```bash
+yarn add --dev html-webpack-plugin
+```
+
+2. 配置 `webpack.config.ts`
+
+```diff
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+
+export default {
+  ...
+  plugins: [
++   new HtmlWebpackPlugin({
++			template: 'src/index.html', // 自定义 HTML 模板
++		}),
+  ],
+  ...
+} as Webpack.Configuration;
+```
+
 ## 集成 SCSS
 
 ---
 
-## 集成 JS
+### 所需依赖
+
+| Name                    | Version | Link                                                       |
+| ----------------------- | ------- | ---------------------------------------------------------- |
+| sass                    | 1.30.0  | https://github.com/sass/sass                               |
+| sass-loader             | 10.1.0  | https://github.com/webpack-contrib/sass-loader             |
+| node-sass               | 5.0.0   | https://github.com/sass/node-sass                          |
+| mini-css-extract-plugin | 1.3.3   | https://github.com/webpack-contrib/mini-css-extract-plugin |
+| postcss                 | 8.2.1   | https://github.com/postcss/postcss                         |
+| postcss-loader          | 4.1.0   | https://github.com/webpack-contrib/postcss-loader          |
+| postcss-preset-env      | 6.7.0   | https://github.com/csstools/postcss-preset-env             |
+
+### 配置流程
+
+1. 安装依赖
+
+```bash
+yarn add --dev sass sass-loader node-sass postcss mini-css-extract-plugin
+```
+
+2. 配置 `webpack.config.ts`
+
+```diff
++ import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+export default {
+  ...
++	module: {
++		rules: [
++			{
++				test: /\.css|sass|scss$/,
++				use: [
++					{
++						loader: MiniCssExtractPlugin.loader,
++					},
++					{
++						loader: 'css-loader',
++					},
++					{
++						loader: 'postcss-loader',
++						options: {
++							postcssOptions: {
++								plugins: [['postcss-preset-env', {}]],
++							},
++						},
++					},
++					{
++						loader: 'sass-loader',
++					},
++				],
++			},
++		],
++	},
+  plugins: [
++    new MiniCssExtractPlugin(),
+  ],
+  ...
+};
+```
+
+## 集成 TS + Babel
 
 ---
 
-## 集成 PostCSS
+### 所需依赖
 
----
+| Name                                    | Version | Link                                                                                       |
+| --------------------------------------- | ------- | ------------------------------------------------------------------------------------------ |
+| @babel/core                             | 7.12.10 | https://github.com/babel/babel/tree/master/packages/babel-core                             |
+| @babel/plugin-proposal-class-properties | 7.12.1  | https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties |
+| @babel/plugin-proposal-decorators       | 7.12.1  | https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-decorators       |
+| @babel/plugin-transform-runtime         | 7.12.10 | https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-runtime         |
+| @babel/preset-env                       | 7.12.11 | https://github.com/babel/babel-preset-env                                                  |
+| @babel/preset-typescript                | 7.12.7  | https://github.com/babel/babel/tree/master/packages/babel-preset-typescript                |
+| babel-loader                            | 8.2.2   | https://github.com/babel/babel-loader                                                      |
+| typescript                              | 4.1.3   | https://github.com/microsoft/TypeScript                                                    |
+| tsconfig-paths-webpack-plugin           | 3.3.0   | https://github.com/dividab/tsconfig-paths-webpack-plugin/issues                            |
+| @babel/polyfill                         | 7.12.1  | https://github.com/babel/babel/tree/master/packages/babel-polyfill                         |
+| @babel/runtime                          | 7.12.5  | https://github.com/babel/babel/tree/master/packages/babel-runtime                          |
+
+### 配置流程
+
+1. 安装依赖
+
+```bash
+yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators @babel/plugin-transform-runtime @babel/preset-env @babel/preset-typescript babel-loader typescript tsconfig-paths-webpack-plugin
+
+yarn add @babel/polyfill @babel/runtime
+```
+
+2.
 
 ## 集成 Vue
 
@@ -64,15 +282,7 @@ webpack5.x 发布至今已经将近一个月了, v5 版本内置了一些常用�
 
 ---
 
-## 集成 TS
-
----
-
 ## 集成其它文件
-
----
-
-## 集成 Babel
 
 ---
 
