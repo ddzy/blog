@@ -21,11 +21,11 @@ categories: [frontend, freebie]
 
 ---
 
-webpack5.x 发布至今已经将近两个月了, v5 版本内置了一些常用的插件, 比如 `HotModuleReplacementPlugin`、`ProvidePlugin`、`DefinePlugin` 等..., 较 v4 版本有很大的变化, 以下为本项目地址:
+webpack5.x 发布至今已经将近两个月了, v5 版本内置了一些常用的插件, 较 v4 版本有很大的变化. 本项目基于 webpack5.x 以及 vue2.x, 从零搭建一个基础模板:
 
 > 项目地址: https://github.com/ddzy/vue2-webpack5-template
 
-也可以通过安装脚手架工具, 来查看模板源码:
+也可以通过脚手架工具, 快捷安装:
 
 > 脚手架地址: https://github.com/ddzy/vue2-webpack5-cli
 
