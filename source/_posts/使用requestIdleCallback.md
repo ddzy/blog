@@ -1,5 +1,5 @@
 ---
-title: [译]: 使用 requestIdleCallback
+title: 使用requestIdleCallback
 date: 2020-12-05 09:29:13
 tags: [react, requestIdleCallback, google]
 categories: [frontend, translation]
@@ -8,6 +8,24 @@ categories: [frontend, translation]
 目前的许多站点和 app 都要执行大量脚本. 同时 JavaScript 需要尽可能的快速执行, 并且不影响用户交互. 假如用户滚动页面的时候发送一些分析数据, 或者你往页面上插入 DOM 元素的过程中用户恰好点击了某个按钮, 你的 app 反应会变得迟缓, 严重影响用户体验...
 
 <!-- more -->
+
+## 更新
+
+------
+
+### [2020-12-5]
+
+- Initial release
+
+### [2020-12-28]
+
+#### Changed
+
+- 更改文章标题, 避免 hexo 部署的问题
+
+## 概述
+
+------
 
 原文链接:
 
