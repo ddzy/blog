@@ -17,6 +17,12 @@ categories: [frontend, freebie]
 
 - Initial release
 
+### [2020-12-28]
+
+#### Changed
+
+- 更新代码, 要根据时区来转换日期
+
 ## 依赖版本
 
 ---
@@ -67,15 +73,20 @@ const workbook = XLSX.read(result, {
 
 接着格式化 "开服时间" 条目:
 
-```js
+```ts
 typeof item["开服时间"] === "string"
   ? ~~(new Date(item["开服时间"]).getTime() / 1000)
   : ~~(this._format(item["开服时间"]).getTime() / 1000);
 
 // 自定义格式化日期
 _format(ExcelDate: number) {
-  // 25569 => 自 1900 年到 1970 年的天数
-  let utc_days = Math.floor(excelDate - (25567 + 2))
+  // let utc_days = Math.floor(excelDate - (25567 + 2))
+  // Excel 的 bug, 会把 1900 年当作闰年
+  // https://docs.microsoft.com/en-us/office/troubleshoot/excel/wrongly-assumes-1900-is-leap-year
+  // 东半球 & 0 时区 => 25567 + 2
+  // 西半球 => 25567 + 1
+  let step = new Date().getTimezoneOffset() <= 0 ? 25567 + 2 : 25567 + 1
+  let utc_days = Math.floor(excelDate - step)
   // 86400 => 24 * 60 * 60 => 一天的总秒数
   let utc_value = utc_days * 86400
   // 一天的总毫秒数
