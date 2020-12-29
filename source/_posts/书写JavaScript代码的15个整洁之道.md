@@ -58,17 +58,17 @@ const numberOfChildren = 4;
 不要使用蛇形命名(`snake_case`)、帕斯卡命名(`PascalCase`)或者变量名以动词开头.
 
 ```js
-// Bad: Begins with uppercase letter
+// Bad: 以大写字母开头
 var UserName = "Faisal";
 
-// Bad: Begins with verb
+// Bad: 以动词开头
 var getUserName = "Faisal";
 
-// Bad: Uses underscore
+// Bad: 使用下划线
 var user_name = "faisal";
 ```
 
-使用驼峰命名法代替, 代表一个名词.
+使用驼峰命名法代替, 并且使用名词.
 
 ```js
 // Good
@@ -80,23 +80,23 @@ const userName = "Faisal";
 函数名不要用名词, 避免与变量名混淆.
 
 ```js
-// Bad: Begins with uppercase letter
+// Bad: 以大写字母开头
 function DoSomething() {
     // code
 }
 
-// Bad: Begins with noun
+// Bad: 以名词开头
 function car() {
     // code
 }
 
-// Bad: Uses underscores
+// Bad: 使用下划线
 function do_something() {
     // code
 }
 ```
 
-使用驼峰式命名, 并且以动词开头.
+而应该使用驼峰式命名, 并且以动词开头.
 
 ```js
 //GOOD
@@ -108,17 +108,17 @@ function doSomething() {
 ### 规则4. 使用帕斯卡来命名构造函数
 
 ```js
-// Bad: Begins with lowercase letter
+// Bad: 以小写字母开头
 function myObject() {
     // code
 }
 
-// Bad: Uses underscores
+// Bad: 使用下划线
 function My_Object() {
     // code
 }
 
-// Bad: Begins with verb
+// Bad: 以动词开头
 function getMyObject() {
     // code
 }
@@ -225,19 +225,19 @@ count++;
 不要省略 if 语句的大括号, 并且首尾大括号不要写在同一行.
 
 ```js
-// BAD: Improper spacing
+// BAD: 不正确的空格
 if(condition){
     doSomething();
 }
 ----
-// BAD: Missing braces
+// BAD: 缺失大括号
 if (condition)
     doSomething();
 ----
-// BAD: All on one line
+// BAD: 所有的代码都在一行
 if (condition) { doSomething(); }
 ----
-// BAD: All on one line without braces
+// BAD: 代码挤在一行, 并且没有大括号
 if (condition) doSomething();
 ```
 
@@ -255,7 +255,7 @@ if (condition) {
 不要在 `for` 循环内部声明变量.
 
 ```js
-// BAD: Variables declared during initialization
+// BAD: 在循环体内声明变量
 for (let i=0, len=10; i < len; i++) {
     // code
     let i = 0;
@@ -289,11 +289,11 @@ if (condition) {
 任意行的代码都不要超过 80 个字符. 如果超出的话, 超出的部分应该另起一行.
 
 ```js
-// BAD: Following line only indented four spaces
+// BAD: 下一行只缩进 4 个空格
 doSomething(argument1, argument2, argument3, argument4,
     argument5);
 
-// BAD: Breaking before operator
+// BAD: 在运算符前换行
 doSomething(argument1, argument2, argument3, argument4
         ,argument5);
 ```
@@ -347,4 +347,3 @@ if (typeof variable === "undefined") {
 上述所有的规则都可以在 "**编写可维护的JavaScript**" 这本书中找到. 所以即使你不同意其中的某些规则也没关系. 因为编码风格是多样化的. 但是这些规则可以作为一个良好的起点.
 
 编码愉快! :D
-
