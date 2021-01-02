@@ -119,6 +119,12 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 更新命令: `git 打印文件夹结构`
 
+### [2021-1-2]
+
+#### Added
+
+- 新增命令: `git pull 自动化拉取子模块`
+
 ## 记录
 
 ---
@@ -458,4 +464,10 @@ git fetch --all
 # 强制覆盖
 git reset --hard origin/master
 git pull
+```
+
+- `git pull` 自动化拉取子模块
+
+```bash
+git pull --recurse-submodules
 ```
