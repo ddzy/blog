@@ -125,132 +125,138 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 新增命令: `git pull 自动化拉取子模块`
 
+### 【2021-1-13]
+
+#### Changed
+
+- 优化文章格式，`li` 列表下的子元素统一缩进处理，增强可读性
+
 ## 记录
 
 ---
 
 - 提交操作
 
-```bash
-git add .
-git commit -m "xxx"
-```
+  ```bash
+  git add .
+  git commit -m "xxx"
+  ```
 
 - 撤销某次 push
 
-```bash
-git reset [id]
-git pull origin master
-git push origin master
-```
+  ```bash
+  git reset [id]
+  git pull origin master
+  git push origin master
+  ```
 
 - 回退到指定版本
 
-```bash
-git reset --hard [id]
-git push -f
-```
+  ```bash
+  git reset --hard [id]
+  git push -f
+  ```
 
 - 撤销某次 add
 
-```bash
-git reset HEAD
-```
+  ```bash
+  git reset HEAD
+  ```
 
 - 撤销某次 commit
 
-```bash
-git reset --hard [id]
-git pull
-```
+  ```bash
+  git reset --hard [id]
+  git pull
+  ```
 
 - 查看远程仓库地址
 
-```bash
-git remote -v
-```
+  ```bash
+  git remote -v
+  ```
 
 - 查看提交记录
 
-```bash
-git log
-```
+  ```bash
+  git log
+  ```
 
 - 查看指定版本
 
-```bash
-git checkout id
-```
+  ```bash
+  git checkout id
+  ```
 
 - 删除本地分支
 
-```bash
-git branch -D [xxx]
-```
+  ```bash
+  git branch -D [xxx]
+  ```
 
 - 创建本地分支
 
-```bash
-git branch [xxx]
-```
+  ```bash
+  git branch [xxx]
+  ```
 
 - 切换本地分支
 
-```bash
-git checkout [xxx]
-```
+  ```bash
+  git checkout [xxx]
+  ```
 
 - 推送当前所在分支到远程分支
 
-```bash
-git push origin [xxx]
-```
+  ```bash
+  git push origin [xxx]
+  ```
 
 - 查看本地分支
 
-```bash
-git branch
-```
+  ```bash
+  git branch
+  ```
 
 - 查看全部分支
 
-```bash
-git branch -a
-```
+  ```bash
+  git branch -a
+  ```
 
 - 查看远程分支地址
 
-```bash
-git remote -v
-```
+  ```bash
+  git remote -v
+  ```
 
 - 创建本地分支并推送到远程分支
 
-```bash
-git checkout -b [dev]
-git pull origin [dev]
-git push origin [dev]
-```
+  ```bash
+  git checkout -b [dev]
+  git pull origin [dev]
+  git push origin [dev]
+  ```
 
 - 创建远程分支
 
-```bash
-git checkout -b [本地分支名]
-git push origin [本地分支名]:[远程分支名]
-```
+  ```bash
+  git checkout -b [本地分支名]
+  git push origin [本地分支名]:[远程分支名]
+  ```
 
 - 删除远程分支
 
-```bash
-git push origin :[远程分支名]
-git push origin --delete [远程分支名]
-```
+  ```bash
+  git push origin :[远程分支名]
+  git push origin --delete [远程分支名]
+  ```
 
 - 创建本地二层分支
 
-```bash
-git checkout -b [new branch] [base branch]
-```
+  ```bash
+  git checkout -b [new branch] [base branch]
+  ```
 
 - 暂存当前工作状态(切换分支之前使用)
   - git stash list
@@ -258,216 +264,216 @@ git checkout -b [new branch] [base branch]
   - git stash apply | pop
   - git stash drop stash@{index}
 
-```bash
-git stash save ""
-git checkout [another branch]
-git stash list
-git stash pop
-```
+    ```bash
+    git stash save ""
+    git checkout [another branch]
+    git stash list
+    git stash pop
+    ```
 
 - 原仓库与 fork 仓库合并
 
-```bash
-# 同步原仓库与本地仓库
-git remote -v
-git remote add upstream [原仓库地址]
-git checkout (master | branch/docs | xxx)
-git fetch upstream (master | branch/docs | xxx)
-git diff upstream/(master | branch/docs | xxx)
-git merge upstream/(master | branch/docs | xxx)
+  ```bash
+  # 同步原仓库与本地仓库
+  git remote -v
+  git remote add upstream [原仓库地址]
+  git checkout (master | branch/docs | xxx)
+  git fetch upstream (master | branch/docs | xxx)
+  git diff upstream/(master | branch/docs | xxx)
+  git merge upstream/(master | branch/docs | xxx)
 
-# 同步本地仓库和fork仓库
-git push origin (master | branch/docs | xxx) -f
-```
+  # 同步本地仓库和fork仓库
+  git push origin (master | branch/docs | xxx) -f
+  ```
 
 - 撤销 merge
 
-```bash
-git [reflog | log]
-git reset --hard [id]
-```
+  ```bash
+  git [reflog | log]
+  git reset --hard [id]
+  ```
 
 - 合并 merge 冲突
 
-```bash
-git fetch upstream [xxx]
-git merge upstream [xxx]
-# vscode手动合并冲突, 或者使用mergetool
-git add .
-git commit -m [xxx]
-```
+  ```bash
+  git fetch upstream [xxx]
+  git merge upstream [xxx]
+  # vscode手动合并冲突, 或者使用mergetool
+  git add .
+  git commit -m [xxx]
+  ```
 
 - 新建并关联 origin 分支
 
-```bash
-git checkout -b [xxx]
-git push --set-upstream origin [xxx]
-```
+  ```bash
+  git checkout -b [xxx]
+  git push --set-upstream origin [xxx]
+  ```
 
 - 查看 commit 历史
 
-```bash
-# 当前分支
-git log
-# 所有分支
-git reflog
-```
+  ```bash
+  # 当前分支
+  git log
+  # 所有分支
+  git reflog
+  ```
 
 - 查看本地分支和远程分支的关联
 
-```bash
-git branch -vv
-```
+  ```bash
+  git branch -vv
+  ```
 
 - 删除 origin 中的某个文件
 
-```bash
-# 忘记加入.gitignore
-# 已push到远程仓库的文件
+  ```bash
+  # 忘记加入.gitignore
+  # 已push到远程仓库的文件
 
-git pull origin [xxx]
-git rm -r --cached [x]
-git commit -m
-git push origin [xxx]
-```
+  git pull origin [xxx]
+  git rm -r --cached [x]
+  git commit -m
+  git push origin [xxx]
+  ```
 
 - clone 远程仓库的指定分支
 
-```bash
-git clone -b [xxx] [remote address]
-```
+  ```bash
+  git clone -b [xxx] [remote address]
+  ```
 
 - 合并两个没有关联的分支
 
-```bash
-# 解决`fatal: refusing to merge unrelated histories`的错误
+  ```bash
+  # 解决`fatal: refusing to merge unrelated histories`的错误
 
-git merge --no-ff [another branch] --allow-unrelated-histories
-```
+  git merge --no-ff [another branch] --allow-unrelated-histories
+  ```
 
 - `git log`和`git reflog`的区别
 
-```bash
-# git log只查看当前分支的commit历史
-git log
+  ```bash
+  # git log只查看当前分支的commit历史
+  git log
 
-# git reflog查看当前项目的所有分支的提交历史
-git reflog
-```
+  # git reflog查看当前项目的所有分支的提交历史
+  git reflog
+  ```
 
 - 查看本地分支的标签
 
-```bash
-git tag
-```
+  ```bash
+  git tag
+  ```
 
 - 查看远程分支的标签
 
-```bash
-git ls-remote --tag
-```
+  ```bash
+  git ls-remote --tag
+  ```
 
 - 给当前分支打标签, 并添加自定义信息
 
-```bash
-git tag v1.0.0 -m "release v1.0.0"
-```
+  ```bash
+  git tag v1.0.0 -m "release v1.0.0"
+  ```
 
 - 重命名本地分支的标签
 
-```bash
-git tag oldTagName newTagName
-git tag -d oldTagName
-```
+  ```bash
+  git tag oldTagName newTagName
+  git tag -d oldTagName
+  ```
 
 - 删除本地的某个标签
 
-```bash
-git tag -d v1.0.0
-```
+  ```bash
+  git tag -d v1.0.0
+  ```
 
 - 删除远程的某个标签
 
-```bash
-git push origin -d v1.0.0
-```
+  ```bash
+  git push origin -d v1.0.0
+  ```
 
 - 将本地的所有标签推送至远程
 
-```bash
-git push origin --tag
-```
+  ```bash
+  git push origin --tag
+  ```
 
 - 删除 `origin` 仓库的深层文件夹
 
-原本使用比较熟悉的 `git rm -r --cached xxx` 来删除, 但是发现并不能删除文件, 报 `fatal: pathspec 'xxx/xxx' did not match any files` 的错误, 也就是说远程的文件夹不存在, 这不可能啊??? 于是改用另一个命令:
+  原本使用比较熟悉的 `git rm -r --cached xxx` 来删除, 但是发现并不能删除文件, 报 `fatal: pathspec 'xxx/xxx' did not match any files` 的错误, 也就是说远程的文件夹不存在, 这不可能啊??? 于是改用另一个命令:
 
-```bash
-git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch xxx/xxx' --prune -empty --tag-name-filter cat -- --all
-```
+  ```bash
+  git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch xxx/xxx' --prune -empty --tag-name-filter cat -- --all
+  ```
 
-但是随即出现了 `fatal: bad revision 'rm'` 错误, 原因是 Windows 系统下要使用双引号, 将其改为:
+  但是随即出现了 `fatal: bad revision 'rm'` 错误, 原因是 Windows 系统下要使用双引号, 将其改为:
 
-```bash
-git filter-branch --force --index-filter "git rm -r --cached --ignore-unmatch xxx/xxx" --prune -empty --tag-name-filter cat -- --all
-```
+  ```bash
+  git filter-branch --force --index-filter "git rm -r --cached --ignore-unmatch xxx/xxx" --prune -empty --tag-name-filter cat -- --all
+  ```
 
 - `git push -f` 强制推送到 `Gitlab` 出错
 
-使用 `git filter-branch --force ...` 命令删除 origin 仓库的无用文件夹之后, 想强制推送并覆盖 Gitlab 的远程分支, 出现了 `remote: GitLab: You are not allowed to force push code to a protected branch on this project` 的错误.
+  使用 `git filter-branch --force ...` 命令删除 origin 仓库的无用文件夹之后, 想强制推送并覆盖 Gitlab 的远程分支, 出现了 `remote: GitLab: You are not allowed to force push code to a protected branch on this project` 的错误.
 
-**原因是**: master 分支被保护了, 处于 `protected` 状态.
+  **原因是**: master 分支被保护了, 处于 `protected` 状态.
 
-**解决办法是**: 接触保护, 并将其置为 `unprotected` 状态.
+  **解决办法是**: 接触保护, 并将其置为 `unprotected` 状态.
 
 - **Fatal: out of memory, malloc failed (tried to allocate 1514190 bytes)**
 
-**问题背景**: 想将本地的文章推送到 github 仓库, 执行完 `hexo g -d` 命令之后, 出现了这样的错误.
+  **问题背景**: 想将本地的文章推送到 github 仓库, 执行完 `hexo g -d` 命令之后, 出现了这样的错误.
 
-**产生原因**: 文件大小超出了 git 传输的最大限制.
+  **产生原因**: 文件大小超出了 git 传输的最大限制.
 
-**解决办法**: 既然超出了, 那就调大一些呗, 使用 `git config http.postbuffer 88888888` 来设置即可.
+  **解决办法**: 既然超出了, 那就调大一些呗, 使用 `git config http.postbuffer 88888888` 来设置即可.
 
 - **Fatal: another git process seems to be running in this repository**
 
-**问题背景**:
+  **问题背景**:
 
-VS Code 突然崩溃, 打开新的 git 进程准备推送代码的时候出现这个问题
+  VS Code 突然崩溃, 打开新的 git 进程准备推送代码的时候出现这个问题
 
-**解决办法**:
+  **解决办法**:
 
-将 `.git` 或者 `.deploygit` 文件夹下的 `index.lock` 文件删除即可
+  将 `.git` 或者 `.deploygit` 文件夹下的 `index.lock` 文件删除即可
 
 - git 打印文件夹结构
 
-```
-# 安装依赖项
-https://www.cnblogs.com/elian/p/10083317.html
+  ```
+  # 安装依赖项
+  https://www.cnblogs.com/elian/p/10083317.html
 
-# 对照各个参数即可
-tree --help
+  # 对照各个参数即可
+  tree --help
 
-# 推荐使用
-$ tree -L 2 -I "node_modules" -o ./result.txt --dirsfirst
-# 排除多个文件夹
-$ tree -L 2 -I "node_modules|dist|xxx" -o ./result.txt --dirsfirst
-```
+  # 推荐使用
+  $ tree -L 2 -I "node_modules" -o ./result.txt --dirsfirst
+  # 排除多个文件夹
+  $ tree -L 2 -I "node_modules|dist|xxx" -o ./result.txt --dirsfirst
+  ```
 
 - 强制覆盖本地分支
 
-问题背景: 使用 `jenkins` 作自动化部署时, 本地回退了一次 `commit`, `jenkins` 构建报错, 提示 `git pull` 失败.
+  问题背景: 使用 `jenkins` 作自动化部署时, 本地回退了一次 `commit`, `jenkins` 构建报错, 提示 `git pull` 失败.
 
-解决办法: 自动化部署的时候, 可以直接使用远程分支覆盖本地分支:
+  解决办法: 自动化部署的时候, 可以直接使用远程分支覆盖本地分支:
 
-```bash
-git fetch --all
-# 强制覆盖
-git reset --hard origin/master
-git pull
-```
+  ```bash
+  git fetch --all
+  # 强制覆盖
+  git reset --hard origin/master
+  git pull
+  ```
 
 - `git pull` 自动化拉取子模块
 
-```bash
-git pull --recurse-submodules
-```
+  ```bash
+  git pull --recurse-submodules
+  ```
