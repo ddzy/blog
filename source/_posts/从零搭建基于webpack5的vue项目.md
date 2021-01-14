@@ -17,6 +17,12 @@ categories: [frontend, freebie]
 
 - Initial release
 
+### [2021-1-14]
+
+#### Changed
+
+- 优化文章格式，更改缩进距离
+
 ## 概述
 
 ---
@@ -99,42 +105,42 @@ webpack5.x 发布至今已经将近两个月了, v5 版本内置了一些常用�
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev webpack-dev-server
-```
+    ```bash
+    yarn add --dev webpack-dev-server
+    ```
 
 2. 配置 `webpack.config.ts`
 
-```ts
-import * as Webpack from "webpack";
+    ```ts
+    import * as Webpack from "webpack";
 
-export default {
-  ...
-	devServer: {
-		contentBase: path.resolve(__dirname, 'dist'),
-		open: true,
-		port: 8888,
-		compress: true,
-		clientLogLevel: 'silent',
-		noInfo: true,
-	},
-  ...
-} as Webpack.Configuration;;
-```
+    export default {
+      ...
+      devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        open: true,
+        port: 8888,
+        compress: true,
+        clientLogLevel: 'silent',
+        noInfo: true,
+      },
+      ...
+    } as Webpack.Configuration;;
+    ```
 
 3. 配置 `package.json`
 
-```json
-{
-  ...
-  "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
-    "start": "cross-env NODE_ENV=development webpack serve",
-    "serve": "yarn start",
-  }
-  ...
-}
-```
+    ```json
+    {
+      ...
+      "scripts": {
+        "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
+        "start": "cross-env NODE_ENV=development webpack serve",
+        "serve": "yarn start",
+      }
+      ...
+    }
+    ```
 
 ## 集成模块热替换
 
@@ -148,23 +154,23 @@ export default {
 
 1. 配置 `webpack.config.ts`
 
-```ts
-import * as Webpack from "webpack";
-```
+    ```ts
+    import * as Webpack from "webpack";
+    ```
 
-```diff
-export default {
-  ...
-  plugins: [
-+   new Webpack.HotModuleReplacementPlugin(),
-  ],
-	devServer: {
-+   hot: true,
-	},
-  ...
-};
+    ```diff
+    export default {
+      ...
+      plugins: [
+    +   new Webpack.HotModuleReplacementPlugin(),
+      ],
+      devServer: {
+    +   hot: true,
+      },
+      ...
+    };
 
-```
+    ```
 
 ## 集成HTML
 
@@ -180,25 +186,25 @@ export default {
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev html-webpack-plugin
-```
+    ```bash
+    yarn add --dev html-webpack-plugin
+    ```
 
 2. 配置 `webpack.config.ts`
 
-```diff
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+    ```diff
+    import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export default {
-  ...
-  plugins: [
-+   new HtmlWebpackPlugin({
-+			template: 'src/index.html', // 自定义 HTML 模板
-+		}),
-  ],
-  ...
-} as Webpack.Configuration;
-```
+    export default {
+      ...
+      plugins: [
+    +   new HtmlWebpackPlugin({
+    +			template: 'src/index.html', // 自定义 HTML 模板
+    +		}),
+      ],
+      ...
+    } as Webpack.Configuration;
+    ```
 
 ## 集成SCSS
 
@@ -220,49 +226,49 @@ export default {
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev sass sass-loader node-sass postcss mini-css-extract-plugin
-```
+    ```bash
+    yarn add --dev sass sass-loader node-sass postcss mini-css-extract-plugin
+    ```
 
 2. 配置 `webpack.config.ts`
 
-```diff
-+ import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+    ```diff
+    + import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export default {
-  ...
-+	module: {
-+		rules: [
-+			{
-+				test: /\.css|sass|scss$/,
-+				use: [
-+					{
-+						loader: MiniCssExtractPlugin.loader,
-+					},
-+					{
-+						loader: 'css-loader',
-+					},
-+					{
-+						loader: 'postcss-loader',
-+						options: {
-+							postcssOptions: {
-+								plugins: [['postcss-preset-env', {}]],
-+							},
-+						},
-+					},
-+					{
-+						loader: 'sass-loader',
-+					},
-+				],
-+			},
-+		],
-+	},
-  plugins: [
-+    new MiniCssExtractPlugin(),
-  ],
-  ...
-};
-```
+    export default {
+      ...
+    +	module: {
+    +		rules: [
+    +			{
+    +				test: /\.css|sass|scss$/,
+    +				use: [
+    +					{
+    +						loader: MiniCssExtractPlugin.loader,
+    +					},
+    +					{
+    +						loader: 'css-loader',
+    +					},
+    +					{
+    +						loader: 'postcss-loader',
+    +						options: {
+    +							postcssOptions: {
+    +								plugins: [['postcss-preset-env', {}]],
+    +							},
+    +						},
+    +					},
+    +					{
+    +						loader: 'sass-loader',
+    +					},
+    +				],
+    +			},
+    +		],
+    +	},
+      plugins: [
+    +    new MiniCssExtractPlugin(),
+      ],
+      ...
+    };
+    ```
 
 ## 集成TS+Babel
 
@@ -288,100 +294,100 @@ export default {
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators @babel/plugin-transform-runtime @babel/preset-env @babel/preset-typescript babel-loader typescript tsconfig-paths-webpack-plugin
+    ```bash
+    yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators @babel/plugin-transform-runtime @babel/preset-env @babel/preset-typescript babel-loader typescript tsconfig-paths-webpack-plugin
 
-yarn add @babel/polyfill @babel/runtime
-```
+    yarn add @babel/polyfill @babel/runtime
+    ```
 
 2. 配置 `webpack.config.ts`
 
-```diff
-import * as Webpack from 'webpack';
+    ```diff
+    import * as Webpack from 'webpack';
 
-export default {
-  ...
-- entry: './src/main.ts',
-+ entry: ['@babel/polyfill', './src/main.ts'],
-  module: {
-		rules: [
+    export default {
       ...
-+			{
-+				test: /\.ts|js$/,
-+				exclude: /node_modules/,
-+				use: [
-+					{
-+						loader: 'babel-loader',
-+					},
-+				],
-+			},
+    - entry: './src/main.ts',
+    + entry: ['@babel/polyfill', './src/main.ts'],
+      module: {
+        rules: [
+          ...
+    +			{
+    +				test: /\.ts|js$/,
+    +				exclude: /node_modules/,
+    +				use: [
+    +					{
+    +						loader: 'babel-loader',
+    +					},
+    +				],
+    +			},
+          ...
+        ],
+      },
+    +  resolve: {
+    +		extensions: ['.ts', '.js'],
+    +		plugins: [
+    +			// 将 tsconfig 中配置的路径别名映射到 webpack.resolve.alias 上
+    +     // 在 .vue 文件中可以通过诸如 @/components/xxx.vue 的形式来引入组件
+    +			new TsconfigPathsPlugin(),
+    +		],
+    +	},
       ...
-		],
-	},
-+  resolve: {
-+		extensions: ['.ts', '.js'],
-+		plugins: [
-+			// 将 tsconfig 中配置的路径别名映射到 webpack.resolve.alias 上
-+     // 在 .vue 文件中可以通过诸如 @/components/xxx.vue 的形式来引入组件
-+			new TsconfigPathsPlugin(),
-+		],
-+	},
-  ...
-} as Webpack.Configuration;
-```
+    } as Webpack.Configuration;
+    ```
 
 3. 配置 `babel.config.json`
 
-```json
-{
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "useBuiltIns": false
-      }
-    ],
-    [
-      "@babel/preset-typescript",
-      {
-        "allExtensions": true
-      }
-    ]
-  ],
-  "plugins": [
-    [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
-      }
-    ],
-    ["@babel/plugin-proposal-class-properties"],
-    ["@babel/plugin-transform-runtime"]
-  ]
-}
-```
+    ```json
+    {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "useBuiltIns": false
+          }
+        ],
+        [
+          "@babel/preset-typescript",
+          {
+            "allExtensions": true
+          }
+        ]
+      ],
+      "plugins": [
+        [
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ],
+        ["@babel/plugin-proposal-class-properties"],
+        ["@babel/plugin-transform-runtime"]
+      ]
+    }
+    ```
 
 4. 配置 `tsconfig.json`
 
-```json
-{
-  "compilerOptions": {
-    "sourceMap": true,
-    "module": "CommonJS",
-    "target": "ES5",
-    "baseUrl": ".",
-    "rootDir": ".",
-    "allowJs": true,
-    "experimentalDecorators": true,
-    // 路径别名
-    "paths": {
-      "@/*": ["src/*"]
+    ```json
+    {
+      "compilerOptions": {
+        "sourceMap": true,
+        "module": "CommonJS",
+        "target": "ES5",
+        "baseUrl": ".",
+        "rootDir": ".",
+        "allowJs": true,
+        "experimentalDecorators": true,
+        // 路径别名
+        "paths": {
+          "@/*": ["src/*"]
+        }
+      },
+      "include": ["src/**/*"],
+      "exclude": ["node_modules", "dist"]
     }
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
-```
+    ```
 
 ## 集成Vue
 
@@ -401,94 +407,94 @@ export default {
 
 1. 安装相关依赖
 
-```bash
-yarn add vue vue-class-component vue-property-decorator
+    ```bash
+    yarn add vue vue-class-component vue-property-decorator
 
-yarn add --dev vue-loader vue-template-compiler
-```
+    yarn add --dev vue-loader vue-template-compiler
+    ```
 
 2. 配置 `webpack.config.ts`
 
-```diff
-import * as Webpack from 'webpack';
-+ const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
+    ```diff
+    import * as Webpack from 'webpack';
+    + const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
 
-export default {
-  ...
-	module: {
-		rules: [
+    export default {
       ...
-+			{
-+				test: /\.vue$/,
-+				use: [
-+					{
-+						loader: 'vue-loader',
-+					},
-+				],
-+			},
+      module: {
+        rules: [
+          ...
+    +			{
+    +				test: /\.vue$/,
+    +				use: [
+    +					{
+    +						loader: 'vue-loader',
+    +					},
+    +				],
+    +			},
+          ...
+        ],
+      },
+      plugins: [
+        ...
+    +   new VueLoaderPlugin(),
+    +   // 全局注入 Vue, 避免在每个 .vue 文件中重复引入
+    +		new Webpack.ProvidePlugin({
+    +			Vue: ['vue/dist/vue.esm.js', 'default'],
+    +		}),
+        ...
+      ],
+      resolve: {
+    -   extensions: ['.ts', '.js'],
+    +   extensions: ['.ts', '.js', '.vue'],
+      },
       ...
-		],
-	},
-  plugins: [
-    ...
-+   new VueLoaderPlugin(),
-+   // 全局注入 Vue, 避免在每个 .vue 文件中重复引入
-+		new Webpack.ProvidePlugin({
-+			Vue: ['vue/dist/vue.esm.js', 'default'],
-+		}),
-    ...
-  ],
-  resolve: {
--   extensions: ['.ts', '.js'],
-+   extensions: ['.ts', '.js', '.vue'],
-  },
-  ...
-} as Webpack.Configuration;
-```
+    } as Webpack.Configuration;
+    ```
 
 3. 配置全局的 `TS` 声明文件
 
-在 `src/@types/` 目录下存放全局的 TS 声明文件(`*.d.ts`):
+    在 `src/@types/` 目录下存放全局的 TS 声明文件(`*.d.ts`):
 
-```
-|-- src
-|   |-- @types
-|   |   |-- files.d.ts
-|   |   |-- global.d.ts
-|   |   |-- images.d.ts
-|   |   |-- vue.d.ts
-```
+    ```
+    |-- src
+    |   |-- @types
+    |   |   |-- files.d.ts
+    |   |   |-- global.d.ts
+    |   |   |-- images.d.ts
+    |   |   |-- vue.d.ts
+    ```
 
-```ts
-// ----------files.d.ts-----------
-// 声明一些原始格式的文件
-declare module "*.txt";
-declare module "*.xlsx";
+    ```ts
+    // ----------files.d.ts-----------
+    // 声明一些原始格式的文件
+    declare module "*.txt";
+    declare module "*.xlsx";
 
-// ---------images.d.ts-----------
-declare module "*.png";
-declare module "*.jpg";
-declare module "*.jpeg";
-declare module "*.gif";
-declare module "*.svg";
+    // ---------images.d.ts-----------
+    declare module "*.png";
+    declare module "*.jpg";
+    declare module "*.jpeg";
+    declare module "*.gif";
+    declare module "*.svg";
 
-// ---------global.d.ts-----------
-// 配合 Webpack.ProvidePlugin 使用, 前面已配置好了
-import Vue from "vue";
+    // ---------global.d.ts-----------
+    // 配合 Webpack.ProvidePlugin 使用, 前面已配置好了
+    import Vue from "vue";
 
-declare global {
-  const Vue: typeof Vue;
-}
+    declare global {
+      const Vue: typeof Vue;
+    }
 
-// --------vue.d.ts---------------
-declare module "*.vue" {
-  import Vue from "vue";
-  export default Vue;
-}
-declare module "vue/types/vue" {
-  interface Vue {}
-}
-```
+    // --------vue.d.ts---------------
+    declare module "*.vue" {
+      import Vue from "vue";
+      export default Vue;
+    }
+    declare module "vue/types/vue" {
+      interface Vue {}
+    }
+    ```
 
 ## 集成图片
 
@@ -502,32 +508,32 @@ webpack5 内置了 `asset` 模块, 用来代替 `file-loader` & `url-loader` & `
 
 1. 配置 `webpack.config.ts`
 
-```diff
-import * as Webpack from 'webpack';
+    ```diff
+    import * as Webpack from 'webpack';
 
-export default {
-  ...
-	module: {
-		rules: [
+    export default {
       ...
-+			{
-+				test: /\.png|jpg|gif|jpeg|svg/,
-+				type: 'asset',
-+				parser: {
-+					dataUrlCondition: {
-+						maxSize: 10 * 1024,
-+					},
-+				},
-+				generator: {
-+					filename: 'images/[base]',
-+				},
-+			},
+      module: {
+        rules: [
+          ...
+    +			{
+    +				test: /\.png|jpg|gif|jpeg|svg/,
+    +				type: 'asset',
+    +				parser: {
+    +					dataUrlCondition: {
+    +						maxSize: 10 * 1024,
+    +					},
+    +				},
+    +				generator: {
+    +					filename: 'images/[base]',
+    +				},
+    +			},
+          ...
+        ],
+      },
       ...
-		],
-	},
-  ...
-} as Webpack.Configuration;
-```
+    } as Webpack.Configuration;
+    ```
 
 ## 集成其它文件
 
@@ -541,27 +547,27 @@ webpack5 内置了 `asset` 模块, 用来代替 `file-loader` & `url-loader` & `
 
 1. 配置 `webpack.config.ts`
 
-```diff
-import * as Webpack from 'webpack';
+    ```diff
+    import * as Webpack from 'webpack';
 
-export default {
-  ...
-	module: {
-		rules: [
+    export default {
       ...
-+			{
-+				test: /\.txt|xlsx/,
-+				type: 'asset',
-+				generator: {
-+					filename: 'files/[base]',
-+				},
-+			},
+      module: {
+        rules: [
+          ...
+    +			{
+    +				test: /\.txt|xlsx/,
+    +				type: 'asset',
+    +				generator: {
+    +					filename: 'files/[base]',
+    +				},
+    +			},
+          ...
+        ],
+      },
       ...
-		],
-	},
-  ...
-} as Webpack.Configuration;
-```
+    } as Webpack.Configuration;
+    ```
 
 ## 集成ESlint
 
@@ -581,41 +587,41 @@ export default {
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser
-```
+    ```bash
+    yarn add --dev eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser
+    ```
 
 2. 配置 `.eslintrc.js`
 
-```js
-module.exports = {
-  parser: "vue-eslint-parser", // 解析 .vue 文件
-  parserOptions: {
-    parser: "@typescript-eslint/parser", // 解析 .vue 文件里面的 script 标签
-  },
-  plugins: ["@typescript-eslint"],
-  extends: ["plugin:vue/recommended", "plugin:@typescript-eslint/recommended"],
-  rules: {
-    // 定义其它校验规则
-    "@typescript-eslint/no-extra-semi": ["error"],
-    "@typescript-eslint/semi": ["error"],
-    "@typescript-eslint/no-empty-interface": 0,
-  },
-};
-```
+    ```js
+    module.exports = {
+      parser: "vue-eslint-parser", // 解析 .vue 文件
+      parserOptions: {
+        parser: "@typescript-eslint/parser", // 解析 .vue 文件里面的 script 标签
+      },
+      plugins: ["@typescript-eslint"],
+      extends: ["plugin:vue/recommended", "plugin:@typescript-eslint/recommended"],
+      rules: {
+        // 定义其它校验规则
+        "@typescript-eslint/no-extra-semi": ["error"],
+        "@typescript-eslint/semi": ["error"],
+        "@typescript-eslint/no-empty-interface": 0,
+      },
+    };
+    ```
 
 3. 配置 `package.json`
 
-```diff
-{
-  "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
-    "start": "cross-env NODE_ENV=development webpack serve",
-    "serve": "yarn start",
-+   "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\" \"src/**/*.vue\"",
-  },
-}
-```
+    ```diff
+    {
+      "scripts": {
+        "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
+        "start": "cross-env NODE_ENV=development webpack serve",
+        "serve": "yarn start",
+    +   "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\" \"src/**/*.vue\"",
+      },
+    }
+    ```
 
 ## 集成prettier
 
@@ -633,63 +639,63 @@ module.exports = {
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
-```
+    ```bash
+    yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
+    ```
 
 2. 配置 `.eslintrc.js`
 
-```diff
-module.exports = {
-	parser: 'vue-eslint-parser', // 解析 .vue 文件
-	parserOptions: {
-		parser: '@typescript-eslint/parser', // 解析 .vue 文件里面的 script 标签
-	},
-	plugins: ['@typescript-eslint'],
-	extends: [
-		'plugin:vue/recommended',
-+		'plugin:prettier/recommended',
-+		'prettier/@typescript-eslint',
-		'plugin:@typescript-eslint/recommended',
-	],
-	rules: {
-		'@typescript-eslint/no-extra-semi': ['error'],
-		'@typescript-eslint/semi': ['error'],
-		'@typescript-eslint/no-empty-interface': 0,
-	},
-};
-```
+    ```diff
+    module.exports = {
+      parser: 'vue-eslint-parser', // 解析 .vue 文件
+      parserOptions: {
+        parser: '@typescript-eslint/parser', // 解析 .vue 文件里面的 script 标签
+      },
+      plugins: ['@typescript-eslint'],
+      extends: [
+        'plugin:vue/recommended',
+    +		'plugin:prettier/recommended',
+    +		'prettier/@typescript-eslint',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      rules: {
+        '@typescript-eslint/no-extra-semi': ['error'],
+        '@typescript-eslint/semi': ['error'],
+        '@typescript-eslint/no-empty-interface': 0,
+      },
+    };
+    ```
 
 3. 配置 `.prettierrc.js`
 
-```js
-module.exports = {
-  semi: true, // 语句后加分号
-  trailingComma: "all", // 尾随逗号(none |es5 | all)
-  singleQuote: true, // 使用单引号
-  printWidth: 80, // 每一行的最大长度, 尽量和编辑器保持一致
-  tabWidth: 2, // Tab 缩进的长度
-  useTabs: true, // 使用 Tab 缩进
-  endOfLine: "auto", // 文件尾部换行的形式
-  arrowParens: "always", // 箭头函数参数使用小括号包裹
-};
-```
+    ```js
+    module.exports = {
+      semi: true, // 语句后加分号
+      trailingComma: "all", // 尾随逗号(none |es5 | all)
+      singleQuote: true, // 使用单引号
+      printWidth: 80, // 每一行的最大长度, 尽量和编辑器保持一致
+      tabWidth: 2, // Tab 缩进的长度
+      useTabs: true, // 使用 Tab 缩进
+      endOfLine: "auto", // 文件尾部换行的形式
+      arrowParens: "always", // 箭头函数参数使用小括号包裹
+    };
+    ```
 
 4. 配置 `package.json`
 
-```diff
-{
-  ...
-  "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
-    "start": "cross-env NODE_ENV=development webpack serve",
-    "serve": "yarn start",
-    "lint": "eslint --fix \"src/**/*.{js,ts}\" \"src/**/*.vue\"",
-+   "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\" \"src/**/*.vue\" ./*.{js,ts}"
-  },
-  ...
-}
-```
+    ```diff
+    {
+      ...
+      "scripts": {
+        "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.ts",
+        "start": "cross-env NODE_ENV=development webpack serve",
+        "serve": "yarn start",
+        "lint": "eslint --fix \"src/**/*.{js,ts}\" \"src/**/*.vue\"",
+    +   "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\" \"src/**/*.vue\" ./*.{js,ts}"
+      },
+      ...
+    }
+    ```
 
 ## 集成Husky和lint-staged
 
@@ -706,27 +712,27 @@ module.exports = {
 
 1. 安装相关依赖
 
-```bash
-yarn add --dev husky lint-staged
-```
+    ```bash
+    yarn add --dev husky lint-staged
+    ```
 
 2. 配置 `package.json`
 
-```diff
-{
-+  "husky": {
-+    "hooks": {
-+      "pre-commit": "lint-staged"
-+    }
-+  },
-+  "lint-staged": {
-+    "src/**/*.{ts,vue}": [
-+      "prettier --write",
-+      "eslint --fix"
-+    ]
-+  },
-}
-```
+    ```diff
+    {
+    +  "husky": {
+    +    "hooks": {
+    +      "pre-commit": "lint-staged"
+    +    }
+    +  },
+    +  "lint-staged": {
+    +    "src/**/*.{ts,vue}": [
+    +      "prettier --write",
+    +      "eslint --fix"
+    +    ]
+    +  },
+    }
+    ```
 
 ## 集成VSCode
 
@@ -744,16 +750,16 @@ yarn add --dev husky lint-staged
 
 1. 安装插件
 
-略
+    略
 
 2. 配置 `.vscode`
 
-在项目根目录下新建 `.vscode` 文件夹, 并创建 `settings.json` 文件:
+    在项目根目录下新建 `.vscode` 文件夹, 并创建 `settings.json` 文件:
 
-```json
-{
-  // 当在 VS Code 中进行右键 -> 格式化的时候, 读取的本地配置
-  // 这里直接读取项目的 prettier 配置文件
-  "prettier.configPath": ".prettierrc.js"
-}
-```
+    ```json
+    {
+      // 当在 VS Code 中进行右键 -> 格式化的时候, 读取的本地配置
+      // 这里直接读取项目的 prettier 配置文件
+      "prettier.configPath": ".prettierrc.js"
+    }
+    ```
