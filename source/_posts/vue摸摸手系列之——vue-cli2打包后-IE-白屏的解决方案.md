@@ -17,6 +17,12 @@ categories: [frontend]
 
 - Initial release
 
+### [2021-1-15]
+
+#### Chanaged
+
+- 优化文章格式
+
 ## 出现原因
 
 ------
@@ -33,26 +39,26 @@ categories: [frontend]
 
 1. 安装 @babel/polyfill
 
-```bash
-npm install --save @babel/polyfill
-```
+    ```bash
+    npm install --save @babel/polyfill
+    ```
 
 2. 项目入口文件(`main.js`)引入 @babel/polyfill
 
-```js
-// main.js
-import '@babel/polyfill';
-```
+    ```js
+    // main.js
+    import '@babel/polyfill';
+    ```
 
 3. 配置 webpack.base.conf.js
 
-```js
-// build/webpack.base.conf.js
-module.exports = {
-  ...
-  entry: {
-    app: ["@babel/polyfill", "./src/main.js"]
-  },
-  ...
-}
-```
+    ```js
+    // build/webpack.base.conf.js
+    module.exports = {
+      ...
+      entry: {
+        app: ["@babel/polyfill", "./src/main.js"]
+      },
+      ...
+    }
+    ```
