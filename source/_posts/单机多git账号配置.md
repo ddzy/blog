@@ -24,6 +24,12 @@ categories: [freebie]
 
 - Initial release
 
+### [2021-1-18]
+
+#### Changed
+
+- 优化文章格式
+
 ## 环境
 
 ------
@@ -40,66 +46,66 @@ categories: [freebie]
 
 1. 进入 `C` 盘下的 `.ssh` 文件夹
 
-```bash
-cd ~/.ssh
-```
+    ```bash
+    cd ~/.ssh
+    ```
 
 2. 创建 `Git` 配置文件
 
-```bash
-vim ./config
-```
+    ```bash
+    vim ./config
+    ```
 
 3. 写入 `config` 相关配置
 
-```bash
-# git 服务器 1
+    ```bash
+    # git 服务器 1
 
-# 服务器名称
-# 和 HostName 保持一致, 不然会报错
-Host git.3k.com
-# 域名
-HostName git.3k.com
-# 用户名(随意)
-User duanzhaoyang
-# SSH 密钥, 文件地址可自定义
-IdentityFile ~/.ssh/gitlab_3k/id_rsa_gitlab_3k
+    # 服务器名称
+    # 和 HostName 保持一致, 不然会报错
+    Host git.3k.com
+    # 域名
+    HostName git.3k.com
+    # 用户名(随意)
+    User duanzhaoyang
+    # SSH 密钥, 文件地址可自定义
+    IdentityFile ~/.ssh/gitlab_3k/id_rsa_gitlab_3k
 
-# git 服务器 2
+    # git 服务器 2
 
-Host github.com
-HostName github.com
-User ddzy
-IdentityFile ~/.ssh/github/id_rsa_github
-```
+    Host github.com
+    HostName github.com
+    User ddzy
+    IdentityFile ~/.ssh/github/id_rsa_github
+    ```
 
 4. 生成 `SSH Key`
 
-> 文件的名称和 `config` 文件中一致
+    > 文件的名称和 `config` 文件中一致
 
-```bash
-ssh-keygen -C "xxx@xx.com" -t rsa
-```
+    ```bash
+    ssh-keygen -C "xxx@xx.com" -t rsa
+    ```
 
-将生成的文件按照名称 **剪切** 到对应的目录下, 最终的目录结构是这样的:
+    将生成的文件按照名称 **剪切** 到对应的目录下, 最终的目录结构是这样的:
 
-```plain
-~/.ssh
-  gitlab_3k
-    id_rsa_gitlab_3k
-    id_rsa_gitlab_3k.pub
-  github
-    id_rsa_github
-    id_rsa_github.pub
-  config
-  ...
-```
+    ```plain
+    ~/.ssh
+      gitlab_3k
+        id_rsa_gitlab_3k
+        id_rsa_gitlab_3k.pub
+      github
+        id_rsa_github
+        id_rsa_github.pub
+      config
+      ...
+    ```
 
 5. Github | Gitlab 配置 SSH
 
-> Github 和 Gitlab 的做法大同小异, 所以只记录 Github.
+    > Github 和 Gitlab 的做法大同小异, 所以只记录 Github.
 
-进入 [https://github.com/settings/keys](https://github.com/settings/keys), 创建一个 `SSH Key`, 将 `~/.ssh/github/id_rsa_github.pub` 公钥复制过去.
+    进入 [https://github.com/settings/keys](https://github.com/settings/keys), 创建一个 `SSH Key`, 将 `~/.ssh/github/id_rsa_github.pub` 公钥复制过去.
 
 ### 测试 SSH
 
