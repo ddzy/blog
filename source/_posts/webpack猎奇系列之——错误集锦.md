@@ -26,6 +26,12 @@ categories: [frontend]
 - 更换文章标题为`webpack猎奇系列`
 - 文章格式调整
 
+### [2021-1-25]
+
+#### Changed
+
+- 优化文章格式
+
 ## 一、打包ts报错
 
 ---
@@ -56,17 +62,17 @@ module.exports = {
 
 1. package.json中配置
 
-```ts
-  scripts: {
-    "build": "webpack --config webpack.config.js",
-  },
-```
+    ```ts
+      scripts: {
+        "build": "webpack --config webpack.config.js",
+      },
+    ```
 
 2. npm内置的npx命令直接执行
 
-```ts
-  npx webpack --config webpack.config.js
-```
+    ```ts
+      npx webpack --config webpack.config.js
+    ```
 
 
 ## 三、配置node环境变量
