@@ -137,6 +137,12 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 新增命令：`更新远程分支`
 
+### [2021-1-27]
+
+#### Added
+
+- 新增命令：`合并本地commit记录`
+
 ## 记录
 
 ---
@@ -488,4 +494,26 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
   ```bash
   git remote update
+  ```
+
+- 合并本地commit记录
+
+  ```bash
+  # 假设有三个commit
+  # 这是 commit3
+  # 这是 commit2
+  # 这是 commit1 => HEAD
+
+  # 需求是将 commit3 合并到 commit2
+
+  git rebase -i <commit1-id>
+
+  # pick => 使用提交
+  # reword => 使用提交，但修改该提交的说明
+  # edit => 使用提交，进入 shell 以便进行提交修补
+  # squash => 使用提交，但合并到上一个提交
+  # fixup => 与 squash 类似，但会丢弃 commit message
+  # drop => 删除提交
+  # reset => 将 HEAD 指向到该标记
+  # merge => 创建一个合并提交，并使用原始的 commit message（如果没有指定原始的 commit message，使用注释部分的 oneline 作为 commit message），使用 -c <提交> 可以编辑提交说明
   ```
