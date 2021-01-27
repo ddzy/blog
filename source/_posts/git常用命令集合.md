@@ -499,6 +499,7 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 - 合并本地commit记录
 
   ```bash
+  # 参考：https://zhuanlan.zhihu.com/p/87318673
   # 假设有三个commit
   # 这是 commit3
   # 这是 commit2
