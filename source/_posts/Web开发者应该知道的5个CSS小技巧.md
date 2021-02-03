@@ -31,11 +31,11 @@ CSS 是一个优秀的样式语言，通过装饰 HTML 元素来构建多样化�
 
 示例如下：
 
-```markdown
+```diff
 .parent {
-  **display: flex;**
-  **align-items: center;**
-  **justify-content: center;**
++  display: flex;
++  align-items: center;
++  justify-content: center;
   height: 100vh;
   width: 100wh;
 }
@@ -80,7 +80,7 @@ CSS 可以做很多有趣的东西，比如：`混合模式`。混合模式有�
 
 *CSS：*
 
-```markdown
+```diff
 .blend {
   width: 100vw;
   height: 500px;
@@ -93,7 +93,7 @@ CSS 可以做很多有趣的东西，比如：`混合模式`。混合模式有�
 }
 .blend h1 {
   font-size: 150px;
-  **mix-blend-mode: overlay;**
++  mix-blend-mode: overlay;
 }
 ```
 
@@ -105,6 +105,73 @@ CSS 可以做很多有趣的东西，比如：`混合模式`。混合模式有�
 </iframe>
 
 ## 3. 响应式的网格
+
+------
+
+利用 grid 特性可以轻易地构建响应式布局，如下示例：
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+```
+
+举个例子，如果你正在负责一个电商 app 项目。你的任务是实现响应式的商品列表，以此来适配多终端。在此需求下，我们可能会这么做：
+
+- PC：每行展示三个条目
+- 平板：每行展示两个条目
+- 手机：每行只展示一条
+
+具体可以看下面的代码：
+
+*HTML：*
+
+```html
+<div class="grid">
+  <div class="item">Product 1</div>
+  <div class="item">Product 2</div>
+  <div class="item">Product 3</div>
+  <div class="item">Product 4</div>
+  <div class="item">Product 5</div>
+  <div class="item">Product 6</div>
+</div>
+```
+
+*CSS：*
+
+```diff
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body{
+  height: 100vh;
+  margin-top: 150px;
+}
++.grid {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
++  grid-gap: 10px;
++}
+.item{
+  background: red;
+  padding: 20px;
+  color: wheat;
+}
+```
+
+在线代码如下所示，点击 `EDIT ON CODEPEN` 按钮，之后调整窗口大小，就可以看到效果了：
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="CSS Grid" src="https://codepen.io/MehdiAoussiad/embed/preview/zYKyyYY?height=265&theme-id=light&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/MehdiAoussiad/pen/zYKyyYY'>CSS Grid</a> by Mehdi Aoussiad
+  (<a href='https://codepen.io/MehdiAoussiad'>@MehdiAoussiad</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## 4. 使用 filter 函数处理图片
 
 ------
 
