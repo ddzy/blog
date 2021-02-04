@@ -216,3 +216,9 @@ body{
   See the Pen <a href='https://codepen.io/ananyaneogi/pen/Ezmyeb'>CSS Card Flip On Hover</a> by Ananya Neogi
   (<a href='https://codepen.io/ananyaneogi'>@ananyaneogi</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+## 总结
+
+------
+
+正如你所见，CSS 的威力是无穷的，在不使用框架的情况下，也可以实现很多特效。而你所需要的，则是保持对它的创造性和探索欲。
