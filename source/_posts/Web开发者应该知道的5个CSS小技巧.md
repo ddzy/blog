@@ -199,3 +199,20 @@ body{
 
 ------
 
+`backface-visibility` 属性指定当某个元素背面朝向观察者时是否可见。
+
+```diff
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
++  backface-visibility: hidden;
+}
+```
+
+在线代码示例如下：
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="CSS Card Flip On Hover" src="https://codepen.io/ananyaneogi/embed/preview/Ezmyeb?height=265&theme-id=light&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/ananyaneogi/pen/Ezmyeb'>CSS Card Flip On Hover</a> by Ananya Neogi
+  (<a href='https://codepen.io/ananyaneogi'>@ananyaneogi</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
