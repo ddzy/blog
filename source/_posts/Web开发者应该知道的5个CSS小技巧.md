@@ -175,3 +175,27 @@ body{
 
 ------
 
+`filter()` 函数通常适用于图像处理，可以改变图片以及元素的外观。`filter()` 有如下的取值（`blur`，`brightness`，`contrast`，`grayscale`，`hue-rotate`，`opacity`，`invert`，`sepia`，`saturate`，`drop-shadow`）。
+
+如下示例：
+
+```diff
+.element1 {
++  filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
+}
+// Or：.element2 {
++  filter: blur(20px);
+}
+```
+
+在线代码示例如下：
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="The filter function" src="https://codepen.io/duanzhaoyang/embed/preview/PobPaVr?height=265&theme-id=light&default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/duanzhaoyang/pen/PobPaVr'>The filter function</a> by duanzhaoyang
+  (<a href='https://codepen.io/duanzhaoyang'>@duanzhaoyang</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## 5. 背面可见度
+
+------
+
