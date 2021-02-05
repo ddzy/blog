@@ -1,5 +1,5 @@
 ---
-title: Web开发者应该知道的5个CSS小技巧
+title: 【译】Web开发者应该知道的5个CSS小技巧
 date: 2021-02-03 11:52:10
 tags: [css, web]
 categories: [frontend, translation]
@@ -18,6 +18,12 @@ https://medium.com/javascript-in-plain-english/5-useful-css-tips-every-web-devel
 ### [2021-2-3]
 
 - Initial release
+
+### [2021-2-5]
+
+#### Changed
+
+- 更改文章标题
 
 ## 介绍
 

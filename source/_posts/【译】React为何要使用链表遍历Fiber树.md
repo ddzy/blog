@@ -1,5 +1,5 @@
 ---
-title: React为何要使用链表遍历Fiber树
+title: 【译】React为何要使用链表遍历Fiber树
 date: 2020-11-29 08:46:12
 tags: [react, fiber, linked-list]
 categories: [frontend, translation]
@@ -28,6 +28,12 @@ categories: [frontend, translation]
 #### Changed
 
 - 更改文章标题, 避免 hexo 部署的问题
+
+### [2021-2-5]
+
+#### Changed
+
+- 更改文章标题
 
 ## 前置知识
 
