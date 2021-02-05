@@ -9,6 +9,8 @@ categories: [frontend, translation]
 
 https://medium.com/javascript-in-plain-english/5-useful-css-tips-every-web-developer-should-know-5c19a088620e
 
+<!-- more -->
+
 ## 更新
 
 ------
