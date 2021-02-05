@@ -1,5 +1,5 @@
 ---
-title: 书写JavaScript代码的15个整洁之道
+title: 【译】书写JavaScript代码的15个整洁之道
 date: 2020-12-29 09:58:22
 tags: [js, JavaScript]
 categories: [frontend, translation]
@@ -18,6 +18,12 @@ https://medium.com/javascript-in-plain-english/15-rules-for-writing-clean-javasc
 ### [2020-12-29]
 
 - Initial release
+
+### [2021-2-5]
+
+#### Changed
+
+- 更改文章标题
 
 ## 概述
 

@@ -1,5 +1,5 @@
 ---
-title: 使用requestIdleCallback
+title: 【译】使用requestIdleCallback
 date: 2020-12-05 09:29:13
 tags: [react, requestIdleCallback, google]
 categories: [frontend, translation]
@@ -22,6 +22,12 @@ categories: [frontend, translation]
 #### Changed
 
 - 更改文章标题, 避免 hexo 部署的问题
+
+### [2021-2-5]
+
+#### Changed
+
+- 更改文章标题
 
 ## 概述
 

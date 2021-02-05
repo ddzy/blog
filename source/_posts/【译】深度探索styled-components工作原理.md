@@ -1,5 +1,5 @@
 ---
-title: 深度探索styled-components工作原理
+title: 【译】深度探索styled-components工作原理
 date: 2020-12-15 16:26:15
 tags: [react, styled-components, css]
 categories: [frontend, translation]
@@ -24,6 +24,12 @@ https://medium.com/styled-components/how-styled-components-works-618a69970421
 #### Changed
 
 - 更改文章标题, 避免 hexo 部署的问题
+
+### [2021-2-5]
+
+#### Changed
+
+- 更改文章标题
 
 ## 概述
 
