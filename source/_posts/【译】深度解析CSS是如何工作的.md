@@ -45,7 +45,53 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 ------
 
-### 默认值
+每个 CSS 属性都有一个 **规范**。这些规范也是 W3C 标准的一部分。
+
+### 初始值
+
+每个 CSS 属性都有一个初始值。这个初始值不依赖于该 CSS 属性所应用的 HTML 元素。也就是说，对于所有的 HTML 元素，如果具有某个 CSS 属性的话，那么这个属性都会有一个初始值，并且初始值都是一样的。
+
+我相信绝大多数 web 开发者都不知道这一点。
+
+**以 CSS 的定位属性（`position`）为例：**
+
+```css
+.some-class{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+```
+
+**你知道 position 属性的默认值是什么吗？**
+
+很多 web 开发者都回答不出来。正确的答案是：`static`。
+
+类似的还有其它与定位相关的属性，比如：`top`/`bottom`/`left`/`right`，它们的初始值都是 `auto`。
+
+**请记住** —— 在你开始编写样式之前，这些 CSS 属性的基本样式就已经存在了。。。
+
+下面是 CSS 定位相关属性的默认值：
+
+```css
+{
+  position: static;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+```
+
+想知道每个 CSS 属性的初始值是什么？最佳途径就是查阅 MDN 文档：
+
+> 中文文档（查阅 “规范” 部分）：https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#specifications
+
+> 英文文档（查阅 “Formal Definition” 部分）：https://developer.mozilla.org/en-US/docs/Web/CSS/position#formal_definition
+
+如下图所示：
+
+![2.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/2.png)
 
 ### 继承
 
