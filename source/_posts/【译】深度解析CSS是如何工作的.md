@@ -19,6 +19,13 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 - Initial release
 
+### [2021-2-9]
+
+#### Added
+
+- 完成 `概述` 章节
+- 完成 Level1 的 `初始值` 章节
+
 ## 概述
 
 ------
