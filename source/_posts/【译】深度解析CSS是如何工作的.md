@@ -151,9 +151,29 @@ body {
 
 ![5.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/5.jpeg)
 
-## Level2——UserAgent（`浏览器默认`）样式表
+## Level2——User-Agent-Stylesheet
 
 ------
+
+> “User-Agent-Stylesheet”：浏览器默认样式表
+
+在 Level1 章节中，我们了解到：
+
+- 所有的 HTML 元素上的所有 CSS 属性具有相同的初始值
+- 所有的 CSS 属性有且只有一个初始值
+
+在本章节，我将介绍 **“User-Agent-Stylesheet”** —— 这是一种区别于不同类型的 HTML 元素的特殊样式表。
+
+**“User-Agent-Stylesheet”** 其实就是一个 CSS 文件，区别在于不同的浏览器厂商实现了不同的版本。与 Level1 章节中介绍的 “CSS 属性的默认值” 截然相反的是：后者表明 CSS 属性的初始值和 HTML 元素没啥关系；而前者则通过为不同的 HTML 标签创建样式，从而关联 HTML 和 CSS。
+
+**举个例子：**`display` 属性的初始值无论在什么情况下，都是 `inline`。但是在我们的认知中，`<div>` 元素默认的样式是：`display: block`。产生这种变化的根本原因就在于 “User-Agent-Stylesheet”。
+
+**验证上述例子的最好方式就是审查 `<span>` 和 `<div>` 元素：**
+
+- **当我们审查 `<span>` 元素的时候**，貌似看不到任何样式。这是因为开发者工具是不会显示 “CSS 属性的初始值（Level-1）” 的；相反，会显示默认样式表（“User-Agent-Stylesheet”（Level 2））。**你想一下：** 每个 CSS 属性都有一个初始值（CSS 属性的默认样式（Level-1）），当你调试的时候，肯定不想让所有的初始值都显示出来。`display` 的初始值是 `inline`。因此它不会出现在浏览器的 “审查元素” 调试栏中。
+  ![6.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/6.png)
+- **当我们审查 `<div>` 元素的时候**，可以看到 `display: block` 样式显示出来了，这是因为 “User-Agent-Stylesheet（Level 2）” 文件中的样式值覆盖了 `display` 属性的初始值 `inline`（“CSS 属性的初始值（Level 1）”）。
+  ![7.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/7.png)
 
 ### HTML 元素的特殊样式由谁来决定？
 
