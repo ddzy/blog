@@ -175,7 +175,15 @@ body {
 - **当我们审查 `<div>` 元素的时候**，可以看到 `display: block` 样式显示出来了，这是因为 “User-Agent-Stylesheet（Level 2）” 文件中的样式值覆盖了 `display` 属性的初始值 `inline`（“CSS 属性的初始值（Level 1）”）。
   ![7.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/7.png)
 
-### HTML 元素的特殊样式由谁来决定？
+### HTML 元素的特定样式由谁来决定？
+
+HTML 元素的默认样式是由 W3C/WHATWG 的 web 标准来决定的。然而，与 Level-1 提到的 “CSS 属性的初始值” 不同的是：所有浏览器都可以根据这个标准来 “添油加醋”，进而定义了不同的默认样式。。。
+
+下图所示的是：根据 CSS2.2 标准，针对 HTML4 而制定的 CSS 默认样式表：
+
+[![8.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/8.png)](https://www.w3.org/TR/CSS22/sample.html)
+
+（附上其它版本的 CSS 标准：[CSS2.1](https://www.w3.org/TR/CSS21/sample.html)，[CSS2.2](https://www.w3.org/TR/CSS22/sample.html)，[CSS3](https://html.spec.whatwg.org/multipage/rendering.html)）。
 
 ## Level3——Normalize CSS
 
