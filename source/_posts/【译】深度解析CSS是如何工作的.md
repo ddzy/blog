@@ -98,9 +98,58 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 如下图所示：
 
-![2.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/2.png)
+[![2.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/2.png)](https://developer.mozilla.org/en-US/docs/Web/CSS/position#formal_definition)
 
 ### 继承
+
+第二个有趣的特性就是：每个 CSS 属性都有一个 “继承行为”。也就是说，假设我们给某个 HTML 元素设置了一些特定的样式，那么该元素的后代都会继承这些样式。
+
+一般情况下，以下两种类型的 CSS 属性会具有继承的行为：
+
+ - 文本类型：`font-family`、`font-size`、`color`、`text-align`
+ - 排版类型：[CSS 排版属性介绍](https://medium.com/cssclass-com/css-basics-for-typography-160025e3aeca)
+
+**想象一下：**当你给 `<body>` 元素设置了 `font-size: 20px` 属性，那么 `<body>` 元素的所有后代元素都会继承这个 `font-size`，除非你给某个后代元素重新设置了 `font-size`。
+
+但是如果你给 `<body>` 元素设置了 `padding: 20px` 属性，那么其后代元素都不会继承 `padding`，为什么呢？因为 `padding` 属性是没有继承行为的，也就是说，它是不能继承的。
+
+> **实际上，我们可能在没有意识到的情况下，就使用了继承。。。**
+
+**HTML：**
+
+```html
+<body>
+  Some text in the body HTML element
+  <div> some text on the div HTML element </div>
+</body>
+```
+
+**CSS：**
+
+```css
+body {
+  font-size: 20px; /* body 和 div 都会继承这个样式 */
+  padding: 20px;   /* 只对 body 自身有效 */
+}
+```
+
+[![3.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/3.png)](https://codepen.io/elad2412/pen/6c47b9d2c1dd836e2d7281d7640ac552)
+
+**那么问题来了，我们在浏览器进行调试的时候怎么才能知道某个 CSS 属性是否可以继承呢？**
+
+实际上，在我们使用 “审查元素” 功能查看 `<div>` 元素的样式的时候，浏览器的开发者工具会展示哪些样式是从 `<body>` 继承而来的。
+
+例如在下图中，`font-size` 属性是可继承的，所以会高亮显示。反之，`padding` 是不可继承的，所以会置灰显示：
+
+[![4.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/4.jpeg)](https://codepen.io/elad2412/pen/4bd977d6645fbe70921c4c01c1b23fba)
+
+**检查继承行为的正式方式**
+
+要想了解一个 CSS 属性是否可继承，除了自己尝试之外，另一种方式就是查阅 MDN 文档中的 “规范” 部分。
+
+**如下图所示：**仔细对比左右两块区域的差距即可：
+
+![5.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/5.jpeg)
 
 ## Level2——UserAgent（`浏览器默认`）样式表
 
