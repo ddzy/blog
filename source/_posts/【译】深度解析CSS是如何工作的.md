@@ -30,7 +30,7 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 #### Added
 
-- 完成 Level3 的 `概述` 章节
+- 完成 Level3 章节
 
 ## 概述
 
@@ -199,7 +199,22 @@ HTML 元素的默认样式是由 W3C/WHATWG 的 web 标准来决定的。然而�
 
 ### “Normalize CSS” 是什么？它是如何工作的？
 
+**“Normalize CSS”** 指的是：通过创建一份默认的 HTML 样式来覆盖 “User-Agent-Stylesheet（Level 2）”，使得不同的浏览器中的 HTML 元素拥有相同的初始样式。而 **[normalize.css](https://necolas.github.io/normalize.css/)** 则是 **“Normalize CSS”** 的一个产物。
+
+**如下所示的样式，是 [normalize.css](https://necolas.github.io/normalize.css/) 中的一部分：**
+
+```css
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+```
+
 ### Normalize.css 项目
+
+由 Nicolas Gallagher 创建的 **[normalize.css](https://necolas.github.io/normalize.css/)** 是目前最受欢迎的 Normalize.css 项目。
 
 ## Level4——CSS Reset
 
