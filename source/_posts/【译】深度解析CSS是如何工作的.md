@@ -26,6 +26,12 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 - 完成 `概述` 章节
 - 完成 Level1 的 `初始值` 章节
 
+### [2021-2-18]
+
+#### Added
+
+- 完成 Level3 的 `概述` 章节
+
 ## 概述
 
 ------
@@ -188,6 +194,8 @@ HTML 元素的默认样式是由 W3C/WHATWG 的 web 标准来决定的。然而�
 ## Level3——Normalize CSS
 
 ------
+
+因为不同浏览器都实现了不同的 “User-Agent-Stylesheet（Level-2）”，所以后来又出现了 **“Normalize CSS”**。**“Normalize CSS”** 可以让样式在不同浏览器上具有相同的显示效果。
 
 ### “Normalize CSS” 是什么？它是如何工作的？
 
