@@ -199,7 +199,7 @@ HTML 元素的默认样式是由 W3C/WHATWG 的 web 标准来决定的。然而�
 
 ### “Normalize CSS” 是什么？它是如何工作的？
 
-**“Normalize CSS”** 指的是：通过创建一份默认的 HTML 样式来覆盖 “User-Agent-Stylesheet（Level 2）”，使得不同的浏览器中的 HTML 元素拥有相同的初始样式。而 **[normalize.css](https://necolas.github.io/normalize.css/)** 则是 **“Normalize CSS”** 的一个产物。
+**“Normalize CSS”** 指的是：通过创建一份默认的 HTML 样式来覆盖 “User-Agent-Stylesheet（Level 2）”，使得不同的浏览器中的 HTML 元素的默认样式保持一致。而 **[normalize.css](https://necolas.github.io/normalize.css/)** 则是 **“Normalize CSS”** 的一个产物。
 
 **如下所示的样式，是 [normalize.css](https://necolas.github.io/normalize.css/) 中的一部分：**
 
@@ -220,11 +220,64 @@ main {
 
 ------
 
+在很多场景下，我们可能并不想使用浏览器提供的默认样式（“User-Agent-Stylesheet（level-2）”），比如：`font-size` 和 `margin`，于是 **“CSS Reset”** 便应运而出了。
+
 ### “CSS Reset” 是什么？它是如何工作的？
 
-### 综合理解 “Normalize CSS” 和 “CSS Reset”
+**“CSS Reset”** 指的是：强制覆盖浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”），重置浏览器默认样式表中所有属性的值。以 `<h1>` 到 `<h6>` 标签为例：
+
+```css
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+```
+
+**“CSS Reset”** 类型的样式文件有很多，比较知名的比如：[Eric Meyer](https://meyerweb.com/eric/tools/css/reset/)。但是我更倾向于使用自己的 “CSS Reset” 文件，因为我可以按需来定义样式：
+
+```css
+/****** Elad Shechter's RESET *******/
+/*** box sizing border-box for all elements ***/
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+a{ text-decoration:none; color:inherit; cursor:pointer; }
+button{ background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer; }
+figure{ margin:0; }
+ul, ol, dd{ margin:0; padding:0; list-style:none; }
+h1, h2, h3, h4, h5, h6{ margin:0; font-size:inherit; font-weight:inherit; }
+p{ margin:0; }
+cite { font-style:normal; }
+fieldset{ border-width:0; padding:0; margin:0; }
+```
+
+这里有个误区：**“CSS Reset”** 并不会重置 “User-Agent-Stylesheet（Level-2）” 中所有的样式，比如 `<div>`、`ul`、`section`、`article` 等标签的 `display: block` 属性。
+
+正因为如此，我们可以理解为：**“CSS Reset”** 重置了浏览器默认样式表中大概 80% 的样式。。。
+
+### “Normalize CSS” 和 “CSS Reset” 结合使用
+
+我自己的项目中同时使用了 **“normalize.css”** 和自定义的 **“Reset CSS”**：
+
+- 前者会将所有浏览器的样式纳入 “User-Agent-Stylesheet” 规范
+- 后者是我自己创建的 “reset.css”，移除了一些无用的样式
+
+以 “Sass” 为例：
+
+```scss
+@import "resets/normalize.scss";
+@import "resets/reset.scss";
+```
+
+![9.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/9.jpeg)
+
+想深入了解 “Normalize CSS” 和 “CSS Reset”，可以阅读我的这篇文章：[Normalize CSS 和 CSS Reset，我该选哪个？](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)。
 
 ### 总结上述的 4 个 Level
+
+
 
 ## Part5——CSS 样式重置关键字
 
