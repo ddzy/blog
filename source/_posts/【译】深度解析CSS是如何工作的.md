@@ -494,6 +494,26 @@ all: revert;
 
 ------
 
+我们可以假设在若干月后，当诸如 “Samsung Internet” 此类的非主流浏览器完全支持 `revert` 关键字的时候，我们又有一种新的方式去创建 “CSS Reset”（Level-4）。
+
+使用 `all` 属性搭配 `unset/revert`，一切将会变得更简单：
+
+以后的 CSS Reset 可能像下面这样：
+
+```css
+/* 移除浏览器默认样式表（“User-Agent-Stylesheet”）中除了 ‘display’ 之外的所有样式 */
+* {
+  all: unset;
+  display: revert;
+}
+/* 给 box-sizing 设置一个普遍使用的值 */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+```
+
+> PS：**“Samsung Internet”** 基于 “Chrome” 引擎，但是更新较为缓慢。
+
 ## 总结
 
 ------
