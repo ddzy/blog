@@ -9,6 +9,8 @@ categories: [frontend, translation]
 
 https://elad.medium.com/how-does-css-work-92fe7116916d
 
+本文已归纳在 [Github](https://github.com/ddzy/translations)。
+
 <!-- more -->
 
 ## 更新
@@ -32,13 +34,19 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 - 完成 Level3 章节
 
+### [2021-2-19]
+
+#### Added
+
+- 完成剩余章节
+
 ## 概述
 
 ------
 
 > 副标题（补充）：理解浏览器默认的样式行为
 
-当你为网站中的某个 DOM 元素编写 CSS 样式之前，浏览器会给这个 DOM 元素添加一个默认的样式。
+在你为网站中的某个 DOM 元素编写 CSS 样式之前，浏览器会给这个 DOM 元素添加一个默认的样式。
 
 你有没有想过这些默认样式是由谁来决定的？
 
@@ -517,3 +525,19 @@ all: revert;
 ## 总结
 
 ------
+
+在本文中，我讲解了很多关于 CSS 的知识：
+
+- 浏览器中的 CSS 是如何构建的
+- 如何在项目中按需自定义 CSS
+- 如何通过你自己的方式来管理 CSS 属性
+
+**与本文主题相关的其它文章：**
+
+- [Normalize CSS 和 CSS Reset，我该如何选择？](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
+- [理解 CSS 的样式重置关键字：“Initial”、“Inherit”、“Unset”](https://medium.com/@elad/understanding-the-initial-inherit-and-unset-css-keywords-2d70b7121695)
+
+本文也参考了其它的文章：
+
+- [理解 User Agent Style Sheets](https://meiert.com/en/blog/user-agent-style-sheets/)
+- [StackOverflow —— 浏览器默认的 CSS](https://stackoverflow.com/questions/6867254/browsers-default-css-for-html-elements)
