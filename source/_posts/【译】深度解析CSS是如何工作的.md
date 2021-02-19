@@ -277,7 +277,24 @@ fieldset{ border-width:0; padding:0; margin:0; }
 
 ### 总结上述的 4 个 Level
 
+在前面的章节中，我们介绍了**浏览器默认的 CSS 级别**：
 
+- **“CSS 属性的默认样式”（Level-1）**—— 给所有 CSS 属性创建默认值。
+- **“User-Agent-Stylesheet”（Level-2）**—— 给某些 HTML 元素添加特定的默认样式。
+
+紧接着，我们介绍了如何控制 CSS 的基础样式：
+
+- **“Normalize CSS”（Level-3）**—— 保持不同浏览器中的 “User-Agent-Stylesheet”（Level 2）的效果一致的样式。
+- **“CSS Reset”（Level-4）**—— 覆盖 “User-Agent-Stylesheet”（Level-2）中所有的默认样式。
+
+上述的四个基本的 CSS 级别组成了我们项目中的样式，如下图所示：
+
+![10.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/10.png)
+
+在下面的两个章节，我们将会介绍：
+
+- “CSS 样式重置关键字”（Part-5）
+- 重置属性-“all”（Part-6）
 
 ## Part5——CSS 样式重置关键字
 
