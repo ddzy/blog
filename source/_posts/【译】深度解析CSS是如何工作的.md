@@ -391,7 +391,7 @@ h1, h2, h3, h4, h5, h6 {
 display: unset; /* = initial = inline */
 ```
 
-这是为什么呢？回顾一下文章伊始提到的：关于 “CSS 属性的默认样式”（Level-1）和 “User-Agent-Stylesheet”（Level-2）两者之间的区别。从这我们可以得知：`display` 属性的初始值是 `inline`，这没错，只是由于浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”）中对于 `display` 样式进行了覆盖，对其重新赋值为 `block`。
+这是为什么呢？回顾一下文章伊始提到的：“CSS 属性的默认样式”（Level-1）和 “User-Agent-Stylesheet”（Level-2）两者之间的区别。从这我们可以得知：`display` 属性的初始值是 `inline`，这没错，只是由于浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”）中对 `display` 样式进行了覆盖，对其重新赋值为 `block`。
 
 因为 `initial` 的样式不取决于 “User-Agent-Stylesheet”（Level-2），所以 `display: initial` 等同于 `display: inline`：
 
@@ -465,6 +465,30 @@ div {
 ## Part6——“all” 属性
 
 ------
+
+可以使用 `all` 属性来重置某个 HTML 元素上的所有样式：
+
+```css
+all: revert;
+```
+
+`all` 属性会一次性重置所有的属性，避免一个个去重置。目前较为普遍的用法就是：`all: unset` 和 `all: revert`（“CSS 样式重置关键字” —— Part 5）:
+
+```css
+/* 推荐 */
+.common-content *{
+  all: revert;
+}
+/* 不推荐 */
+.common-content *{
+  border: revert;
+  font-size: revert;
+  display: revert;
+  position: revert;
+  top: revert;
+  left: revert;
+}
+```
 
 ## “CSS Reset 的前景”
 
