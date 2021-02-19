@@ -294,19 +294,173 @@ fieldset{ border-width:0; padding:0; margin:0; }
 在下面的两个章节，我们将会介绍：
 
 - “CSS 样式重置关键字”（Part-5）
-- 重置属性-“all”（Part-6）
+- 重置属性 —— “all”（Part-6）
 
 ## Part5——CSS 样式重置关键字
 
 ------
 
+CSS 已经提供了一些样式重置关键字：`initial`、`inherit`、`unset`、`revert`，直到最近的个把月才被各个浏览器广泛支持。
+
+![11.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/11.jpeg)
+
 ### “inherit” 和 “initial”
 
-### “initial” 产生的问题
+在本文的开头，我已经提到了有关于 CSS 属性的默认样式（Level-1）以及具有或者不具有继承性的 CSS 属性。
+
+#### ‘inherit’
+
+如果某个 CSS 属性是可继承的属性，那么我们可以为该属性设置一个 `inherit` 值，使得该属性**保持默认的继承样式**。
+
+**举个例子**：我的项目中使用了 `<h1>`。。。`<h6>` 标签，然而我并不想要这些标签的某些默认样式，因此我可以把 `font-size` 和 `font-weight` 属性的值设为 `inherit`，这样就可以利用继承的特性，继承其父级元素对应属性的值。
+
+**代码如下：**
+
+```css
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+```
+
+#### ‘initial’
+
+对于那些不具有继承性的 CSS 属性，我们可以把该属性的值设为 `initial`，恢复该属性的值为初始状态。
+
+**举个例子：**
+
+```css
+.foo{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.bar .foo{
+  position: initial;  /* = static */
+  top: initial;       /* = auto */
+  left: initial;      /* = auto */
+}
+```
+
+#### ‘unset’
+
+综上所述，对于 “可继承的属性”，我们把属性的值设为 `inherit`；而对于 “不可继承的属性”，我们则把属性值设为 `initial`，两者的根本目的就是将 CSS 属性的值重置为默认状态。
+
+而 ‘unset’ 关键字，可以根据某个 CSS 属性是否可继承来自动重置该属性的值：
+
+- **可继承的属性** —— `unset` 的值就等同于 `inherit`
+- **不可继承的属性** —— `unset` 的值等同于 `initial`
+
+举个例子，`position: unset` 的效果等同于 `position: initial`；但 `font-size: unset` 的效果则等同于 `font-size: inherit`。
+
+![12.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/12.jpeg)
+
+通过这种方式，你可以使用 `unset` 关键字去重置所有的 CSS 属性。
+
+举个例子：
+
+```css
+.common-content * {
+  /* 可继承的属性 */
+  font-size: unset;
+  font-weight: unset;
+
+  /* 不可继承的属性 */
+  border-width: unset;
+  background-color: unset;
+}
+
+/* 等同于 */
+
+.common-content * {
+  /* 可继承的属性 */
+  font-size: inherit;
+  font-weight: inherit;
+
+  /* 不可继承的属性 */
+  border-width: initial;
+  background-color: initial;
+}
+```
+
+### 重置样式产生的问题
+
+在某些情况下，重置一个 “不可继承的属性” 的值，可能会产生一些问题。例如：`<div>` 属性的默认值是 `block`，但是使用 `unset` 关键字重置之后，就变成了 `inline`：
+
+```css
+display: unset; /* = initial = inline */
+```
+
+这是为什么呢？回顾一下文章伊始提到的：关于 “CSS 属性的默认样式”（Level-1）和 “User-Agent-Stylesheet”（Level-2）两者之间的区别。从这我们可以得知：`display` 属性的初始值是 `inline`，这没错，只是由于浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”）中对于 `display` 样式进行了覆盖，对其重新赋值为 `block`。
+
+因为 `initial` 的样式不取决于 “User-Agent-Stylesheet”（Level-2），所以 `display: initial` 等同于 `display: inline`：
+
+```css
+div{
+  display: initial; /* = inline */
+}
+```
+
+为了解决上述的问题，我们可以使用 `revert` 样式重置关键字：`revert` 可以将某个属性的值重置为浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”）中对应的样式。
+
+#### ‘revert’
+
+`revert` 是最灵活的 CSS 样式重置关键字，`revert` **会进行如下三个操作：**
+
+- 对于 “可继承的属性” —— 把 CSS 属性的值设为 `inherit`
+- 对于 “不可继承的属性”，判断 “User-Agent-Stylesheet”（Level-2）中是否存在该属性的样式
+  - 情况①：如果存在，则直接使用 “User-Agent-Stylesheet” 中对应的样式
+  - 情况②：反之，把 CSS 属性的值设为 `initial`
+
+代码如下：
+
+```css
+div{
+  font-size: revert; /* = inherit */
+  display: revert;   /* = block  (Level-2) */
+  position: revert;  /* = static (Level-1) */
+}
+```
 
 ### CSS 样式重置关键字总结
 
+刚开始看到这些 CSS 样式重置关键字的时候，你可能会很困惑，但是当你了解浏览器的基本逻辑之后就会发现，原来是这么回事。
+
+我为此专门花了一份流程图，帮助各位开发者理解 **CSS 的各种样式重置关键字是如何工作的：**
+
+![13.png](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/13.png)
+
 ### 定义一个标准的样式
+
+我们可以通过把诸如 `font-size` 之类的 “可继承的属性” 的值设置为 `initial`，以此来重置属性的值。通过这种方式，我们可以获取到浏览器默认的 `font-size` 大小，并且浏览器默认的 `font-size` 是不受外界影响的，**比如：**
+
+```css
+.common-content p {
+  font-size: initial;
+  /* = 'medium' value - browser default size */
+}
+```
+
+与此相反的是，我们可以让一个诸如 `padding` 等本来属于 “不可继承的属性” 变为可继承。举个例子：位于内部的 HTML 元素会继承其父元素的 `padding` 属性：
+
+```css
+.box{
+  padding: 40px;
+}
+/* <div class="box"> 的后代 <div> 元素都会继承 padding: 40px */
+div {
+  padding: inherit;
+}
+```
+
+**在线示例：**
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="inherit css style" src="https://codepen.io/elad2412/embed/preview/hdypx?height=265&theme-id=light&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/elad2412/pen/hdypx'>inherit css style</a> by Elad Shechter
+  (<a href='https://codepen.io/elad2412'>@elad2412</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+> PS：仅在有必要的情况下使用上述方式（不推荐）
 
 ## Part6——“all” 属性
 
