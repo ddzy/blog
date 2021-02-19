@@ -116,14 +116,14 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 ### 继承
 
-第二个有趣的特性就是：每个 CSS 属性都有一个 “继承行为”。也就是说，假设我们给某个 HTML 元素设置了一些特定的样式，那么该元素的后代都会继承这些样式。
+第二个有趣的特性就是：部分 CSS 属性具有 “继承行为”。也就是说，假设我们给某个 HTML 元素设置了一些特定的样式，那么该元素的后代都会继承这些样式。
 
 一般情况下，以下两种类型的 CSS 属性会具有继承的行为：
 
  - 文本类型：`font-family`、`font-size`、`color`、`text-align`
  - 排版类型：[CSS 排版属性介绍](https://medium.com/cssclass-com/css-basics-for-typography-160025e3aeca)
 
-**想象一下：**当你给 `<body>` 元素设置了 `font-size: 20px` 属性，那么 `<body>` 元素的所有后代元素都会继承这个 `font-size`，除非你给某个后代元素重新设置了 `font-size`。
+**想象一下**：当你给 `<body>` 元素设置了 `font-size: 20px` 属性，那么 `<body>` 元素的所有后代元素都会继承这个 `font-size`，除非你给某个后代元素重新设置了 `font-size`。
 
 但是如果你给 `<body>` 元素设置了 `padding: 20px` 属性，那么其后代元素都不会继承 `padding`，为什么呢？因为 `padding` 属性是没有继承行为的，也就是说，它是不能继承的。
 
@@ -153,7 +153,7 @@ body {
 
 实际上，在我们使用 “审查元素” 功能查看 `<div>` 元素的样式的时候，浏览器的开发者工具会展示哪些样式是从 `<body>` 继承而来的。
 
-例如在下图中，`font-size` 属性是可继承的，所以会高亮显示。反之，`padding` 是不可继承的，所以会置灰显示：
+例如在下图中，`font-size` 属性是可继承的，所以会高亮显示；反之，`padding` 是不可继承的，会置灰显示：
 
 [![4.jpeg](https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/4.jpeg)](https://codepen.io/elad2412/pen/4bd977d6645fbe70921c4c01c1b23fba)
 
@@ -537,7 +537,7 @@ all: revert;
 - [Normalize CSS 和 CSS Reset，我该如何选择？](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
 - [理解 CSS 的样式重置关键字：“Initial”、“Inherit”、“Unset”](https://medium.com/@elad/understanding-the-initial-inherit-and-unset-css-keywords-2d70b7121695)
 
-本文也参考了其它的文章：
+**本文也参考了其它的文章：**
 
 - [理解 User Agent Style Sheets](https://meiert.com/en/blog/user-agent-style-sheets/)
 - [StackOverflow —— 浏览器默认的 CSS](https://stackoverflow.com/questions/6867254/browsers-default-css-for-html-elements)
