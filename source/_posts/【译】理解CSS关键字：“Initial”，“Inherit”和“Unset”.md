@@ -63,6 +63,15 @@ HTML 元素是没有初始的样式值的！上图中 `<h1>` 标签的基础样�
 
 ------
 
+`inherit` 关键字告诉浏览器去寻找离当前 HTML 元素最近的父级元素，然后继承该父级元素对应的 CSS 属性值。如果父级元素的 CSS 属性值也是 `inherit` 的话，会一层层的向上查找，直到最后一个 DOM 元素，如果还是没有找到对应的 CSS 属性值的话，就会使用浏览器默认样式表（user-agent-stylesheet）中的属性值，如果没有 user-agent 样式表，最后会使用初始值 `initial`。
+
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="elad2412" data-slug-hash="hdypx" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="inherit css style">
+  <span>See the Pen <a href="https://codepen.io/elad2412/pen/hdypx">
+  inherit css style</a> by Elad Shechter (<a href="https://codepen.io/elad2412">@elad2412</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
 ## Initial 关键字
 
 ------
