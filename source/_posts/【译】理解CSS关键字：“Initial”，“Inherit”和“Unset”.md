@@ -101,7 +101,58 @@ div.box{
 
 ------
 
+`unset` 关键字比较特别，它会根据不同类型的 CSS 属性来进行重置。**CSS 属性有两种类型：**
+
+- **可继承的属性** —— 当前 HTML 元素的 CSS 属性会影响它的后代元素。**所有文本类型的 CSS 属性都有这个继承行为**。比如：如果你给某个 HTML 元素设置了 `font-size` 属性，那么该元素的所有后代元素都会继承这个 `font-size`，除非你给某个后代元素又重新设置了 `font-size`。
+  ![5.png](https://oos.blog.yyge.top/2021/2/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/images/5.png)
+- **不可继承的属性** —— 当前 HTML 元素的 CSS 属性只对自身有效。**除了文本类型之外的其它 CSS 属性都是不可继承的**。比如：给某个 HTML 元素设置一个 `border` CSS 属性，该元素的后代元素不会同步的获得这个属性。
+  ![6.png](https://oos.blog.yyge.top/2021/2/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/images/6.png)
+
+对于可继承的属性，`unset` 的效果和 `inherit` 一样。例如：对于文本类型的 CSS 属性 `color`，`unset` 会一层层的向上查找，直到最后一个 HTML 元素，如果没有 `color` 属性值，那么就会查找 user-agent 样式表，如果还是没有，最后就直接使用 `initial` 初始值了。
+
+对于不可继承的属性，`unset` 的效果和 `initial` 一样，直接使用该 CSS 属性的初始值。例如：`border-color: unset` 就等同于 `border-color: initial`。
+
+```css
+.some-class{
+  color: unset; /* = inherit */
+  display: unset; /* = initial = inline */
+}
+```
+
 ### 为什么要使用 Unset？
+
+既然已经有了 `initial` 和 `inherit` 关键字，为啥还要用 `unset` 呢？
+
+如果只是重置单个 CSS 属性的值，那么就没必要使用 `unset`，使用 `initial` 和 `inherit` 就可以了。
+
+但是由于全新的 CSS 属性 `all` 的出现，让我们可以一次性重置所有属性的值，包括**可继承属性**和**不可继承属性**！
+
+把 `all` 的值设为 `unset`，就可以实现：所有的可继承属性的值变为 `inherit`，所有的不可继承属性的值变为 `initial`。
+
+**这是 `unset` 这个关键字存在的唯一原因！除此之外，你完全可以用 `inherit` 和 `initial` 关键字替代 `unset`**。
+
+如果我们一个个的书写重置属性，**代码会像下面这样：**
+
+```css
+/* Bad */
+.common-content * {
+  font-size: inherit;
+  font-weight: inherit;
+  border-width: initial;
+  background-color: initial;
+}
+```
+
+如果我们使用 `all` 属性搭配 `unset` 属性值，会影响当前所有的 CSS 属性，**代码如下：**
+
+```css
+/* Good */
+.common-content *{
+  all: unset;
+}
+```
+
+我为此专门写了一个例子，详情可见：[`all: unset` 在线示例](https://codepen.io/elad2412/pen/QWWgKbB)。
 
 ## Revert 关键字
 
