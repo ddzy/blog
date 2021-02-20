@@ -158,6 +158,33 @@ div.box{
 
 ------
 
+如果我们想把某个 CSS 属性的值重置为 user-agent 样式表中对应的样式值而不是该属性的初始值，我们应该怎么做呢？举个例子：怎么把 `<div>` 元素的值重置为 `block`（user-agent 样式），而不是 `inline`（初始值）？
+
+![7.png](https://oos.blog.yyge.top/2021/2/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/images/7.png)
+
+为了解决这个问题，又出现了新的 CSS 关键字：`revert`。`revert` 和 `unset` 非常像，唯一的区别在于 `revert` 会把 CSS 属性值重置为 user-agent 中对应的值，**举个例子：**
+
+```css
+div {
+  display: revert; /* = block */
+}
+h1 {
+  font-weight: revert; /* = bold */
+  font-size: revert; /* = 2em */
+}
+```
+
+也可以一次性重置当前 HTML 元素的所有 CSS 属性：
+
+```css
+/* Good */
+.common-content * {
+  all: revert;
+}
+```
+
+`revert` 相较于 `unset` 更加有用，但是浏览器兼容性不太好，目前只能在 Firefox 和 Safari 上正常工作。
+
 ## 浏览器兼容性
 
 ------
