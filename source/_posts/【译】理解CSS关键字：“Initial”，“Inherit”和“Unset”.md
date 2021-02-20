@@ -25,7 +25,7 @@ https://elad.medium.com/understanding-the-initial-inherit-and-unset-css-keywords
 
 ------
 
-CSS 中有各种各样的关键字。本文我将着重介绍这几个关键字：`initial`、`inherit` 以及较新的 `unset`。
+CSS 中有各种各样的关键字。本文我将着重介绍以下几个关键字：`initial`、`inherit` 以及较新的 `unset`。
 
 我确信绝大多数开发者都见过这几个关键字，但是对于它们的原理确知之甚少。
 
@@ -43,7 +43,7 @@ CSS 中有各种各样的关键字。本文我将着重介绍这几个关键字�
 
 每个 CSS 属性都有一个初始值，这个值和 HTML 元素没有任何关系。
 
-如下图所示的是从 MDN 上摘取的 `initial` 的例子：
+如下图所示的是从 MDN 上摘取的关于 `initial` 的例子：
 
 ![2.jpeg](https://oos.blog.yyge.top/2021/2/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/images/2.jpeg)
 
@@ -63,7 +63,7 @@ HTML 元素是没有初始的样式值的！上图中 `<h1>` 标签的基础样�
 
 ------
 
-`inherit` 关键字告诉浏览器去寻找离当前 HTML 元素最近的父级元素，然后继承该父级元素对应的 CSS 属性值。如果父级元素的 CSS 属性值也是 `inherit` 的话，会一层层的向上查找，直到最后一个 DOM 元素，如果还是没有找到对应的 CSS 属性值的话，就会使用浏览器默认样式表（user-agent-stylesheet）中的属性值，如果没有 user-agent 样式表，最后会使用初始值 `initial`。
+`inherit` 关键字告诉浏览器去寻找离当前 HTML 元素最近的父级元素，然后继承该父级元素对应的 CSS 属性值。如果父级元素的 CSS 属性值也是 `inherit` 的话，会继续一层层的向上查找，直到最后一个 DOM 元素，如果还是没有找到对应的 CSS 属性值的话，就会使用浏览器默认样式表（user-agent-stylesheet）中的属性值，如果没有 user-agent 样式表，最后会使用初始值 `initial`。
 
 <p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="elad2412" data-slug-hash="hdypx" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="inherit css style">
   <span>See the Pen <a href="https://codepen.io/elad2412/pen/hdypx">
@@ -147,7 +147,7 @@ div.box{
 
 ```css
 /* Good */
-.common-content *{
+.common-content * {
   all: unset;
 }
 ```
@@ -183,7 +183,7 @@ h1 {
 }
 ```
 
-`revert` 相较于 `unset` 更加有用，但是浏览器兼容性不太好，目前只能在 Firefox 和 Safari 上正常工作。
+`revert` 相较于 `unset` 更加实用，但是浏览器兼容性不太好，目前只能在 Firefox 和 Safari 上正常工作。
 
 ## 浏览器兼容性
 
