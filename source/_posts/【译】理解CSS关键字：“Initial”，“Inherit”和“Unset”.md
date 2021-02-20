@@ -188,3 +188,7 @@ h1 {
 ## 浏览器兼容性
 
 ------
+
+- `inherit` —— 包括 IE11 在内的所有浏览器都支持
+- `initial` & `unset` —— 除了 IE11 之外的所有浏览器都支持
+- `revert` —— 目前只支持 Firefox & Safari
