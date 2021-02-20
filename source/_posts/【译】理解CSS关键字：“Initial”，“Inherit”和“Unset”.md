@@ -49,7 +49,7 @@ CSS 中有各种各样的关键字。本文我将着重介绍这几个关键字�
 
 ### 浏览器默认（User-Agent）样式表
 
-在所有的 CSS 属性都设置完初始样式之后，紧接着浏览器会加载自身的样式表。该样式表不会对 CSS 属性的初始值作任何处理。
+在所有的 CSS 属性都设置完初始样式之后，紧接着浏览器会加载自身的样式表。该样式表与 CSS 属性的初始值没有任何关系。
 
 **user-agent 样式示例如下：**
 
@@ -75,6 +75,27 @@ HTML 元素是没有初始的样式值的！上图中 `<h1>` 标签的基础样�
 ## Initial 关键字
 
 ------
+
+在学习 `initial` 关键字之前，我们首先要搞清楚：每个 CSS 属性都有一个初始值，该初始值和 user-agent 样式没有任何关系。 User-agent 是浏览器针对 HTML 元素所定义的基本样式表。我们倾向于把 user-agent 样式表理解为是 HTML 自带的，但实际上不是的。
+
+`initial` 关键字告诉浏览器去使用 CSS 属性的初始值，**举个例子：**
+
+- `color` 属性的 `initial` 值总是 `black`
+
+上述行为可能会产生一个困惑：CSS 属性的初始值并不一定和浏览器默认样式表中相应的属性值相同。比如：所有 HTML 元素的 `display` 属性的 `initial` 值都为 `inline`，因此如果把 `<div>` 元素的 `display` 属性值设为 `initial`，那么实际上此时的 `initial` 就是 `inline` 而不是 user-agent 中的属性值 `block`。
+
+举个例子：
+
+```css
+div.box{
+  background-color: red;
+  display: initial; /* initial 的值为 `inline` 而不是 `block` */
+}
+```
+
+[CodePen 在线示例：div 元素的 display 属性的 Initial 值](https://codepen.io/elad2412/pen/KKKqMyZ)
+
+![4.png](https://oos.blog.yyge.top/2021/2/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/images/4.png)
 
 ## Unset 关键字
 
