@@ -33,15 +33,17 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 
 ### CSS 的 User-Agent 样式
 
-------
+在渲染 HTML 页面的时候，浏览器会在应用你自己编写的样式之前，首先应用其自身的基础样式表。举个例子，从 `<h1>` 到 `<h6>` 的 HTML 标签在所有的浏览器里面的展示效果都和其它普通文本不同：一般情况下，诸如 `<h1>` 这类的标签的文字大小会大一些、字体会粗一些（`font-weight: bold`），并且会有向上 & 向下两个方向的外边距。
+
+![2.png](https://oos.blog.yyge.top/2021/2/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/images/2.png)
+
+虽然所有浏览器都应用了其默认样式表，但是每个浏览器的默认样式表彼此之前也是存在差异的，所以会产生一些问题，这也就是本文所探讨。
+
+有两种方式可以解决不同浏览器的样式不一致的问题：**Normalize CSS** 和 **CSS Reset**。你可以把 **Normalize CSS 想象为一个温和的小绵羊**；把 **CSS Reset 想象为一个粗鲁的大怪兽**。下面，让我来举例讲解。
 
 ### Normalize CSS
 
-------
-
 ### Reset CSS
-
-------
 
 ## 如何同时使用 Normalize CSS & CSS Reset
 
