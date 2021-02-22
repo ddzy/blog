@@ -40,6 +40,12 @@ https://elad.medium.com/how-does-css-work-92fe7116916d
 
 - 完成剩余章节
 
+### [2021-2-22]
+
+#### Changed
+
+- 更改文末的文章链接
+
 ## 概述
 
 ------
@@ -534,8 +540,8 @@ all: revert;
 
 **与本文主题相关的其它文章：**
 
-- [Normalize CSS 和 CSS Reset，我该如何选择？](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
-- [理解 CSS 的样式重置关键字：“Initial”、“Inherit”、“Unset”](https://medium.com/@elad/understanding-the-initial-inherit-and-unset-css-keywords-2d70b7121695)
+- [Normalize CSS 和 CSS Reset，我该如何选择？](https://yyge.top/blog/2021/02/22/%E3%80%90%E8%AF%91%E3%80%91NormalizeCSS%E5%92%8CResetCSS%EF%BC%8C%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F/)
+- [理解 CSS 的样式重置关键字：“Initial”、“Inherit”、“Unset”](https://yyge.top/blog/2021/02/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/)
 
 **本文也参考了其它的文章：**
 
