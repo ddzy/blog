@@ -43,6 +43,22 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 
 ### Normalize CSS
 
+**`Normalize.css`** 是一个小型 **CSS** 文件，为 HTML 元素的默认样式提供了跨浏览器的一致性。
+
+这就意味着如果我们在 W3C 上查阅浏览器所应用的样式的规范的时候，不同浏览器的规范是不一样的，而 `normalize.css` 会修复不同浏览器产生的样式差异。
+
+但是对于 IE 和 EDGE 这样的浏览器，`normalize.css` 并不能按照规范来抹平差异，因此 `normalize.css` 会把 IE 和 EDGE 中特定的样式应用到其它浏览器中。
+
+**举个实际的例子**：对于类似 `<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签，Chrome、Safari 和 Firefox 渲染的最终 font-size 会小于单独的 `<h1>` 标签，并且 margin 大小也有所不同。`<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签在 Chrome、Safari、Firefox 的默认样式表（User-Agent-Stylesheet）里的样式如下：
+
+```css
+:-webkit-any(article,aside,nav,section) h1 {
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+}
+```
+
 ### Reset CSS
 
 ## 如何同时使用 Normalize CSS & CSS Reset
