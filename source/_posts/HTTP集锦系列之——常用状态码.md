@@ -30,6 +30,12 @@ categories: [frontend, backend]
 
 - 新增状态码对应的英文描述
 
+### [2021-2-24]
+
+#### Added
+
+- 新增 `405` 状态码
+
 ## 引言
 
 ------
@@ -47,5 +53,6 @@ categories: [frontend, backend]
 | 401         | Unauthorized          | client身份认证错误                         |
 | 403         | Forbbiden             | client的访问资源请求被拒绝, server权限问题 |
 | 404         | Not Found             | server不存在请求的资源                     |
+| 405         | Method Not Allowed    | 请求方式错误                               |
 | 500         | Internal Server Error | server发生错误                             |
 | 503         | Service Unavailable   | server无法处理请求                         |
