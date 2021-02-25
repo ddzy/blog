@@ -154,6 +154,7 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 #### Added
 
 - 新增命令：`拉取一个具有子模块的项目的大致流程`
+- 新增命令：`拉取远程的所有分支到本地的大致流程`
 
 ## 记录
 
@@ -551,4 +552,25 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
   npm install
 
   [npm cache clean --force]
+  ```
+
+- 拉取远程的所有分支到本地的大致流程
+  ```bash
+  # 默认情况下，只能 clone 单个分支
+  git clone https://github.com/ddzy/blog.git
+
+  # 可以通过 `-b` 来拉取指定分支
+  git clone -b dev https://github.com/ddzy/blog.git
+
+  # git 不能一次性拉取所有分支
+  # origin 分支（dev、release、fixbug）
+  # 第一步：默认处于 master 分支
+  git checkout -b dev origin/dev
+  # 第二步：此时处于 dev 分支
+  git checkout -b release origin/release
+  # 第三步：此时处于 fixbug 分支
+  git checkout -b fixbug origin/fixbug
+
+  # 实际上，处于哪个分支无所谓，只需要遵循如下规范就可以了
+  git checkout -b xxx origin/xxx
   ```
