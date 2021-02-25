@@ -149,6 +149,12 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 新增命令：`取消某个本地分支与远程分支的关联`
 
+## [2021-2-25]
+
+#### Added
+
+- 新增命令：`拉取一个具有子模块的项目的大致流程`
+
 ## 记录
 
 ---
@@ -529,4 +535,20 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
   ```bash
   git branch --unset-upstream
+  ```
+
+- 拉取一个具有子模块的项目的大致流程
+
+  ```bash
+  git clone https://github.com/ddzy/blog.git
+
+  cd blog/themes/Nlvi
+
+  git submodule update --init --recursive
+
+  cd ../..
+
+  npm install
+
+  [npm cache clean --force]
   ```
