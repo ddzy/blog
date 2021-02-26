@@ -78,6 +78,33 @@ https://github.com/necolas/normalize.css/blob/master/normalize.css
 
 ### Reset CSS
 
+使用 Reset CSS 就意味着我们不再需要浏览器的默认样式。**“CSS Reset” 会把浏览器的 user-agent 样式全部重置掉**，所以我们在写项目的时候可以按需定义 CSS 样式。
+
+上个章节的示例使用 Reset CSS 也是可以正常工作的，对于 `<h1>` 到 `<h6>` 这些标签的默认样式：更多情况下我们并不想要浏览器提供的默认的 `font-size` 和 `margin`。
+
+CSS Reset 分很多种，如下是从 [Eric Meyer](https://meyerweb.com/eric/tools/css/reset/) 编写的 CSS Reset 样式文件中摘取的一小部分：
+
+```css
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+```
+
+解释一下上面的代码：我们给所有 HTML 元素定义了无内边距、无外边距、无边框、相同的字体大小以及相同的对齐方式。
+
+上面的代码虽然已经重置了 `<h1>` 到 `<h6>` 以及 `<ul>` 和 `<li>` 等标签的样式，但事实上看起来很臃肿，原因如下：
+
+- 充斥了大量的选择器
+- 大量无意义的样式覆盖
+- 很难调试
+
+![3.png](https://oos.blog.yyge.top/2021/2/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/images/3.png)
+
 ## 如何同时使用 Normalize CSS & CSS Reset
 
 ------
