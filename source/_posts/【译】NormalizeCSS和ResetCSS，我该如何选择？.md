@@ -109,6 +109,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 ------
 
+我的建议是**使用 Normalize CSS，可以在其中掺杂一些 CSS Reset**。
+
+在我自己的项目里面，我可以深刻感受到 Normalize CSS 和 CSS Reset 带来的好处：一方面是 **Normalize CSS**；而另一方面是 **CSS Reset** 可以避免冗长的 CSS 选择器链条。
+
 ### 编写你自己的 CSS Reset
 
 ### 基础布局样式
