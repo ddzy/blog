@@ -181,6 +181,10 @@ body{
 
 ------
 
+本文主要向大家介绍了 Normalizing & Resetting 样式，同时这也是我的 CSS 系列文章的第一篇，接下来的几周，我将陆续撰写其它的相关文章。
+
+如果你对这个专题感兴趣的话，欢迎订阅我的 [twitter](https://twitter.com/eladsc) 或 [medium](https://medium.com/@elad)。
+
 ## 我的 CSS 系列文章
 
 ------
