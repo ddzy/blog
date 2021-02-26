@@ -115,6 +115,33 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 ### 编写你自己的 CSS Reset
 
+在我这 13 年的工作生涯里，对于一些频繁的需要重置样式的 HTML 标签，比如：链接的颜色、按钮的默认样式和列表的默认样式等等。
+
+在 `normalize.css` 之前，我一直使用我自己编写的样式重置文件——`reset.local.css`。与传统的 **CSS Reset** 不同的是：我在其中只重置了一小部分 HTML 标签的样式，而不是全部的。
+
+下面的例子教你**怎么自定义 CSS Reset**：
+
+**我的 CSS Reset——reset.local.css**
+
+```css
+/****** Elad Shechter's RESET *******/
+/*** box sizing border-box for all elements ***/
+*,
+*::before,
+*::after{box-sizing:border-box;}
+a{text-decoration:none; color:inherit; cursor:pointer;}
+button{background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer;}
+figure{margin:0;}
+input::-moz-focus-inner {border:0; padding:0; margin:0;}
+ul, ol, dd{margin:0; padding:0; list-style:none;}
+h1, h2, h3, h4, h5, h6{margin:0; font-size:inherit; font-weight:inherit;}
+p{margin:0;}
+cite {font-style:normal;}
+fieldset{border-width:0; padding:0; margin:0;}
+```
+
+上面的样式看起来更加具有可读性。
+
 ### 基础布局样式
 
 ### 结合
