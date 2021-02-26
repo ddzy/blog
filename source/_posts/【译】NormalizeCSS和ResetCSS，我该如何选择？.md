@@ -163,6 +163,20 @@ body{
 
 ### 结合使用
 
+得益于 SASS 预处理器的强大功能，我创建了一个 `_reset.scss` 文件，包括三个部分：
+
+- **Normalize.css** —— [Github 上最新版本的 CSS Normalize](https://github.com/necolas/normalize.css/blob/master/normalize.css)
+- 我自己的 CSS Reset
+- **一份基本布局文件**
+
+**_resets.scss 文件如下：**
+
+```scss
+@import "resets/normalize.scss";
+@import "resets/reset.local.scss";
+@import "resets/typography.scss";
+```
+
 ## 总结
 
 ------
