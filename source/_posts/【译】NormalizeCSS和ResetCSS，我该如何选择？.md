@@ -142,9 +142,26 @@ fieldset{border-width:0; padding:0; margin:0;}
 
 上面的样式看起来更加具有可读性。
 
-### 基础布局样式
+### 基本布局
 
-### 结合
+在我的项目中除了使用 `normalize.css` 和 `local.reset.css` 之外，还有其它的基本布局文件。这个文件和 **normalize CSS**、**CSS reset**没啥关系，是网站排版的基础样式，包含：`direction`、`font-family`、`font-size`、`line-height`、文字颜色等属性。
+
+**typography.css**
+
+```css
+html{
+   font-size: 1px;/*for using REM units*/
+}
+body{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
+  font-size: 16rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #222;
+}
+```
+
+### 结合使用
 
 ## 总结
 
