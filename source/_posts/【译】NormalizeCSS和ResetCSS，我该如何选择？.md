@@ -21,6 +21,12 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 
 - Initial release
 
+### [2021-2-26]
+
+#### Added
+
+- 完成剩余章节的翻译
+
 ## 概述
 
 ------
