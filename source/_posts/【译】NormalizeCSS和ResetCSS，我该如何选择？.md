@@ -11,6 +11,8 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 
 本文已同步归纳在 [Github](https://github.com/ddzy/translations)。
 
+<!-- more -->
+
 ## 更新
 
 ------
@@ -49,7 +51,7 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 
 但是对于 IE 和 EDGE 这样的浏览器，`normalize.css` 并不能按照规范来抹平差异，因此 `normalize.css` 会把 IE 和 EDGE 中特定的样式应用到其它浏览器中。
 
-**举个实际的例子**：对于类似 `<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签，Chrome、Safari 和 Firefox 渲染的最终 font-size 会小于单独的 `<h1>` 标签，并且 margin 大小也有所不同。`<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签在 Chrome、Safari、Firefox 的默认样式表（User-Agent-Stylesheet）里的样式如下：
+**举个实际的例子**：对于类似 `<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签，Chrome、Safari 和 Firefox 渲染得到的最终 font-size 会小于单独的 `<h1>` 标签，并且 margin 大小也有所不同。`<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签在 Chrome、Safari、Firefox 的默认样式表（User-Agent-Stylesheet）里的样式如下：
 
 ```css
 :-webkit-any(article,aside,nav,section) h1 {
@@ -58,6 +60,21 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
   margin-block-end: 0.83em;
 }
 ```
+
+而 IE 和 EDGE 则很少出现上述这种情况，所以理论上我们可以把同样的样式直接复用到 IE 和 EDGE 浏览器上，**但是由于 IE/EDGE 并没有 “any” 选择器**，所以直接复用是不可取的。因此，Normalize CSS 索性直接采用 IE/EDGE 中的 `<h1>` 样式，作为基准样式。
+
+示例代码如下：
+
+```css
+/*
+  Chrome、Firefox 和 Safari 浏览器中的 `<article>` / `<aside>` / `<nav>` / `<section>` 标签内部的 `<h1>` 标签的正确的文字大小和外边距
+*/
+h1 {  font-size: 2em;  margin: 0.67em 0; }
+```
+
+[Normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css) 是由 [Nicolas Gallagher](https://github.com/necolas) 在 Github 上开源的一款项目：
+
+https://github.com/necolas/normalize.css/blob/master/normalize.css
 
 ### Reset CSS
 
