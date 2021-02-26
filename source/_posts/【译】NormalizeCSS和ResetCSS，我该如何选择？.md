@@ -37,21 +37,21 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 
 ![1.png](https://oos.blog.yyge.top/2021/2/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/images/1.png)
 
-在深入讲解我推荐的使用方式之前，我首先要解释一下几个大家可能不太熟悉的术语。
+在深入讲解我推荐的使用方式之前，我首先要向大家解释一下几个你们可能不太熟悉的术语。
 
 ### CSS 的 User-Agent 样式
 
-在渲染 HTML 页面的时候，浏览器会在应用你自己编写的样式之前，首先应用其自身的基础样式表。举个例子，从 `<h1>` 到 `<h6>` 的 HTML 标签在所有的浏览器里面的展示效果都和其它普通文本不同：一般情况下，诸如 `<h1>` 这类的标签的文字大小会大一些、字体会粗一些（`font-weight: bold`），并且会有向上 & 向下两个方向的外边距。
+在渲染 HTML 页面的时候，浏览器会在应用你自己编写的样式之前，首先应用其自身的基础样式表。举个例子，从 `<h1>` 到 `<h6>` 的 HTML 标签在所有的浏览器里面的展示效果都和其它普通文本不同：一般情况下，诸如 `<h1>` 这类标签的文字会大一些、字体会粗一些（`font-weight: bold`），并且会有向上 & 向下两个方向的外边距。
 
 ![2.png](https://oos.blog.yyge.top/2021/2/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/images/2.png)
 
-虽然所有浏览器都应用了其默认样式表，但是每个浏览器的默认样式表彼此之前也是存在差异的，所以会产生一些问题，这也就是本文所探讨。
+虽然所有浏览器都应用了它们自己的默认样式表，但是每个浏览器的默认样式表彼此之前也存在差异，所以会产生一些问题，这也就是本文所探讨的。
 
 有两种方式可以解决不同浏览器的样式不一致的问题：**Normalize CSS** 和 **CSS Reset**。你可以把 **Normalize CSS 想象为一个温和的小绵羊**；把 **CSS Reset 想象为一个粗鲁的大怪兽**。下面，让我来举例讲解。
 
 ### Normalize CSS
 
-**`Normalize.css`** 是一个小型 **CSS** 文件，为 HTML 元素的默认样式提供了跨浏览器的一致性。
+**`Normalize.css`** 是一个小型的 **CSS** 文件，使得 HTML 元素的默认样式提供了跨浏览器的一致性。
 
 这就意味着如果我们在 W3C 上查阅浏览器所应用的样式的规范的时候，不同浏览器的规范是不一样的，而 `normalize.css` 会修复不同浏览器产生的样式差异。
 
@@ -67,7 +67,7 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 }
 ```
 
-而 IE 和 EDGE 则很少出现上述这种情况，所以理论上我们可以把同样的样式直接复用到 IE 和 EDGE 浏览器上，**但是由于 IE/EDGE 并没有 “any” 选择器**，所以直接复用是不可取的。因此，Normalize CSS 索性直接采用 IE/EDGE 中的 `<h1>` 样式，作为基准样式。
+而 IE 和 EDGE 则很少出现上述这种情况，所以理论上我们可以把同样的样式直接复用到 IE 和 EDGE 浏览器上，**但是由于 IE/EDGE 并没有 “any” 选择器**，所以直接复用是不可取的。因此，Normalize CSS 索性直接把 IE/EDGE 中的 `<h1>` 样式作为基准样式。
 
 示例代码如下：
 
@@ -78,15 +78,15 @@ https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e
 h1 {  font-size: 2em;  margin: 0.67em 0; }
 ```
 
-[Normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css) 是由 [Nicolas Gallagher](https://github.com/necolas) 在 Github 上开源的一款项目：
+[Normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css) 是 [Nicolas Gallagher](https://github.com/necolas) 在 Github 上开源的一款项目：
 
 https://github.com/necolas/normalize.css/blob/master/normalize.css
 
 ### Reset CSS
 
-使用 Reset CSS 就意味着我们不再需要浏览器的默认样式。**“CSS Reset” 会把浏览器的 user-agent 样式全部重置掉**，所以我们在写项目的时候可以按需定义 CSS 样式。
+使用 Reset CSS 就意味着我们不再需要浏览器的默认样式。**“CSS Reset” 会把浏览器的 user-agent 样式全部重置掉**，这样我们在写项目的时候就可以按需定义 CSS 样式。
 
-上个章节的示例使用 Reset CSS 也是可以正常工作的，对于 `<h1>` 到 `<h6>` 这些标签的默认样式：更多情况下我们并不想要浏览器提供的默认的 `font-size` 和 `margin`。
+上个章节的示例中使用 Reset CSS 也是可以正常工作的，对于 `<h1>` 到 `<h6>` 这些标签的默认样式：更多情况下我们并不想要浏览器提供的默认的 `font-size` 和 `margin`。
 
 CSS Reset 分很多种，如下是从 [Eric Meyer](https://meyerweb.com/eric/tools/css/reset/) 编写的 CSS Reset 样式文件中摘取的一小部分：
 
@@ -115,15 +115,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 ------
 
-我的建议是**使用 Normalize CSS，可以在其中掺杂一些 CSS Reset**。
+我的建议是**使用 Normalize CSS，但是你可以在其中掺杂一些 CSS Reset**。
 
-在我自己的项目里面，我可以深刻感受到 Normalize CSS 和 CSS Reset 带来的好处：一方面是 **Normalize CSS**；而另一方面是 **CSS Reset** 可以避免冗长的 CSS 选择器链条。
+在我自己的项目里面，我深切地体会到了 Normalize CSS 和 CSS Reset 带来的好处：一方面是 **Normalize CSS**；而另一方面是 **CSS Reset** 可以避免冗长的 CSS 选择器链条。
 
 ### 编写你自己的 CSS Reset
 
-在我这 13 年的工作生涯里，对于一些频繁的需要重置样式的 HTML 标签，比如：链接的颜色、按钮的默认样式和列表的默认样式等等。
+在我这 13 年的工作生涯里，对于一些频繁的需要重置样式的 HTML 标签，比如：链接的颜色、按钮的默认样式和列表的默认样式等等，我颇有见解。
 
-在 `normalize.css` 之前，我一直使用我自己编写的样式重置文件——`reset.local.css`。与传统的 **CSS Reset** 不同的是：我在其中只重置了一小部分 HTML 标签的样式，而不是全部的。
+除了使用 `normalize.css` 之外，我还编写了自己的样式覆盖文件——`reset.local.css`。与传统的 **CSS Reset** 不同的是：我在其中只重置了一小部分 HTML 标签的样式，而不是全部的。
 
 下面的例子教你**怎么自定义 CSS Reset**：
 
