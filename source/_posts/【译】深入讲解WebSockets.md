@@ -34,9 +34,15 @@ WebSockets 就是为解决这些问题而生的。一些三方库简化了 WebSo
 
 ------
 
-WebSockets 定义了一个 API，用来在客户端与服务端之间建立一个 socket 连接。使得浏览器可以和服务器双向发送数据，此外，WebSockets 相较于 HTTP，在实时通信方面也做了一些优化。
+[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) 定义了一个 API，用来在客户端与服务端之间建立一个 socket 连接。使得浏览器可以和服务器双向发送数据，此外，WebSockets 相较于 HTTP，在实时通信方面也做了一些优化。
 
 ### 实时通信
+
+HTTP 请求会耗费几百个字节来发送 cookie 和其它的请求头，这无异于会增加实时通信的性能开销。
+
+> 然而 WebSockets 仅仅只消耗 6 个字节（请求头占 2 个，传输的值占 4 个）。
+
+所以 WebSockets 更适合实时的数据传输，并且由于性能开销比较小，用来实现低延时的应用也再好不过了。
 
 ### WebSocket 连接
 
