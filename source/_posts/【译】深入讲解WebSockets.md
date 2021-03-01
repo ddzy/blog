@@ -13,6 +13,14 @@ https://blog.bitsrc.io/deep-dive-into-websockets-e6c4c7622423
 
 <!-- more -->
 
+## 更新
+
+------
+
+### [2021-3-1]
+
+- Initial release
+
 ## 概述
 
 ------
@@ -45,6 +53,43 @@ HTTP 请求会耗费几百个字节来发送 cookie 和其它的请求头，这�
 所以 WebSockets 更适合实时的数据传输，并且由于性能开销比较小，用来实现低延时的应用也再好不过了。
 
 ### WebSocket 连接
+
+直接给 WebSocket 构造函数传一个 URL 就可以开启一个 WebSocket 连接了。如果你要指定子协议，可以在第二个参数传入。
+
+```js
+// 创建一个新的 WebSocket 连接
+let socketConnection = new WebSocket('ws://websocket.mysite.com');
+
+// 创建一个带有子协议的 WebSocket 连接
+let socketConnection = new WebSocket('ws://websocket.mysite.com', ['soap', 'xmpp']);
+```
+
+创建连接之后，你可以添加一些额外的事件句柄，分别当连接开启时、传输数据时、连接出错时触发：
+
+```js
+// WebSocket 连接开启之后，会发送一些数据给服务器
+socketConnection.onopen = function () {
+  connection.send('Hello, the socket connection is open!'); // 发送信息给服务器
+};
+
+// 打印错误
+socketConnection.onerror = function (error) {
+  console.log('WebSocket Error ' + error);
+};
+
+// 打印服务器返回的数据
+socketConnection.onmessage = function (e) {
+  console.log('Server: ' + e.data);
+};
+```
+
+建立连接之后，会触发 WebSocket 实例上的 `onopen` 事件，此时就意味着完成了握手，之后就可以在任意时刻互相发送数据了；当客户端的 WebSocket 接收到了数据，就会触发 `onmessage` 事件；而 `onerror` 事件则可以用来处理异常。
+
+**你可能会问：“创建一个连接，监听发送消息的事件”，这个操作不是很常见吗？有什么新意吗？**
+
+事实上，在 WebSockets 中针对连接做处理是很重要的。
+
+> 我们处理 WebSocket 连接的方式以及当连接异常的时候进行重连的操作，决定了会话的整体容错程度。
 
 ### 断线重连
 
