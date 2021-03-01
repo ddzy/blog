@@ -34,6 +34,8 @@ WebSockets 就是为解决这些问题而生的。一些三方库简化了 WebSo
 
 ------
 
+WebSockets 定义了一个 API，用来在客户端与服务端之间建立一个 socket 连接。使得浏览器可以和服务器双向发送数据，此外，WebSockets 相较于 HTTP，在实时通信方面也做了一些优化。
+
 ### 实时通信
 
 ### WebSocket 连接
