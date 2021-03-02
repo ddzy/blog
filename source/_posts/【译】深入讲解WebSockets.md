@@ -131,6 +131,38 @@ Web Sockets 有多种不同的模式来传输数据。你可以直接通过 WebS
 
 ------
 
+WebSockets 的数据压缩一直以来都不是被经常讨论的话题，但是假如在某个时刻需要同时发送大量数据，使用一种合理的压缩方式就显得格外重要。
+
+然而要实现 WebSockets 的数据压缩，客户端和服务端的意见必须一致。
+
+> 你知道 WebSockets 为了解决数据压缩的问题，专门提供了一个拓展么？
+
+当客户端给 WebSockets 连接的请求头的 `Sec-Websocket-Extensions` 字段指定了 `permessage-deflate` 拓展，服务端必须在响应头中返回相应的拓展字段，以确认该拓展是否可用。
+
+客户端发起请求：
+
+```http
+GET /socket HTTP/1.1
+Host: thirdparty.com
+Origin: http://example.com
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Sec-WebSocket-Extensions: permessage-deflate
+```
+
+服务端响应：
+
+```http
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Access-Control-Allow-Origin: http://example.com
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Extensions: permessage-deflate
+```
+
 ## Web Sockets 安全性
 
 ------
