@@ -167,6 +167,12 @@ Sec-WebSocket-Extensions: permessage-deflate
 
 ------
 
+WebSockets 没有限制传输数据的数量，攻击者可能会利用这个特性进行 DoS 攻击。
+
+因此，最基本的做法是使用一套鉴权机制，强制进行安全认证。目前较为普遍的做法是使用 JWT，JWT 可以快速的验证请求的签名。
+
+除此之外，可以使用 `wss` 代替 `ws`，`wss` 和 HTTPS 类似，可以对 WebSocket 连接进行加密。
+
 ## 浏览器兼容性
 
 ------
