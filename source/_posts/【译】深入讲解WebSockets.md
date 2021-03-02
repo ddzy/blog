@@ -189,6 +189,16 @@ WebSockets 内置了跨域通信功能，意味着不同域名之间可以进行
 
 ------
 
+无论何时何地，只要你需要在客户端和服务器之间建立一个低延迟的连接，那么 WebSockets 就是你最好的选择。
+
+然而，由于使用 WebSockets 会更改项目的架构，所以直接把 WebSockets 集成到现有的项目中可能会有问题。另外，这篇文章：[事件源](https://microservices.io/patterns/data/event-sourcing.html)，会影响你使用 WebSockets 进行通信，我也推荐你阅读一下。
+
+如果你想了解其它的有关于 WebSockets 的知识，可以在评论区交流；另外，WebSocket 的示例 demo 可以 [点这里](http://websocket.org/echo.html)。
+
+感谢阅读。
+
 ## 推荐阅读
 
 ------
+
+- [利用 Socket.IO 构建一个所见即所得的编辑器](https://blog.bitsrc.io/build-a-realtime-editor-using-socket-io-f11703afd55)
