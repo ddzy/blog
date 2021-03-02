@@ -177,6 +177,14 @@ WebSockets 没有限制传输数据的数量，攻击者可能会利用这个特
 
 ------
 
+大多数浏览器对于 WebSockets 的支持度都是蛮好的：
+
+![2.png](https://oos.blog.yyge.top/2021/3/1/【译】深入讲解WebSockets/images/2.png)
+
+WebSockets 内置了跨域通信功能，意味着不同域名之间可以进行通信。你可以自行指定一个可用的域名，通过这种方式来提高安全性。
+
+> 除此之外，诸如 socket.IO（NodeJS）和 SignalR（.NET）这样的三方 WebSockets 库，会针对老旧的浏览器，使用 HTTP 协议。
+
 ## 总结
 
 ------
