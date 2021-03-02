@@ -27,26 +27,26 @@ https://blog.bitsrc.io/deep-dive-into-websockets-e6c4c7622423
 
 ![1.jpeg](https://oos.blog.yyge.top/2021/3/1/【译】深入讲解WebSockets/images/1.jpeg)
 
-在早期的互联网世界里面，web 应用的构建都基于 HTTP 请求，并且 HTTP 请求由用户的交互触发。随着技术的发展，出现了以实时数据传输和双向通信为要求的**低延时应用**，比如：
+在早期的互联网世界里面，web 应用都是基于 HTTP 请求构建的，同时 HTTP 请求由用户的交互触发。随着技术的发展，出现了以实时数据传输和双向通信为要求的**低延时应用**，比如：
 
 - 多人在线游戏
 - 聊天应用
-- 实时的更新 RSS 订阅
+- 实时更新的 RSS 订阅
 - 体育直播等
 
 WebSockets 就是为解决这些问题而生的。一些三方库简化了 WebSockets，让我们可以方便的使用 WebSockets 而不需要懂太多的底层原理，提高开发效率。
 
 本文致力于讲解 WebSockets 的一些基本特性，为大家知识扫盲。
 
-## WebSockets 架构
+## WebSockets 体系
 
 ------
 
-[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) 定义了一个 API，用来在客户端与服务端之间建立一个 socket 连接。使得浏览器可以和服务器双向发送数据，此外，WebSockets 相较于 HTTP，在实时通信方面也做了一些优化。
+[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) 定义了一个 API，用来在客户端与服务端之间建立一个 socket 连接。使得浏览器可以和服务器双向发送数据，另外，WebSockets 相较于 HTTP 做了很多优化，为实时通信带来了更好的体验。
 
 ### 实时通信
 
-HTTP 请求会耗费几百个字节来发送 cookie 和其它的请求头，这无异于会增加实时通信的性能开销。
+HTTP 请求耗费了几百个字节来发送 cookie 和其它的请求头，这无异于会增加实时通信的性能开销。
 
 > 然而 WebSockets 仅仅只消耗 6 个字节（请求头占 2 个，传输的值占 4 个）。
 
@@ -54,7 +54,7 @@ HTTP 请求会耗费几百个字节来发送 cookie 和其它的请求头，这�
 
 ### WebSocket 连接
 
-直接给 WebSocket 构造函数传一个 URL 就可以开启一个 WebSocket 连接了。如果你要指定子协议，可以在第二个参数传入。
+直接给 WebSocket 构造函数传一个 URL 就可以开启一个 WebSocket 连接了。如果你要指定子协议，可以传入第二个参数：
 
 ```js
 // 创建一个新的 WebSocket 连接
