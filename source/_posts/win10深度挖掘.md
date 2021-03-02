@@ -43,6 +43,12 @@ categories: [freebie, tools]
 
 - 更新文章链接(`blog.yyge.top` -> `yyge.top`)
 
+### [2021-3-2]
+
+#### Added
+
+- 增加新文章：[win10深度挖掘系列之——开启clash之后，微软全家桶无法同步的问题](https://yyge.top/blog/2021/03/02/win10%E6%B7%B1%E5%BA%A6%E6%8C%96%E6%8E%98%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BC%80%E5%90%AFclash%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BE%AE%E8%BD%AF%E5%85%A8%E5%AE%B6%E6%A1%B6%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E7%9A%84%E9%97%AE%E9%A2%98/)
+
 ## 目录
 
 ------
@@ -53,3 +59,4 @@ categories: [freebie, tools]
 | win10深度挖掘系列之——常用快捷键                            | [戳这里](https://yyge.top/blog/2019/04/13/win10%E6%B7%B1%E5%BA%A6%E6%8C%96%E6%8E%98%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/ )                                                                           |
 | win10深度挖掘系列之——更改记事本默认背景颜色                | [戳这里](https://yyge.top/blog/2019/08/02/win10%E6%B7%B1%E5%BA%A6%E6%8C%96%E6%8E%98%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E6%9B%B4%E6%94%B9%E8%AE%B0%E4%BA%8B%E6%9C%AC%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2/)                      |
 | win10深度挖掘系列之——Firefox下的MacType渲染方案            | [戳这里](https://yyge.top/blog/2019/08/03/win10%E6%B7%B1%E5%BA%A6%E6%8C%96%E6%8E%98%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94Firefox%E4%B8%8B%E7%9A%84MacType%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88/)                                                     |
+| win10深度挖掘系列之——开启clash之后，微软全家桶无法同步的问题 | [戳这里](https://yyge.top/blog/2021/03/02/win10%E6%B7%B1%E5%BA%A6%E6%8C%96%E6%8E%98%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BC%80%E5%90%AFclash%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BE%AE%E8%BD%AF%E5%85%A8%E5%AE%B6%E6%A1%B6%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E7%9A%84%E9%97%AE%E9%A2%98/) |
