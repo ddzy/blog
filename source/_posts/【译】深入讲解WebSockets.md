@@ -107,9 +107,11 @@ socketConnection.onmessage = function (e) {
 
 因为用户可能并不会频繁的进行重连操作，所以基于已开启的 WebSockets 连接来改善可伸缩性是很有意义的。
 
-## 数据转换模式
+## 数据传输模式
 
 ------
+
+Web Sockets 有多种不同的模式来传输数据。你可以直接通过 WebSockets 发送消息，也可以向客户端推送消息。
 
 ### 给 web app 发送通知
 
