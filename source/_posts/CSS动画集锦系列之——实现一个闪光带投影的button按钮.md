@@ -7,6 +7,8 @@ categories: [frontend, translation]
 
 利用 `-webkit-box-reflect` 属性实现一个带有投影效果的 Button，并且 hover 时带有 “一闪而过” 的光影效果。
 
+<!-- more -->
+
 ## 更新
 
 ------
