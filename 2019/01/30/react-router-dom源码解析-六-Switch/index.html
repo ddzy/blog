@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="react, Nlvi">
+
+  <title> react-router-dom源码解析(六) -Switch · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/js/" style="font-size: 14px;">js</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">react-router-dom源码解析(六) -Switch</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、前言"><span class="toc-text">二、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、细说"><span class="toc-text">三、细说</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-前置知识"><span class="toc-text">3.1 前置知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-分割线"><span class="toc-text">3.2 分割线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-源码分析"><span class="toc-text">3.3 源码分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、实践"><span class="toc-text">四、实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、测试"><span class="toc-text">五、测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、源码"><span class="toc-text">六、源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、总结"><span class="toc-text">七、总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/js/" style="font-size: 14px;">js</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-01-30</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/react/">react</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          react-router-dom源码解析(六) -Switch
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>上一篇文章学习了<code>Route</code>组件的实现机理, 而体系中的<code>Switch</code>组件, 与<code>Route</code>密切相关, 所以, 今天来咀嚼一下它.</p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>改进文章排版格式</li>
+</ul>
+<h2 id="二、前言"><a href="#二、前言" class="headerlink" title="二、前言"></a>二、前言</h2><hr>
+<blockquote>
+<p><strong>PS</strong>: 无尽的知识, 能让一个沉默的人变得兴奋</p>
+</blockquote>
+<p>一句话开头, 希望能带着这种劲头, 开始今天的<code>Switch</code>的学习…</p>
+<h2 id="三、细说"><a href="#三、细说" class="headerlink" title="三、细说"></a>三、细说</h2><hr>
+<h3 id="3-1-前置知识"><a href="#3-1-前置知识" class="headerlink" title="3.1 前置知识"></a>3.1 前置知识</h3><p>经过上一次的<code>Route</code>的源码学习, 我们学习到了<code>Route</code>组件的设计思路, 即:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/30/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E5%85%AD%29%20-Switch/images/1.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="Route回顾"></p>
+<p><code>Route</code>的作用主要是计算<code>match</code>, 根据<code>match</code>和决定渲染<code>component</code>, 那么这篇文章学的<code>Switch</code>, 则是:</p>
+<blockquote>
+<p><strong>PS</strong>: 计算match, 将计算之后的<code>computedMatch</code>传递给<code>Route</code></p>
+</blockquote>
+<p><code>Route</code>组件接收到<code>computedMatch</code>之后, 不再去计算<code>match</code>, 而是直接进行<code>render</code>. 这也印证了<code>Switch</code>这个名称, 即为<code>切换</code>.</p>
+<p>一句话概括:</p>
+<blockquote>
+<p><strong>PS</strong>: <code>Switch</code>的子组件<code>Route</code>只能有一个被渲染出来</p>
+</blockquote>
+<hr>
+<h3 id="3-2-分割线"><a href="#3-2-分割线" class="headerlink" title="3.2 分割线"></a>3.2 分割线</h3><p>中间隔了五天, 由于在<code>Gayhub</code>上看到了一个<code>vscode</code>的<code>issue</code>, 关于在<code>工作区查找文件</code>的, 所以有感而发, 花了几天时间写了一个<code>vscode</code>插件 —— <code>File Positioning</code>, 昨天下午成功发布🐓🐓🐓</p>
+<h3 id="3-3-源码分析"><a href="#3-3-源码分析" class="headerlink" title="3.3 源码分析"></a>3.3 源码分析</h3><p>废话少说, 还是接着上次的进度. 打开<code>react-router/modules/Switch.js</code>, 可以看到, <code>Switch</code>的源码非常简洁, 好像也并没有什么难的,<br>保持这种<code>轻敌</code>的心态, 一步步来分析:</p>
+<p>首先, 可以看到:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;RouterContext.Consumer&gt;</span><br><span class="line">    &#123;<span class="function">(<span class="params">context</span>) =&gt;</span> &#123;</span><br><span class="line">      ...</span><br><span class="line">      ...</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &lt;<span class="regexp">/RouterContext.Consumer&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Switch</code>同样作为一个<code>Consumer</code> - <code>消费者</code>, 接收到<code>RouterContext</code>组件.</p>
+<p>接着:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> location = <span class="keyword">this</span>.props.location || context.location;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 和<code>Route</code>中一样, <code>Switch</code>做了同样的操作 —— 计算<code>location</code>, 这些都不是重点, 重点在下面这段代码:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> element, match;</span><br><span class="line"></span><br><span class="line">React.Children.forEach(<span class="keyword">this</span>.props.children, <span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(match == <span class="literal">null</span> &amp;&amp; React.isValidElement(child)) &#123;</span><br><span class="line">    element = child;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> path = child.props.path || child.props.from;</span><br><span class="line"></span><br><span class="line">    match = path</span><br><span class="line">      ? matchPath(location.pathname, &#123;</span><br><span class="line">          ...child.props, path,</span><br><span class="line">        &#125;)</span><br><span class="line">      : context.match;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> match</span><br><span class="line">    ? React.cloneElement(element, &#123;</span><br><span class="line">        location,</span><br><span class="line">        computedMatch: match,</span><br><span class="line">      &#125;)</span><br><span class="line">    : <span class="literal">null</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>为了更深的理解, 我将注释直接写在<code>源码内</code>, 大致是这样的:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ** 定义两个变量, 分别存储`子组件`和`match对象` **</span></span><br><span class="line"><span class="comment">// ** 注意, 这里的`element`通常是`Route`组件 **</span></span><br><span class="line"><span class="keyword">let</span> element, match;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ** 调用`React.Children`的静态方法 **</span></span><br><span class="line"><span class="comment">// ** 遍历props.children, 当然如上面所说, **</span></span><br><span class="line"><span class="comment">// ** 这里的children通常是`Route` **</span></span><br><span class="line">React.Children.forEach(<span class="keyword">this</span>.props.children, <span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ** match不存在 **</span></span><br><span class="line">  <span class="keyword">if</span>(match == <span class="literal">null</span> &amp;&amp; React.isValidElement(child)) &#123;</span><br><span class="line">    element = child;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ** 获取到`Route`的props的path参数 **</span></span><br><span class="line">    <span class="keyword">const</span> path = child.props.path || child.props.from;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ** 计算`match` **</span></span><br><span class="line">    match = path</span><br><span class="line">      ? matchPath(location.pathname, &#123;</span><br><span class="line">          ...child.props, path,</span><br><span class="line">        &#125;)</span><br><span class="line">      : context.match;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ** match存在 **</span></span><br><span class="line">  <span class="comment">// ** 克隆`Route`组件, 将`location`和`match`作为新的props替代 **</span></span><br><span class="line">  <span class="keyword">return</span> match</span><br><span class="line">    ? React.cloneElement(element, &#123;</span><br><span class="line">        location,</span><br><span class="line">        computedMatch: match,</span><br><span class="line">      &#125;)</span><br><span class="line">    : <span class="literal">null</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>可以清楚的看到, <code>Switch</code>内部同样是做了<code>matchPath</code>的操作, 目的就是为了渲染出单一children, 同时, 印证了我们在开发的时候, 使用<code>Switch</code>作<code>路由截取</code>.</p>
+<p>再往下看, 好像已经没内容了? 没错, 太简单了, 下面就开始实践环节.</p>
+<h2 id="四、实践"><a href="#四、实践" class="headerlink" title="四、实践"></a>四、实践</h2><hr>
+<blockquote>
+<p><strong>PS</strong>: 好记性不如烂笔头</p>
+</blockquote>
+<p>分析完了源码之后, 接着完善自己的<code>yyg-react-router-dom</code>库.</p>
+<p><code>First and foremost</code> —— 首先也是最重要的一步, 就是定义<code>Switch</code>所需的<code>props</code>, 也就是约束<code>interface</code>.</p>
+<p>打开<a href="https://reacttraining.com/react-router/web/api/Switch" target="_blank" rel="noopener">react-router官网</a>, 可以看到, <code>Switch</code>接收了两个<code>props</code>, 分别是<code>location</code>和<code>children</code>, 🆗, 来书写<code>interface</code>.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/Switch.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> ISwitchProps &#123;</span><br><span class="line">  location?: Location;</span><br><span class="line">  children: React.ReactNode;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>定义完成<code>interface</code>, 回忆一下<code>Route</code>组件中, 将<code>context</code>处理分发到了<code>handleProcess</code>函数中, 然后再handleProcess函数中, 分两步计算<code>location</code>和依赖于<code>location</code>的<code>computeRoute</code>, 照猫画虎, 在<code>render</code>中:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/Switch.tsx</span></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;RouterContext.Consumer&gt;</span><br><span class="line">    &#123;<span class="function">(<span class="params">context</span>) =&gt;</span> (</span><br><span class="line">      handleProcess(context <span class="keyword">as</span> IStaticRouteComponentParams)</span><br><span class="line">    )&#125;</span><br><span class="line">  &lt;RouterContext.Consumer&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ** handleProcess() **</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleProcess</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  context: IStaticRouteComponentParams,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">JSX</span>.<span class="title">Element</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ** 计算location **</span></span><br><span class="line">    <span class="keyword">const</span> location = handleComputeLocation(context);</span><br><span class="line">    <span class="comment">// ** 计算Route, 即为渲染出来的组件 **</span></span><br><span class="line">    <span class="keyword">const</span> node = handleComputeRoute(location);</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后, 在<code>computeLocation</code>和<code>computeRoute</code>中, 分别进行相关的操作, 具体的代码下面会给出…</p>
+<p><strong>注意点</strong>: 在计算<code>match</code>的过程中, 再此用到了<code>matchPath</code>这个方法, 所以这里要将<code>matchPath</code>提取出来, 以便复用.</p>
+<p>因此, 在<code>utils/utils.tsx</code>中新建工具组件, 主题内容不变, 只是将两个<code>match</code>处理函数抽离出来, 并且改一下参数即可:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/utils/utils.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> IStaticPathProps &#123;</span><br><span class="line">  path?: <span class="built_in">string</span> | <span class="built_in">string</span>[];</span><br><span class="line">  exact?: <span class="built_in">boolean</span>;</span><br><span class="line">  sensitive?: <span class="built_in">boolean</span>;</span><br><span class="line">  strict?: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeMatchProcess</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  location: Location,</span></span></span><br><span class="line"><span class="function"><span class="params">  options: IStaticPathProps,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">IStaticMatchParams</span> | <span class="title">null</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computePath</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  path: <span class="built_in">string</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">  options: IStaticPathProps,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): </span>&#123;</span><br><span class="line">  keys: PathToRegExp.Key[],</span><br><span class="line">  reg: <span class="built_in">RegExp</span>,</span><br><span class="line">&#125; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、测试"><a href="#五、测试" class="headerlink" title="五、测试"></a>五、测试</h2><hr>
+<p>写完之后, 再来做一下测试. 为了看到更直观的效果, 可以多创建一个<code>Four.tsx</code>:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/test/Four.tsx</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> IFourProps &#123; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Four = React.memo&lt;IFourProps&gt;((</span><br><span class="line">  props: IFourProps,</span><br><span class="line">): JSX.Element =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Fourth Page&amp;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Four;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后, 在<code>App.tsx</code>中, 引入<code>Switch.tsx</code>和<code>Four.tsx</code>组件, 在render中新增测试代码:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">        &lt;Route</span><br><span class="line">          path=&#123;[<span class="string">"/user/:name/profile/:secret"</span>]&#125;</span><br><span class="line">          render=&#123;<span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">            &lt;Switch&gt;</span><br><span class="line">              &lt;Route path=<span class="string">"/user/:name/profile/:secret"</span> exact component=&#123;One&#125; /&gt;</span><br><span class="line">              &lt;Route path=<span class="string">"/user/:name/profile/:secret/test"</span> exact component=&#123;Three&#125; /&gt;</span><br><span class="line">              &lt;Route path=<span class="string">"/user/:name/profile/:secret/test2"</span> exact component=&#123;Four&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">          )&#125;</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器, 可以看到, 此时此刻是空白的, 因为我们现在处于根url下, 分别在url栏中输入上面三个测试地址:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/30/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E5%85%AD%29%20-Switch/images/2.gif?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="测试Switch"></p>
+<p>上面的gif, 可以清楚看到是正常渲染的, 进而证明我们自己的思路是正确的.</p>
+<h2 id="六、源码"><a href="#六、源码" class="headerlink" title="六、源码"></a>六、源码</h2><hr>
+<p>源码地址: <a href="https://github.com/ddzy/yyg-react-router-dom" target="_blank" rel="noopener">点我</a></p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><hr>
+<blockquote>
+<p><strong>PS</strong>: 一张思维脑图结束今天的学习</p>
+</blockquote>
+<p><img src="https://oos.blog.yyge.top/2019/1/30/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E5%85%AD%29%20-Switch/images/3.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="脑图总结"></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/01/30/react-router-dom源码解析-六-Switch/">https://ddzy.github.io/blog/2019/01/30/react-router-dom源码解析-六-Switch/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/01/31/vscode深度探索系列之——插件开发总结/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>vscode深度探索系列之——插件开发总结
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/01/30/七牛云域名HTTPS配置/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          七牛云域名HTTPS配置<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'react-router-dom源码解析(六) -Switch',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2021</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>
