@@ -162,6 +162,12 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 新增命令：`合并分支，产生新的提交并保留`
 
+## [2021-3-18]
+
+#### Added
+
+- 新增命令：`更改最近一次commit的用户名和邮箱`
+
 ## 记录
 
 ---
@@ -591,4 +597,8 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
   git merge --squash dev
   git add .
   git commit -m "release: 发布新版本"
+  ```
+- 更改最近一次commit的用户名和邮箱
+  ```bash
+  git commit --amend --author='duanzhaoyang<duanzhaoyang@96966.com>'
   ```
