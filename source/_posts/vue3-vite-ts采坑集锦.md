@@ -17,6 +17,12 @@ categories: [frontend]
 
 - Initial release
 
+### [2021-4-1]
+
+#### Added
+
+- 新增 [异步的setup](#异步的setup)
+
 ## 初始化项目
 
 ------
@@ -161,5 +167,45 @@ export default defineComponent({
 如果你依旧想用 Options API 的话，那么你可以这么做，如下图所示：
 
 ![1.png](https://oos.blog.yyge.top/2021%2F3%2F31%2Fvue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6%2Fimages%2F1.png)
+
+
+
+
+
+
+## 异步的setup
+
+------
+
+### 问题概述
+
+在编写组件的时候，遇到了一个问题，如果在组件中定义了异步的 `setup`，那么该组件就**无法被渲染**，例如 `src/components/Todo/index.vue`
+
+```ts
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: "Todo",
+	// 异步的 setup
+  async setup() {
+    const app = (getCurrentInstance() as ComponentInternalInstance).proxy;
+		const res = await app?.$api.getTodoList();
+
+		return {
+			todoList: reactive(res)
+		}
+  }
+});
+```
+
+### 解决方案
+
+由于 async 返回的 Promise 使得 setup 函数被挂起，也就是该组件会被异步渲染，解决方式很简单，如果定义了异步的 setup，那么需要在其父组件中包裹一层 `<Suspense>` 组件：
+
+```html
+<Suspense>
+  <Todo />
+</Suspense>
+```
 
 ## 更新中。。。
