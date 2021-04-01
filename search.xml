@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>vue3-vite-ts采坑集锦</title>
+      <link href="/blog/2021/03/31/vue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6/"/>
+      <url>/blog/2021/03/31/vue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6/</url>
+      
+        <content type="html"><![CDATA[<p>记录使用 Vue3 + Vite + Typescript 所踩的坑。</p><a id="more"></a><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr><h3 id="2021-3-31"><a href="#2021-3-31" class="headerlink" title="[2021-3-31]"></a>[2021-3-31]</h3><ul><li>Initial release</li></ul><h3 id="2021-4-1"><a href="#2021-4-1" class="headerlink" title="[2021-4-1]"></a>[2021-4-1]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul><li>新增 <a href="#异步的setup">异步的setup</a></li></ul><h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><hr><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create @vitejs/app vue3-vite-example-todo --template vue-ts</span><br></pre></td></tr></table></figure><h2 id="vite-Internal-server-error-Failed-to-resolve-import-“-api-api”-from-“src-main-ts”-Does-the-file-exist"><a href="#vite-Internal-server-error-Failed-to-resolve-import-“-api-api”-from-“src-main-ts”-Does-the-file-exist" class="headerlink" title="[vite] Internal server error: Failed to resolve import “@/api/api” from “src/main.ts”. Does the file exist?"></a>[vite] Internal server error: Failed to resolve import “@/api/api” from “src/main.ts”. Does the file exist?</h2><hr><h3 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h3><p>已经在 <code>vite.config.ts</code> 中配置了路径别名：</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">plugins: [vue()],</span><br><span class="line">resolve: &#123;</span><br><span class="line">alias: &#123;</span><br><span class="line"><span class="string">'@/'</span>: path.resolve(__dirname, <span class="string">'./src'</span>),</span><br><span class="line">&#125;,</span><br><span class="line">&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>并且于 <code>tsconfig.json</code> 中配置了路径映射：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line"><span class="attr">"paths"</span>: &#123;</span><br><span class="line"><span class="attr">"@/*"</span>: [<span class="string">"src/*"</span>]</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>还是出现了无法识别路径别名的错误。</p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>查阅 <a href="https://github.com/vitejs/vite/issues/2316#issuecomment-789410380" target="_blank" rel="noopener">issue#2316</a> 发现，vite 其实是使用 rollup 作为构建工具的，rollup 配置路径别名的语法与 webpack 有所不同，采用的是如下方式：</p><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export default defineConfig(&#123;</span><br><span class="line">plugins: [vue()],</span><br><span class="line">resolve: &#123;</span><br><span class="line"><span class="deletion">-alias: &#123;</span></span><br><span class="line"><span class="deletion">-'@/': path.resolve(__dirname, './src'),</span></span><br><span class="line"><span class="deletion">-&#125;,</span></span><br><span class="line"><span class="addition">+   alias: [&#123; find: '@', replacement: path.resolve(__dirname, './src') &#125;],</span></span><br><span class="line">&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="vue3挂载全局属性"><a href="#vue3挂载全局属性" class="headerlink" title="vue3挂载全局属性"></a>vue3挂载全局属性</h2><hr><h3 id="问题概述-1"><a href="#问题概述-1" class="headerlink" title="问题概述"></a>问题概述</h3><p>在 <code>vue2.x</code> 中，我们一般直接在 Vue.prototype 上挂载一个方法或属性：</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> api <span class="keyword">from</span> <span class="string">'@/api.js'</span></span><br><span class="line"></span><br><span class="line">Vue.prototype.$api = api</span><br></pre></td></tr></table></figure><p>之后，为了更好的 ts 代码提示，我们需要声明类型：</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> api <span class="keyword">from</span> <span class="string">'@/api/api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> "vue/types/vue" &#123;</span><br><span class="line">  <span class="keyword">interface</span> Vue &#123;</span><br><span class="line">    $api: <span class="keyword">typeof</span> api</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>在 <code>vue3.x</code> 中，可以通过如下方式挂载全局属性</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> api <span class="keyword">from</span> <span class="string">'@/api/api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp(App);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两种方式均可</span></span><br><span class="line"><span class="comment">// app.use((vue) =&gt; &#123;</span></span><br><span class="line"><span class="comment">// vue.config.globalProperties['$api'] = api;</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line">app.config.globalProperties[<span class="string">'$api'</span>] = api;</span><br><span class="line"></span><br><span class="line">app.mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure><p>接着，如果我们需要编写类型声明文件，<code>vue3.x</code> 和 <code>vue2.x</code> 所采取的方式不太一样。</p><p><code>src/@types/</code> 目录下新建 <code>properties-vue.d.ts</code>，接着引入并声明自定义的各种方法和属性：</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'@/api/api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '@vue/runtime-core' &#123;</span><br><span class="line"><span class="keyword">interface</span> ComponentCustomProperties &#123;</span><br><span class="line">$api: <span class="keyword">typeof</span> api</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>记住，编写声明文件之后，需要重新启动编辑器！</strong></p><p>最后，我们可以在 Composition API 中这么使用：</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">defineComponent,</span><br><span class="line">getCurrentInstance,</span><br><span class="line">ComponentInternalInstance,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line"><span class="keyword">async</span> setup() &#123;</span><br><span class="line"><span class="keyword">const</span> app = (getCurrentInstance() <span class="keyword">as</span> ComponentInternalInstance).proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (app) &#123;</span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> app.$api.fetchUserInfo(<span class="string">'xxx'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>如果你依旧想用 Options API 的话，那么你可以这么做，如下图所示：</p><p><img src="https://oos.blog.yyge.top/2021%2F3%2F31%2Fvue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6%2Fimages%2F1.png" alt="1.png"></p><h2 id="异步的setup"><a href="#异步的setup" class="headerlink" title="异步的setup"></a>异步的setup</h2><hr><h3 id="问题概述-2"><a href="#问题概述-2" class="headerlink" title="问题概述"></a>问题概述</h3><p>在编写组件的时候，遇到了一个问题，如果在组件中定义了异步的 <code>setup</code>，那么该组件就<strong>无法被渲染</strong>，例如 <code>src/components/Todo/index.vue</code></p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineComponent &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  name: <span class="string">"Todo"</span>,</span><br><span class="line"><span class="comment">// 异步的 setup</span></span><br><span class="line">  <span class="keyword">async</span> setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> app = (getCurrentInstance() <span class="keyword">as</span> ComponentInternalInstance).proxy;</span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> app?.$api.getTodoList();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">todoList: reactive(res)</span><br><span class="line">&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>由于 async 返回的 Promise 使得 setup 函数被挂起，也就是该组件会被异步渲染，解决方式很简单，如果定义了异步的 setup，那么需要在其父组件中包裹一层 <code>&lt;Suspense&gt;</code> 组件：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Suspense</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Todo</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="更新中。。。"><a href="#更新中。。。" class="headerlink" title="更新中。。。"></a>更新中。。。</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> frontend </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ts </tag>
+            
+            <tag> vue </tag>
+            
+            <tag> vite </tag>
+            
+            <tag> vue3 </tag>
+            
+            <tag> typescript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CSS动画集锦系列之——实现一个闪光带投影的button按钮</title>
       <link href="/blog/2021/03/04/CSS%E5%8A%A8%E7%94%BB%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%97%AA%E5%85%89%E5%B8%A6%E6%8A%95%E5%BD%B1%E7%9A%84button%E6%8C%89%E9%92%AE/"/>
       <url>/blog/2021/03/04/CSS%E5%8A%A8%E7%94%BB%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%97%AA%E5%85%89%E5%B8%A6%E6%8A%95%E5%BD%B1%E7%9A%84button%E6%8C%89%E9%92%AE/</url>
@@ -655,11 +688,11 @@
       
         <tags>
             
-            <tag> github </tag>
-            
             <tag> hexo </tag>
             
             <tag> git </tag>
+            
+            <tag> github </tag>
             
         </tags>
       
@@ -684,8 +717,6 @@
       
         <tags>
             
-            <tag> js </tag>
-            
             <tag> css </tag>
             
             <tag> http </tag>
@@ -693,6 +724,8 @@
             <tag> cdn </tag>
             
             <tag> dns </tag>
+            
+            <tag> js </tag>
             
             <tag> html </tag>
             
@@ -4810,9 +4843,9 @@
             
             <tag> http </tag>
             
-            <tag> domain </tag>
-            
             <tag> url </tag>
+            
+            <tag> domain </tag>
             
         </tags>
       
