@@ -23,6 +23,13 @@ categories: [frontend]
 
 - 新增 [异步的setup](#异步的setup)
 
+### [2021-4-2]
+
+#### Added
+
+- 新增 [权限路由的重置](#权限路由的重置)
+- 新增 [404路由配置](#404路由配置)
+
 ## 初始化项目
 
 ------
@@ -208,4 +215,137 @@ export default defineComponent({
 </Suspense>
 ```
 
-## 更新中。。。
+## 权限路由的重置
+
+------
+
+### 问题概述
+
+在 vue2 + vue-router3 中，我们想实现权限菜单，就需要后端来动态的返回一个菜单列表，大体格式如下：
+
+```ts
+// GET /menus HTTP/1.1
+const dynamicRoutes = [
+	{
+		action: 'PageA',
+		permissions: ['按钮1', '按钮2'， ...]
+	},
+	{
+		action: 'PageB',
+		permissions: []
+	}
+]
+```
+
+然后我们根据后端返回的权限菜单来与本地的静态路由表作对比，筛选出有权限展现的页面，静态路由表如下格式：
+
+```ts
+const staticRoutes = [
+	{
+		path: '/pageA',
+		name: 'PageA'
+		meta: {
+			hidden: false
+		},
+		component: PageA,
+	},
+	{
+		path: '/pageB',
+		name: 'PageB',
+		meta: {
+			hidden: false
+		},
+		component: PageA,
+	},
+]
+```
+
+最终需要重置 `Router`：
+
+```ts
+// 比对后端返回的动态路由表中与本地路由表对应的项，设置 hidden 属性，hidden 用来标识当前页面是否显示
+const finalRoutes = staticRoutes.map(outerV => {
+	const foundMenu = dynamicRoutes.find(innerV => {
+		return innerV.action === outerV.name;
+	});
+
+	return {
+		...outerV,
+		meta: {
+				..outerV.meta,
+			hidden: !foundMenu,
+		},
+	};
+});
+
+// 替换现存的 Router
+router.matcher = createRouter(finalRoutes).matcher;
+```
+
+### 解决方案
+
+vue-router4 抛弃了 `router.matcher` 属性，所以我们只能通过 `router.addRoute()` 来添加路由，引用 vue-route4 官方文档里的一句话：
+
+![2.png](https://oos.blog.yyge.top/2021%2F3%2F31%2Fvue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6%2Fimages%2F2.png)
+
+所以，最终的代码是这样的：
+
+```diff
++ import { useRouter } from 'vue-router';
+
+// 替换现存的 Router
+- router.matcher = createRouter(finalRoutes).matcher;
++ finalRoutes.forEach(v => {
++	 // addRoute() 第一个参数代表要插入的路由的父级路由
++	 router && router.addRoute('Home', v);
++ });
+```
+
+## 404路由配置
+
+------
+
+### 问题概述
+
+在 vue2 中，我们通常使用通配符 `*` 来匹配所有不存在的路由页，从而跳转到自定义的 404 页，我们的本地静态路由表可能是这样的：
+
+```ts
+import { createRouter, createWebHashHistory } from 'vue-router';
+
+const router = createRouter({
+	history: createWebHashHistory(),
+	routes: [
+		{
+			path: '*',
+			name: 'NotFound',
+			component: () => import('@/views/404/index.vue'),
+		},
+	],
+});
+```
+
+### 解决方案
+
+但是在 vue-router4 中，取消了通配符式匹配，须按如下方式来匹配 404 路由：
+
+```diff
+const router = createRouter({
+	history: createWebHashHistory(),
+	routes: [
+-		{
+-			path: '*',
+-			name: 'NotFound',
+-			component: () => import('@/views/404/index.vue'),
+-		},
++		{
++			path: '/404',
++			name: 'NotFound',
++			component: () => import('@/views/404/index.vue'),
++		},
++		{
++			path: '/:pathMatch(.*)*',
++			redirect: '/404',
++		},
+	],
+});
+```
