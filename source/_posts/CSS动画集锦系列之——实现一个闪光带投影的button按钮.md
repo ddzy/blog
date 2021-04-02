@@ -2,7 +2,7 @@
 title: CSS动画集锦系列之——实现一个闪光带投影的button按钮
 date: 2021-03-04 17:39:27
 tags: [css, animation]
-categories: [frontend, translation]
+categories: [frontend]
 ---
 
 利用 `-webkit-box-reflect` 属性实现一个带有投影效果的 Button，并且 hover 时带有 “一闪而过” 的光影效果。
@@ -16,6 +16,12 @@ categories: [frontend, translation]
 ### [2021-3-4]
 
 - Initial release
+
+### [2021-4-2]
+
+#### Changed
+
+- 更新文章分类（categories），移除 translations 分类
 
 ## 实现
 
