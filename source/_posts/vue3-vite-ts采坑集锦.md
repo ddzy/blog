@@ -30,6 +30,12 @@ categories: [frontend]
 - 新增 [权限路由的重置](#权限路由的重置)
 - 新增 [404路由配置](#404路由配置)
 
+### [2021-4-9]
+
+#### Added
+
+- 新增 [父子传值的方式-props](#父子传值的方式-props)
+
 ## 初始化项目
 
 ------
@@ -347,5 +353,74 @@ const router = createRouter({
 +			redirect: '/404',
 +		},
 	],
+});
+```
+
+## 父子传值的方式-props
+
+------
+
+### 问题概述
+
+起初，翻了下 defineComponent 的类型定义，我以为直接通过以下的方式来定义 props 并接收：
+
+`index.d.ts`：
+
+```ts
+export type IButtonType =
+	| 'primary'
+	| 'success'
+	| 'danger'
+	| 'default'
+	| 'warning';
+export type IButtonNativeType = 'button' | 'submit' | 'reset' | 'menu';
+
+export interface IChildProps {
+	type?: IButtonType;
+	nativeType?: IButtonNativeType;
+}
+```
+
+`Child.vue`：
+
+```ts
+export default defineComponent<IChildProps>({
+	setup(props) {
+		// 问题：props 总是空对象
+		// props.type => undefined
+		// props.nativeType => undefined
+		console.log('props :>> ', props);
+	},
+});
+```
+
+`Parent.vue`：
+
+```html
+<template>
+	<Child type="primary" nativeType="button">主按钮</Child>
+</template>
+```
+
+但是在 `Child.vue` 接收到的 props 总是空对象。
+
+### 解决方案
+
+vue3 目前依旧是采用 PropType 的形式来定义 props，所以上面的方式暂时是不可取的，变通一下：
+
+`Child.vue`：
+
+```diff
+import * as TYPES from './index.d.ts';
+
+-export default defineComponent<IChildProps>({
++export default defineComponent({
++	props: {
++		type: String as () => TYPES.IButtonType,
++		nativeType: String as () => TYPES.IButtonNativeType,
++	},
+	setup(props) {
+		console.log('props :>> ', props);
+	},
 });
 ```
