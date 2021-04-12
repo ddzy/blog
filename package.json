@@ -5,6 +5,14 @@
   "hexo": {
     "version": "3.8.0"
   },
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "hexo": "^3.8.0",
     "hexo-deployer-git": "^1.0.0",
@@ -18,5 +26,8 @@
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0"
+  }
 }
