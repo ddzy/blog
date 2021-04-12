@@ -36,6 +36,12 @@ categories: [frontend]
 
 - 新增 [父子传值的方式-props](#父子传值的方式-props)
 
+### [2021-4-12]
+
+#### Added
+
+- 新增 [click执行两次](#click执行两次)
+
 ## 初始化项目
 
 ------
@@ -423,4 +429,87 @@ import * as TYPES from './index.d.ts';
 		console.log('props :>> ', props);
 	},
 });
+```
+
+## click执行两次
+
+------
+
+### 问题概述
+
+由于在编写组件库的时候，子组件（`Button`）需要将 click 事件交给外界（`父组件`）处理，具体代码如下：
+
+`子组件（Button）`：
+
+```html
+<template>
+	<button @click="handleClick"></button>
+</template>
+
+<script lang="ts">
+	export default defineComponent({
+		setup(props, context) {
+			function handleClick(e) {
+				context.emit('click', e);
+			}
+
+			return {
+				handleClick,
+			}
+		}
+	});
+</script>
+```
+
+`外界组件`：
+
+```html
+<template>
+	<V3Button @click="handleClick"></V3Button>
+</template>
+
+<script lang="ts">
+	import V3Button from './components/Button.vue';
+
+	export default defineCompoent({
+		components: {
+			V3Button,
+		},
+		setup() {
+			function handleClick(e) {
+				// 执行两次
+				console.log(e);
+			}
+		}
+	});
+</script>
+```
+
+上面的代码会产生一个问题，外界组件中的 `handleClick` 会执行两次。
+
+### 解决方案
+
+在 vue3 中，子组件的根节点会默认接收父组件上的所有 `v-on` 监听事件，所以如果需要在子组件的根元素上触发事件的话，不用在子组件中定义相应的处理函数，比如：
+
+`子组件（Button）`：
+
+```diff
+<template>
+-	<button @click="handleClick"></button>
++	<button></button>
+</template>
+
+<script lang="ts">
+	export default defineComponent({
+		setup(props, context) {
+-			function handleClick(e) {
+-				context.emit('click', e);
+-			}
+-
+-			return {
+-				handleClick,
+-			}
+		}
+	});
+</script>
 ```
