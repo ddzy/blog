@@ -42,6 +42,12 @@ categories: [frontend]
 
 - 新增 [click执行两次](#click执行两次)
 
+### [2021-4-15]
+
+#### Added
+
+- 新增 [集成jest单测](#集成jest单测)
+
 ## 初始化项目
 
 ------
@@ -512,4 +518,73 @@ import * as TYPES from './index.d.ts';
 		}
 	});
 </script>
+```
+
+## 集成jest单测
+
+------
+
+### 问题概述
+
+由于编写组件库，需要在项目中集成 `jest` 单元测试。
+
+### 解决方案
+
+首先列出所需依赖：
+
+| 依赖名      | 环境 | 概述                  |
+| ----------- | ---- | --------------------- |
+| jest        | dev  | 官方的 jest 库        |
+| ts-jest     | dev  | 用来编译 `*.ts` 文件  |
+| vue-jest    | dev  | 用来编译 `*.vue` 文件 |
+| @types/jest | dev  | ts 类型支持           |
+
+接着配置 `tsconfig.json`：
+
+```diff
+{
+	"compilerOptions": {
++		# 此处的 types 表明：只需要在本项目的 node_modules 寻找 ts 声明文件，不去父级向上一次查找
++		"types": ["vite/client", "jest", "node"]
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
++		"__tests__/**/*"
+	]
+}
+```
+
+然后配置终端命令（`package.json`）：
+
+```diff
+{
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc --noEmit && vite build",
+		"serve": "vite preview",
++		"test": "jest"
+	},
+	"dependencies": {
+		"icon": "^0.0.3",
+		"vue": "^3.0.5"
+	},
+	"devDependencies": {
+		"@types/jest": "^26.0.22",
+		"@types/node": "^14.14.37",
+		"@vitejs/plugin-vue": "^1.2.1",
+		"@vue/compiler-sfc": "^3.0.5",
+		"@vue/test-utils": "^1.1.4",
+		"jest": "^26.6.3",
+		"sass": "^1.32.8",
+		"ts-jest": "^26.5.4",
+		"typescript": "^4.1.3",
+		"vite": "^2.1.5",
+		"vue-jest": "^3.0.7",
+		"vue-tsc": "^0.0.15"
+	}
+}
+
 ```
