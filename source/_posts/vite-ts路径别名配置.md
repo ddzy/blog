@@ -7,6 +7,8 @@ categories: [frontend]
 
 在开发组件库的过程中，由于项目目录层级嵌套太深，往往引入一个文件太过繁琐，所以需要配置路径别名。
 
+附仓库地址：[🔗 链接](https://github.com/ddzy/vue3-ui/tree/dev)
+
 <!-- more -->
 
 ## 更新
