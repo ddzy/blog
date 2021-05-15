@@ -19,7 +19,13 @@ categories: [frontend]
 
 - Initial release
 
-## 简单说明
+### [2021-5-16]
+
+#### Changed
+
+- 更新【依赖版本】章节
+
+## 依赖版本
 
 ------
 
@@ -28,12 +34,6 @@ categories: [frontend]
 | vite       | 2.1.5 |
 | vue        | 3.0.5 |
 | typescript | 4.1.3 |
-
-往往，如果项目结构过深的话，我们导入一个文件，会出现下面这种情况：
-
-```ts
-import xxx from '../../../../../xxx';
-```
 
 ## 步骤一：项目结构预览
 
