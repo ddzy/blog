@@ -174,6 +174,12 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 新增命令：`图解git-merge策略`
 
+## [2021-7-29]
+
+#### Added
+
+- 新增命令：`根据commit-message查找commit记录`
+
 ## 记录
 
 ---
@@ -612,3 +618,12 @@ pr 的时候遇到了分支合并的种种问题, 延申出了一些常用命令
 
 - 图解git-merge策略
   ![git-merge策略](https://oos.blog.yyge.top/2019/3/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/images/git%20%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5%EF%BC%88git%20merge%EF%BC%89%E6%B5%81%E7%A8%8B%E5%9B%BE.png?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim	)
+
+- 根据commit-message查找commit记录
+  ```bash
+  # 在全部分支中查找
+  git log -g --grep=内容
+
+  # 只在当前分支中查找
+  git log --grep=内容
+  ```
