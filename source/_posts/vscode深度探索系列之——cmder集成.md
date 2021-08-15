@@ -10,6 +10,16 @@ categories: [frontend, freebie]
 
 <!-- more -->
 
+## 更新
+
+------
+
+### [2021-8-15]
+
+#### Added
+
+- 新增 `配置（新）`，原配置改为 `配置（旧）`
+
 
 ## 前言(废话)
 
@@ -17,7 +27,36 @@ categories: [frontend, freebie]
 
 使用`cmder`的原因很简单——流畅不卡. 在这之前尝试了`git-bash`、`tmux`这两个终端工具, 但是有个问题: 前者太卡, 后者需要`c++`环境. 所以就折中选择了`cmder`.
 
-## 配置
+## 配置（新）
+
+`VSCode-1.60.0` 更新之后，原 [配置（旧）](#配置旧) 已废弃，以下为最新的配置方式。
+
+### 版本
+
+![vscode 版本](https://oos.blog.yyge.top/2019/3/16/vscode%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94cmder%E9%9B%86%E6%88%90/images/5.png)
+
+### 第一步：配置cmd
+
+打开 VSCode 的用户配置 JSON 文件，将下面的代码复制进去：
+
+```json
+{
+  // 配置默认终端
+  "terminal.integrated.defaultProfile.windows": "Cmder",
+  // 集成第三方终端
+  "terminal.integrated.profiles.windows": {
+    "Cmder": {
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      // 将路径替换为自己的 cmder 安装路径
+      "args": ["/k", "E:\\tools\\work_tools\\cmder\\vendor\\init.bat"]
+    }
+  },
+}
+```
+
+### 第二步：重启VSCode
+
+## 配置（旧）
 
 ------
 
