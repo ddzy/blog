@@ -36,6 +36,8 @@ cd /opt/work_tools/jenkins
 # 直接执行 war 包
 # 端口号随意
 java -jar ./jenkins.war --httpPort=8088
+# 或者让 jenkins 保持后台启动状态
+nohup java -jar jenkins.war --httpPort=8088 &
 ```
 
 2. 修改 nginx 配置
