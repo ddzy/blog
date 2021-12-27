@@ -5,6 +5,8 @@ tags: [jenkins, nginx]
 categories: [freebie, backend]
 ---
 
+部署在阿里云 `centos` 机器上的 `jenkins` 意外挂掉了，记录一下解决办法。
+
 <!-- more -->
 
 ## 更新
