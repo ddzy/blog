@@ -10,6 +10,13 @@ categories: freebie
 
 <!-- more -->
 
+## 更新
+
+------
+
+### [2022-3-2]
+
+- 新增【续费】区块
 
 ## **引申**
 
@@ -56,6 +63,12 @@ categories: freebie
 ![域名管理页](https://oos.blog.yyge.top/2019/1/30/%E4%B8%83%E7%89%9B%E4%BA%91%E5%9F%9F%E5%90%8DHTTPS%E9%85%8D%E7%BD%AE/images/7.jpg?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim)
 
 此时的状态为处理中, 大概要等一两天左右, 耐心等待即可...
+
+### 续费
+
+SSL 证书续费之后需要手动部署：
+
+![手动部署](https://oos.blog.yyge.top/2019/1/30/%E4%B8%83%E7%89%9B%E4%BA%91%E5%9F%9F%E5%90%8DHTTPS%E9%85%8D%E7%BD%AE/images/8.png?imageView2/0/q/75|watermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim)
 
 ## **总结**
 
