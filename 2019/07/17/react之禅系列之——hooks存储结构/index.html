@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="js, react, Nlvi">
+
+  <title> react之禅系列之——hooks存储结构 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">react之禅系列之——hooks存储结构</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-7-17"><span class="toc-text">[2019-7-17]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#记录"><span class="toc-text">记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mountState"><span class="toc-text">mountState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mountWorkInProgressHook"><span class="toc-text">mountWorkInProgressHook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook"><span class="toc-text">hook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook-memoizedState"><span class="toc-text">hook.memoizedState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook-baseState"><span class="toc-text">hook.baseState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook-baseUpdate"><span class="toc-text">hook.baseUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook-queue"><span class="toc-text">hook.queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook-next"><span class="toc-text">hook.next</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-07-17</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/js/">js</a>
+              
+                <a href="/blog/tags/react/">react</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          react之禅系列之——hooks存储结构
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p><code>hook</code>作为<code>FunctionComponent</code>最重要的机制, 当然要了解一下它是如何存储的.</p>
+<a id="more"></a>
+
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2019-7-17"><a href="#2019-7-17" class="headerlink" title="[2019-7-17]"></a>[2019-7-17]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>在分析<a href="https://github.com/ddzy/react-reading-sources/issues/11" target="_blank" rel="noopener">hooks的运行机制</a>过程中, 我通过一个简单的案例——如何使用<code>hooks</code>? 来引申出在页面渲染阶段, <code>hooks</code>是如何执行的.</p>
+<p>当然, <code>hooks</code>的执行分为两个阶段:</p>
+<ul>
+<li><em>mount</em> 首次渲染阶段</li>
+<li><em>update</em> 后续更新阶段</li>
+</ul>
+<p>本篇笔记将记录有关:</p>
+<ul>
+<li>hooks是如何存储的</li>
+<li>useState-hooks的基本结构</li>
+</ul>
+<p>附上一篇笔记的链接:</p>
+<ul>
+<li><a href="https://github.com/ddzy/react-reading-sources/issues/11" target="_blank" rel="noopener">hooks运行机制</a></li>
+</ul>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><hr>
+<p><strong>注意</strong>: 以下记录的有关<code>hooks</code>的内容, 均在<code>mount</code>阶段执行</p>
+<h3 id="mountState"><a href="#mountState" class="headerlink" title="mountState"></a>mountState</h3><p>先来看一下<code>React.useState</code>的主要源码部分:</p>
+<details>
+<summary>展开源码</summary>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mountState</span>&lt;<span class="title">S</span>&gt;(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  initialState: ((</span>) =&gt; <span class="title">S</span>) | <span class="title">S</span>,</span></span><br><span class="line">): [S, Dispatch&lt;BasicStateAction&lt;S&gt;&gt;] &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建新的hook对象, 并追加至`workInProgressHook`单向循环链表尾部</span></span><br><span class="line">  <span class="keyword">const</span> hook = mountWorkInProgressHook();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> initialState === <span class="string">'function'</span>) &#123;</span><br><span class="line">    initialState = initialState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  hook.memoizedState = hook.baseState = initialState;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建当前hook对象的更新队列, 按次序保存当前hook上产生的所有dispatch</span></span><br><span class="line">  <span class="keyword">const</span> queue = hook.queue = &#123;</span><br><span class="line">    last: <span class="literal">null</span>,</span><br><span class="line">    dispatch: <span class="literal">null</span>,</span><br><span class="line">    lastRenderedReducer: basicStateReducer,</span><br><span class="line">    lastRenderedState: (initialState: any),</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// dispatch对应上述案例中的setName、setAge</span></span><br><span class="line">  <span class="comment">// 而对于当前hook来说, 此时的dispatch = setName</span></span><br><span class="line">  <span class="keyword">const</span> dispatch = queue.dispatch = dispatchAction.bind(</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    currentlyRenderingFiber,</span><br><span class="line">    queue,</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> [hook.memoizedState, dispatch];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h3 id="mountWorkInProgressHook"><a href="#mountWorkInProgressHook" class="headerlink" title="mountWorkInProgressHook"></a>mountWorkInProgressHook</h3><p>在<code>mountWorkInProgressHook</code>函数内部, 定义了<code>hooks</code>在的存储方式. 之前有一个误区, 看了很多类似的对于<code>React-Hooks</code>的分析文章, 都说<code>hooks</code>是以<code>数组</code>的形式存储的, 并对此深信不疑. 但是直到今天看了源码, 才恍然大悟, 可能由于版本变迁, 至少在<code>react@16.8</code>版本, <code>hooks</code>是以<code>单向循环链表</code>的形式存储在<code>fiber</code>上. 话不多说, 看一下源码:</p>
+<details>
+<summary>展开源码</summary>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mountWorkInProgressHook</span>(<span class="params"></span>): <span class="title">Hook</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> hook: Hook = &#123;</span><br><span class="line">    memoizedState: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">    baseState: <span class="literal">null</span>,</span><br><span class="line">    queue: <span class="literal">null</span>,</span><br><span class="line">    baseUpdate: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">    next: <span class="literal">null</span>,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (workInProgressHook === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="comment">// 当前的hook链表为空</span></span><br><span class="line">    firstWorkInProgressHook = workInProgressHook = hook;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 将新的hook对象追加至hook链表尾部</span></span><br><span class="line">    workInProgressHook = workInProgressHook.next = hook;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> workInProgressHook;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h3 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h3><p>在当前<code>函数</code>组件中, 每定义一个<code>hooks</code>API, 对应的, 会创建一个新的<code>hook</code>对象, 看一下<code>hook</code>的类型定义:</p>
+<details>
+<summary>展开源码</summary>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type Hook = &#123;</span><br><span class="line">  <span class="comment">// 每次dispatch之后, 计算出来的新的state, 也就是hooks API返回的state</span></span><br><span class="line">  memoizedState: any,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 保存被中断update的上一个update计算出来的更新</span></span><br><span class="line">  baseState: any,</span><br><span class="line">  <span class="comment">// 保存被中断(优先级不足)update的上一个update</span></span><br><span class="line">  baseUpdate: Update&lt;any, any&gt; | <span class="literal">null</span>,</span><br><span class="line">  <span class="comment">// update更新队列, 单向循环链表结构</span></span><br><span class="line">  queue: UpdateQueue&lt;any, any&gt; | <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下一个update更新</span></span><br><span class="line">  next: Hook | <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p><code>hook</code>结构的几个重要的属性, 在<code>mount</code>阶段, 我并没有看懂, 转而看了一遍<code>update</code>的流程, 也就是在<code>React.useState</code>中, 自行调用<code>dispatch</code>来更新<code>state</code>, 之后才初步理解:</p>
+<ul>
+<li>memoizedState</li>
+<li>baseState</li>
+<li>baseUpdate</li>
+<li>queue</li>
+<li>next</li>
+</ul>
+<h3 id="hook-memoizedState"><a href="#hook-memoizedState" class="headerlink" title="hook.memoizedState"></a>hook.memoizedState</h3><p>顾名思义, 在<code>React.useState</code>中, 保存计算后的新<code>state</code>, 也就是下述代码返回的<code>newState</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [newState, dispatch] = React.useState(initialState);</span><br></pre></td></tr></table></figure>
+
+<h3 id="hook-baseState"><a href="#hook-baseState" class="headerlink" title="hook.baseState"></a>hook.baseState</h3><p>在遍历<code>updateQueue</code>的过程中, 如果遍历到的<code>update</code>的<code>expirationTime</code>小于整体更新的<code>expirationTime</code>, 表明当前的<code>hooks</code>产生的update的优先级较小, 不会在此次更新流程中执行, 从而导致被中断. 此时<code>hook.baseState</code>则保存上一次的<code>update</code>计算出来的<code>state</code>.</p>
+<h3 id="hook-baseUpdate"><a href="#hook-baseUpdate" class="headerlink" title="hook.baseUpdate"></a>hook.baseUpdate</h3><p>同<code>baseState</code>一样, <code>baseUpdate</code>保存上一次被中断的更新的上一个<code>update</code>, 等到下一次<code>renderRoot</code>时, 先从<code>baseUpdate</code>开始.</p>
+<h3 id="hook-queue"><a href="#hook-queue" class="headerlink" title="hook.queue"></a>hook.queue</h3><p><code>hook.queue</code>与<code>class</code>组件的<code>updateQueue</code>相似, 我姑且把它当成<code>updateQueue</code>吧, 不同的是:</p>
+<blockquote>
+<p>在<code>class</code>组件中, <code>updateQueue</code>保存的是整个类产生的更新<br>而在<code>function</code>组件中, <code>updateQueue</code>保存的是单个<code>hooks</code>产生的更新, 此时可能有多个<code>hooks</code></p>
+</blockquote>
+<p>再来看一下<code>queue</code>的结构:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type UpdateQueue&lt;S, A&gt; = &#123;</span><br><span class="line">  <span class="comment">// 最后一个update</span></span><br><span class="line">  last: Update&lt;S, A&gt; | <span class="literal">null</span>,</span><br><span class="line">  <span class="comment">// 返回给用户的dispatch</span></span><br><span class="line">  dispatch: (<span class="function"><span class="params">A</span> =&gt;</span> mixed) | <span class="literal">null</span>,</span><br><span class="line">  <span class="comment">// 上一次使用的reducer</span></span><br><span class="line">  lastRenderedReducer: <span class="function">(<span class="params">(S, A</span>) =&gt;</span> S) | <span class="literal">null</span>,</span><br><span class="line">  <span class="comment">// 上一次渲染之后的state</span></span><br><span class="line">  lastRenderedState: S | <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>每个<code>hooks</code>产生的更新:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">type Update&lt;S, A&gt; = &#123;</span><br><span class="line">  expirationTime: ExpirationTime,</span><br><span class="line">  action: A,</span><br><span class="line">  eagerReducer: <span class="function">(<span class="params">(S, A</span>) =&gt;</span> S) | <span class="literal">null</span>,</span><br><span class="line">  eagerState: S | <span class="literal">null</span>,</span><br><span class="line">  next: Update&lt;S, A&gt; | <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hook-next"><a href="#hook-next" class="headerlink" title="hook.next"></a>hook.next</h3><p>下一个<code>hook</code>节点</p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/07/17/react之禅系列之——hooks存储结构/">https://ddzy.github.io/blog/2019/07/17/react之禅系列之——hooks存储结构/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/07/17/react之禅系列之——hooks运行机制/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>react之禅系列之——hooks运行机制
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/07/17/react之禅系列之——函数组件-FunctionComponent-的更新/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          react之禅系列之——函数组件(FunctionComponent)的更新<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'react之禅系列之——hooks存储结构',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

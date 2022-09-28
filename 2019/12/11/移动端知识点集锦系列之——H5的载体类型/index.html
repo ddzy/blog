@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="h5, web, mobile, Nlvi">
+
+  <title> 移动端知识点集锦系列之——H5的载体类型 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">移动端知识点集锦系列之——H5的载体类型</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-12-11"><span class="toc-text">[2019-12-11]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-12-12"><span class="toc-text">[2019-12-12]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC-载体"><span class="toc-text">PC 载体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mobile-载体"><span class="toc-text">Mobile 载体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-12-11</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/h5/">h5</a>
+              
+                <a href="/blog/tags/web/">web</a>
+              
+                <a href="/blog/tags/mobile/">mobile</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          移动端知识点集锦系列之——H5的载体类型
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>在学校, 接触的前端范围略浅, 只是单纯地知道 <code>PC</code> 端和 <code>Mobile</code> 端, 但是经过实习的摸索, 发现其实 H5 页面有很多种不同的表现形式, 也就是载体.</p>
+<a id="more"></a>
+
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2019-12-11"><a href="#2019-12-11" class="headerlink" title="[2019-12-11]"></a>[2019-12-11]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2019-12-12"><a href="#2019-12-12" class="headerlink" title="[2019-12-12]"></a>[2019-12-12]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>更新 <a href="#mobile-%e8%bd%bd%e4%bd%93">Mobile 载体</a> 区块</li>
+</ul>
+<h2 id="PC-载体"><a href="#PC-载体" class="headerlink" title="PC 载体"></a>PC 载体</h2><hr>
+<p><code>H5</code> 页面在 <code>PC</code> 端的载体, 大概就是各种浏览器了, 其中五大主流的浏览器包括:</p>
+<ul>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Safari</li>
+<li>Opera</li>
+<li>IE</li>
+</ul>
+<p>页面的兼容性, 也主要围绕这几个浏览器来进行.</p>
+<h2 id="Mobile-载体"><a href="#Mobile-载体" class="headerlink" title="Mobile 载体"></a>Mobile 载体</h2><hr>
+<p>实习前, 我天真的以为移动端的页面只是单纯地在浏览器上运行, 这种想法是没错的, 但是实际上, 移动端的浏览器可以分为几种类型:</p>
+<ul>
+<li>纯厂商浏览器</li>
+<li>Webview 套件</li>
+</ul>
+<p>其中, <code>厂商浏览器</code> 和 PC 端一样, 是不同的浏览器厂商研发的, 比如:</p>
+<ul>
+<li>UC 浏览器<ul>
+<li>UC 引擎, 市场占有率最高</li>
+</ul>
+</li>
+<li>QQ 浏览器<ul>
+<li>Webkit 引擎</li>
+</ul>
+</li>
+<li>Safari 浏览器</li>
+<li>…</li>
+</ul>
+<p>而 <code>Webview 套件</code>, 则是不同的操作系统(<code>Android</code> 和 <code>iOS</code>)底层提供的 Web 组件, 供给 HydirdAPP, 比如<strong>微信内部的浏览器</strong>来使用, 由于源于不同的操作系统, 所以肯定存在兼容问题.</p>
+<p>就像 <code>Android</code> 现在已经发展到了 <code>Android10</code>, 而 <code>iOS</code> 则进化到了 <code>iOS13</code>, 每个版本的更新迭代, 必定会产生兼容性的坑, 而这些坑, 需要开发者来填补.</p>
+<p><code>iOS</code> 禁止第三方浏览器内核, 而安卓则允许厂商自定义 <code>Webview</code> 使用的内核, 所以会产生较大的兼容性差异, 腾讯的 <code>X5</code> 就是在这样的大背景下产生的, 目的是为了抹平不同 <code>Android</code> 版本的 <code>webview</code> 差异.</p>
+<blockquote>
+<p>参考:</p>
+<ul>
+<li><a href="https://github.com/o2team/H5Skills/issues/61" target="_blank" rel="noopener">认识 X5 内核</a></li>
+<li><a href="https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1461077225&version=1&lang=zh_CN" target="_blank" rel="noopener">微信浏览器全面升级至X5 Blink内核，支持远程调试</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5NDAxMDg4MA==&mid=2650959275&idx=1&sn=56040489ba61ab7327ab2567a9635dd8&chksm=bd788fc48a0f06d247f2191f72f65ba8806f972b4b754ae4fb5c80fdfe1a0913f44ff20eb37d&mpshare=1&scene=1&srcid=0106Uzg0TeKoEAFZ90sMANAu&key=56f4262f7120a82115092179cca898e5f2f9ea9f59c55a7f8a9e6a05dda30cb0a27cfe48de51efca2994ef3e3b991aa8b39721fe9b1d2d857478fd5d53e6a4d50b694658d145560d57bb6a64efe6739d&ascene=0&uin=OTk0MjA4NTYw&devicetype=iMac+MacBookAir7%2C1+OSX+OSX+10.12.2+build(16C67)&version=12010210&nettype=WIFI&fontScale=100&pass_ticket=WHR6WhkPtP8lSX5WzOITeU24E%2FxfbdCugHQY46JUr2i3uPqyGTUooznFrXxgJizd" target="_blank" rel="noopener">微信iOS客户端将升级为WKWebview内核，请网页开发者尽快适配</a></li>
+</ul>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>最后, 画一张脑图, 来简单梳理一下脉络, 方便记忆:</p>
+<p><img src="https://oos.blog.yyge.top/2019/12/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94H5%E7%9A%84%E8%BD%BD%E4%BD%93%E7%B1%BB%E5%9E%8B/images/1.png?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="H5 页面的载体类型"></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/12/11/移动端知识点集锦系列之——H5的载体类型/">https://ddzy.github.io/blog/2019/12/11/移动端知识点集锦系列之——H5的载体类型/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/12/11/移动端知识集锦系列之——微信浏览器的video标签问题/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>移动端知识集锦系列之——微信浏览器的video标签问题
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/12/11/移动端知识点集锦/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          移动端知识点集锦<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '移动端知识点集锦系列之——H5的载体类型',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

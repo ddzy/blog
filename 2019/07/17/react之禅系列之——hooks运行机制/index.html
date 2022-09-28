@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="js, react, Nlvi">
+
+  <title> react之禅系列之——hooks运行机制 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">react之禅系列之——hooks运行机制</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-7-17"><span class="toc-text">[2019-7-17]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从如何使用说起"><span class="toc-text">从如何使用说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#品内部实现原理"><span class="toc-text">品内部实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mount阶段"><span class="toc-text">mount阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#useState"><span class="toc-text">useState</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mountState"><span class="toc-text">mountState</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update阶段"><span class="toc-text">update阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#updateState"><span class="toc-text">updateState</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hook"><span class="toc-text">hook</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解以前心头之惑"><span class="toc-text">解以前心头之惑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redux"><span class="toc-text">redux</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-07-17</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/js/">js</a>
+              
+                <a href="/blog/tags/react/">react</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          react之禅系列之——hooks运行机制
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>着重记录<code>hooks</code>是如何进行操作整个<code>FunctionComponent</code>进行更新的.</p>
+<a id="more"></a>
+
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2019-7-17"><a href="#2019-7-17" class="headerlink" title="[2019-7-17]"></a>[2019-7-17]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>俗话说, 工欲善其事必先利其器.</p>
+<p>看完<a href="https://github.com/ddzy/react-reading-sources/issues/8" target="_blank" rel="noopener">函数组件的更新</a>源码, 自然而然地对于<code>hooks</code>的实现原理产生了浓厚的兴趣, 故记录在此.</p>
+<h2 id="从如何使用说起"><a href="#从如何使用说起" class="headerlink" title="从如何使用说起"></a>从如何使用说起</h2><hr>
+<p><code>hooks</code>的出现, 完全颠覆了传统的<code>class</code>至上的原则, 解决了<code>代码冗余</code>、<code>可维护性</code>、<code>编译性能</code>等多个问题.</p>
+<p>看源码之前, 先看一下<code>hooks</code>是如何使用的:</p>
+<details>
+<summary>展开源码</summary>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TestHooks = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [name, setName] = React.useState(<span class="string">'ddzy'</span>);</span><br><span class="line">  <span class="keyword">const</span> [age, setAge] = React.useState(<span class="number">21</span>);</span><br><span class="line"></span><br><span class="line">  React.useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"test-hooks-wrapper"</span>&gt;</span><br><span class="line">      &lt;p&gt;&#123;state.count&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button onClick=&#123;() =&gt; setName('duanzhaoyang')&#125;&gt;&#123; name &#125;&lt;/</span>button&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; setAge(<span class="number">22</span>)&#125;&gt;&#123; age &#125;&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p>在源码<code>TestHook</code>组件中, 按照顺序依次调用了三个<code>hooks</code>API, 页面正常更新并渲染. 关于<code>useState</code>、<code>useEffect</code>的使用, 不记录太多了, 官方文档已经解释的非常清楚:</p>
+<p><a href="https://react.docschina.org/docs/hooks-intro.html" target="_blank" rel="noopener">https://react.docschina.org/docs/hooks-intro.html</a></p>
+<h2 id="品内部实现原理"><a href="#品内部实现原理" class="headerlink" title="品内部实现原理"></a>品内部实现原理</h2><hr>
+<p>复习了<code>hooks</code>的基本使用, 着重看下它是如何实现的. 由于目前对于源码的理解还不是很深刻, 故本篇笔记会持续更新.</p>
+<p>由于<code>hooks</code>的执行, 分为<code>mount</code>和<code>update</code>两个阶段. 前者在react应用初次渲染时执行, 后者则在组件全部挂载完成, 用户自定义操作(<code>dispatch</code>)时执行. 由于执行时机不同, 故内部的源码实现逻辑则大相径庭. 所以会分成两个部分来记录.</p>
+<blockquote>
+<p>以下的源码分析都以<code>setState</code>为例</p>
+</blockquote>
+<h3 id="mount阶段"><a href="#mount阶段" class="headerlink" title="mount阶段"></a>mount阶段</h3><h4 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h4><p>以最基本的<code>useState</code>为例, 其源码位于<code>ReactHooks.js</code>, 出乎意料的简单, 只有两行代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">useState</span>&lt;<span class="title">S</span>&gt;(<span class="params">initialState: ((</span>) =&gt; <span class="title">S</span>) | <span class="title">S</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> dispatcher = resolveDispatcher();</span><br><span class="line">  <span class="keyword">return</span> dispatcher.useState(initialState);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着看到<code>resolveDispatcher</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolveDispatcher</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> dispatcher = ReactCurrentDispatcher.current;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dispatcher;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>没错, 很熟悉, 依稀记得在更新<code>function</code>组件之时, 通过<code>renderWithHooks</code>方法, 将<code>ReactCurrentDispatcher.current</code>赋值为<code>HooksDispatcherOnMount</code>.</p>
+<h4 id="mountState"><a href="#mountState" class="headerlink" title="mountState"></a>mountState</h4><p>省去了一大堆重复的步骤, 直接来看<code>useState</code>的最终定义. 由于<code>hooks</code>的执行分为<code>mount</code>和<code>update</code>阶段, 两者采取的更新策略略有不同, 这里只记录<code>mount</code>的过程.</p>
+<details>
+<summary>展开源码</summary>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mountState</span>&lt;<span class="title">S</span>&gt;(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  initialState: ((</span>) =&gt; <span class="title">S</span>) | <span class="title">S</span>,</span></span><br><span class="line">): [S, Dispatch&lt;BasicStateAction&lt;S&gt;&gt;] &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建新的hook对象, 并追加至`workInProgressHook`单向循环链表尾部</span></span><br><span class="line">  <span class="keyword">const</span> hook = mountWorkInProgressHook();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> initialState === <span class="string">'function'</span>) &#123;</span><br><span class="line">    initialState = initialState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  hook.memoizedState = hook.baseState = initialState;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建当前hook对象的更新队列, 按次序保存当前hook上产生的所有dispatch</span></span><br><span class="line">  <span class="keyword">const</span> queue = hook.queue = &#123;</span><br><span class="line">    last: <span class="literal">null</span>,</span><br><span class="line">    dispatch: <span class="literal">null</span>,</span><br><span class="line">    lastRenderedReducer: basicStateReducer,</span><br><span class="line">    lastRenderedState: (initialState: any),</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// dispatch对应上述案例中的setName、setAge</span></span><br><span class="line">  <span class="comment">// 而对于当前hook来说, 此时的dispatch = setName</span></span><br><span class="line">  <span class="keyword">const</span> dispatch = queue.dispatch = dispatchAction.bind(</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    currentlyRenderingFiber,</span><br><span class="line">    queue,</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> [hook.memoizedState, dispatch];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p>从源码可以看出, <code>hooks</code>的内部还是比较绕的. 但是不影响理解, 由于目前处于<code>mount</code>阶段, 所以需要初始化相关的数据结构结构(有关<code>hooks</code>是如何存储的, 可参考<a href="https://github.com/ddzy/react-reading-sources/issues/10" target="_blank" rel="noopener">https://github.com/ddzy/react-reading-sources/issues/10</a>):</p>
+<ul>
+<li>hook</li>
+<li>hook.memorizedState</li>
+<li>hook.queue</li>
+<li>hook.dispatch</li>
+</ul>
+<p>而正常情况下, 会在<code>update</code>阶段产生更新, 最常见的就是用户交互(<code>interactive</code>)时, 用上述例子来说:</p>
+<ul>
+<li>点击按钮, 通过调用<code>setName</code>或<code>setAge</code>来产生一个更新</li>
+</ul>
+<p>所以将重点放在<code>update</code>阶段的分析.</p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><ol>
+<li><strong>如果在<code>mount</code>, 也就是首次渲染阶段, 在当前渲染的<code>函数</code>组件内部产生更新和在其它组件内部产生更新有什么区别?</strong></li>
+</ol>
+<p><code>mount</code>阶段的的<code>dispatch</code>实际上调用了<code>dispatchAction</code>方法, 其内部根据根据产生更新的<code>fiber</code>, 进行不同的处理:</p>
+<ul>
+<li>如果当前fiber处于<code>mount</code>阶段, 且在其内部产生了更新</li>
+<li>如果当前fiber处于<code>mount</code>阶段, 但不是它内部产生的更新, 新的调度(<code>scheduleWork</code>)</li>
+</ul>
+<p>看下<code>dispatchAction</code>的源码:</p>
+<details>
+<summary>展开源码</summary>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dispatchAction</span>&lt;<span class="title">S</span>, <span class="title">A</span>&gt;(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  fiber: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">  queue: UpdateQueue&lt;S, A&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  action: A,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> alternate = fiber.alternate;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// [情况一]: 如果当前fiber处于`mount`阶段, 且在其内部产生了更新</span></span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    fiber === currentlyRenderingFiber ||</span><br><span class="line">    (alternate !== <span class="literal">null</span> &amp;&amp; alternate === currentlyRenderingFiber)</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="comment">// This is a render phase update. Stash it in a lazily-created map of</span></span><br><span class="line">    <span class="comment">// queue -&gt; linked list of updates. After this render pass, we'll restart</span></span><br><span class="line">    <span class="comment">// and apply the stashed updates on top of the work-in-progress hook.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标识是否在`mount`阶段产生更新</span></span><br><span class="line">    <span class="comment">// 产生的更新会保存到`renderPhaseUpdates`字典上</span></span><br><span class="line">    <span class="comment">// 后续在渲染完当前组件之后, 会根据`didScheduleRenderPhaseUpdate`, 来决定是否处理更新</span></span><br><span class="line">    didScheduleRenderPhaseUpdate = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">const</span> update: Update&lt;S, A&gt; = &#123;</span><br><span class="line">      expirationTime: renderExpirationTime,</span><br><span class="line">      action,</span><br><span class="line">      eagerReducer: <span class="literal">null</span>,</span><br><span class="line">      eagerState: <span class="literal">null</span>,</span><br><span class="line">      next: <span class="literal">null</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">if</span> (renderPhaseUpdates === <span class="literal">null</span>) &#123;</span><br><span class="line">      renderPhaseUpdates = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);</span><br><span class="line">    <span class="keyword">if</span> (firstRenderPhaseUpdate === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      renderPhaseUpdates.set(queue, update);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Append the update to the end of the list.</span></span><br><span class="line">      <span class="keyword">let</span> lastRenderPhaseUpdate = firstRenderPhaseUpdate;</span><br><span class="line">      <span class="keyword">while</span> (lastRenderPhaseUpdate.next !== <span class="literal">null</span>) &#123;</span><br><span class="line">        lastRenderPhaseUpdate = lastRenderPhaseUpdate.next;</span><br><span class="line">      &#125;</span><br><span class="line">      lastRenderPhaseUpdate.next = update;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// [情况二]: 如果当前fiber处于`mount`阶段, 但不是它内部产生的更新, 安排一个新的调度工作</span></span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    flushPassiveEffects();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> currentTime = requestCurrentTime();</span><br><span class="line">    <span class="keyword">const</span> expirationTime = computeExpirationForFiber(currentTime, fiber);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> update: Update&lt;S, A&gt; = &#123;</span><br><span class="line">      expirationTime,</span><br><span class="line">      action,</span><br><span class="line">      eagerReducer: <span class="literal">null</span>,</span><br><span class="line">      eagerState: <span class="literal">null</span>,</span><br><span class="line">      next: <span class="literal">null</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Append the update to the end of the list.</span></span><br><span class="line">    <span class="keyword">const</span> last = queue.last;</span><br><span class="line">    <span class="keyword">if</span> (last === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="comment">// This is the first update. Create a circular list.</span></span><br><span class="line">      update.next = update;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> first = last.next;</span><br><span class="line">      <span class="keyword">if</span> (first !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Still circular.</span></span><br><span class="line">        update.next = first;</span><br><span class="line">      &#125;</span><br><span class="line">      last.next = update;</span><br><span class="line">    &#125;</span><br><span class="line">    queue.last = update;</span><br><span class="line"></span><br><span class="line">    scheduleWork(fiber, expirationTime);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h3 id="update阶段"><a href="#update阶段" class="headerlink" title="update阶段"></a>update阶段</h3><p><code>update</code>阶段产生的更新很常规, 省略掉与<code>mount</code>阶段相同的代码</p>
+<h4 id="updateState"><a href="#updateState" class="headerlink" title="updateState"></a>updateState</h4><p>…</p>
+<h3 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h3><blockquote>
+<p><code>hooks</code>与<code>hook</code>不一样. 前者指的是各种API(<code>useState</code>、<code>useEfffect</code>); 后者则特指单个<code>hooks</code>的存储结构. 在这里被坑了好久😂…</p>
+</blockquote>
+<p>在react的<code>函数</code>组件内部, 每定义一个<code>hooks</code>API, 会产生新的<code>hook</code>对象, 追加到<code>fiber.memorizedState</code>链表中, 关于更多的有关于<code>hook</code>的存储结构的分析, 我抽离出了新的<code>issue</code>:</p>
+<ul>
+<li><a href="https://github.com/ddzy/react-reading-sources/issues/10" target="_blank" rel="noopener">hook存储结构</a></li>
+</ul>
+<h2 id="解以前心头之惑"><a href="#解以前心头之惑" class="headerlink" title="解以前心头之惑"></a>解以前心头之惑</h2><hr>
+<h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>看了<code>React.useState</code>的源码, 才发现其设计思想与<code>redux</code>极其类似, 或者说它完全借鉴了<code>redux</code>的策略:</p>
+<ul>
+<li><code>dispatch</code>一个<code>action</code></li>
+<li>内部经过<code>reducer</code>处理得到新的<code>state</code></li>
+<li>返回新的<code>state</code></li>
+</ul>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/07/17/react之禅系列之——hooks运行机制/">https://ddzy.github.io/blog/2019/07/17/react之禅系列之——hooks运行机制/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/07/21/毕设踩坑之路/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>毕设踩坑之路
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/07/17/react之禅系列之——hooks存储结构/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          react之禅系列之——hooks存储结构<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'react之禅系列之——hooks运行机制',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

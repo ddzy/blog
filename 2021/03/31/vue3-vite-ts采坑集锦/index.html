@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="ts, vue3, vue, vite, typescript, Nlvi">
+
+  <title> vue3-vite-ts采坑集锦 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">vue3-vite-ts采坑集锦</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-3-31"><span class="toc-text">[2021-3-31]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-4-1"><span class="toc-text">[2021-4-1]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-4-2"><span class="toc-text">[2021-4-2]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-1"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-4-9"><span class="toc-text">[2021-4-9]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-2"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-4-12"><span class="toc-text">[2021-4-12]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-3"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-4-15"><span class="toc-text">[2021-4-15]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-4"><span class="toc-text">Added</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化项目"><span class="toc-text">初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite-Internal-server-error-Failed-to-resolve-import-“-api-api”-from-“src-main-ts”-Does-the-file-exist"><span class="toc-text">[vite] Internal server error: Failed to resolve import “@/api/api” from “src/main.ts”. Does the file exist?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue3挂载全局属性"><span class="toc-text">vue3挂载全局属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-1"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-1"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步的setup"><span class="toc-text">异步的setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-2"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-2"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限路由的重置"><span class="toc-text">权限路由的重置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-3"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-3"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#404路由配置"><span class="toc-text">404路由配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-4"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-4"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父子传值的方式-props"><span class="toc-text">父子传值的方式-props</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-5"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-5"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#click执行两次"><span class="toc-text">click执行两次</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-6"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-6"><span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成jest单测"><span class="toc-text">集成jest单测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题概述-7"><span class="toc-text">问题概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案-7"><span class="toc-text">解决方案</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2021-03-31</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/ts/">ts</a>
+              
+                <a href="/blog/tags/vue3/">vue3</a>
+              
+                <a href="/blog/tags/vue/">vue</a>
+              
+                <a href="/blog/tags/vite/">vite</a>
+              
+                <a href="/blog/tags/typescript/">typescript</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          vue3-vite-ts采坑集锦
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>记录使用 Vue3 + Vite + Typescript 所踩的坑。</p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2021-3-31"><a href="#2021-3-31" class="headerlink" title="[2021-3-31]"></a>[2021-3-31]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2021-4-1"><a href="#2021-4-1" class="headerlink" title="[2021-4-1]"></a>[2021-4-1]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增 <a href="#异步的setup">异步的setup</a></li>
+</ul>
+<h3 id="2021-4-2"><a href="#2021-4-2" class="headerlink" title="[2021-4-2]"></a>[2021-4-2]</h3><h4 id="Added-1"><a href="#Added-1" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增 <a href="#权限路由的重置">权限路由的重置</a></li>
+<li>新增 <a href="#404路由配置">404路由配置</a></li>
+</ul>
+<h3 id="2021-4-9"><a href="#2021-4-9" class="headerlink" title="[2021-4-9]"></a>[2021-4-9]</h3><h4 id="Added-2"><a href="#Added-2" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增 <a href="#父子传值的方式-props">父子传值的方式-props</a></li>
+</ul>
+<h3 id="2021-4-12"><a href="#2021-4-12" class="headerlink" title="[2021-4-12]"></a>[2021-4-12]</h3><h4 id="Added-3"><a href="#Added-3" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增 <a href="#click执行两次">click执行两次</a></li>
+</ul>
+<h3 id="2021-4-15"><a href="#2021-4-15" class="headerlink" title="[2021-4-15]"></a>[2021-4-15]</h3><h4 id="Added-4"><a href="#Added-4" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增 <a href="#集成jest单测">集成jest单测</a></li>
+</ul>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create @vitejs/app vue3-vite-example-todo --template vue-ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="vite-Internal-server-error-Failed-to-resolve-import-“-api-api”-from-“src-main-ts”-Does-the-file-exist"><a href="#vite-Internal-server-error-Failed-to-resolve-import-“-api-api”-from-“src-main-ts”-Does-the-file-exist" class="headerlink" title="[vite] Internal server error: Failed to resolve import “@/api/api” from “src/main.ts”. Does the file exist?"></a>[vite] Internal server error: Failed to resolve import “@/api/api” from “src/main.ts”. Does the file exist?</h2><hr>
+<h3 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h3><p>已经在 <code>vite.config.ts</code> 中配置了路径别名：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">	plugins: [vue()],</span><br><span class="line">	resolve: &#123;</span><br><span class="line">		alias: &#123;</span><br><span class="line">			<span class="string">'@/'</span>: path.resolve(__dirname, <span class="string">'./src'</span>),</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>并且于 <code>tsconfig.json</code> 中配置了路径映射：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">		<span class="attr">"paths"</span>: &#123;</span><br><span class="line">			<span class="attr">"@/*"</span>: [<span class="string">"src/*"</span>]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还是出现了无法识别路径别名的错误。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>查阅 <a href="https://github.com/vitejs/vite/issues/2316#issuecomment-789410380" target="_blank" rel="noopener">issue#2316</a> 发现，vite 其实是使用 rollup 作为构建工具的，rollup 配置路径别名的语法与 webpack 有所不同，采用的是如下方式：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export default defineConfig(&#123;</span><br><span class="line">	plugins: [vue()],</span><br><span class="line">	resolve: &#123;</span><br><span class="line"><span class="deletion">-		alias: &#123;</span></span><br><span class="line"><span class="deletion">-			'@/': path.resolve(__dirname, './src'),</span></span><br><span class="line"><span class="deletion">-		&#125;,</span></span><br><span class="line"><span class="addition">+   alias: [&#123; find: '@', replacement: path.resolve(__dirname, './src') &#125;],</span></span><br><span class="line">	&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue3挂载全局属性"><a href="#vue3挂载全局属性" class="headerlink" title="vue3挂载全局属性"></a>vue3挂载全局属性</h2><hr>
+<h3 id="问题概述-1"><a href="#问题概述-1" class="headerlink" title="问题概述"></a>问题概述</h3><p>在 <code>vue2.x</code> 中，我们一般直接在 Vue.prototype 上挂载一个方法或属性：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> api <span class="keyword">from</span> <span class="string">'@/api.js'</span></span><br><span class="line"></span><br><span class="line">Vue.prototype.$api = api</span><br></pre></td></tr></table></figure>
+
+<p>之后，为了更好的 ts 代码提示，我们需要声明类型：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> api <span class="keyword">from</span> <span class="string">'@/api/api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> "vue/types/vue" &#123;</span><br><span class="line">  <span class="keyword">interface</span> Vue &#123;</span><br><span class="line">    $api: <span class="keyword">typeof</span> api</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>在 <code>vue3.x</code> 中，可以通过如下方式挂载全局属性</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> api <span class="keyword">from</span> <span class="string">'@/api/api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp(App);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两种方式均可</span></span><br><span class="line"><span class="comment">// app.use((vue) =&gt; &#123;</span></span><br><span class="line"><span class="comment">// 	vue.config.globalProperties['$api'] = api;</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line">app.config.globalProperties[<span class="string">'$api'</span>] = api;</span><br><span class="line"></span><br><span class="line">app.mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>接着，如果我们需要编写类型声明文件，<code>vue3.x</code> 和 <code>vue2.x</code> 所采取的方式不太一样。</p>
+<p><code>src/@types/</code> 目录下新建 <code>properties-vue.d.ts</code>，接着引入并声明自定义的各种方法和属性：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'@/api/api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '@vue/runtime-core' &#123;</span><br><span class="line">	<span class="keyword">interface</span> ComponentCustomProperties &#123;</span><br><span class="line">		$api: <span class="keyword">typeof</span> api</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>记住，编写声明文件之后，需要重新启动编辑器！</strong></p>
+<p>最后，我们可以在 Composition API 中这么使用：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">	defineComponent,</span><br><span class="line">	getCurrentInstance,</span><br><span class="line">	ComponentInternalInstance,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">	<span class="keyword">async</span> setup() &#123;</span><br><span class="line">		<span class="keyword">const</span> app = (getCurrentInstance() <span class="keyword">as</span> ComponentInternalInstance).proxy;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (app) &#123;</span><br><span class="line">			<span class="keyword">const</span> res = <span class="keyword">await</span> app.$api.fetchUserInfo(<span class="string">'xxx'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果你依旧想用 Options API 的话，那么你可以这么做，如下图所示：</p>
+<p><img src="https://oos.blog.yyge.top/2021%2F3%2F31%2Fvue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6%2Fimages%2F1.png" alt="1.png"></p>
+<h2 id="异步的setup"><a href="#异步的setup" class="headerlink" title="异步的setup"></a>异步的setup</h2><hr>
+<h3 id="问题概述-2"><a href="#问题概述-2" class="headerlink" title="问题概述"></a>问题概述</h3><p>在编写组件的时候，遇到了一个问题，如果在组件中定义了异步的 <code>setup</code>，那么该组件就<strong>无法被渲染</strong>，例如 <code>src/components/Todo/index.vue</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineComponent &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  name: <span class="string">"Todo"</span>,</span><br><span class="line">	<span class="comment">// 异步的 setup</span></span><br><span class="line">  <span class="keyword">async</span> setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> app = (getCurrentInstance() <span class="keyword">as</span> ComponentInternalInstance).proxy;</span><br><span class="line">		<span class="keyword">const</span> res = <span class="keyword">await</span> app?.$api.getTodoList();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			todoList: reactive(res)</span><br><span class="line">		&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>由于 async 返回的 Promise 使得 setup 函数被挂起，也就是该组件会被异步渲染，解决方式很简单，如果定义了异步的 setup，那么需要在其父组件中包裹一层 <code>&lt;Suspense&gt;</code> 组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Suspense</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Todo</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="权限路由的重置"><a href="#权限路由的重置" class="headerlink" title="权限路由的重置"></a>权限路由的重置</h2><hr>
+<h3 id="问题概述-3"><a href="#问题概述-3" class="headerlink" title="问题概述"></a>问题概述</h3><p>在 vue2 + vue-router3 中，我们想实现权限菜单，就需要后端来动态的返回一个菜单列表，大体格式如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GET /menus HTTP/1.1</span></span><br><span class="line"><span class="keyword">const</span> dynamicRoutes = [</span><br><span class="line">	&#123;</span><br><span class="line">		action: <span class="string">'PageA'</span>,</span><br><span class="line">		permissions: [<span class="string">'按钮1'</span>, <span class="string">'按钮2'</span>， ...]</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		action: <span class="string">'PageB'</span>,</span><br><span class="line">		permissions: []</span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>然后我们根据后端返回的权限菜单来与本地的静态路由表作对比，筛选出有权限展现的页面，静态路由表如下格式：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> staticRoutes = [</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">'/pageA'</span>,</span><br><span class="line">		name: <span class="string">'PageA'</span></span><br><span class="line">		meta: &#123;</span><br><span class="line">			hidden: <span class="literal">false</span></span><br><span class="line">		&#125;,</span><br><span class="line">		component: PageA,</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">'/pageB'</span>,</span><br><span class="line">		name: <span class="string">'PageB'</span>,</span><br><span class="line">		meta: &#123;</span><br><span class="line">			hidden: <span class="literal">false</span></span><br><span class="line">		&#125;,</span><br><span class="line">		component: PageA,</span><br><span class="line">	&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>最终需要重置 <code>Router</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比对后端返回的动态路由表中与本地路由表对应的项，设置 hidden 属性，hidden 用来标识当前页面是否显示</span></span><br><span class="line"><span class="keyword">const</span> finalRoutes = staticRoutes.map(<span class="function"><span class="params">outerV</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> foundMenu = dynamicRoutes.find(<span class="function"><span class="params">innerV</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> innerV.action === outerV.name;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		...outerV,</span><br><span class="line">		meta: &#123;</span><br><span class="line">				..outerV.meta,</span><br><span class="line">			hidden: !foundMenu,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换现存的 Router</span></span><br><span class="line">router.matcher = createRouter(finalRoutes).matcher;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h3><p>vue-router4 抛弃了 <code>router.matcher</code> 属性，所以我们只能通过 <code>router.addRoute()</code> 来添加路由，引用 vue-route4 官方文档里的一句话：</p>
+<p><img src="https://oos.blog.yyge.top/2021%2F3%2F31%2Fvue3-vite-ts%E9%87%87%E5%9D%91%E9%9B%86%E9%94%A6%2Fimages%2F2.png" alt="2.png"></p>
+<p>所以，最终的代码是这样的：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ import &#123; useRouter &#125; from 'vue-router';</span></span><br><span class="line"></span><br><span class="line">// 替换现存的 Router</span><br><span class="line"><span class="deletion">- router.matcher = createRouter(finalRoutes).matcher;</span></span><br><span class="line"><span class="addition">+ finalRoutes.forEach(v =&gt; &#123;</span></span><br><span class="line"><span class="addition">+	 // addRoute() 第一个参数代表要插入的路由的父级路由</span></span><br><span class="line"><span class="addition">+	 router &amp;&amp; router.addRoute('Home', v);</span></span><br><span class="line"><span class="addition">+ &#125;);</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="404路由配置"><a href="#404路由配置" class="headerlink" title="404路由配置"></a>404路由配置</h2><hr>
+<h3 id="问题概述-4"><a href="#问题概述-4" class="headerlink" title="问题概述"></a>问题概述</h3><p>在 vue2 中，我们通常使用通配符 <code>*</code> 来匹配所有不存在的路由页，从而跳转到自定义的 404 页，我们的本地静态路由表可能是这样的：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHashHistory &#125; <span class="keyword">from</span> <span class="string">'vue-router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = createRouter(&#123;</span><br><span class="line">	history: createWebHashHistory(),</span><br><span class="line">	routes: [</span><br><span class="line">		&#123;</span><br><span class="line">			path: <span class="string">'*'</span>,</span><br><span class="line">			name: <span class="string">'NotFound'</span>,</span><br><span class="line">			component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/404/index.vue'</span>),</span><br><span class="line">		&#125;,</span><br><span class="line">	],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案-4"><a href="#解决方案-4" class="headerlink" title="解决方案"></a>解决方案</h3><p>但是在 vue-router4 中，取消了通配符式匹配，须按如下方式来匹配 404 路由：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const router = createRouter(&#123;</span><br><span class="line">	history: createWebHashHistory(),</span><br><span class="line">	routes: [</span><br><span class="line"><span class="deletion">-		&#123;</span></span><br><span class="line"><span class="deletion">-			path: '*',</span></span><br><span class="line"><span class="deletion">-			name: 'NotFound',</span></span><br><span class="line"><span class="deletion">-			component: () =&gt; import('@/views/404/index.vue'),</span></span><br><span class="line"><span class="deletion">-		&#125;,</span></span><br><span class="line"><span class="addition">+		&#123;</span></span><br><span class="line"><span class="addition">+			path: '/404',</span></span><br><span class="line"><span class="addition">+			name: 'NotFound',</span></span><br><span class="line"><span class="addition">+			component: () =&gt; import('@/views/404/index.vue'),</span></span><br><span class="line"><span class="addition">+		&#125;,</span></span><br><span class="line"><span class="addition">+		&#123;</span></span><br><span class="line"><span class="addition">+			path: '/:pathMatch(.*)*',</span></span><br><span class="line"><span class="addition">+			redirect: '/404',</span></span><br><span class="line"><span class="addition">+		&#125;,</span></span><br><span class="line">	],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="父子传值的方式-props"><a href="#父子传值的方式-props" class="headerlink" title="父子传值的方式-props"></a>父子传值的方式-props</h2><hr>
+<h3 id="问题概述-5"><a href="#问题概述-5" class="headerlink" title="问题概述"></a>问题概述</h3><p>起初，翻了下 defineComponent 的类型定义，我以为直接通过以下的方式来定义 props 并接收：</p>
+<p><code>index.d.ts</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> IButtonType =</span><br><span class="line">	| <span class="string">'primary'</span></span><br><span class="line">	| <span class="string">'success'</span></span><br><span class="line">	| <span class="string">'danger'</span></span><br><span class="line">	| <span class="string">'default'</span></span><br><span class="line">	| <span class="string">'warning'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> IButtonNativeType = <span class="string">'button'</span> | <span class="string">'submit'</span> | <span class="string">'reset'</span> | <span class="string">'menu'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> IChildProps &#123;</span><br><span class="line">	<span class="keyword">type</span>?: IButtonType;</span><br><span class="line">	nativeType?: IButtonNativeType;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Child.vue</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent&lt;IChildProps&gt;(&#123;</span><br><span class="line">	setup(props) &#123;</span><br><span class="line">		<span class="comment">// 问题：props 总是空对象</span></span><br><span class="line">		<span class="comment">// props.type =&gt; undefined</span></span><br><span class="line">		<span class="comment">// props.nativeType =&gt; undefined</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'props :&gt;&gt; '</span>, props);</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>Parent.vue</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Child</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">nativeType</span>=<span class="string">"button"</span>&gt;</span>主按钮<span class="tag">&lt;/<span class="name">Child</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是在 <code>Child.vue</code> 接收到的 props 总是空对象。</p>
+<h3 id="解决方案-5"><a href="#解决方案-5" class="headerlink" title="解决方案"></a>解决方案</h3><p>vue3 目前依旧是采用 PropType 的形式来定义 props，所以上面的方式暂时是不可取的，变通一下：</p>
+<p><code>Child.vue</code>：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import * as TYPES from './index.d.ts';</span><br><span class="line"></span><br><span class="line"><span class="deletion">-export default defineComponent&lt;IChildProps&gt;(&#123;</span></span><br><span class="line"><span class="addition">+export default defineComponent(&#123;</span></span><br><span class="line"><span class="addition">+	props: &#123;</span></span><br><span class="line"><span class="addition">+		type: String as () =&gt; TYPES.IButtonType,</span></span><br><span class="line"><span class="addition">+		nativeType: String as () =&gt; TYPES.IButtonNativeType,</span></span><br><span class="line"><span class="addition">+	&#125;,</span></span><br><span class="line">	setup(props) &#123;</span><br><span class="line">		console.log('props :&gt;&gt; ', props);</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="click执行两次"><a href="#click执行两次" class="headerlink" title="click执行两次"></a>click执行两次</h2><hr>
+<h3 id="问题概述-6"><a href="#问题概述-6" class="headerlink" title="问题概述"></a>问题概述</h3><p>由于在编写组件库的时候，子组件（<code>Button</code>）需要将 click 事件交给外界（<code>父组件</code>）处理，具体代码如下：</p>
+<p><code>子组件（Button）</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"handleClick"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">		setup(props, context) &#123;</span><br><span class="line"><span class="javascript">			<span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				context.emit(<span class="string">'click'</span>, e);</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> &#123;</span></span><br><span class="line">				handleClick,</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>外界组件</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">V3Button</span> @<span class="attr">click</span>=<span class="string">"handleClick"</span>&gt;</span><span class="tag">&lt;/<span class="name">V3Button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">import</span> V3Button <span class="keyword">from</span> <span class="string">'./components/Button.vue'</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> defineCompoent(&#123;</span></span><br><span class="line">		components: &#123;</span><br><span class="line">			V3Button,</span><br><span class="line">		&#125;,</span><br><span class="line">		setup() &#123;</span><br><span class="line"><span class="javascript">			<span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="comment">// 执行两次</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(e);</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码会产生一个问题，外界组件中的 <code>handleClick</code> 会执行两次。</p>
+<h3 id="解决方案-6"><a href="#解决方案-6" class="headerlink" title="解决方案"></a>解决方案</h3><p>在 vue3 中，子组件的根节点会默认接收父组件上的所有 <code>v-on</code> 监听事件，所以如果需要在子组件的根元素上触发事件的话，不用在子组件中定义相应的处理函数，比如：</p>
+<p><code>子组件（Button）</code>：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"><span class="deletion">-	&lt;button @click="handleClick"&gt;&lt;/button&gt;</span></span><br><span class="line"><span class="addition">+	&lt;button&gt;&lt;/button&gt;</span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang="ts"&gt;</span><br><span class="line">	export default defineComponent(&#123;</span><br><span class="line">		setup(props, context) &#123;</span><br><span class="line"><span class="deletion">-			function handleClick(e) &#123;</span></span><br><span class="line"><span class="deletion">-				context.emit('click', e);</span></span><br><span class="line"><span class="deletion">-			&#125;</span></span><br><span class="line"><span class="deletion">-</span></span><br><span class="line"><span class="deletion">-			return &#123;</span></span><br><span class="line"><span class="deletion">-				handleClick,</span></span><br><span class="line"><span class="deletion">-			&#125;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="集成jest单测"><a href="#集成jest单测" class="headerlink" title="集成jest单测"></a>集成jest单测</h2><hr>
+<h3 id="问题概述-7"><a href="#问题概述-7" class="headerlink" title="问题概述"></a>问题概述</h3><p>由于编写组件库，需要在项目中集成 <code>jest</code> 单元测试。</p>
+<h3 id="解决方案-7"><a href="#解决方案-7" class="headerlink" title="解决方案"></a>解决方案</h3><p>首先列出所需依赖：</p>
+<table>
+<thead>
+<tr>
+<th>依赖名</th>
+<th>环境</th>
+<th>概述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>jest</td>
+<td>dev</td>
+<td>官方的 jest 库</td>
+</tr>
+<tr>
+<td>ts-jest</td>
+<td>dev</td>
+<td>用来编译 <code>*.ts</code> 文件</td>
+</tr>
+<tr>
+<td>vue-jest</td>
+<td>dev</td>
+<td>用来编译 <code>*.vue</code> 文件</td>
+</tr>
+<tr>
+<td>@types/jest</td>
+<td>dev</td>
+<td>ts 类型支持</td>
+</tr>
+</tbody></table>
+<p>接着配置 <code>tsconfig.json</code>：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"compilerOptions": &#123;</span><br><span class="line"><span class="addition">+		# 此处的 types 表明：只需要在本项目的 node_modules 寻找 ts 声明文件，不去父级向上一次查找</span></span><br><span class="line"><span class="addition">+		"types": ["vite/client", "jest", "node"]</span></span><br><span class="line">	&#125;,</span><br><span class="line">	"include": [</span><br><span class="line">		"src/**/*.ts",</span><br><span class="line">		"src/**/*.d.ts",</span><br><span class="line">		"src/**/*.tsx",</span><br><span class="line">		"src/**/*.vue",</span><br><span class="line"><span class="addition">+		"__tests__/**/*"</span></span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后配置终端命令（<code>package.json</code>）：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"scripts": &#123;</span><br><span class="line">		"dev": "vite",</span><br><span class="line">		"build": "vue-tsc --noEmit &amp;&amp; vite build",</span><br><span class="line">		"serve": "vite preview",</span><br><span class="line"><span class="addition">+		"test": "jest"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	"dependencies": &#123;</span><br><span class="line">		"icon": "^0.0.3",</span><br><span class="line">		"vue": "^3.0.5"</span><br><span class="line">	&#125;,</span><br><span class="line">	"devDependencies": &#123;</span><br><span class="line">		"@types/jest": "^26.0.22",</span><br><span class="line">		"@types/node": "^14.14.37",</span><br><span class="line">		"@vitejs/plugin-vue": "^1.2.1",</span><br><span class="line">		"@vue/compiler-sfc": "^3.0.5",</span><br><span class="line">		"@vue/test-utils": "^1.1.4",</span><br><span class="line">		"jest": "^26.6.3",</span><br><span class="line">		"sass": "^1.32.8",</span><br><span class="line">		"ts-jest": "^26.5.4",</span><br><span class="line">		"typescript": "^4.1.3",</span><br><span class="line">		"vite": "^2.1.5",</span><br><span class="line">		"vue-jest": "^3.0.7",</span><br><span class="line">		"vue-tsc": "^0.0.15"</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2021/03/31/vue3-vite-ts采坑集锦/">https://ddzy.github.io/blog/2021/03/31/vue3-vite-ts采坑集锦/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2021/05/03/通过nvm安装npm失败的解决方案/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>通过nvm安装npm失败的解决方案
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2021/03/04/CSS动画集锦系列之——实现一个闪光带投影的button按钮/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          CSS动画集锦系列之——实现一个闪光带投影的button按钮<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'vue3-vite-ts采坑集锦',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

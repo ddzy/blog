@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="css, web, Nlvi">
+
+  <title> 【译】深度解析CSS是如何工作的 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">【译】深度解析CSS是如何工作的</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-5"><span class="toc-text">[2021-2-5]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-9"><span class="toc-text">[2021-2-9]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-18"><span class="toc-text">[2021-2-18]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-1"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-19"><span class="toc-text">[2021-2-19]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-2"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-22"><span class="toc-text">[2021-2-22]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level1——CSS-属性的默认样式"><span class="toc-text">Level1——CSS 属性的默认样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始值"><span class="toc-text">初始值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-text">继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level2——User-Agent-Stylesheet"><span class="toc-text">Level2——User-Agent-Stylesheet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-元素的特定样式由谁来决定？"><span class="toc-text">HTML 元素的特定样式由谁来决定？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level3——Normalize-CSS"><span class="toc-text">Level3——Normalize CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“Normalize-CSS”-是什么？它是如何工作的？"><span class="toc-text">“Normalize CSS” 是什么？它是如何工作的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalize-css-项目"><span class="toc-text">Normalize.css 项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level4——CSS-Reset"><span class="toc-text">Level4——CSS Reset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“CSS-Reset”-是什么？它是如何工作的？"><span class="toc-text">“CSS Reset” 是什么？它是如何工作的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“Normalize-CSS”-和-“CSS-Reset”-结合使用"><span class="toc-text">“Normalize CSS” 和 “CSS Reset” 结合使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结上述的-4-个-Level"><span class="toc-text">总结上述的 4 个 Level</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part5——CSS-样式重置关键字"><span class="toc-text">Part5——CSS 样式重置关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“inherit”-和-“initial”"><span class="toc-text">“inherit” 和 “initial”</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#‘inherit’"><span class="toc-text">‘inherit’</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#‘initial’"><span class="toc-text">‘initial’</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#‘unset’"><span class="toc-text">‘unset’</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重置样式产生的问题"><span class="toc-text">重置样式产生的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#‘revert’"><span class="toc-text">‘revert’</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-样式重置关键字总结"><span class="toc-text">CSS 样式重置关键字总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个标准的样式"><span class="toc-text">定义一个标准的样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part6——“all”-属性"><span class="toc-text">Part6——“all” 属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#“CSS-Reset-的前景”"><span class="toc-text">“CSS Reset 的前景”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2021-02-05</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/translation/">translation</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/css/">css</a>
+              
+                <a href="/blog/tags/web/">web</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          【译】深度解析CSS是如何工作的
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>原文链接：</p>
+<p><a href="https://elad.medium.com/how-does-css-work-92fe7116916d" target="_blank" rel="noopener">https://elad.medium.com/how-does-css-work-92fe7116916d</a></p>
+<p>本文已归纳在 <a href="https://github.com/ddzy/translations" target="_blank" rel="noopener">Github</a>。</p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2021-2-5"><a href="#2021-2-5" class="headerlink" title="[2021-2-5]"></a>[2021-2-5]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2021-2-9"><a href="#2021-2-9" class="headerlink" title="[2021-2-9]"></a>[2021-2-9]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成 <code>概述</code> 章节</li>
+<li>完成 Level1 的 <code>初始值</code> 章节</li>
+</ul>
+<h3 id="2021-2-18"><a href="#2021-2-18" class="headerlink" title="[2021-2-18]"></a>[2021-2-18]</h3><h4 id="Added-1"><a href="#Added-1" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成 Level3 章节</li>
+</ul>
+<h3 id="2021-2-19"><a href="#2021-2-19" class="headerlink" title="[2021-2-19]"></a>[2021-2-19]</h3><h4 id="Added-2"><a href="#Added-2" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成剩余章节</li>
+</ul>
+<h3 id="2021-2-22"><a href="#2021-2-22" class="headerlink" title="[2021-2-22]"></a>[2021-2-22]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更改文末的文章链接</li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><hr>
+<blockquote>
+<p>副标题（补充）：理解浏览器默认的样式行为</p>
+</blockquote>
+<p>在你为网站中的某个 DOM 元素编写 CSS 样式之前，浏览器会给这个 DOM 元素添加一个默认的样式。</p>
+<p>你有没有想过这些默认样式是由谁来决定的？</p>
+<p>在这篇文章中，我将教会你：</p>
+<ul>
+<li>浏览器中不同级别的 CSS</li>
+<li>每一级 CSS 是如何工作的</li>
+<li>我们该如何去控制</li>
+</ul>
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/1.png" alt="1.png"></p>
+<p>在我刚开始学习 CSS 的时候，我还以为所有的 CSS 默认样式都来自于浏览器自身的 “User-Agent Stylesheet” 文件。但是后来，我发现我错了，这只是冰山一角。</p>
+<p>让我们开始吧！</p>
+<h2 id="Level1——CSS-属性的默认样式"><a href="#Level1——CSS-属性的默认样式" class="headerlink" title="Level1——CSS 属性的默认样式"></a>Level1——CSS 属性的默认样式</h2><hr>
+<p>每个 CSS 属性都有一个 <strong>规范</strong>。这些规范也是 W3C 标准的一部分。</p>
+<h3 id="初始值"><a href="#初始值" class="headerlink" title="初始值"></a>初始值</h3><p>每个 CSS 属性都有一个初始值。这个初始值不依赖于该 CSS 属性所应用的 HTML 元素。也就是说，对于所有的 HTML 元素，如果具有某个 CSS 属性的话，那么这个属性都会有一个初始值，并且初始值都是一样的。</p>
+<p>我相信绝大多数 web 开发者都不知道这一点。</p>
+<p><strong>以 CSS 的定位属性（<code>position</code>）为例：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.some-class</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>你知道 position 属性的默认值是什么吗？</strong></p>
+<p>很多 web 开发者都回答不出来。正确的答案是：<code>static</code>。</p>
+<p>类似的还有其它与定位相关的属性，比如：<code>top</code>/<code>bottom</code>/<code>left</code>/<code>right</code>，它们的初始值都是 <code>auto</code>。</p>
+<p><strong>请记住</strong> —— 在你开始编写样式之前，这些 CSS 属性的基本样式就已经存在了。。。</p>
+<p>下面是 CSS 定位相关属性的默认值：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">position</span>: static;</span><br><span class="line">  <span class="attribute">top</span>: auto;</span><br><span class="line">  <span class="attribute">bottom</span>: auto;</span><br><span class="line">  <span class="attribute">left</span>: auto;</span><br><span class="line">  <span class="attribute">right</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>想知道每个 CSS 属性的初始值是什么？最佳途径就是查阅 MDN 文档：</p>
+<blockquote>
+<p>中文文档（查阅 “规范” 部分）：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#specifications" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#specifications</a></p>
+</blockquote>
+<blockquote>
+<p>英文文档（查阅 “Formal Definition” 部分）：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#formal_definition" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/position#formal_definition</a></p>
+</blockquote>
+<p>如下图所示：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#formal_definition" target="_blank" rel="noopener"><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/2.png" alt="2.png"></a></p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>第二个有趣的特性就是：部分 CSS 属性具有 “继承行为”。也就是说，假设我们给某个 HTML 元素设置了一些特定的样式，那么该元素的后代都会继承这些样式。</p>
+<p>一般情况下，以下两种类型的 CSS 属性会具有继承的行为：</p>
+<ul>
+<li>文本类型：<code>font-family</code>、<code>font-size</code>、<code>color</code>、<code>text-align</code></li>
+<li>排版类型：<a href="https://medium.com/cssclass-com/css-basics-for-typography-160025e3aeca" target="_blank" rel="noopener">CSS 排版属性介绍</a></li>
+</ul>
+<p><strong>想象一下</strong>：当你给 <code>&lt;body&gt;</code> 元素设置了 <code>font-size: 20px</code> 属性，那么 <code>&lt;body&gt;</code> 元素的所有后代元素都会继承这个 <code>font-size</code>，除非你给某个后代元素重新设置了 <code>font-size</code>。</p>
+<p>但是如果你给 <code>&lt;body&gt;</code> 元素设置了 <code>padding: 20px</code> 属性，那么其后代元素都不会继承 <code>padding</code>，为什么呢？因为 <code>padding</code> 属性是没有继承行为的，也就是说，它是不能继承的。</p>
+<blockquote>
+<p><strong>实际上，我们可能在没有意识到的情况下，就使用了继承。。。</strong></p>
+</blockquote>
+<p><strong>HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  Some text in the body HTML element</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span> some text on the div HTML element <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>CSS：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>; <span class="comment">/* body 和 div 都会继承这个样式 */</span></span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;   <span class="comment">/* 只对 body 自身有效 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://codepen.io/elad2412/pen/6c47b9d2c1dd836e2d7281d7640ac552" target="_blank" rel="noopener"><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/3.png" alt="3.png"></a></p>
+<p><strong>那么问题来了，我们在浏览器进行调试的时候怎么才能知道某个 CSS 属性是否可以继承呢？</strong></p>
+<p>实际上，在我们使用 “审查元素” 功能查看 <code>&lt;div&gt;</code> 元素的样式的时候，浏览器的开发者工具会展示哪些样式是从 <code>&lt;body&gt;</code> 继承而来的。</p>
+<p>例如在下图中，<code>font-size</code> 属性是可继承的，所以会高亮显示；反之，<code>padding</code> 是不可继承的，会置灰显示：</p>
+<p><a href="https://codepen.io/elad2412/pen/4bd977d6645fbe70921c4c01c1b23fba" target="_blank" rel="noopener"><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/4.jpeg" alt="4.jpeg"></a></p>
+<p><strong>检查继承行为的正式方式</strong></p>
+<p>要想了解一个 CSS 属性是否可继承，除了自己尝试之外，另一种方式就是查阅 MDN 文档中的 “规范” 部分。</p>
+<p><strong>如下图所示：</strong>仔细对比左右两块区域的差距即可：</p>
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/5.jpeg" alt="5.jpeg"></p>
+<h2 id="Level2——User-Agent-Stylesheet"><a href="#Level2——User-Agent-Stylesheet" class="headerlink" title="Level2——User-Agent-Stylesheet"></a>Level2——User-Agent-Stylesheet</h2><hr>
+<blockquote>
+<p>“User-Agent-Stylesheet”：浏览器默认样式表</p>
+</blockquote>
+<p>在 Level1 章节中，我们了解到：</p>
+<ul>
+<li>所有的 HTML 元素上的所有 CSS 属性具有相同的初始值</li>
+<li>所有的 CSS 属性有且只有一个初始值</li>
+</ul>
+<p>在本章节，我将介绍 <strong>“User-Agent-Stylesheet”</strong> —— 这是一种区别于不同类型的 HTML 元素的特殊样式表。</p>
+<p><strong>“User-Agent-Stylesheet”</strong> 其实就是一个 CSS 文件，区别在于不同的浏览器厂商实现了不同的版本。与 Level1 章节中介绍的 “CSS 属性的默认值” 截然相反的是：后者表明 CSS 属性的初始值和 HTML 元素没啥关系；而前者则通过为不同的 HTML 标签创建样式，从而关联 HTML 和 CSS。</p>
+<p><strong>举个例子：</strong><code>display</code> 属性的初始值无论在什么情况下，都是 <code>inline</code>。但是在我们的认知中，<code>&lt;div&gt;</code> 元素默认的样式是：<code>display: block</code>。产生这种变化的根本原因就在于 “User-Agent-Stylesheet”。</p>
+<p><strong>验证上述例子的最好方式就是审查 <code>&lt;span&gt;</code> 和 <code>&lt;div&gt;</code> 元素：</strong></p>
+<ul>
+<li><strong>当我们审查 <code>&lt;span&gt;</code> 元素的时候</strong>，貌似看不到任何样式。这是因为开发者工具是不会显示 “CSS 属性的初始值（Level-1）” 的；相反，会显示默认样式表（“User-Agent-Stylesheet”（Level 2））。<strong>你想一下：</strong> 每个 CSS 属性都有一个初始值（CSS 属性的默认样式（Level-1）），当你调试的时候，肯定不想让所有的初始值都显示出来。<code>display</code> 的初始值是 <code>inline</code>。因此它不会出现在浏览器的 “审查元素” 调试栏中。<br><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/6.png" alt="6.png"></li>
+<li><strong>当我们审查 <code>&lt;div&gt;</code> 元素的时候</strong>，可以看到 <code>display: block</code> 样式显示出来了，这是因为 “User-Agent-Stylesheet（Level 2）” 文件中的样式值覆盖了 <code>display</code> 属性的初始值 <code>inline</code>（“CSS 属性的初始值（Level 1）”）。<br><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/7.png" alt="7.png"></li>
+</ul>
+<h3 id="HTML-元素的特定样式由谁来决定？"><a href="#HTML-元素的特定样式由谁来决定？" class="headerlink" title="HTML 元素的特定样式由谁来决定？"></a>HTML 元素的特定样式由谁来决定？</h3><p>HTML 元素的默认样式是由 W3C/WHATWG 的 web 标准来决定的。然而，与 Level-1 提到的 “CSS 属性的初始值” 不同的是：所有浏览器都可以根据这个标准来 “添油加醋”，进而定义了不同的默认样式。。。</p>
+<p>下图所示的是：根据 CSS2.2 标准，针对 HTML4 而制定的 CSS 默认样式表：</p>
+<p><a href="https://www.w3.org/TR/CSS22/sample.html" target="_blank" rel="noopener"><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/8.png" alt="8.png"></a></p>
+<p>（附上其它版本的 CSS 标准：<a href="https://www.w3.org/TR/CSS21/sample.html" target="_blank" rel="noopener">CSS2.1</a>，<a href="https://www.w3.org/TR/CSS22/sample.html" target="_blank" rel="noopener">CSS2.2</a>，<a href="https://html.spec.whatwg.org/multipage/rendering.html" target="_blank" rel="noopener">CSS3</a>）。</p>
+<h2 id="Level3——Normalize-CSS"><a href="#Level3——Normalize-CSS" class="headerlink" title="Level3——Normalize CSS"></a>Level3——Normalize CSS</h2><hr>
+<p>因为不同浏览器都实现了不同的 “User-Agent-Stylesheet（Level-2）”，所以后来又出现了 <strong>“Normalize CSS”</strong>。<strong>“Normalize CSS”</strong> 可以让样式在不同浏览器上具有相同的显示效果。</p>
+<h3 id="“Normalize-CSS”-是什么？它是如何工作的？"><a href="#“Normalize-CSS”-是什么？它是如何工作的？" class="headerlink" title="“Normalize CSS” 是什么？它是如何工作的？"></a>“Normalize CSS” 是什么？它是如何工作的？</h3><p><strong>“Normalize CSS”</strong> 指的是：通过创建一份默认的 HTML 样式来覆盖 “User-Agent-Stylesheet（Level 2）”，使得不同的浏览器中的 HTML 元素的默认样式保持一致。而 <strong><a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener">normalize.css</a></strong> 则是 <strong>“Normalize CSS”</strong> 的一个产物。</p>
+<p><strong>如下所示的样式，是 <a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener">normalize.css</a> 中的一部分：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Render the `main` element consistently in IE.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="selector-tag">main</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Normalize-css-项目"><a href="#Normalize-css-项目" class="headerlink" title="Normalize.css 项目"></a>Normalize.css 项目</h3><p>由 Nicolas Gallagher 创建的 <strong><a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener">normalize.css</a></strong> 是目前最受欢迎的 Normalize.css 项目。</p>
+<h2 id="Level4——CSS-Reset"><a href="#Level4——CSS-Reset" class="headerlink" title="Level4——CSS Reset"></a>Level4——CSS Reset</h2><hr>
+<p>在很多场景下，我们可能并不想使用浏览器提供的默认样式（“User-Agent-Stylesheet（level-2）”），比如：<code>font-size</code> 和 <code>margin</code>，于是 <strong>“CSS Reset”</strong> 便应运而出了。</p>
+<h3 id="“CSS-Reset”-是什么？它是如何工作的？"><a href="#“CSS-Reset”-是什么？它是如何工作的？" class="headerlink" title="“CSS Reset” 是什么？它是如何工作的？"></a>“CSS Reset” 是什么？它是如何工作的？</h3><p><strong>“CSS Reset”</strong> 指的是：强制覆盖浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”），重置浏览器默认样式表中所有属性的值。以 <code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 标签为例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>&#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: inherit;</span><br><span class="line">  <span class="attribute">font-weight</span>: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>“CSS Reset”</strong> 类型的样式文件有很多，比较知名的比如：<a href="https://meyerweb.com/eric/tools/css/reset/" target="_blank" rel="noopener">Eric Meyer</a>。但是我更倾向于使用自己的 “CSS Reset” 文件，因为我可以按需来定义样式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/****** Elad Shechter's RESET *******/</span></span><br><span class="line"><span class="comment">/*** box sizing border-box for all elements ***/</span></span><br><span class="line">*,</span><br><span class="line">*<span class="selector-pseudo">::before</span>,</span><br><span class="line">*<span class="selector-pseudo">::after</span>&#123; <span class="attribute">box-sizing</span>:border-box; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span>&#123; <span class="attribute">text-decoration</span>:none; <span class="attribute">color</span>:inherit; <span class="attribute">cursor</span>:pointer; &#125;</span><br><span class="line"><span class="selector-tag">button</span>&#123; <span class="attribute">background-color</span>:transparent; <span class="attribute">color</span>:inherit; <span class="attribute">border-width</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">cursor</span>:pointer; &#125;</span><br><span class="line"><span class="selector-tag">figure</span>&#123; <span class="attribute">margin</span>:<span class="number">0</span>; &#125;</span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">ol</span>, <span class="selector-tag">dd</span>&#123; <span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">list-style</span>:none; &#125;</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>&#123; <span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">font-size</span>:inherit; <span class="attribute">font-weight</span>:inherit; &#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123; <span class="attribute">margin</span>:<span class="number">0</span>; &#125;</span><br><span class="line"><span class="selector-tag">cite</span> &#123; <span class="attribute">font-style</span>:normal; &#125;</span><br><span class="line"><span class="selector-tag">fieldset</span>&#123; <span class="attribute">border-width</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">margin</span>:<span class="number">0</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个误区：<strong>“CSS Reset”</strong> 并不会重置 “User-Agent-Stylesheet（Level-2）” 中所有的样式，比如 <code>&lt;div&gt;</code>、<code>ul</code>、<code>section</code>、<code>article</code> 等标签的 <code>display: block</code> 属性。</p>
+<p>正因为如此，我们可以理解为：<strong>“CSS Reset”</strong> 重置了浏览器默认样式表中大概 80% 的样式。。。</p>
+<h3 id="“Normalize-CSS”-和-“CSS-Reset”-结合使用"><a href="#“Normalize-CSS”-和-“CSS-Reset”-结合使用" class="headerlink" title="“Normalize CSS” 和 “CSS Reset” 结合使用"></a>“Normalize CSS” 和 “CSS Reset” 结合使用</h3><p>我自己的项目中同时使用了 <strong>“normalize.css”</strong> 和自定义的 <strong>“Reset CSS”</strong>：</p>
+<ul>
+<li>前者会将所有浏览器的样式纳入 “User-Agent-Stylesheet” 规范</li>
+<li>后者是我自己创建的 “reset.css”，移除了一些无用的样式</li>
+</ul>
+<p>以 “Sass” 为例：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">"resets/normalize.scss"</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">"resets/reset.scss"</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/9.jpeg" alt="9.jpeg"></p>
+<p>想深入了解 “Normalize CSS” 和 “CSS Reset”，可以阅读我的这篇文章：<a href="https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e" target="_blank" rel="noopener">Normalize CSS 和 CSS Reset，我该选哪个？</a>。</p>
+<h3 id="总结上述的-4-个-Level"><a href="#总结上述的-4-个-Level" class="headerlink" title="总结上述的 4 个 Level"></a>总结上述的 4 个 Level</h3><p>在前面的章节中，我们介绍了<strong>浏览器默认的 CSS 级别</strong>：</p>
+<ul>
+<li><strong>“CSS 属性的默认样式”（Level-1）</strong>—— 给所有 CSS 属性创建默认值。</li>
+<li><strong>“User-Agent-Stylesheet”（Level-2）</strong>—— 给某些 HTML 元素添加特定的默认样式。</li>
+</ul>
+<p>紧接着，我们介绍了如何控制 CSS 的基础样式：</p>
+<ul>
+<li><strong>“Normalize CSS”（Level-3）</strong>—— 保持不同浏览器中的 “User-Agent-Stylesheet”（Level 2）的效果一致的样式。</li>
+<li><strong>“CSS Reset”（Level-4）</strong>—— 覆盖 “User-Agent-Stylesheet”（Level-2）中所有的默认样式。</li>
+</ul>
+<p>上述的四个基本的 CSS 级别组成了我们项目中的样式，如下图所示：</p>
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/10.png" alt="10.png"></p>
+<p>在下面的两个章节，我们将会介绍：</p>
+<ul>
+<li>“CSS 样式重置关键字”（Part-5）</li>
+<li>重置属性 —— “all”（Part-6）</li>
+</ul>
+<h2 id="Part5——CSS-样式重置关键字"><a href="#Part5——CSS-样式重置关键字" class="headerlink" title="Part5——CSS 样式重置关键字"></a>Part5——CSS 样式重置关键字</h2><hr>
+<p>CSS 已经提供了一些样式重置关键字：<code>initial</code>、<code>inherit</code>、<code>unset</code>、<code>revert</code>，直到最近的个把月才被各个浏览器广泛支持。</p>
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/11.jpeg" alt="11.jpeg"></p>
+<h3 id="“inherit”-和-“initial”"><a href="#“inherit”-和-“initial”" class="headerlink" title="“inherit” 和 “initial”"></a>“inherit” 和 “initial”</h3><p>在本文的开头，我已经提到了有关于 CSS 属性的默认样式（Level-1）以及具有或者不具有继承性的 CSS 属性。</p>
+<h4 id="‘inherit’"><a href="#‘inherit’" class="headerlink" title="‘inherit’"></a>‘inherit’</h4><p>如果某个 CSS 属性是可继承的属性，那么我们可以为该属性设置一个 <code>inherit</code> 值，使得该属性<strong>保持默认的继承样式</strong>。</p>
+<p><strong>举个例子</strong>：我的项目中使用了 <code>&lt;h1&gt;</code>。。。<code>&lt;h6&gt;</code> 标签，然而我并不想要这些标签的某些默认样式，因此我可以把 <code>font-size</code> 和 <code>font-weight</code> 属性的值设为 <code>inherit</code>，这样就可以利用继承的特性，继承其父级元素对应属性的值。</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: inherit;</span><br><span class="line">  <span class="attribute">font-weight</span>: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="‘initial’"><a href="#‘initial’" class="headerlink" title="‘initial’"></a>‘initial’</h4><p>对于那些不具有继承性的 CSS 属性，我们可以把该属性的值设为 <code>initial</code>，恢复该属性的值为初始状态。</p>
+<p><strong>举个例子：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.foo</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bar</span> <span class="selector-class">.foo</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: initial;  <span class="comment">/* = static */</span></span><br><span class="line">  <span class="attribute">top</span>: initial;       <span class="comment">/* = auto */</span></span><br><span class="line">  <span class="attribute">left</span>: initial;      <span class="comment">/* = auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="‘unset’"><a href="#‘unset’" class="headerlink" title="‘unset’"></a>‘unset’</h4><p>综上所述，对于 “可继承的属性”，我们把属性的值设为 <code>inherit</code>；而对于 “不可继承的属性”，我们则把属性值设为 <code>initial</code>，两者的根本目的就是将 CSS 属性的值重置为默认状态。</p>
+<p>而 ‘unset’ 关键字，可以根据某个 CSS 属性是否可继承来自动重置该属性的值：</p>
+<ul>
+<li><strong>可继承的属性</strong> —— <code>unset</code> 的值就等同于 <code>inherit</code></li>
+<li><strong>不可继承的属性</strong> —— <code>unset</code> 的值等同于 <code>initial</code></li>
+</ul>
+<p>举个例子，<code>position: unset</code> 的效果等同于 <code>position: initial</code>；但 <code>font-size: unset</code> 的效果则等同于 <code>font-size: inherit</code>。</p>
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/12.jpeg" alt="12.jpeg"></p>
+<p>通过这种方式，你可以使用 <code>unset</code> 关键字去重置所有的 CSS 属性。</p>
+<p>举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.common-content</span> * &#123;</span><br><span class="line">  <span class="comment">/* 可继承的属性 */</span></span><br><span class="line">  <span class="attribute">font-size</span>: unset;</span><br><span class="line">  <span class="attribute">font-weight</span>: unset;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 不可继承的属性 */</span></span><br><span class="line">  <span class="attribute">border-width</span>: unset;</span><br><span class="line">  <span class="attribute">background-color</span>: unset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.common-content</span> * &#123;</span><br><span class="line">  <span class="comment">/* 可继承的属性 */</span></span><br><span class="line">  <span class="attribute">font-size</span>: inherit;</span><br><span class="line">  <span class="attribute">font-weight</span>: inherit;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 不可继承的属性 */</span></span><br><span class="line">  <span class="attribute">border-width</span>: initial;</span><br><span class="line">  <span class="attribute">background-color</span>: initial;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="重置样式产生的问题"><a href="#重置样式产生的问题" class="headerlink" title="重置样式产生的问题"></a>重置样式产生的问题</h3><p>在某些情况下，重置一个 “不可继承的属性” 的值，可能会产生一些问题。例如：<code>&lt;div&gt;</code> 属性的默认值是 <code>block</code>，但是使用 <code>unset</code> 关键字重置之后，就变成了 <code>inline</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">unset</span>; <span class="comment">/* = initial = inline */</span></span><br></pre></td></tr></table></figure>
+
+<p>这是为什么呢？回顾一下文章伊始提到的：“CSS 属性的默认样式”（Level-1）和 “User-Agent-Stylesheet”（Level-2）两者之间的区别。从这我们可以得知：<code>display</code> 属性的初始值是 <code>inline</code>，这没错，只是由于浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”）中对 <code>display</code> 样式进行了覆盖，对其重新赋值为 <code>block</code>。</p>
+<p>因为 <code>initial</code> 的样式不取决于 “User-Agent-Stylesheet”（Level-2），所以 <code>display: initial</code> 等同于 <code>display: inline</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: initial; <span class="comment">/* = inline */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了解决上述的问题，我们可以使用 <code>revert</code> 样式重置关键字：<code>revert</code> 可以将某个属性的值重置为浏览器默认样式表（“User-Agent-Stylesheet（Level-2）”）中对应的样式。</p>
+<h4 id="‘revert’"><a href="#‘revert’" class="headerlink" title="‘revert’"></a>‘revert’</h4><p><code>revert</code> 是最灵活的 CSS 样式重置关键字，<code>revert</code> <strong>会进行如下三个操作：</strong></p>
+<ul>
+<li>对于 “可继承的属性” —— 把 CSS 属性的值设为 <code>inherit</code></li>
+<li>对于 “不可继承的属性”，判断 “User-Agent-Stylesheet”（Level-2）中是否存在该属性的样式<ul>
+<li>情况①：如果存在，则直接使用 “User-Agent-Stylesheet” 中对应的样式</li>
+<li>情况②：反之，把 CSS 属性的值设为 <code>initial</code></li>
+</ul>
+</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: revert; <span class="comment">/* = inherit */</span></span><br><span class="line">  <span class="attribute">display</span>: revert;   <span class="comment">/* = block  (Level-2) */</span></span><br><span class="line">  <span class="attribute">position</span>: revert;  <span class="comment">/* = static (Level-1) */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS-样式重置关键字总结"><a href="#CSS-样式重置关键字总结" class="headerlink" title="CSS 样式重置关键字总结"></a>CSS 样式重置关键字总结</h3><p>刚开始看到这些 CSS 样式重置关键字的时候，你可能会很困惑，但是当你了解浏览器的基本逻辑之后就会发现，原来是这么回事。</p>
+<p>我为此专门花了一份流程图，帮助各位开发者理解 <strong>CSS 的各种样式重置关键字是如何工作的：</strong></p>
+<p><img src="https://oos.blog.yyge.top/2021/2/5/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90CSS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/images/13.png" alt="13.png"></p>
+<h3 id="定义一个标准的样式"><a href="#定义一个标准的样式" class="headerlink" title="定义一个标准的样式"></a>定义一个标准的样式</h3><p>我们可以通过把诸如 <code>font-size</code> 之类的 “可继承的属性” 的值设置为 <code>initial</code>，以此来重置属性的值。通过这种方式，我们可以获取到浏览器默认的 <code>font-size</code> 大小，并且浏览器默认的 <code>font-size</code> 是不受外界影响的，<strong>比如：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.common-content</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: initial;</span><br><span class="line">  <span class="comment">/* = 'medium' value - browser default size */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与此相反的是，我们可以让一个诸如 <code>padding</code> 等本来属于 “不可继承的属性” 变为可继承。举个例子：位于内部的 HTML 元素会继承其父元素的 <code>padding</code> 属性：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* &lt;div class="box"&gt; 的后代 &lt;div&gt; 元素都会继承 padding: 40px */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>在线示例：</strong></p>
+<iframe height="265" style="width: 100%;" scrolling="no" title="inherit css style" src="https://codepen.io/elad2412/embed/preview/hdypx?height=265&theme-id=light&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/elad2412/pen/hdypx" target="_blank" rel="noopener">inherit css style</a> by Elad Shechter
+  (<a href="https://codepen.io/elad2412" target="_blank" rel="noopener">@elad2412</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.
+</iframe>
+
+<blockquote>
+<p>PS：仅在有必要的情况下使用上述方式（不推荐）</p>
+</blockquote>
+<h2 id="Part6——“all”-属性"><a href="#Part6——“all”-属性" class="headerlink" title="Part6——“all” 属性"></a>Part6——“all” 属性</h2><hr>
+<p>可以使用 <code>all</code> 属性来重置某个 HTML 元素上的所有样式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">all</span>: <span class="selector-tag">revert</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>all</code> 属性会一次性重置所有的属性，避免一个个去重置。目前较为普遍的用法就是：<code>all: unset</code> 和 <code>all: revert</code>（“CSS 样式重置关键字” —— Part 5）:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 推荐 */</span></span><br><span class="line"><span class="selector-class">.common-content</span> *&#123;</span><br><span class="line">  <span class="attribute">all</span>: revert;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 不推荐 */</span></span><br><span class="line"><span class="selector-class">.common-content</span> *&#123;</span><br><span class="line">  <span class="attribute">border</span>: revert;</span><br><span class="line">  <span class="attribute">font-size</span>: revert;</span><br><span class="line">  <span class="attribute">display</span>: revert;</span><br><span class="line">  <span class="attribute">position</span>: revert;</span><br><span class="line">  <span class="attribute">top</span>: revert;</span><br><span class="line">  <span class="attribute">left</span>: revert;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="“CSS-Reset-的前景”"><a href="#“CSS-Reset-的前景”" class="headerlink" title="“CSS Reset 的前景”"></a>“CSS Reset 的前景”</h2><hr>
+<p>我们可以假设在若干月后，当诸如 “Samsung Internet” 此类的非主流浏览器完全支持 <code>revert</code> 关键字的时候，我们又有一种新的方式去创建 “CSS Reset”（Level-4）。</p>
+<p>使用 <code>all</code> 属性搭配 <code>unset/revert</code>，一切将会变得更简单：</p>
+<p>以后的 CSS Reset 可能像下面这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 移除浏览器默认样式表（“User-Agent-Stylesheet”）中除了 ‘display’ 之外的所有样式 */</span></span><br><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">all</span>: unset;</span><br><span class="line">  <span class="attribute">display</span>: revert;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 给 box-sizing 设置一个普遍使用的值 */</span></span><br><span class="line">*, *<span class="selector-pseudo">::before</span>, *<span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>PS：<strong>“Samsung Internet”</strong> 基于 “Chrome” 引擎，但是更新较为缓慢。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>在本文中，我讲解了很多关于 CSS 的知识：</p>
+<ul>
+<li>浏览器中的 CSS 是如何构建的</li>
+<li>如何在项目中按需自定义 CSS</li>
+<li>如何通过你自己的方式来管理 CSS 属性</li>
+</ul>
+<p><strong>与本文主题相关的其它文章：</strong></p>
+<ul>
+<li><a href="https://yyge.top/blog/2021/02/22/%E3%80%90%E8%AF%91%E3%80%91NormalizeCSS%E5%92%8CResetCSS%EF%BC%8C%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F/" target="_blank" rel="noopener">Normalize CSS 和 CSS Reset，我该如何选择？</a></li>
+<li><a href="https://yyge.top/blog/2021/02/20/%E3%80%90%E8%AF%91%E3%80%91%E7%90%86%E8%A7%A3CSS%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9A%E2%80%9CInitial%E2%80%9D%EF%BC%8C%E2%80%9CInherit%E2%80%9D%E5%92%8C%E2%80%9CUnset%E2%80%9D/" target="_blank" rel="noopener">理解 CSS 的样式重置关键字：“Initial”、“Inherit”、“Unset”</a></li>
+</ul>
+<p><strong>本文也参考了其它的文章：</strong></p>
+<ul>
+<li><a href="https://meiert.com/en/blog/user-agent-style-sheets/" target="_blank" rel="noopener">理解 User Agent Style Sheets</a></li>
+<li><a href="https://stackoverflow.com/questions/6867254/browsers-default-css-for-html-elements" target="_blank" rel="noopener">StackOverflow —— 浏览器默认的 CSS</a></li>
+</ul>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2021/02/05/【译】深度解析CSS是如何工作的/">https://ddzy.github.io/blog/2021/02/05/【译】深度解析CSS是如何工作的/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2021/02/20/【译】理解CSS关键字：“Initial”，“Inherit”和“Unset”/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>【译】理解CSS关键字：“Initial”，“Inherit”和“Unset”
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2021/02/03/【译】Web开发者应该知道的5个CSS小技巧/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          【译】Web开发者应该知道的5个CSS小技巧<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '【译】深度解析CSS是如何工作的',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

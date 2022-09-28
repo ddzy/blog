@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="http, dns, Nlvi">
+
+  <title> HTTP集锦系列之——DNS解析 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">HTTP集锦系列之——DNS解析</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-3-25"><span class="toc-text">[2019-3-25]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-6-18"><span class="toc-text">[2019-6-18]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-1"><span class="toc-text">Added</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed-1"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-6-22"><span class="toc-text">[2019-6-22]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-2"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-11-9"><span class="toc-text">[2020-11-9]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed-2"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#记录"><span class="toc-text">记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图解"><span class="toc-text">图解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过程"><span class="toc-text">过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#域名劫持"><span class="toc-text">域名劫持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-amp-A"><span class="toc-text">Q&amp;A</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-03-06</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/backend/">backend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/http/">http</a>
+              
+                <a href="/blog/tags/dns/">dns</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          HTTP集锦系列之——DNS解析
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>费尽心思的买了云服务器, 又氪金买了喜欢的域名, 但是很烦, 域名又需要解析, 那么这个过程是怎样的呢?</p>
+<a id="more"></a>
+
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2019-3-25"><a href="#2019-3-25" class="headerlink" title="[2019-3-25]"></a>[2019-3-25]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增<code>DNS解析过程</code>图解</li>
+</ul>
+<h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>重构<code>解析过程</code>条目</li>
+</ul>
+<h3 id="2019-6-18"><a href="#2019-6-18" class="headerlink" title="[2019-6-18]"></a>[2019-6-18]</h3><h4 id="Added-1"><a href="#Added-1" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增<code>Q&amp;A</code>区块<ul>
+<li>新增<code>递归</code>查询和<code>迭代</code>查询的区别</li>
+<li>新增什么情况下会使用<code>迭代</code>查询</li>
+</ul>
+</li>
+</ul>
+<h4 id="Changed-1"><a href="#Changed-1" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更新<code>过程</code>区块<ul>
+<li><code>转发模式</code>应该改为<code>检查是否支持递归查询</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2019-6-22"><a href="#2019-6-22" class="headerlink" title="[2019-6-22]"></a>[2019-6-22]</h3><h4 id="Added-2"><a href="#Added-2" class="headerlink" title="Added"></a>Added</h4><ul>
+<li><code>Q&amp;A</code>区块下新增<code>什么是域名劫持?</code></li>
+</ul>
+<h3 id="2020-11-9"><a href="#2020-11-9" class="headerlink" title="[2020-11-9]"></a>[2020-11-9]</h3><h4 id="Changed-2"><a href="#Changed-2" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更新域名解析的过程细节</li>
+</ul>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><hr>
+<h3 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h3><blockquote>
+<p>DNS - 域名系统</p>
+</blockquote>
+<p>网络通讯基于<code>TCP/IP</code>协议簇, 而<code>TCP/IP</code>又是基于<code>IP</code>地址, 计算机在网络通信中只能识别<code>IPv4</code>、<code>IPv6</code>等类型的地址, <code>DNS</code>解析就是将域名解析成了相应的IP地址</p>
+<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="https://oos.blog.yyge.top/2019/3/6/HTTP%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94DNS%E8%A7%A3%E6%9E%90/images/1.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="DNS解析过程"></p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><blockquote>
+<p>图不好画, 所以使用文字总结</p>
+</blockquote>
+<ul>
+<li>提取url中的域名信息</li>
+<li>检查浏览器缓存</li>
+<li>检查操作系统缓存的<code>Hosts</code>文件</li>
+<li>检查路由器缓存</li>
+<li>检查运营商提供的本地DNS服务器(<code>localDNS</code>)缓存, 不具有权威性</li>
+<li>检查是否在<code>本地区域配置文件</code>中, 返回解析结果, 具有权威性</li>
+<li>localDNS 判断是否转发模式<ul>
+<li>转发模式: 将域名解析权交给 <code>CNAME</code> 指向的 <code>CDN</code> 的 <code>DNS</code> 负载均衡系统, CDN 解析完成之后, 会将 IP 地址返回给 localDNS</li>
+<li>非转发模式: 进行下一步</li>
+</ul>
+</li>
+<li>本地DNS服务器(检查是否支持<code>递归</code>查询)<ul>
+<li>支持<ul>
+<li>依次寻找上一级DNS服务器解析</li>
+</ul>
+</li>
+<li>不支持<ul>
+<li>本地DNS发送请求到根DNS</li>
+<li>根DNS返回<code>顶级域名服务器</code>(.com、.top、…)地址</li>
+<li>本地DNS联系该<code>顶级域名服务器</code>来具体子级域名(xx.com、xxx.xx.com)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>本地DNS服务器接收到IP地址<ul>
+<li>写入缓存</li>
+</ul>
+</li>
+<li>返回给客户端</li>
+</ul>
+<h3 id="域名劫持"><a href="#域名劫持" class="headerlink" title="域名劫持"></a>域名劫持</h3><p>上述<a href="#过程">解析过程</a>中由于<code>DNS</code>解析记录可能存储在用户本机, 所以可能导致<code>域名劫持</code></p>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><blockquote>
+<p><strong>Q</strong>: <code>递归</code>查询和<code>迭代</code>查询的区别?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: <strong>递归查询</strong>指的是服务器<code>一条龙</code>服务, 客户端将解析域名的请求发送给<code>localDNS</code>, 如果<code>localDNS</code>检查缓存后无法解析的话, 会将解析请求发送给<code>rootDNS</code>, <code>rootDNS</code>无法解析则继续发给<code>顶级域名服务器</code>…后续同理, 如果某个DNS服务器成功解析, 则会将解析后的结构反向传送给上一级, 最终返回给<code>localDNS</code>. 而<strong>迭代查询</strong>则指的是, <code>rootDNS</code>请求<code>rootDNS</code>, <code>rootDNS</code>返回一个可以解析的DNS服务器, 你自己去请求, 这种方式比较耗内存, 所以一般默认采用的是<code>递归</code>查询.</p>
+<blockquote>
+<p><strong>Q</strong>: 什么情况下会使用<code>迭代</code>查询?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 两种情况. ①: DNS服务器配置为不支持<code>递归</code>查询; ②: 客户端DNS请求的<code>递归标志位</code>为0.</p>
+<blockquote>
+<p><strong>Q</strong>: 什么是<code>域名劫持</code>?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 由于DNS可能将解析记录缓存到操作系统的<code>hosts</code>文件中, 这就表明可以随意修改IP地址, 进而使域名解析到非法地址.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><hr>
+<ul>
+<li><a href="https://www.zhihu.com/question/23042131" target="_blank" rel="noopener">DNS解析的过程是什么, 求详细的?</a></li>
+<li><a href="https://blog.csdn.net/zhangyuan19880606/article/details/51141610" target="_blank" rel="noopener">DNS域名解析过程</a></li>
+</ul>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/03/06/HTTP集锦系列之——DNS解析/">https://ddzy.github.io/blog/2019/03/06/HTTP集锦系列之——DNS解析/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/03/06/HTTP集锦系列之——IP地址分类/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>HTTP集锦系列之——IP地址分类
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/03/06/前端基础重拾系列之——进程与线程/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          前端基础重拾系列之——进程与线程<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'HTTP集锦系列之——DNS解析',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

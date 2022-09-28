@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="jQuery, ts, Nlvi">
+
+  <title> jQuery源码解析系列(三) -工厂函数 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">jQuery源码解析系列(三) -工厂函数</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、简单工厂模式"><span class="toc-text">二、简单工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-是什么"><span class="toc-text">2.1 是什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-为什么"><span class="toc-text">2.2 为什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-怎么做"><span class="toc-text">2.3 怎么做?</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#三、jQuery工厂"><span class="toc-text">三、jQuery工厂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总结"><span class="toc-text">四、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、示例代码"><span class="toc-text">五、示例代码</span></a></li>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-03-30</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/jQuery/">jQuery</a>
+              
+                <a href="/blog/tags/ts/">ts</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          jQuery源码解析系列(三) -工厂函数
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>jQuery的入口函数, 也就是平时使用的$(xxx)诸如此类.</p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><hr>
+<h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>文章格式调整</li>
+</ul>
+<h2 id="二、简单工厂模式"><a href="#二、简单工厂模式" class="headerlink" title="二、简单工厂模式"></a>二、简单工厂模式</h2><hr>
+<p>开始之前, 先回顾一下设计模式中所谓的<code>简单工厂模式</code>:</p>
+<h4 id="2-1-是什么"><a href="#2-1-是什么" class="headerlink" title="2.1 是什么?"></a>2.1 是什么?</h4><blockquote>
+<p><strong>PS</strong>: 根据不同的参数, 返回不同类的实例</p>
+</blockquote>
+<p>简单来说, 就是:</p>
+<ul>
+<li>创建并对外暴露一个普通函数, 由于内部机制, 姑且就叫它<code>工厂函数</code></li>
+<li>接受一个目标实例化类型的参数</li>
+<li>函数内部进行实例化(<code>new</code>)操作</li>
+</ul>
+<h4 id="2-2-为什么"><a href="#2-2-为什么" class="headerlink" title="2.2 为什么?"></a>2.2 为什么?</h4><p>那么大致了解了<code>简单工厂</code>的工作流程, 现在我们做个简单的<code>thinking</code>:</p>
+<ol>
+<li>为什么会出现这种设计模式?</li>
+<li>它解决了什么痛点?</li>
+</ol>
+<p>俗话说的好——<strong>事出必有因</strong>, 对于上述两个思考, 我觉得可以由以下两个方面概括:</p>
+<ul>
+<li>将对象的创建和使用解耦<ul>
+<li>比如在开发中或多或少会用到插件, 那么实例化插件的过程中, 我们可能 会无意中丢失了<code>new</code>操作符, 导致后续报错, 这对于开发者是绝不能容忍的~, 而<code>简单工厂</code>解决了这个问题, 它将<code>实例化</code>的操作隐藏在了内部, 用户只需要知道<code>自己想要什么</code>, 而工厂则<code>去做什么</code>.</li>
+</ul>
+</li>
+<li>降低代码重复<ul>
+<li>假设对象的创建需要经历<code>很多很多</code>的步骤, 这对于有<code>多个对象创建需求</code>的用户来说就很蛋疼了, 这时候使用<code>工厂模式</code>就能免去冗余的操作, 增强用户体验</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-怎么做"><a href="#2-3-怎么做" class="headerlink" title="2.3 怎么做?"></a>2.3 怎么做?</h4><blockquote>
+<p><strong>PS</strong>: 网上也有很多关于<code>工厂模式</code>的例子, 本人<a href="https://github.com/ddzy/ts-utility-plugins" target="_blank" rel="noopener">之前的项目</a>也使用了该模式, 在这里还是不厌其烦的加上, 一方面为了作为参照, 另一方面也是对该设计模式的巩固.</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> TypeA &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">    <span class="keyword">private</span> name: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  </span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> TypeB &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">    <span class="keyword">private</span> name: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  </span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TypeFactory</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  <span class="keyword">type</span>: <span class="built_in">string</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">  options: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    [key: <span class="built_in">string</span>]: <span class="built_in">any</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">  &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">TypeA</span> | <span class="title">TypeB</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'A'</span>: &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> TypeA(options);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'B'</span>: &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> TypeB(options);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span>: &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Parameter `type` must be provided.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、jQuery工厂"><a href="#三、jQuery工厂" class="headerlink" title="三、jQuery工厂"></a>三、jQuery工厂</h2><hr>
+<p>通过上面的<code>简单工厂模式</code>的回顾, 我们了解了该种设计模式的出现到底有啥用. 那么回过头来, jQuery的源码中:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, jQuery的入口函数与<code>简单工厂</code>的实例代码类似, 名为<code>jQuery</code>的函数接收两个参数:</p>
+<ul>
+<li>selector<ul>
+<li>选择器</li>
+</ul>
+</li>
+<li>context<ul>
+<li>范围限制</li>
+</ul>
+</li>
+</ul>
+<p>在内部进行了实例化操作, 并且jQuery原型上的<code>init</code>方法才是真正的构造函数. 那么这里可能就会有疑问了:</p>
+<blockquote>
+<p><strong>Q</strong>: 为什么不直接暴露出<code>jQuery.fn.init</code>?</p>
+</blockquote>
+<p>我们举例来分析:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 普通用法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">$(xxx).addClass(xxx).removeClass(xxx);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 直接暴露`jQuery.fn.init()`</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">new</span> jQuery.fn.init(xxx).addClass(xxx).removeClass(xxx);</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 一个简单的<code>工厂函数</code>, 为我们省去了不必要的操作.</p>
+<p>那么至于为什么实例化一个原型上的方法呢? 我想, 这可能是作者的个人想法吧, 毕竟<code>一千个人就有一千个哈姆雷特</code>, 可能我自己在构建的时候会使用任何其他<code>不同名的类</code>, <code>取其精华, 去其糟粕</code>, 阅读源码的过程不正是为了如此吗?</p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><hr>
+<p>本篇分析了jQuery工厂的创建流程, 以及为什么要设计如此这般, 下一篇文章会着重分析<code>jQuery构造函数</code>机制</p>
+<h2 id="五、示例代码"><a href="#五、示例代码" class="headerlink" title="五、示例代码"></a>五、示例代码</h2><hr>
+<p>重构后的<code>ts</code>、<code>js</code>版本代码放置在了<a href="https://github.com/ddzy/my-simple-jquery/tree/branch/dev" target="_blank" rel="noopener">Gayhub</a></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/03/30/jQuery源码解析系列-三-工厂函数/">https://ddzy.github.io/blog/2019/03/30/jQuery源码解析系列-三-工厂函数/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/03/31/排序算法集锦系列之——选择/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>排序算法集锦系列之——选择
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/03/30/排序算法集锦系列之——冒泡/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          排序算法集锦系列之——冒泡<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'jQuery源码解析系列(三) -工厂函数',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

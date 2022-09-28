@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="interview, Didi, Nlvi">
+
+  <title> 滴滴三面总结 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">滴滴三面总结</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-11-8"><span class="toc-text">[2019-11-8]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-11-11"><span class="toc-text">[2019-11-11]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-11-13"><span class="toc-text">[2019-11-13]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-1"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-11-15"><span class="toc-text">[2019-11-15]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-2"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-11-18"><span class="toc-text">[2019-11-18]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-3"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-11-25"><span class="toc-text">[2019-11-25]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-4"><span class="toc-text">Added</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-12-11"><span class="toc-text">[2019-12-11]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed-1"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一面"><span class="toc-text">一面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-自我介绍"><span class="toc-text">1. 自我介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-求一个数组的和"><span class="toc-text">2. 求一个数组的和</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-问题描述"><span class="toc-text">2.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-问题解决"><span class="toc-text">2.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-参考"><span class="toc-text">2.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-URL-替换"><span class="toc-text">3. URL 替换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-问题描述"><span class="toc-text">3.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-问题解决"><span class="toc-text">3.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-参考"><span class="toc-text">3.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-a-com-和-a-com-8080-是跨域吗"><span class="toc-text">4. a.com 和 a.com:8080 是跨域吗?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-问题描述"><span class="toc-text">4.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-问题解决"><span class="toc-text">4.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-参考"><span class="toc-text">4.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-一个-HTTP-请求的结构"><span class="toc-text">5. 一个 HTTP 请求的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-问题描述"><span class="toc-text">5.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-问题解决"><span class="toc-text">5.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-参考"><span class="toc-text">5.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-如何解决跨域"><span class="toc-text">6. 如何解决跨域?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-问题描述"><span class="toc-text">6.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-问题解决"><span class="toc-text">6.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-参考"><span class="toc-text">6.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-linux-的文件操作命令"><span class="toc-text">7. linux 的文件操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-问题描述"><span class="toc-text">7.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-问题解决"><span class="toc-text">7.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-参考"><span class="toc-text">7.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-git-fetch-和-git-pull-的区别"><span class="toc-text">8. git fetch 和 git pull 的区别?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-问题描述"><span class="toc-text">8.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-问题解决"><span class="toc-text">8.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-参考"><span class="toc-text">8.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-git-回滚操作"><span class="toc-text">9. git 回滚操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-问题描述"><span class="toc-text">9.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-问题解决"><span class="toc-text">9.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-参考"><span class="toc-text">9.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-React-的-Hooks-为什么要按照顺序调用"><span class="toc-text">10. React 的 Hooks 为什么要按照顺序调用?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-问题描述"><span class="toc-text">10.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-问题解决"><span class="toc-text">10.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-参考"><span class="toc-text">10.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-React-的-Hooks-为什么要写在最外部"><span class="toc-text">11. React 的 Hooks 为什么要写在最外部?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-1-问题描述"><span class="toc-text">11.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-2-问题解决"><span class="toc-text">11.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-3-参考"><span class="toc-text">11.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-说说-React-的生命周期"><span class="toc-text">12. 说说 React 的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#12-1-问题描述"><span class="toc-text">12.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-2-问题解决"><span class="toc-text">12.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-3-参考"><span class="toc-text">12.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-说说-NodeJS-的中间件机制"><span class="toc-text">13. 说说 NodeJS 的中间件机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#13-1-问题描述"><span class="toc-text">13.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-2-问题解决"><span class="toc-text">13.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-3-参考"><span class="toc-text">13.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-分别说下-TS-和-JS-的优点和缺点"><span class="toc-text">14. 分别说下 TS 和 JS 的优点和缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#14-1-问题描述"><span class="toc-text">14.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-2-问题解决"><span class="toc-text">14.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-3-参考"><span class="toc-text">14.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-实现-Promise"><span class="toc-text">15. 实现 Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#15-1-问题描述"><span class="toc-text">15.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-2-问题解决"><span class="toc-text">15.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-3-参考"><span class="toc-text">15.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-如何用-setTimeout-来模拟-setInterval"><span class="toc-text">16. 如何用 setTimeout 来模拟 setInterval?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#16-1-问题描述"><span class="toc-text">16.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-2-问题解决"><span class="toc-text">16.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-3-参考"><span class="toc-text">16.3 参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二面"><span class="toc-text">二面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#17-自我介绍"><span class="toc-text">17. 自我介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-你的职业规划提到了全栈-那你现在是怎么准备的"><span class="toc-text">18. 你的职业规划提到了全栈, 那你现在是怎么准备的?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#18-1-问题描述"><span class="toc-text">18.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-2-问题解决"><span class="toc-text">18.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-3-参考"><span class="toc-text">18.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-你为什么要参与开源项目"><span class="toc-text">19. 你为什么要参与开源项目?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#19-1-问题描述"><span class="toc-text">19.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-2-问题解决"><span class="toc-text">19.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-3-参考"><span class="toc-text">19.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-为什么要使用-TS-它解决了什么问题"><span class="toc-text">20. 为什么要使用 TS, 它解决了什么问题?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#20-1-问题描述"><span class="toc-text">20.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-2-问题解决"><span class="toc-text">20.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-3-参考"><span class="toc-text">20.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-VS-Code-的插件是你独立开发的吧"><span class="toc-text">21. VS Code 的插件是你独立开发的吧?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-1-问题描述"><span class="toc-text">21.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-2-问题解决"><span class="toc-text">21.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-3-参考"><span class="toc-text">21.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-你目前正在参与的开源项目"><span class="toc-text">22. 你目前正在参与的开源项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#22-1-问题描述"><span class="toc-text">22.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-2-问题解决"><span class="toc-text">22.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-3-参考"><span class="toc-text">22.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-TS-在什么情况下使用-any"><span class="toc-text">23. TS 在什么情况下使用 any?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#23-1-问题描述"><span class="toc-text">23.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-2-问题解决"><span class="toc-text">23.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-3-参考"><span class="toc-text">23.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-有了解哪些-redux-的异步中间件"><span class="toc-text">24. 有了解哪些 redux 的异步中间件?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#24-1-问题描述"><span class="toc-text">24.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-2-问题解决"><span class="toc-text">24.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-3-参考"><span class="toc-text">24.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-redux-thunk-的原理是什么-它的优势在哪里"><span class="toc-text">25. redux-thunk 的原理是什么, 它的优势在哪里?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#25-1-问题描述"><span class="toc-text">25.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-2-问题解决"><span class="toc-text">25.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-3-参考"><span class="toc-text">25.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-你对代码质量的要求是怎样的"><span class="toc-text">26. 你对代码质量的要求是怎样的?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#26-1-问题描述"><span class="toc-text">26.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-2-问题解决"><span class="toc-text">26.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-3-参考"><span class="toc-text">26.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27-CSS-的大小单位有哪些"><span class="toc-text">27. CSS 的大小单位有哪些?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#27-1-问题描述"><span class="toc-text">27.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27-2-问题解决"><span class="toc-text">27.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27-3-参考"><span class="toc-text">27.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#28-使用-CSS-在不占用多余空间的情况下画一个三角形"><span class="toc-text">28. 使用 CSS 在不占用多余空间的情况下画一个三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#28-1-问题描述"><span class="toc-text">28.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28-2-问题解决"><span class="toc-text">28.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28-3-参考"><span class="toc-text">28.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29-CSS-计算题"><span class="toc-text">29. CSS 计算题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#29-1-问题描述"><span class="toc-text">29.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29-2-问题解决"><span class="toc-text">29.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29-3-参考"><span class="toc-text">29.3 参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三面"><span class="toc-text">三面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#30-将一串数字转换成中文读法"><span class="toc-text">30. 将一串数字转换成中文读法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#30-1-问题描述"><span class="toc-text">30.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30-2-问题解决"><span class="toc-text">30.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30-3-参考"><span class="toc-text">30.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#31-快速排序"><span class="toc-text">31. 快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31-1-问题描述"><span class="toc-text">31.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#31-2-问题解决"><span class="toc-text">31.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#31-3-参考"><span class="toc-text">31.3 参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-防抖和节流任选并实现"><span class="toc-text">32. 防抖和节流任选并实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#32-1-问题描述"><span class="toc-text">32.1 问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32-2-问题解决"><span class="toc-text">32.2 问题解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32-3-参考"><span class="toc-text">32.3 参考</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-11-08</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/interview/">interview</a>
+              
+                <a href="/blog/tags/Didi/">Didi</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          滴滴三面总结
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>昨日进行了滴滴的视频面试, 大概三个小时吧, 总共三面. 题目总体而言都是考察基础知识, 这一方面并没有太多的疑虑. 虽然说三面的一道手撕代码挂了, 但是还是收获满满. 在面试期间将遇到的题目偷偷写到了纸上, 花几天时间做个总结.</p>
+<a id="more"></a>
+
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2019-11-8"><a href="#2019-11-8" class="headerlink" title="[2019-11-8]"></a>[2019-11-8]</h3><ul>
+<li>Initial Release</li>
+</ul>
+<h3 id="2019-11-11"><a href="#2019-11-11" class="headerlink" title="[2019-11-11]"></a>[2019-11-11]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>解决问题: <a href="#2-%e6%b1%82%e4%b8%80%e4%b8%aa%e6%95%b0%e7%bb%84%e7%9a%84%e5%92%8c">求一个数组的和</a></li>
+<li>解决问题: <a href="#3-url-%e6%9b%bf%e6%8d%a2">URL 替换</a></li>
+<li>解决问题: <a href="#4-acom-%e5%92%8c-acom8080-%e6%98%af%e8%b7%a8%e5%9f%9f%e5%90%97">a.com 和 a.com:8080 是跨域吗</a></li>
+<li>解决问题: <a href="#5-%e4%b8%80%e4%b8%aa-http-%e8%af%b7%e6%b1%82%e7%9a%84%e7%bb%93%e6%9e%84">一个 HTTP 请求的结构</a></li>
+<li>解决问题: <a href="#6-%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e8%b7%a8%e5%9f%9f">如何解决跨域</a></li>
+<li>解决问题: <a href="#7-linux-%e7%9a%84%e6%96%87%e4%bb%b6%e6%93%8d%e4%bd%9c%e5%91%bd%e4%bb%a4">linux 的文件操作命令</a></li>
+<li>解决问题: <a href="#8-git-fetch-%e5%92%8c-git-pull-%e7%9a%84%e5%8c%ba%e5%88%ab">git_fetch 和 git_pull 的区别</a></li>
+<li>解决问题: <a href="#9-git-%e5%9b%9e%e6%bb%9a%e6%93%8d%e4%bd%9c">git 回滚操作</a></li>
+<li>解决问题: <a href="#10-react-%e7%9a%84-hooks-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e6%8c%89%e7%85%a7%e9%a1%ba%e5%ba%8f%e8%b0%83%e7%94%a8">React 的 Hooks 为什么要按照顺序调用</a></li>
+<li>解决问题: <a href="#11-react-%e7%9a%84-hooks-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%86%99%e5%9c%a8%e6%9c%80%e5%a4%96%e9%83%a8">React 的 Hooks 为什么要写在最外部</a></li>
+<li>解决问题: <a href="#12-%e8%af%b4%e8%af%b4-react-%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">说说 React 的生命周期</a></li>
+<li>解决问题: <a href="#14-%e5%88%86%e5%88%ab%e8%af%b4%e4%b8%8b-ts-%e5%92%8c-js-%e7%9a%84%e4%bc%98%e7%82%b9%e5%92%8c%e7%bc%ba%e7%82%b9">分别说下 TS 和 JS 的优点和缺点</a></li>
+</ul>
+<h3 id="2019-11-13"><a href="#2019-11-13" class="headerlink" title="[2019-11-13]"></a>[2019-11-13]</h3><h4 id="Added-1"><a href="#Added-1" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>解决问题: <a href="#29-css-%e8%ae%a1%e7%ae%97%e9%a2%98">CSS 计算题</a></li>
+<li>解决问题: <a href="#27-css-%e7%9a%84%e5%a4%a7%e5%b0%8f%e5%8d%95%e4%bd%8d%e6%9c%89%e5%93%aa%e4%ba%9b">CSS 的大小单位有哪些</a></li>
+<li>解决问题: <a href="#24-%e6%9c%89%e4%ba%86%e8%a7%a3%e5%93%aa%e4%ba%9b-redux-%e7%9a%84%e5%bc%82%e6%ad%a5%e4%b8%ad%e9%97%b4%e4%bb%b6">有了解哪些 redux 的异步中间件</a></li>
+<li>解决问题: <a href="#25-redux-thunk-%e7%9a%84%e5%8e%9f%e7%90%86%e6%98%af%e4%bb%80%e4%b9%88-%e5%ae%83%e7%9a%84%e4%bc%98%e5%8a%bf%e5%9c%a8%e5%93%aa%e9%87%8c">redux 的原理是什么, 以及它的优势</a></li>
+</ul>
+<h3 id="2019-11-15"><a href="#2019-11-15" class="headerlink" title="[2019-11-15]"></a>[2019-11-15]</h3><h4 id="Added-2"><a href="#Added-2" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>解决问题: <a href="#23-ts-%e5%9c%a8%e4%bb%80%e4%b9%88%e6%83%85%e5%86%b5%e4%b8%8b%e4%bd%bf%e7%94%a8-any">TS 中 any 的应用场景有哪些</a></li>
+<li>解决问题: <a href="#22-%e4%bd%a0%e7%9b%ae%e5%89%8d%e6%ad%a3%e5%9c%a8%e5%8f%82%e4%b8%8e%e7%9a%84%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae">你目前正在参与的开源项目</a></li>
+</ul>
+<h3 id="2019-11-18"><a href="#2019-11-18" class="headerlink" title="[2019-11-18]"></a>[2019-11-18]</h3><h4 id="Added-3"><a href="#Added-3" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>解决问题: <a href="#20-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e4%bd%bf%e7%94%a8-ts-%e5%ae%83%e8%a7%a3%e5%86%b3%e4%ba%86%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98">为什么要使用 TS, 它解决了什么问题</a></li>
+</ul>
+<h3 id="2019-11-25"><a href="#2019-11-25" class="headerlink" title="[2019-11-25]"></a>[2019-11-25]</h3><h4 id="Added-4"><a href="#Added-4" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>解决问题: <a href="#19-%e4%bd%a0%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%8f%82%e4%b8%8e%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae">你为什么要参与开源项目</a></li>
+<li>解决问题: <a href="#21-vs-code-%e7%9a%84%e6%8f%92%e4%bb%b6%e6%98%af%e4%bd%a0%e7%8b%ac%e7%ab%8b%e5%bc%80%e5%8f%91%e7%9a%84%e5%90%a7">VS Code 的插件是你独立开发的吧</a></li>
+<li>解决问题: <a href="#26-%e4%bd%a0%e5%af%b9%e4%bb%a3%e7%a0%81%e8%b4%a8%e9%87%8f%e7%9a%84%e8%a6%81%e6%b1%82%e6%98%af%e6%80%8e%e6%a0%b7%e7%9a%84">你对代码质量的要求是怎样的</a></li>
+<li>解决问题: <a href="#18-%e4%bd%a0%e7%9a%84%e8%81%8c%e4%b8%9a%e8%a7%84%e5%88%92%e6%8f%90%e5%88%b0%e4%ba%86%e5%85%a8%e6%a0%88-%e9%82%a3%e4%bd%a0%e7%8e%b0%e5%9c%a8%e6%98%af%e6%80%8e%e4%b9%88%e5%87%86%e5%a4%87%e7%9a%84">你的职业规划提到了全栈, 那你现在是怎么准备的</a></li>
+</ul>
+<h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更新问题: <a href="#14-%e5%88%86%e5%88%ab%e8%af%b4%e4%b8%8b-ts-%e5%92%8c-js-%e7%9a%84%e4%bc%98%e7%82%b9%e5%92%8c%e7%bc%ba%e7%82%b9">分别说下 TS 和 JS 的优缺点</a></li>
+</ul>
+<h3 id="2019-12-11"><a href="#2019-12-11" class="headerlink" title="[2019-12-11]"></a>[2019-12-11]</h3><h4 id="Changed-1"><a href="#Changed-1" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>取消置顶</li>
+</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><hr>
+<ul>
+<li><a href="#%e4%b8%80%e9%9d%a2">一面</a><ul>
+<li><a href="#1-%e8%87%aa%e6%88%91%e4%bb%8b%e7%bb%8d">1. 自我介绍</a></li>
+<li><a href="#2-%e6%b1%82%e4%b8%80%e4%b8%aa%e6%95%b0%e7%bb%84%e7%9a%84%e5%92%8c">2. 求一个数组的和</a></li>
+<li><a href="#3-url-%e6%9b%bf%e6%8d%a2">3. URL 替换</a></li>
+<li><a href="#4-acom-%e5%92%8c-acom8080-%e6%98%af%e8%b7%a8%e5%9f%9f%e5%90%97">4. a.com 和 a.com:8080 是跨域吗</a></li>
+<li><a href="#5-%e4%b8%80%e4%b8%aa-http-%e8%af%b7%e6%b1%82%e7%9a%84%e7%bb%93%e6%9e%84">5. 一个 HTTP 请求的结构</a></li>
+<li><a href="#6-%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e8%b7%a8%e5%9f%9f">6. 如何解决跨域</a></li>
+<li><a href="#7-linux-%e7%9a%84%e6%96%87%e4%bb%b6%e6%93%8d%e4%bd%9c%e5%91%bd%e4%bb%a4">7. linux 的文件操作命令</a></li>
+<li><a href="#8-git-fetch-%e5%92%8c-git-pull-%e7%9a%84%e5%8c%ba%e5%88%ab">8. git_fetch 和 git_pull 的区别</a></li>
+<li><a href="#9-git-%e5%9b%9e%e6%bb%9a%e6%93%8d%e4%bd%9c">9. git 回滚操作</a></li>
+<li><a href="#10-react-%e7%9a%84-hooks-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e6%8c%89%e7%85%a7%e9%a1%ba%e5%ba%8f%e8%b0%83%e7%94%a8">10. react_hooks 为什么要按照顺序调用</a></li>
+<li><a href="#11-react-%e7%9a%84-hooks-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%86%99%e5%9c%a8%e6%9c%80%e5%a4%96%e9%83%a8">11. react_hooks 为什么要写在最外部</a></li>
+<li><a href="#12-%e8%af%b4%e8%af%b4-react-%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">12. 说说 React 的生命周期</a></li>
+<li><a href="#13-%e8%af%b4%e8%af%b4-nodejs-%e7%9a%84%e4%b8%ad%e9%97%b4%e4%bb%b6%e6%9c%ba%e5%88%b6">13. 说说 NodeJS 的中间件机制</a></li>
+<li><a href="#14-%e5%88%86%e5%88%ab%e8%af%b4%e4%b8%8b-ts-%e5%92%8c-js-%e7%9a%84%e4%bc%98%e7%82%b9%e5%92%8c%e7%bc%ba%e7%82%b9">14. 分别说下 TS 和 JS 的优点和缺点</a></li>
+<li><a href="#15-%e5%ae%9e%e7%8e%b0-promise">15. 实现 Promise</a></li>
+<li><a href="#16-%e5%a6%82%e4%bd%95%e7%94%a8-settimeout-%e6%9d%a5%e6%a8%a1%e6%8b%9f-setinterval">16. 如何用 setTimeout 来模拟 setInterval?</a></li>
+</ul>
+</li>
+<li><a href="#%e4%ba%8c%e9%9d%a2">二面</a><ul>
+<li><a href="#17-%e8%87%aa%e6%88%91%e4%bb%8b%e7%bb%8d">17. 自我介绍</a></li>
+<li><a href="#18-%e4%bd%a0%e7%9a%84%e8%81%8c%e4%b8%9a%e8%a7%84%e5%88%92%e6%8f%90%e5%88%b0%e4%ba%86%e5%85%a8%e6%a0%88-%e9%82%a3%e4%bd%a0%e7%8e%b0%e5%9c%a8%e6%98%af%e6%80%8e%e4%b9%88%e5%87%86%e5%a4%87%e7%9a%84">18. 你的职业规划提到了全栈, 那你现在是怎么准备的</a></li>
+<li><a href="#19-%e4%bd%a0%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%8f%82%e4%b8%8e%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae">19. 你为什么要参与开源项目</a></li>
+<li><a href="#20-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e4%bd%bf%e7%94%a8-ts-%e5%ae%83%e8%a7%a3%e5%86%b3%e4%ba%86%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98">20. 为什么要使用 TS, 它解决了什么问题</a></li>
+<li><a href="#21-%e9%97%ae%e9%a2%98%e6%8f%8f%e8%bf%b0">21. vscode 的插件是你独立开发的吧</a></li>
+<li><a href="#22-%e4%bd%a0%e7%9b%ae%e5%89%8d%e6%ad%a3%e5%9c%a8%e5%8f%82%e4%b8%8e%e7%9a%84%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae">22. 你目前正在参与的开源项目</a></li>
+<li><a href="#23-ts-%e5%9c%a8%e4%bb%80%e4%b9%88%e6%83%85%e5%86%b5%e4%b8%8b%e4%bd%bf%e7%94%a8-any">23. TS 在什么情况下使用any</a></li>
+<li><a href="#24-%e6%9c%89%e4%ba%86%e8%a7%a3%e5%93%aa%e4%ba%9b-redux-%e7%9a%84%e5%bc%82%e6%ad%a5%e4%b8%ad%e9%97%b4%e4%bb%b6">24. 有了解哪些 redux 的异步中间件</a></li>
+<li><a href="#25-redux-thunk-%e7%9a%84%e5%8e%9f%e7%90%86%e6%98%af%e4%bb%80%e4%b9%88-%e5%ae%83%e7%9a%84%e4%bc%98%e5%8a%bf%e5%9c%a8%e5%93%aa%e9%87%8c">25. redux_thunk 的原理是什么, 它的优势在哪里</a></li>
+<li><a href="#26-%e4%bd%a0%e5%af%b9%e4%bb%a3%e7%a0%81%e8%b4%a8%e9%87%8f%e7%9a%84%e8%a6%81%e6%b1%82%e6%98%af%e6%80%8e%e6%a0%b7%e7%9a%84">26. 你对代码质量的要求是怎样的</a></li>
+<li><a href="#27-css-%e7%9a%84%e5%a4%a7%e5%b0%8f%e5%8d%95%e4%bd%8d%e6%9c%89%e5%93%aa%e4%ba%9b">27. CSS 的大小单位</a></li>
+<li><a href="#28-%e4%bd%bf%e7%94%a8-css-%e5%9c%a8%e4%b8%8d%e5%8d%a0%e7%94%a8%e5%a4%9a%e4%bd%99%e7%a9%ba%e9%97%b4%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%e7%94%bb%e4%b8%80%e4%b8%aa%e4%b8%89%e8%a7%92%e5%bd%a2">28. 使用 CSS 在不占用多余空间的情况下画一个三角形</a></li>
+<li><a href="#29-css-%e8%ae%a1%e7%ae%97%e9%a2%98">29. CSS 计算题</a></li>
+</ul>
+</li>
+<li><a href="#%e4%b8%89%e9%9d%a2">三面</a><ul>
+<li><a href="#30-%e5%b0%86%e4%b8%80%e4%b8%b2%e6%95%b0%e5%ad%97%e8%bd%ac%e6%8d%a2%e6%88%90%e4%b8%ad%e6%96%87%e8%af%bb%e6%b3%95">30. 将一串数字转换成中文读法</a></li>
+<li><a href="#31-%e5%bf%ab%e9%80%9f%e6%8e%92%e5%ba%8f">31. 快速排序</a></li>
+<li><a href="#32-%e9%98%b2%e6%8a%96%e5%92%8c%e8%8a%82%e6%b5%81%e4%bb%bb%e9%80%89%e5%b9%b6%e5%ae%9e%e7%8e%b0">32. 防抖和节流任选并实现</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h2><hr>
+<h3 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1. 自我介绍"></a>1. 自我介绍</h3><p>略</p>
+<h3 id="2-求一个数组的和"><a href="#2-求一个数组的和" class="headerlink" title="2. 求一个数组的和"></a>2. 求一个数组的和</h3><details>
+
+<h4 id="2-1-问题描述"><a href="#2-1-问题描述" class="headerlink" title="2.1 问题描述"></a>2.1 问题描述</h4><p>给定一个数组: <code>[1, 2, 3, 4, 5]</code>, 求数组中各项的和.</p>
+<h4 id="2-2-问题解决"><a href="#2-2-问题解决" class="headerlink" title="2.2 问题解决"></a>2.2 问题解决</h4><p>使用 <code>reduce</code> 即可:</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/alioe_duan/opw9nqz2/1/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+<h4 id="2-3-参考"><a href="#2-3-参考" class="headerlink" title="2.3 参考"></a>2.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="3-URL-替换"><a href="#3-URL-替换" class="headerlink" title="3. URL 替换"></a>3. <code>URL</code> 替换</h3><details>
+
+<h4 id="3-1-问题描述"><a href="#3-1-问题描述" class="headerlink" title="3.1 问题描述"></a>3.1 问题描述</h4><p>给定一个 URL(<code>https://didi.com?a=duan&amp;b=zhao&amp;c=21</code>), 和一个键数组(<code>[&#39;a&#39;, &#39;b&#39;]</code>), 要求从原字符串的参数去掉对应的键, 返回新的 URL(<code>https://didi.com?c=21</code>).</p>
+<h4 id="3-2-问题解决"><a href="#3-2-问题解决" class="headerlink" title="3.2 问题解决"></a>3.2 问题解决</h4><ul>
+<li>提取 <code>URL</code> 的参数至对象中</li>
+<li>删除指定的键</li>
+<li>重新拼接 <code>URL</code></li>
+</ul>
+<iframe width="100%" height="300" src="//jsfiddle.net/alioe_duan/2thcoa3r/40/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+<h4 id="3-3-参考"><a href="#3-3-参考" class="headerlink" title="3.3 参考"></a>3.3 参考</h4></details>
+
+<h3 id="4-a-com-和-a-com-8080-是跨域吗"><a href="#4-a-com-和-a-com-8080-是跨域吗" class="headerlink" title="4. a.com 和 a.com:8080 是跨域吗?"></a>4. <code>a.com</code> 和 <code>a.com:8080</code> 是跨域吗?</h3><details>
+
+<h4 id="4-1-问题描述"><a href="#4-1-问题描述" class="headerlink" title="4.1 问题描述"></a>4.1 问题描述</h4><p>略</p>
+<h4 id="4-2-问题解决"><a href="#4-2-问题解决" class="headerlink" title="4.2 问题解决"></a>4.2 问题解决</h4><p>这个问题, 要从两个方面入手:</p>
+<ol>
+<li>应用层的协议</li>
+<li>跨域</li>
+</ol>
+<p>由于 <code>a.com</code> 的默认端口号为 <code>80|443</code>, 与 <code>a.com:8080</code> 的端口号不相同, 而同源策略规定了 <code>协议</code>、<code>域名</code>、<code>端口号</code> 这三者任一种不相同都会产生跨域, 所以 <code>a.com</code> 和 <code>a.com:8080</code> 是跨域的.</p>
+<h4 id="4-3-参考"><a href="#4-3-参考" class="headerlink" title="4.3 参考"></a>4.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="5-一个-HTTP-请求的结构"><a href="#5-一个-HTTP-请求的结构" class="headerlink" title="5. 一个 HTTP 请求的结构"></a>5. 一个 <code>HTTP</code> 请求的结构</h3><details>
+
+<h4 id="5-1-问题描述"><a href="#5-1-问题描述" class="headerlink" title="5.1 问题描述"></a>5.1 问题描述</h4><p>略</p>
+<h4 id="5-2-问题解决"><a href="#5-2-问题解决" class="headerlink" title="5.2 问题解决"></a>5.2 问题解决</h4><p>以 <code>POST</code> 请求为例, 主要包括三个部分:</p>
+<ul>
+<li>请求行</li>
+<li>请求头</li>
+<li>请求体</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /images/1.png HTTP/1.1</span><br><span class="line"></span><br><span class="line">Origin: xxx</span><br><span class="line">User-Agent: xxx</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  username: &apos;duanzhaoyang&apos;,</span><br><span class="line">  userpwd: &apos;xxxxxxxxxxxxxxx&apos;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-参考"><a href="#5-3-参考" class="headerlink" title="5.3 参考"></a>5.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="6-如何解决跨域"><a href="#6-如何解决跨域" class="headerlink" title="6. 如何解决跨域?"></a>6. 如何解决跨域?</h3><details>
+
+<h4 id="6-1-问题描述"><a href="#6-1-问题描述" class="headerlink" title="6.1 问题描述"></a>6.1 问题描述</h4><p>略</p>
+<h4 id="6-2-问题解决"><a href="#6-2-问题解决" class="headerlink" title="6.2 问题解决"></a>6.2 问题解决</h4><blockquote>
+<p>跨域是什么?</p>
+</blockquote>
+<p>向不同 <code>协议</code>、<code>域名</code>、<code>端口号</code> 的其它服务器发起请求时, 会产生跨域</p>
+<blockquote>
+<p>为什么会产生跨域?</p>
+</blockquote>
+<p>由于浏览器的同源策略的限制</p>
+<blockquote>
+<p>怎么解决跨域?</p>
+</blockquote>
+<ul>
+<li>jsonp<ul>
+<li>通过 <code>js</code> 动态创建 <code>script</code> 标签, 利用 <code>script</code>、<code>img</code>、<code>iframe</code>、<code>video</code> 等标签不受同源策略限制的特点, 携带一个回调函数, 向指定 <code>URL</code> 的服务器发起请求.</li>
+</ul>
+</li>
+<li>CORS<ul>
+<li>服务端设置一个 <code>Access-Control-Allow-Origin</code> 响应头来允许特定的域名的请求</li>
+</ul>
+</li>
+<li>Websocket</li>
+<li>Nginx</li>
+</ul>
+<h4 id="6-3-参考"><a href="#6-3-参考" class="headerlink" title="6.3 参考"></a>6.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="7-linux-的文件操作命令"><a href="#7-linux-的文件操作命令" class="headerlink" title="7. linux 的文件操作命令"></a>7. <code>linux</code> 的文件操作命令</h3><details>
+
+<h4 id="7-1-问题描述"><a href="#7-1-问题描述" class="headerlink" title="7.1 问题描述"></a>7.1 问题描述</h4><ol>
+<li><code>linux</code> 创建目录, 使用哪个命令?</li>
+<li>递归创建一个目录, 会创建同名的不存在的目录, 使用哪个命令?</li>
+<li>查看目录的结构, 使用哪些命令?</li>
+</ol>
+<h4 id="7-2-问题解决"><a href="#7-2-问题解决" class="headerlink" title="7.2 问题解决"></a>7.2 问题解决</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line">mkdir xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归创建目录, 并且创建路径上的同名的不存在的目录</span></span><br><span class="line">mkdir -p</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看目录的结构</span></span><br><span class="line">ls</span><br><span class="line">ls -al</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-3-参考"><a href="#7-3-参考" class="headerlink" title="7.3 参考"></a>7.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="8-git-fetch-和-git-pull-的区别"><a href="#8-git-fetch-和-git-pull-的区别" class="headerlink" title="8. git fetch 和 git pull 的区别?"></a>8. <code>git fetch</code> 和 <code>git pull</code> 的区别?</h3><details>
+
+<h4 id="8-1-问题描述"><a href="#8-1-问题描述" class="headerlink" title="8.1 问题描述"></a>8.1 问题描述</h4><p>略</p>
+<h4 id="8-2-问题解决"><a href="#8-2-问题解决" class="headerlink" title="8.2 问题解决"></a>8.2 问题解决</h4><ul>
+<li><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></li>
+<li><code>git pull</code> 拉取远程分支到本地, 并自动合并, 而 <code>git fetch</code> 则不会自动合并, 需要手动 <code>git diff</code>, 再合并</li>
+</ul>
+<h4 id="8-3-参考"><a href="#8-3-参考" class="headerlink" title="8.3 参考"></a>8.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="9-git-回滚操作"><a href="#9-git-回滚操作" class="headerlink" title="9. git 回滚操作"></a>9. <code>git</code> 回滚操作</h3><details>
+
+<h4 id="9-1-问题描述"><a href="#9-1-问题描述" class="headerlink" title="9.1 问题描述"></a>9.1 问题描述</h4><p>我想回退到某个古老的 <code>commit</code> 版本, 我该怎么做?</p>
+<h4 id="9-2-问题解决"><a href="#9-2-问题解决" class="headerlink" title="9.2 问题解决"></a>9.2 问题解决</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 查看当前分支的 commit 记录</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 回退到指定版本</span></span><br><span class="line">git reset --hard &lt;commit_id&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上述的 <code>操作二</code> 会将 <code>HEAD</code> 指针指向指定的 <code>commit</code>. 此时, 如果我后悔了, 想回到最新的 <code>commit</code>, 应该怎么做?</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 查看当前仓库所有的 commit 记录</span></span><br><span class="line">git reflog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 回退到最新版本</span></span><br><span class="line">git reset --hard &lt;commit_id&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-3-参考"><a href="#9-3-参考" class="headerlink" title="9.3 参考"></a>9.3 参考</h4><ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192" target="_blank" rel="noopener">版本回退</a></li>
+</ul>
+</details>
+
+<h3 id="10-React-的-Hooks-为什么要按照顺序调用"><a href="#10-React-的-Hooks-为什么要按照顺序调用" class="headerlink" title="10. React 的 Hooks 为什么要按照顺序调用?"></a>10. <code>React</code> 的 <code>Hooks</code> 为什么要按照顺序调用?</h3><details>
+
+<h4 id="10-1-问题描述"><a href="#10-1-问题描述" class="headerlink" title="10.1 问题描述"></a>10.1 问题描述</h4><p>略</p>
+<h4 id="10-2-问题解决"><a href="#10-2-问题解决" class="headerlink" title="10.2 问题解决"></a>10.2 问题解决</h4><p><code>Hooks</code> 以 <code>单链表</code> 的形式存储于函数组件的 <code>Fiber.memorizedState</code> 属性上, 在源码种, 通过 <code>workInProgressHook</code> 这个变量来指向对应的 <code>Hook</code> 对象.</p>
+<p>我们可能在一个函数组件内部, 声明多个同类型的 <code>Hooks</code>, 比如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TestHooks</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. useState</span></span><br><span class="line">  <span class="keyword">const</span> [name, setName] = React.useState(<span class="string">'duanzhaoyang'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. useEffect</span></span><br><span class="line">  React.useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. useState</span></span><br><span class="line">  <span class="keyword">const</span> [age, setAge] = React.useState(<span class="number">21</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. useEffect</span></span><br><span class="line">  React.useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'componentDidUpdate'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例代码中, 我声明了两个 <code>useState</code>, 两者互不影响. 这是怎么做到的?</p>
+<p>事实上, <code>React</code> 内部维护了一个名为 <code>workInProgressHook</code> 的变量, 代码执行的过程中, 每遇到一个 <code>Hooks</code>, 都会移动指针, 使得组件中定义的 <code>Hoooks</code> 与 <code>Fiber</code> 上存储的 <code>Hooks</code> 一一对应.</p>
+<blockquote>
+<p>这也引申出了一个问题: <a href="#11-react-%e7%9a%84-hooks-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%86%99%e5%9c%a8%e6%9c%80%e5%a4%96%e9%83%a8">React 的 Hooks 为什么要写在最外部?</a></p>
+</blockquote>
+<p>假如有这样一段代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TestHooks2</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. useState</span></span><br><span class="line">  <span class="keyword">const</span> [name, setName] = React.useState(<span class="string">'duanzhaoyang'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. useEffect</span></span><br><span class="line">  React.useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. useState</span></span><br><span class="line">  <span class="keyword">if</span>(name) &#123;</span><br><span class="line">    <span class="keyword">const</span> [age, setAge] = React.useState(<span class="number">21</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. useEffect</span></span><br><span class="line">  React.useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'componentDidUpdate'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>useState</code> 被包裹在判断语句内, 假设该 <code>if</code> 语句成立, 则 <code>Hooks</code> 会以正常的模式渲染; 反之, 就会报错, 因为此时代码已经执行到了流程四(<code>useEffect</code>), 但是 <code>workInProgressHook</code> 依然指向流程三对应的 <code>Hooks</code>.</p>
+<h4 id="10-3-参考"><a href="#10-3-参考" class="headerlink" title="10.3 参考"></a>10.3 参考</h4><ul>
+<li><a href="https://zh-hans.reactjs.org/docs/hooks-rules.html#explanation" target="_blank" rel="noopener">React 官方文档——Hooks 规则</a></li>
+</ul>
+</details>
+
+<h3 id="11-React-的-Hooks-为什么要写在最外部"><a href="#11-React-的-Hooks-为什么要写在最外部" class="headerlink" title="11. React 的 Hooks 为什么要写在最外部?"></a>11. <code>React</code> 的 <code>Hooks</code> 为什么要写在最外部?</h3><details>
+
+<h4 id="11-1-问题描述"><a href="#11-1-问题描述" class="headerlink" title="11.1 问题描述"></a>11.1 问题描述</h4><p>为什么不能将 <code>Hooks</code> 声明写在<code>条件判断</code>、<code>循环</code>或者<code>内层函数</code>内部, 这会导致什么问题?</p>
+<h4 id="11-2-问题解决"><a href="#11-2-问题解决" class="headerlink" title="11.2 问题解决"></a>11.2 问题解决</h4><p>参见: <a href="#10-react-%e7%9a%84-hooks-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e6%8c%89%e7%85%a7%e9%a1%ba%e5%ba%8f%e8%b0%83%e7%94%a8"><code>React</code> 的 <code>Hooks</code> 为什么要按照顺序调用?</a></p>
+<h4 id="11-3-参考"><a href="#11-3-参考" class="headerlink" title="11.3 参考"></a>11.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="12-说说-React-的生命周期"><a href="#12-说说-React-的生命周期" class="headerlink" title="12. 说说 React 的生命周期"></a>12. 说说 <code>React</code> 的生命周期</h3><details>
+
+<h4 id="12-1-问题描述"><a href="#12-1-问题描述" class="headerlink" title="12.1 问题描述"></a>12.1 问题描述</h4><p>略</p>
+<h4 id="12-2-问题解决"><a href="#12-2-问题解决" class="headerlink" title="12.2 问题解决"></a>12.2 问题解决</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React-v16.4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 挂载阶段</span></span><br><span class="line"><span class="comment">// constructor -&gt; getDerivedStateFromProps -&gt; render -&gt; componentDidMount</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 更新阶段</span></span><br><span class="line"><span class="comment">// getDerivedStateFromProps -&gt; shouldComponentUpdate -&gt; render -&gt; getSnapshotBeforeUpdate -&gt; componentDidUpdate</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 报错阶段</span></span><br><span class="line"><span class="comment">// componentDidCatch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 卸载阶段</span></span><br><span class="line"><span class="comment">// componentWillUnmount</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="12-3-参考"><a href="#12-3-参考" class="headerlink" title="12.3 参考"></a>12.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="13-说说-NodeJS-的中间件机制"><a href="#13-说说-NodeJS-的中间件机制" class="headerlink" title="13. 说说 NodeJS 的中间件机制"></a>13. 说说 <code>NodeJS</code> 的中间件机制</h3><details>
+
+<h4 id="13-1-问题描述"><a href="#13-1-问题描述" class="headerlink" title="13.1 问题描述"></a>13.1 问题描述</h4><h4 id="13-2-问题解决"><a href="#13-2-问题解决" class="headerlink" title="13.2 问题解决"></a>13.2 问题解决</h4><h4 id="13-3-参考"><a href="#13-3-参考" class="headerlink" title="13.3 参考"></a>13.3 参考</h4></details>
+
+<h3 id="14-分别说下-TS-和-JS-的优点和缺点"><a href="#14-分别说下-TS-和-JS-的优点和缺点" class="headerlink" title="14. 分别说下 TS 和 JS 的优点和缺点"></a>14. 分别说下 <code>TS</code> 和 <code>JS</code> 的优点和缺点</h3><details>
+
+<h4 id="14-1-问题描述"><a href="#14-1-问题描述" class="headerlink" title="14.1 问题描述"></a>14.1 问题描述</h4><p>略</p>
+<h4 id="14-2-问题解决"><a href="#14-2-问题解决" class="headerlink" title="14.2 问题解决"></a>14.2 问题解决</h4><blockquote>
+<p>TS 的优势</p>
+</blockquote>
+<ul>
+<li>TS 可以看作是 <code>Type + ES</code>, 它是一个静态类型的语言, 提供了相对完善的静态类型检查, 与传统的 ES 相比, 可以在编写代码时很方便的发现错误, 而 ES 则需要在执行时才能发现</li>
+<li>与传统的 <code>ES + Flow</code> 模式相比, 避免了编写大量繁杂的函数注释, 更加适合大型应用. 我在阅读 React 源码的过程中, 有接触到 Flow, 但是给我的感觉是体验极差, 并不能跳转到对应的类型定义处</li>
+<li>最重要的一点就是, TS 在 ES 的基础上, 完善了类的概念, 包括 <code>private</code>、<code>protected</code>、<code>public</code>, 同时也提出了一些新的概念, 比如接口等</li>
+</ul>
+<h4 id="14-3-参考"><a href="#14-3-参考" class="headerlink" title="14.3 参考"></a>14.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="15-实现-Promise"><a href="#15-实现-Promise" class="headerlink" title="15. 实现 Promise"></a>15. 实现 <code>Promise</code></h3><details>
+
+<h4 id="15-1-问题描述"><a href="#15-1-问题描述" class="headerlink" title="15.1 问题描述"></a>15.1 问题描述</h4><h4 id="15-2-问题解决"><a href="#15-2-问题解决" class="headerlink" title="15.2 问题解决"></a>15.2 问题解决</h4><h4 id="15-3-参考"><a href="#15-3-参考" class="headerlink" title="15.3 参考"></a>15.3 参考</h4></details>
+
+<h3 id="16-如何用-setTimeout-来模拟-setInterval"><a href="#16-如何用-setTimeout-来模拟-setInterval" class="headerlink" title="16. 如何用 setTimeout 来模拟 setInterval?"></a>16. 如何用 <code>setTimeout</code> 来模拟 <code>setInterval</code>?</h3><details>
+
+<h4 id="16-1-问题描述"><a href="#16-1-问题描述" class="headerlink" title="16.1 问题描述"></a>16.1 问题描述</h4><h4 id="16-2-问题解决"><a href="#16-2-问题解决" class="headerlink" title="16.2 问题解决"></a>16.2 问题解决</h4><h4 id="16-3-参考"><a href="#16-3-参考" class="headerlink" title="16.3 参考"></a>16.3 参考</h4></details>
+
+<h2 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h2><hr>
+<h3 id="17-自我介绍"><a href="#17-自我介绍" class="headerlink" title="17. 自我介绍"></a>17. 自我介绍</h3><p>略</p>
+<h3 id="18-你的职业规划提到了全栈-那你现在是怎么准备的"><a href="#18-你的职业规划提到了全栈-那你现在是怎么准备的" class="headerlink" title="18. 你的职业规划提到了全栈, 那你现在是怎么准备的?"></a>18. 你的职业规划提到了全栈, 那你现在是怎么准备的?</h3><details>
+
+<h4 id="18-1-问题描述"><a href="#18-1-问题描述" class="headerlink" title="18.1 问题描述"></a>18.1 问题描述</h4><p>略</p>
+<h4 id="18-2-问题解决"><a href="#18-2-问题解决" class="headerlink" title="18.2 问题解决"></a>18.2 问题解决</h4><p>目前来说, 先去熟练前端的主流技术栈, 等工作之后再去根据实际情况, 探索公司的具体的后端技术栈, 向全栈方向发展.</p>
+<h4 id="18-3-参考"><a href="#18-3-参考" class="headerlink" title="18.3 参考"></a>18.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="19-你为什么要参与开源项目"><a href="#19-你为什么要参与开源项目" class="headerlink" title="19. 你为什么要参与开源项目?"></a>19. 你为什么要参与开源项目?</h3><details>
+
+<h4 id="19-1-问题描述"><a href="#19-1-问题描述" class="headerlink" title="19.1 问题描述"></a>19.1 问题描述</h4><p>略</p>
+<h4 id="19-2-问题解决"><a href="#19-2-问题解决" class="headerlink" title="19.2 问题解决"></a>19.2 问题解决</h4><p>略</p>
+<h4 id="19-3-参考"><a href="#19-3-参考" class="headerlink" title="19.3 参考"></a>19.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="20-为什么要使用-TS-它解决了什么问题"><a href="#20-为什么要使用-TS-它解决了什么问题" class="headerlink" title="20. 为什么要使用 TS, 它解决了什么问题?"></a>20. 为什么要使用 <code>TS</code>, 它解决了什么问题?</h3><details>
+
+<h4 id="20-1-问题描述"><a href="#20-1-问题描述" class="headerlink" title="20.1 问题描述"></a>20.1 问题描述</h4><p>略</p>
+<h4 id="20-2-问题解决"><a href="#20-2-问题解决" class="headerlink" title="20.2 问题解决"></a>20.2 问题解决</h4><p>其实这个问题, 一面的时候已经问到了, 个人认为, 使用 <code>TS</code> 主要有三个方面的优势:</p>
+<ol>
+<li><code>TS</code> 是一个静态类型语言, 拥有较为完整的静态类型检查机制, 在编写代码时就可以发现潜在的错误, 而反观传统的 <code>ES</code>, 则需要在代码编译执行时才能揪出存在的错误.</li>
+<li>实际上, 使用 <code>ES + Flow</code> 可以提供简单的类型检查, 但我个人认为这种方式是具有一定缺陷的——比如我在阅读 <code>React</code> 源码的过程中, 注意到 <code>React</code> 源码中有使用到了 <code>Flow</code>, 但是给我的感觉就是——用户体验很差, 不能跳转到类型声明的地方.</li>
+<li><code>TS</code> 最大的优势在于, 它既继承了传统 <code>ES</code> 的诸多优秀特性, 又推出了一些新的特性(<code>接口</code>)等.</li>
+</ol>
+<h4 id="20-3-参考"><a href="#20-3-参考" class="headerlink" title="20.3 参考"></a>20.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="21-VS-Code-的插件是你独立开发的吧"><a href="#21-VS-Code-的插件是你独立开发的吧" class="headerlink" title="21. VS Code 的插件是你独立开发的吧?"></a>21. <code>VS Code</code> 的插件是你独立开发的吧?</h3><details>
+
+<h4 id="21-1-问题描述"><a href="#21-1-问题描述" class="headerlink" title="21.1 问题描述"></a>21.1 问题描述</h4><p>略</p>
+<h4 id="21-2-问题解决"><a href="#21-2-问题解决" class="headerlink" title="21.2 问题解决"></a>21.2 问题解决</h4><blockquote>
+<p>灵感来源</p>
+</blockquote>
+<p>起初在 <code>VS Code</code> 的 <code>repo</code> 看到了国外开发者提的一个 <code>issue</code>, 原意就是他需要在 <code>VS Code</code> 的某个工作区文件夹内快速查找一个文件.</p>
+<blockquote>
+<p>需求分析</p>
+</blockquote>
+<p>实际上, <code>VS Code</code> 已经集成了查找文件的功能, 但是是有明显的缺陷的, 它只能在所有工作区文件夹内查找, 而我只需要在特定的文件夹内查找文件.</p>
+<blockquote>
+<p>潜在问题</p>
+</blockquote>
+<p>之前写过一个初始版本, 但是是存在一些问题的, 比如:</p>
+<ul>
+<li>不能输入提示</li>
+<li>无法处理回退时产生的问题</li>
+</ul>
+<p>一直有一个重构插件的计划, 但是由于电脑使用过代理, 导致 <code>VS Code</code> 的插件开发服务器无法正常启动, 进而该计划一直被搁置, 目前仍未解决.</p>
+<h4 id="21-3-参考"><a href="#21-3-参考" class="headerlink" title="21.3 参考"></a>21.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="22-你目前正在参与的开源项目"><a href="#22-你目前正在参与的开源项目" class="headerlink" title="22. 你目前正在参与的开源项目"></a>22. 你目前正在参与的开源项目</h3><details>
+
+<h4 id="22-1-问题描述"><a href="#22-1-问题描述" class="headerlink" title="22.1 问题描述"></a>22.1 问题描述</h4><p>略</p>
+<h4 id="22-2-问题解决"><a href="#22-2-问题解决" class="headerlink" title="22.2 问题解决"></a>22.2 问题解决</h4><p>略</p>
+<h4 id="22-3-参考"><a href="#22-3-参考" class="headerlink" title="22.3 参考"></a>22.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="23-TS-在什么情况下使用-any"><a href="#23-TS-在什么情况下使用-any" class="headerlink" title="23. TS 在什么情况下使用 any?"></a>23. <code>TS</code> 在什么情况下使用 <code>any</code>?</h3><details>
+
+<h4 id="23-1-问题描述"><a href="#23-1-问题描述" class="headerlink" title="23.1 问题描述"></a>23.1 问题描述</h4><p>略</p>
+<h4 id="23-2-问题解决"><a href="#23-2-问题解决" class="headerlink" title="23.2 问题解决"></a>23.2 问题解决</h4><blockquote>
+<p>场景一: 工具函数</p>
+</blockquote>
+<p><code>any</code>, 顾名思义, 就是 <code>任意</code> 的意思. 当一个函数, 需要接收任意类型的参数的时候, 可以使用它:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取值的类型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extractValueType</span>(<span class="params">value: <span class="built_in">any</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (&#123;&#125;).toString.call(<span class="literal">null</span>, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="23-3-参考"><a href="#23-3-参考" class="headerlink" title="23.3 参考"></a>23.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="24-有了解哪些-redux-的异步中间件"><a href="#24-有了解哪些-redux-的异步中间件" class="headerlink" title="24. 有了解哪些 redux 的异步中间件?"></a>24. 有了解哪些 <code>redux</code> 的异步中间件?</h3><details>
+
+<h4 id="24-1-问题描述"><a href="#24-1-问题描述" class="headerlink" title="24.1 问题描述"></a>24.1 问题描述</h4><p>略</p>
+<h4 id="24-2-问题解决"><a href="#24-2-问题解决" class="headerlink" title="24.2 问题解决"></a>24.2 问题解决</h4><p>由于最早接触的是 <code>redux-thunk</code>, 其实也有很多优秀地数据管理库, 比如: <code>redux-saga</code>、<code>redux-promise</code>…</p>
+<p>对于 <code>redux-thunk</code>, 有必要了解下它的原理, 正所谓知其然知其所以然.</p>
+<h4 id="24-3-参考"><a href="#24-3-参考" class="headerlink" title="24.3 参考"></a>24.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="25-redux-thunk-的原理是什么-它的优势在哪里"><a href="#25-redux-thunk-的原理是什么-它的优势在哪里" class="headerlink" title="25. redux-thunk 的原理是什么, 它的优势在哪里?"></a>25. <code>redux-thunk</code> 的原理是什么, 它的优势在哪里?</h3><details>
+
+<h4 id="25-1-问题描述"><a href="#25-1-问题描述" class="headerlink" title="25.1 问题描述"></a>25.1 问题描述</h4><p>略</p>
+<h4 id="25-2-问题解决"><a href="#25-2-问题解决" class="headerlink" title="25.2 问题解决"></a>25.2 问题解决</h4><blockquote>
+<p>原生 dispatch 的劣势</p>
+</blockquote>
+<p><code>redux</code> 通过 <code>dispatch</code> 来派发一个 <code>action</code> 来操作数据, 那么假如我需要记录每次 <code>dispatch</code> 的记录, 应该怎么做? 最简单的方法应该是:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'dispatch...'</span>, action);</span><br></pre></td></tr></table></figure>
+
+<p>但是这样会产生大量的重复代码, 所以需要对于原生的 <code>dispatch</code> 进行一层封装, 需要用到 <code>applyMiddleware</code></p>
+<blockquote>
+<p>applyMiddleware</p>
+</blockquote>
+<p><code>redux</code> 通过暴露出 <code>applyMiddleware</code> 方法, 使得开发者可以很方便的自定义 <code>dispatch</code>.</p>
+<blockquote>
+<p>redux-thunk</p>
+</blockquote>
+<p><code>redux-thunk</code> 的原理很简单, 改造 <code>dispatch</code>, 返回一个接收 <code>store</code> 作为对象的函数, 在异步任务执行完成的时候再进行 <code>dispatch</code>.</p>
+<blockquote>
+<p>redux-thunk 的优势</p>
+</blockquote>
+<p>就一个词: 简单易用, 很容易理解</p>
+<h4 id="25-3-参考"><a href="#25-3-参考" class="headerlink" title="25.3 参考"></a>25.3 参考</h4><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/34651008" target="_blank" rel="noopener">redux 中间件的原理——从懵逼到恍然大悟</a></li>
+<li><a href="https://github.com/zp1112/blog/issues/11" target="_blank" rel="noopener">难理解的中间件原理以及 redux-thunk 中间件应用, 溜溜的!</a></li>
+</ul>
+</details>
+
+<h3 id="26-你对代码质量的要求是怎样的"><a href="#26-你对代码质量的要求是怎样的" class="headerlink" title="26. 你对代码质量的要求是怎样的?"></a>26. 你对代码质量的要求是怎样的?</h3><details>
+
+<h4 id="26-1-问题描述"><a href="#26-1-问题描述" class="headerlink" title="26.1 问题描述"></a>26.1 问题描述</h4><p>略</p>
+<h4 id="26-2-问题解决"><a href="#26-2-问题解决" class="headerlink" title="26.2 问题解决"></a>26.2 问题解决</h4><p>略</p>
+<h4 id="26-3-参考"><a href="#26-3-参考" class="headerlink" title="26.3 参考"></a>26.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="27-CSS-的大小单位有哪些"><a href="#27-CSS-的大小单位有哪些" class="headerlink" title="27. CSS 的大小单位有哪些?"></a>27. <code>CSS</code> 的大小单位有哪些?</h3><details>
+
+<h4 id="27-1-问题描述"><a href="#27-1-问题描述" class="headerlink" title="27.1 问题描述"></a>27.1 问题描述</h4><p>略</p>
+<h4 id="27-2-问题解决"><a href="#27-2-问题解决" class="headerlink" title="27.2 问题解决"></a>27.2 问题解决</h4><ul>
+<li>百分比(<code>%</code>)</li>
+<li>px</li>
+<li>rem<ul>
+<li>相对于 <code>html</code> 根元素来计算大小</li>
+</ul>
+</li>
+<li>em<ul>
+<li>相对于父级元素来计算大小</li>
+</ul>
+</li>
+<li>vw<ul>
+<li>浏览器视口的宽度</li>
+</ul>
+</li>
+<li>…</li>
+</ul>
+<h4 id="27-3-参考"><a href="#27-3-参考" class="headerlink" title="27.3 参考"></a>27.3 参考</h4><p>略</p>
+</details>
+
+<h3 id="28-使用-CSS-在不占用多余空间的情况下画一个三角形"><a href="#28-使用-CSS-在不占用多余空间的情况下画一个三角形" class="headerlink" title="28. 使用 CSS 在不占用多余空间的情况下画一个三角形"></a>28. 使用 <code>CSS</code> 在不占用多余空间的情况下画一个三角形</h3><details>
+
+<h4 id="28-1-问题描述"><a href="#28-1-问题描述" class="headerlink" title="28.1 问题描述"></a>28.1 问题描述</h4><p>注意题目, 要求不占用额外的空间</p>
+<h4 id="28-2-问题解决"><a href="#28-2-问题解决" class="headerlink" title="28.2 问题解决"></a>28.2 问题解决</h4><h4 id="28-3-参考"><a href="#28-3-参考" class="headerlink" title="28.3 参考"></a>28.3 参考</h4></details>
+
+<h3 id="29-CSS-计算题"><a href="#29-CSS-计算题" class="headerlink" title="29. CSS 计算题"></a>29. CSS 计算题</h3><details>
+
+<h4 id="29-1-问题描述"><a href="#29-1-问题描述" class="headerlink" title="29.1 问题描述"></a>29.1 问题描述</h4><p>给定一个容器 div(<code>width: 100, height: 200</code>) 和一个子代 div(<code>width: 20, height: 10, padding: 10%</code>), 求子代 <code>div</code> 元素的宽度.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="29-2-问题解决"><a href="#29-2-问题解决" class="headerlink" title="29.2 问题解决"></a>29.2 问题解决</h4><blockquote>
+<p>坑点一: 盒子模型</p>
+</blockquote>
+<ul>
+<li>IE 盒模型: 元素的宽度 = width + padding + border</li>
+<li>W3C 盒模型: 元素的宽度 = width</li>
+</ul>
+<blockquote>
+<p>坑点二: 百分比 margin/padding</p>
+</blockquote>
+<p>元素的 <code>margin</code> 或者 <code>padding</code> 属性, 如果设置为 <strong>百分比</strong>, 则会以其父级的 <code>width</code> 来计算.</p>
+<blockquote>
+<p>结果</p>
+</blockquote>
+<ul>
+<li>IE 盒模型: div 宽度 = 20</li>
+<li>W3C 盒模型: div 宽度 = 20 + 100 * 10% * 2 = 40</li>
+</ul>
+<h4 id="29-3-参考"><a href="#29-3-参考" class="headerlink" title="29.3 参考"></a>29.3 参考</h4><ul>
+<li><a href="https://www.jianshu.com/p/1f467159754b" target="_blank" rel="noopener">margin/padding 设置为百分比</a></li>
+</ul>
+</details>
+
+<h2 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h2><hr>
+<h3 id="30-将一串数字转换成中文读法"><a href="#30-将一串数字转换成中文读法" class="headerlink" title="30. 将一串数字转换成中文读法"></a>30. 将一串数字转换成中文读法</h3><details>
+
+<h4 id="30-1-问题描述"><a href="#30-1-问题描述" class="headerlink" title="30.1 问题描述"></a>30.1 问题描述</h4><ul>
+<li>1234 =&gt; 一千二百三十四</li>
+<li>112341234 =&gt; 一亿一千两百三十四万一千两百三十四</li>
+</ul>
+<h4 id="30-2-问题解决"><a href="#30-2-问题解决" class="headerlink" title="30.2 问题解决"></a>30.2 问题解决</h4><h4 id="30-3-参考"><a href="#30-3-参考" class="headerlink" title="30.3 参考"></a>30.3 参考</h4></details>
+
+<h3 id="31-快速排序"><a href="#31-快速排序" class="headerlink" title="31. 快速排序"></a>31. 快速排序</h3><details>
+
+<h4 id="31-1-问题描述"><a href="#31-1-问题描述" class="headerlink" title="31.1 问题描述"></a>31.1 问题描述</h4><p>手写一个快速排序</p>
+<h4 id="31-2-问题解决"><a href="#31-2-问题解决" class="headerlink" title="31.2 问题解决"></a>31.2 问题解决</h4><h4 id="31-3-参考"><a href="#31-3-参考" class="headerlink" title="31.3 参考"></a>31.3 参考</h4></details>
+
+<h3 id="32-防抖和节流任选并实现"><a href="#32-防抖和节流任选并实现" class="headerlink" title="32. 防抖和节流任选并实现"></a>32. 防抖和节流任选并实现</h3><details>
+
+<h4 id="32-1-问题描述"><a href="#32-1-问题描述" class="headerlink" title="32.1 问题描述"></a>32.1 问题描述</h4><h4 id="32-2-问题解决"><a href="#32-2-问题解决" class="headerlink" title="32.2 问题解决"></a>32.2 问题解决</h4><h4 id="32-3-参考"><a href="#32-3-参考" class="headerlink" title="32.3 参考"></a>32.3 参考</h4></details>
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/11/08/滴滴三面总结/">https://ddzy.github.io/blog/2019/11/08/滴滴三面总结/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/11/18/大四随笔-中/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>大四随笔(中)
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/10/30/字节跳动一面总结/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          字节跳动一面总结<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '滴滴三面总结',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

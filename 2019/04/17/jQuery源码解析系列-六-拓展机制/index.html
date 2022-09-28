@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="jQuery, ts, Nlvi">
+
+  <title> jQuery源码解析系列(六) -拓展机制 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">jQuery源码解析系列(六) -拓展机制</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、前置"><span class="toc-text">二、前置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-深拷贝vs浅拷贝"><span class="toc-text">2.1 深拷贝vs浅拷贝</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#三、用法"><span class="toc-text">三、用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-jQuery-extend-amp-jQuery-fn-extend"><span class="toc-text">3.1 jQuery.extend&amp;jQuery.fn.extend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-如何使用"><span class="toc-text">3.2 如何使用?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-使用方式一"><span class="toc-text">3.2.1 使用方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-使用方式二"><span class="toc-text">3.2.2 使用方式二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-使用方式三"><span class="toc-text">3.2.3 使用方式三</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、细说"><span class="toc-text">四、细说</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-贴源码"><span class="toc-text">4.1 贴源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-析源码"><span class="toc-text">4.2 析源码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、总结"><span class="toc-text">五、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、示例代码"><span class="toc-text">五、示例代码</span></a></li>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-04-17</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/jQuery/">jQuery</a>
+              
+                <a href="/blog/tags/ts/">ts</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          jQuery源码解析系列(六) -拓展机制
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>jQuery为开发者提供了<code>快速便捷</code>的DOM操作, 那么如果我们想添加自己的方法到jQuery原型或者构造函数上, 我们该怎么做呢? jQuery暴露出了<code>extend</code>API来解决这个问题, 这篇文章就来观摩一下其<code>拓展机制</code>.</p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><hr>
+<h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>改进文章格式🎉</li>
+</ul>
+<h2 id="二、前置"><a href="#二、前置" class="headerlink" title="二、前置"></a>二、前置</h2><hr>
+<h4 id="2-1-深拷贝vs浅拷贝"><a href="#2-1-深拷贝vs浅拷贝" class="headerlink" title="2.1 深拷贝vs浅拷贝"></a>2.1 深拷贝vs浅拷贝</h4><blockquote>
+<p><strong>PS</strong>: 关于<code>深</code>、<code>浅</code>拷贝的知识, 网上的各种博客已经层出不穷了, 对其实<code>现方式</code>以及<code>基本原理</code>都讲解的很清楚. 这里还是<code>苦口婆心</code>地提一下, 它们的主要区别, 也是为了接下来地阅读作个铺垫吧.</p>
+</blockquote>
+<p>那么, 问题来了:</p>
+<blockquote>
+<p><strong>Q</strong>: 两者的<code>主要</code>区别是什么?</p>
+</blockquote>
+<ul>
+<li>对于<code>数组</code>, 两者是一样的功能</li>
+<li>对于<code>键值对对象</code><ul>
+<li><code>shallowCopy</code>只拷贝<code>Object.keys()</code>, 也就是第一层<code>键值</code></li>
+<li><code>deepCopy</code>则反之</li>
+</ul>
+</li>
+</ul>
+<p>一个简单的例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  b: <span class="number">1</span>,</span><br><span class="line">  c: <span class="number">2</span>,</span><br><span class="line">  d: &#123;</span><br><span class="line">    e: <span class="number">3</span>,</span><br><span class="line">    f: [],</span><br><span class="line">    g: &#123;</span><br><span class="line">      h: &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// shallowCopy: &#123;b, c, d,&#125;</span></span><br><span class="line"><span class="comment">// deepCopy: &#123;b: 1, c: 2, d: &#123; e: 3, f: [], g: &#123; h: &#123;&#125; &#125; &#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>关于它们的区别, 还可以参考我之前的文章:</p>
+<blockquote>
+<p><strong>PS</strong>: <a href="https://blog.yyge.top/blog/2019/03/05/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E9%87%8D%E6%8B%BE%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" target="_blank" rel="noopener">前端基础重拾系列之——深浅拷贝</a></p>
+</blockquote>
+<h2 id="三、用法"><a href="#三、用法" class="headerlink" title="三、用法"></a>三、用法</h2><hr>
+<h3 id="3-1-jQuery-extend-amp-jQuery-fn-extend"><a href="#3-1-jQuery-extend-amp-jQuery-fn-extend" class="headerlink" title="3.1 jQuery.extend&amp;jQuery.fn.extend"></a>3.1 <em>jQuery.extend</em>&amp;j<em>Query.fn.extend</em></h3><p>jq提供了两种方式, 供我们自定义拓展:</p>
+<ul>
+<li>jQuery.extend(…)<ul>
+<li>拓展<code>Static</code>, 也就是<code>静态方法</code></li>
+</ul>
+</li>
+<li>jQuery.fn.extend(…)<ul>
+<li>拓展<code>Non-static</code>(<strong>实例方法</strong>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-如何使用"><a href="#3-2-如何使用" class="headerlink" title="3.2 如何使用?"></a>3.2 如何使用?</h3><p>分析<code>拓展机制</code>前, 先做一件事情, 那就是如何去使用它, 俗话说<code>知其意,悟其理,守其则,践其行</code>, 了解了它是<code>如何使用</code>, 再去<code>深究其原理</code>, 这也是我写文章的一贯原则.</p>
+<blockquote>
+<p><strong>PS</strong>: 自己用<code>jQuery</code>很少, 所以对<code>extend</code>API也基本没用过, 但是这并不影响对其理解, 毕竟知识是相通的, 所谓的框架只不过是<code>换了身皮</code>.</p>
+</blockquote>
+<p>一般来说, 开发者可以根据<code>可以传递的参数个数不同</code>, 通过下述三种方式使用(以<code>jQuery.fn.extend</code>)为例:</p>
+<h4 id="3-2-1-使用方式一"><a href="#3-2-1-使用方式一" class="headerlink" title="3.2.1 使用方式一"></a>3.2.1 使用方式一</h4><blockquote>
+<p><strong>PS</strong>: <strong>给jq原型添加方法</strong>. jQuery的各种<code>plugin</code>就是通过如此来挂载</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>还有另一种方式, 那就是通过<code>直接赋值</code>的方式来拓展:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.fn[<span class="string">'sayHello'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Do something</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-使用方式二"><a href="#3-2-2-使用方式二" class="headerlink" title="3.2.2 使用方式二"></a>3.2.2 使用方式二</h4><blockquote>
+<p><strong>PS</strong>: 合并<code>后续</code>对象到<code>首个</code>对象, 纯粹返回一个拓展后的对象, 此时与<code>jQuery</code>没有任何关系.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> origin = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newOrigin = $.fn.extend(origin, &#123; <span class="attr">name</span>: <span class="string">''</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-3-使用方式三"><a href="#3-2-3-使用方式三" class="headerlink" title="3.2.3 使用方式三"></a>3.2.3 使用方式三</h4><blockquote>
+<p><strong>PS</strong>: 是否执行深层的<code>copy</code>操作.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> origin = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newOrigin = $.fn.extend(<span class="literal">true</span>, origin, &#123;</span><br><span class="line">  name: <span class="string">'duan'</span>,</span><br><span class="line">  skill: &#123;</span><br><span class="line">    hobby: &#123;</span><br><span class="line">      favorite: &#123;&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; xxx, skill: &#123; hobby: &#123; favorite: &#123;&#125; &#125; &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、细说"><a href="#四、细说" class="headerlink" title="四、细说"></a>四、细说</h2><hr>
+<blockquote>
+<p><strong>PS</strong>: 对于内部的全部代码逻辑, 我觉得并没有必要细看, 所以这里只选取了一种情况————<code>单个参数</code>, 也就是对于拓展<code>jQuery原型</code>or<code>静态方法</code>的处理.</p>
+</blockquote>
+<h3 id="4-1-贴源码"><a href="#4-1-贴源码" class="headerlink" title="4.1 贴源码"></a>4.1 贴源码</h3><p>先来贴一下部分源码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">jQuery.extend = jQuery.fn.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> target = <span class="built_in">arguments</span>[<span class="number">0</span>] || &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> i;</span><br><span class="line">  <span class="keyword">var</span> option;</span><br><span class="line">  <span class="keyword">var</span> length = <span class="built_in">arguments</span>.length;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  <span class="keyword">var</span> src;</span><br><span class="line">  <span class="keyword">var</span> copy;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// *原文注释*: Extend jQuery itself if only one arguments is passed</span></span><br><span class="line">  <span class="comment">// *人话*: 只传递一个参数时, 拓展jQuery静态方法或实例方法</span></span><br><span class="line">  <span class="keyword">if</span>(i === length) &#123;</span><br><span class="line">    target = <span class="keyword">this</span>;</span><br><span class="line">    i--;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 拷贝</span></span><br><span class="line">  <span class="keyword">for</span>(; i &lt; length; i++) &#123;</span><br><span class="line">    options = <span class="built_in">arguments</span>[i];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(name <span class="keyword">in</span> options) &#123;</span><br><span class="line">      copy = options[name];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(copy !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">        target[name] = copy;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-析源码"><a href="#4-2-析源码" class="headerlink" title="4.2 析源码"></a>4.2 析源码</h3><p>对于单个参数的处理逻辑很简单:</p>
+<ul>
+<li>将<code>target</code>赋值为this, this有两种情况<ul>
+<li>jQuery构造函数</li>
+<li>jQuery实例</li>
+</ul>
+</li>
+<li><code>for-in</code>遍历<code>options</code></li>
+<li>给<code>target</code>赋值<ul>
+<li>过滤掉<code>target</code>的值为<code>undefined</code>的情况</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><hr>
+<p>jQuery提供的<code>extend</code>极大地方便了开发者, 同样的, <code>var</code>框架同样有对应的拓展方法, 这里就不说了(<strong>其实是太菜了</strong>).</p>
+<p>当然, 最近也在挤时间看<code>react</code>源码, 感觉其复杂度高了几个层级, 所以还是一步一步地走下去吧!</p>
+<h2 id="五、示例代码"><a href="#五、示例代码" class="headerlink" title="五、示例代码"></a>五、示例代码</h2><hr>
+<p>使用<code>ts</code>重构了我之前写的<code>jQuery类库</code>, 项目地址<a href="https://github.com/ddzy/my-simple-jquery" target="_blank" rel="noopener">戳这里</a></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/04/17/jQuery源码解析系列-六-拓展机制/">https://ddzy.github.io/blog/2019/04/17/jQuery源码解析系列-六-拓展机制/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/04/19/jQuery源码解析系列-七-Sizzle引擎/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>jQuery源码解析系列(七) -Sizzle引擎
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/04/16/jQuery源码解析系列-五-原型/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          jQuery源码解析系列(五) -原型<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'jQuery源码解析系列(六) -拓展机制',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="七牛云, Nlvi">
+
+  <title> 七牛云绑定域名 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">七牛云绑定域名</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册七牛云"><span class="toc-text">注册七牛云</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建存储空间"><span class="toc-text">创建存储空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建加速域名"><span class="toc-text">创建加速域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取CNAME"><span class="toc-text">获取CNAME</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加CNAME记录"><span class="toc-text">添加CNAME记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证解析是否成功"><span class="toc-text">验证解析是否成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-text">结语</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-01-23</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/freebie/">freebie</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/七牛云/">七牛云</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          七牛云绑定域名
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>由于之前使用了七牛云赠送的免费域名, 使用期限只有30天, 过期之后, 项目的图片等文件无法直接访问. 所以, 这里将绑定自定义域名的过程记录下来.</p>
+<a id="more"></a>
+
+
+<h2 id="注册七牛云"><a href="#注册七牛云" class="headerlink" title="注册七牛云"></a><strong>注册七牛云</strong></h2><hr>
+<p>略</p>
+<h2 id="创建存储空间"><a href="#创建存储空间" class="headerlink" title="创建存储空间"></a><strong>创建存储空间</strong></h2><hr>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/1.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="创建存储空间"></p>
+<p><strong>存储空间名称</strong>: 自定义即可.<br><strong>存储区域</strong>: 南方的选<code>华南</code>, 北方的选<code>华北</code>即可.<br><strong>访问控制</strong>: 一般填<code>共有</code>即可.</p>
+<p>创建好之后, 大概是这样:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/2.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="存储空间详情"></p>
+<p><strong>注意</strong>: 图中有一个<code>融合CDN测试域名</code>, 这是七牛云默认分配给我们的域名, 可以免费使用30天, 过期之后, 除非使用自定义域名, 不然😄…</p>
+<h2 id="创建加速域名"><a href="#创建加速域名" class="headerlink" title="创建加速域名"></a><strong>创建加速域名</strong></h2><hr>
+<p>接着, 点击<code>立即绑定域名</code>按钮, 进入<code>域名管理页</code>, 如下:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/3.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="域名管理"></p>
+<p><strong>加速域名</strong>: 这里填写 <code>自己要绑定的域名</code>, 注意最好不要用二级域名, 例如 <code>yyge.com</code> | <code>yyge.cn</code>之类的.</p>
+<p>其他选项, 基本都是相同的, 按照图示选中即可.</p>
+<h2 id="获取CNAME"><a href="#获取CNAME" class="headerlink" title="获取CNAME"></a><strong>获取CNAME</strong></h2><hr>
+<p>完成上一个步骤之后, <code>根据页面提示</code>进入<code>域名管理页</code>, 如图:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/4.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="配置CNAME"></p>
+<p>鼠标悬停表格项, 复制对应的CNAME, 如图:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/5.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="复制CNAME"></p>
+<h2 id="添加CNAME记录"><a href="#添加CNAME记录" class="headerlink" title="添加CNAME记录"></a><strong>添加CNAME记录</strong></h2><hr>
+<blockquote>
+<p>同时也是阿里云的多级域名解析步骤</p>
+</blockquote>
+<ol>
+<li>进入阿里云域名管理页, 如图:</li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/6.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="阿里云域名管理"></p>
+<ol start="2">
+<li>点击右下角<code>解析</code>按钮</li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/7.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="解析按钮"></p>
+<ol start="3">
+<li>进入域名解析页</li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/8.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="域名解析页"></p>
+<ol start="4">
+<li>点击<code>域名解析按钮</code></li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/9.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="域名解析按钮"></p>
+<ol start="5">
+<li>进入<code>添加记录页</code></li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/10.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="添加记录页"></p>
+<p><strong>记录类型</strong>: 由于要指向七牛云提供的域名, 所以选择<code>CNAME</code>.<br><strong>主机记录</strong>: 你要绑定的多级域名, 截掉你的一级域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">你的一级域名: yyge.top</span><br><span class="line">你要绑定到七牛云的域名: oos.blog.yyge.top</span><br><span class="line">主机记录: oos.blog</span><br></pre></td></tr></table></figure>
+
+<p><strong>记录值</strong>: 填写刚刚复制的<code>CNAME</code>即可</p>
+<p>完成之后, 点击确定…</p>
+<h2 id="验证解析是否成功"><a href="#验证解析是否成功" class="headerlink" title="验证解析是否成功"></a><strong>验证解析是否成功</strong></h2><hr>
+<ol>
+<li>阿里云</li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/11.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="阿里云解析成功"></p>
+<p>阿里云出现了相应的解析记录, 表示解析成功. 相反, 如果没有出现解析记录, 可能的原因有以下:</p>
+<ul>
+<li>未进行实名认证</li>
+<li>域名已过期<br>…</li>
+</ul>
+<p>这些都是自己的原因, 不在本文讨论的范畴…</p>
+<ol start="2">
+<li>七牛云</li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/12.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="七牛云CNAME配置成功"></p>
+<p>返回到七牛云的<code>对象存储</code>页, 出现如上图所示, 则表明已经成功了<code>50%</code>! 接着, 进行最后一步, 测试域名是否绑定成功.</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a><strong>测试</strong></h2><hr>
+<ol>
+<li>进入<code>内容管理</code>页, 点击<code>上传文件</code>按钮, 上传你的图片, 之后点击<code>关闭按钮</code>即可, 如图:</li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/13.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="内容管理页"><br><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/14.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="上传完成"></p>
+<ol start="2">
+<li>关闭之后, 我们在右边的查看按钮, 点击<code>复制外链</code></li>
+</ol>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/15.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="图片预览"></p>
+<p>我们可以清楚的看到, 此时已经可以正常的显示图片了:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/16.jpg" alt="图片正常显示"></p>
+<p>但是, 此时值得注意的是, 我们的地址栏的域名, 并不是我们自定义的域名, 而是七牛云分配的域名, 这就有点尴尬了…</p>
+<p>此时, 我们只要将外链域名下拉框更改为<code>自定义域名</code>, 并且保存即可.</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/17.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="修改外链域名"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h2><hr>
+<blockquote>
+<p>每天进步一点点</p>
+</blockquote>
+<p><img src="https://oos.blog.yyge.top/2019/1/23/%E4%B8%83%E7%89%9B%E4%BA%91%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/images/18.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="child"></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/01/23/七牛云绑定域名/">https://ddzy.github.io/blog/2019/01/23/七牛云绑定域名/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/01/24/react-router-dom源码解析(一) -开篇/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>react-router-dom源码解析(一) -开篇
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/01/23/毕设之路-三/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          毕设之路(三)<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '七牛云绑定域名',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

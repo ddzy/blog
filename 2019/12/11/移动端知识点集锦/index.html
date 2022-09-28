@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="h5, wep, mobile, Nlvi">
+
+  <title> 移动端知识点集锦 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">移动端知识点集锦</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-12-11"><span class="toc-text">[2019-12-11]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-12-19"><span class="toc-text">[2019-12-19]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-12-31"><span class="toc-text">[2019-12-31]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-1"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-2"><span class="toc-text">[2020-1-2]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-2"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-4"><span class="toc-text">[2020-3-4]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-3"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-12"><span class="toc-text">[2020-3-12]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-4"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-13"><span class="toc-text">[2020-3-13]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-5"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-24"><span class="toc-text">[2020-3-24]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-6"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-10-30"><span class="toc-text">[2020-10-30]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点"><span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信浏览器"><span class="toc-text">微信浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QQ-浏览器"><span class="toc-text">QQ 浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS"><span class="toc-text">iOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android"><span class="toc-text">Android</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-12-11</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/h5/">h5</a>
+              
+                <a href="/blog/tags/wep/">wep</a>
+              
+                <a href="/blog/tags/mobile/">mobile</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          移动端知识点集锦
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>一个大的知识点集合, 记录移动端 H5 开发的知识点、踩坑过程.</p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2019-12-11"><a href="#2019-12-11" class="headerlink" title="[2019-12-11]"></a>[2019-12-11]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2019-12-19"><a href="#2019-12-19" class="headerlink" title="[2019-12-19]"></a>[2019-12-19]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li><a href="#其它">其它</a> 区新增文章: <a href="https://yyge.top/blog/2019/12/19/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94video-play-%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——video.play()产生的问题</a></li>
+<li><a href="#ios">iOS</a> 区新增文章: <a href="https://yyge.top/blog/2019/12/19/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS12%E4%B8%8B%E5%8F%8C%E5%87%BB%E9%A1%B5%E9%9D%A2%E6%94%BE%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——iOS12 下双击页面放大的问题</a></li>
+</ul>
+<h3 id="2019-12-31"><a href="#2019-12-31" class="headerlink" title="[2019-12-31]"></a>[2019-12-31]</h3><h4 id="Added-1"><a href="#Added-1" class="headerlink" title="Added"></a>Added</h4><ul>
+<li><a href="#微信浏览器">微信浏览器</a> 区新增文章: <a href="https://yyge.top/blog/2019/12/31/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8a%E6%A0%87%E7%AD%BE%E9%94%9A%E7%82%B9%E8%B7%B3%E8%BD%AC%E5%AF%BC%E8%87%B4%E7%9A%84%E5%BA%95%E9%83%A8%E7%99%BD%E6%9D%A1%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——微信浏览器 a 标签锚点跳转导致的底部白条问题</a></li>
+<li><a href="#iOS">iOS</a> 区新增文章: <a href="https://yyge.top/blog/2019/12/31/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91input-focus%E6%96%B9%E6%B3%95%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">移动端知识集锦系列之——iOS 无法自动触发 input.focus 的解决方案</a></li>
+</ul>
+<h3 id="2020-1-2"><a href="#2020-1-2" class="headerlink" title="[2020-1-2]"></a>[2020-1-2]</h3><h4 id="Added-2"><a href="#Added-2" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增区块: <a href="#QQ%E6%B5%8F%E8%A7%88%E5%99%A8">QQ 浏览器</a></li>
+<li><a href="#QQ%E6%B5%8F%E8%A7%88%E5%99%A8">QQ 浏览器</a> 区新增文章: <a href="https://yyge.top/blog/2020/01/02/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Bvideo%E6%97%A0%E6%B3%95%E5%BE%AA%E7%8E%AF%E6%92%AD%E6%94%BE%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识总结系列之——QQ 浏览器下 video 无法循环播放的问题</a></li>
+</ul>
+<h3 id="2020-3-4"><a href="#2020-3-4" class="headerlink" title="[2020-3-4]"></a>[2020-3-4]</h3><h4 id="Added-3"><a href="#Added-3" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增区块: <a href="#Android">Android</a></li>
+<li><a href="#Android">Android</a> 区块下新增文章: <a href="https://yyge.top/blog/2020/03/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%940-01rem%E8%BE%B9%E6%A1%86%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——0.01rem 边框无法显示的问题</a></li>
+</ul>
+<h3 id="2020-3-12"><a href="#2020-3-12" class="headerlink" title="[2020-3-12]"></a>[2020-3-12]</h3><h4 id="Added-4"><a href="#Added-4" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增区块: <a href="#布局">布局</a></li>
+<li><a href="#布局">布局</a> 区块下新增文章: <a href="https://yyge.top/blog/2020/03/12/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94margin%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识点集锦系列之——margin 高度塌陷的问题</a></li>
+</ul>
+<h3 id="2020-3-13"><a href="#2020-3-13" class="headerlink" title="[2020-3-13]"></a>[2020-3-13]</h3><h4 id="Added-5"><a href="#Added-5" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增文章: <a href="https://yyge.top/blog/2020/03/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%B0%BA%E5%AF%B8%E8%AE%B0%E5%BD%95/" target="_blank" rel="noopener">移动端知识点集锦系列之——常用尺寸记录</a></li>
+</ul>
+<h3 id="2020-3-24"><a href="#2020-3-24" class="headerlink" title="[2020-3-24]"></a>[2020-3-24]</h3><h4 id="Added-6"><a href="#Added-6" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>新增文章: <a href="https://yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94H5%E9%A1%B5%E9%9D%A2%E7%9A%84QQ%E5%88%86%E4%BA%AB/" target="_blank" rel="noopener">移动端知识点集锦系列之——H5 页面的 QQ 分享</a></li>
+<li>新增文章: <a href="https://yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1webview%E5%BA%95%E9%83%A8%E7%99%BD%E6%9D%A1%E7%9A%84%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">移动端知识点集锦系列之——微信 webview 底部白条的应对方案</a></li>
+<li>新增文章: <a href="https://yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E7%84%A6%E5%90%8E%E9%A1%B5%E9%9D%A2%E5%BA%95%E9%83%A8%E7%95%99%E7%99%BD%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识点集锦系列之——iOS 输入框失焦后页面底部留白的问题</a></li>
+</ul>
+<h3 id="2020-10-30"><a href="#2020-10-30" class="headerlink" title="[2020-10-30]"></a>[2020-10-30]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更新文章链接(<code>blog.yyge.top</code> -&gt; <code>yyge.top</code>)</li>
+</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><hr>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li><a href="https://yyge.top/blog/2019/12/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94H5%E7%9A%84%E8%BD%BD%E4%BD%93%E7%B1%BB%E5%9E%8B/" target="_blank" rel="noopener">移动端知识集锦系列之——H5 的载体类型</a></li>
+<li><a href="https://yyge.top/blog/2020/03/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%B0%BA%E5%AF%B8%E8%AE%B0%E5%BD%95/" target="_blank" rel="noopener">移动端知识点集锦系列之——常用尺寸记录</a></li>
+</ul>
+<h3 id="微信浏览器"><a href="#微信浏览器" class="headerlink" title="微信浏览器"></a>微信浏览器</h3><ul>
+<li><a href="https://yyge.top/blog/2019/12/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84video%E6%A0%87%E7%AD%BE%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——微信浏览器的 video 标签问题</a></li>
+<li><a href="https://yyge.top/blog/2019/12/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E9%95%BF%E6%8C%89%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">移动端知识集锦系列之——微信浏览器长按保存为图片</a></li>
+<li><a href="https://yyge.top/blog/2019/12/31/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8a%E6%A0%87%E7%AD%BE%E9%94%9A%E7%82%B9%E8%B7%B3%E8%BD%AC%E5%AF%BC%E8%87%B4%E7%9A%84%E5%BA%95%E9%83%A8%E7%99%BD%E6%9D%A1%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——微信浏览器 a 标签锚点跳转导致的底部白条问题</a></li>
+<li><a href="https://yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1webview%E5%BA%95%E9%83%A8%E7%99%BD%E6%9D%A1%E7%9A%84%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">移动端知识点集锦系列之——微信 webview 底部白条的应对方案</a></li>
+</ul>
+<h3 id="QQ-浏览器"><a href="#QQ-浏览器" class="headerlink" title="QQ 浏览器"></a>QQ 浏览器</h3><ul>
+<li><a href="https://yyge.top/blog/2020/01/02/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Bvideo%E6%97%A0%E6%B3%95%E5%BE%AA%E7%8E%AF%E6%92%AD%E6%94%BE%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识总结系列之——QQ 浏览器下 video 无法循环播放的问题</a></li>
+</ul>
+<h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><ul>
+<li><a href="https://yyge.top/blog/2019/12/31/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91input-focus%E6%96%B9%E6%B3%95%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">移动端知识集锦系列之——iOS 无法自动触发 input.focus 的解决方案</a></li>
+<li><a href="https://yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E7%84%A6%E5%90%8E%E9%A1%B5%E9%9D%A2%E5%BA%95%E9%83%A8%E7%95%99%E7%99%BD%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识点集锦系列之——iOS 输入框失焦后页面底部留白的问题</a></li>
+</ul>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ul>
+<li><a href="https://yyge.top/blog/2020/03/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%940-01rem%E8%BE%B9%E6%A1%86%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——0.01rem 边框无法显示的问题</a></li>
+</ul>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><ul>
+<li><a href="https://yyge.top/blog/2020/03/12/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94margin%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识点集锦系列之——margin 高度塌陷的问题</a></li>
+</ul>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul>
+<li><a href="https://yyge.top/blog/2019/12/19/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94video-play-%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——video.play()产生的问题</a></li>
+<li><a href="https://yyge.top/blog/2019/12/19/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS12%E4%B8%8B%E5%8F%8C%E5%87%BB%E9%A1%B5%E9%9D%A2%E6%94%BE%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识集锦系列之——iOS12 下双击页面放大的问题</a></li>
+<li><a href="https://yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94H5%E9%A1%B5%E9%9D%A2%E7%9A%84QQ%E5%88%86%E4%BA%AB/" target="_blank" rel="noopener">移动端知识点集锦系列之——H5 页面的 QQ 分享</a></li>
+</ul>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/12/11/移动端知识点集锦/">https://ddzy.github.io/blog/2019/12/11/移动端知识点集锦/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/12/11/移动端知识点集锦系列之——H5的载体类型/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>移动端知识点集锦系列之——H5的载体类型
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/11/27/hexo多端同步配置/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          hexo多端同步配置<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '移动端知识点集锦',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

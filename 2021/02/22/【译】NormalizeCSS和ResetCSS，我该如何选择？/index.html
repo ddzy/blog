@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="css, web, Nlvi">
+
+  <title> 【译】NormalizeCSS和ResetCSS，我该如何选择？ · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">【译】NormalizeCSS和ResetCSS，我该如何选择？</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-22"><span class="toc-text">[2021-2-22]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-26"><span class="toc-text">[2021-2-26]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-的-User-Agent-样式"><span class="toc-text">CSS 的 User-Agent 样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalize-CSS"><span class="toc-text">Normalize CSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reset-CSS"><span class="toc-text">Reset CSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何同时使用-Normalize-CSS-amp-CSS-Reset"><span class="toc-text">如何同时使用 Normalize CSS &amp; CSS Reset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编写你自己的-CSS-Reset"><span class="toc-text">编写你自己的 CSS Reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本布局"><span class="toc-text">基本布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结合使用"><span class="toc-text">结合使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的-CSS-架构系列文章"><span class="toc-text">我的 CSS 架构系列文章</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2021-02-22</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/translation/">translation</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/css/">css</a>
+              
+                <a href="/blog/tags/web/">web</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          【译】NormalizeCSS和ResetCSS，我该如何选择？
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>原文链接：</p>
+<p><a href="https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e" target="_blank" rel="noopener">https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e</a></p>
+<p>本文已同步归纳在 <a href="https://github.com/ddzy/translations" target="_blank" rel="noopener">Github</a>。</p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2021-2-22"><a href="#2021-2-22" class="headerlink" title="[2021-2-22]"></a>[2021-2-22]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2021-2-26"><a href="#2021-2-26" class="headerlink" title="[2021-2-26]"></a>[2021-2-26]</h3><h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成剩余章节的翻译</li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><hr>
+<p>通常情况下，我们希望某个 HTML 元素在不同浏览器上具有相同的展示效果。但是遗憾的是，每个浏览器处理 HTML 展示的方式都不同。</p>
+<p>那么到底是使用 <strong>Normalize CSS</strong> 还是 <strong>CSS Reset</strong> 来消除不同浏览器的样式差异，目前还是存在争议的。</p>
+<p><img src="https://oos.blog.yyge.top/2021/2/22/%E3%80%90%E8%AF%91%E3%80%91NormalizeCSS%E5%92%8CResetCSS%EF%BC%8C%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F/images/1.png" alt="1.png"></p>
+<p>在深入讲解我推荐的使用方式之前，我首先要向大家解释一下几个你们可能不太熟悉的术语。</p>
+<h3 id="CSS-的-User-Agent-样式"><a href="#CSS-的-User-Agent-样式" class="headerlink" title="CSS 的 User-Agent 样式"></a>CSS 的 User-Agent 样式</h3><p>在渲染 HTML 页面的时候，浏览器会在应用你自己编写的样式之前，首先应用其自身的基础样式表。举个例子，从 <code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 的 HTML 标签在所有的浏览器里面的展示效果都和其它普通文本不同：一般情况下，诸如 <code>&lt;h1&gt;</code> 这类标签的文字会大一些、字体会粗一些（<code>font-weight: bold</code>），并且会有向上 &amp; 向下两个方向的外边距。</p>
+<p><img src="https://oos.blog.yyge.top/2021/2/22/%E3%80%90%E8%AF%91%E3%80%91NormalizeCSS%E5%92%8CResetCSS%EF%BC%8C%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F/images/2.png" alt="2.png"></p>
+<p>虽然所有浏览器都应用了它们自己的默认样式表，但是每个浏览器的默认样式表彼此之前也存在差异，所以会产生一些问题，这也就是本文所探讨的。</p>
+<p>有两种方式可以解决不同浏览器的样式不一致的问题：<strong>Normalize CSS</strong> 和 <strong>CSS Reset</strong>。你可以把 <strong>Normalize CSS 想象为一个温和的小绵羊</strong>；把 <strong>CSS Reset 想象为一个粗鲁的大怪兽</strong>。下面，让我来举例讲解。</p>
+<h3 id="Normalize-CSS"><a href="#Normalize-CSS" class="headerlink" title="Normalize CSS"></a>Normalize CSS</h3><p><strong><code>Normalize.css</code></strong> 是一个小型的 <strong>CSS</strong> 文件，使得 HTML 元素的默认样式提供了跨浏览器的一致性。</p>
+<p>这就意味着如果我们在 W3C 上查阅浏览器所应用的样式的规范的时候，不同浏览器的规范是不一样的，而 <code>normalize.css</code> 会修复不同浏览器产生的样式差异。</p>
+<p>但是对于 IE 和 EDGE 这样的浏览器，<code>normalize.css</code> 并不能按照规范来抹平差异，因此 <code>normalize.css</code> 会把 IE 和 EDGE 中特定的样式应用到其它浏览器中。</p>
+<p><strong>举个实际的例子</strong>：对于类似 <code>&lt;article&gt;</code> / <code>&lt;aside&gt;</code> / <code>&lt;nav&gt;</code> / <code>&lt;section&gt;</code> 标签内部的 <code>&lt;h1&gt;</code> 标签，Chrome、Safari 和 Firefox 渲染得到的最终 font-size 会小于单独的 <code>&lt;h1&gt;</code> 标签，并且 margin 大小也有所不同。<code>&lt;article&gt;</code> / <code>&lt;aside&gt;</code> / <code>&lt;nav&gt;</code> / <code>&lt;section&gt;</code> 标签内部的 <code>&lt;h1&gt;</code> 标签在 Chrome、Safari、Firefox 的默认样式表（User-Agent-Stylesheet）里的样式如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:-webkit-any(article</span>,<span class="selector-tag">aside</span>,<span class="selector-tag">nav</span>,<span class="selector-tag">section</span>) <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">margin-block-start</span>: <span class="number">0.83em</span>;</span><br><span class="line">  <span class="attribute">margin-block-end</span>: <span class="number">0.83em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而 IE 和 EDGE 则很少出现上述这种情况，所以理论上我们可以把同样的样式直接复用到 IE 和 EDGE 浏览器上，<strong>但是由于 IE/EDGE 并没有 “any” 选择器</strong>，所以直接复用是不可取的。因此，Normalize CSS 索性直接把 IE/EDGE 中的 <code>&lt;h1&gt;</code> 样式作为基准样式。</p>
+<p>示例代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  Chrome、Firefox 和 Safari 浏览器中的 `&lt;article&gt;` / `&lt;aside&gt;` / `&lt;nav&gt;` / `&lt;section&gt;` 标签内部的 `&lt;h1&gt;` 标签的正确的文字大小和外边距</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;  <span class="attribute">font-size</span>: <span class="number">2em</span>;  <span class="attribute">margin</span>: <span class="number">0.67em</span> <span class="number">0</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/necolas/normalize.css/blob/master/normalize.css" target="_blank" rel="noopener">Normalize.css</a> 是 <a href="https://github.com/necolas" target="_blank" rel="noopener">Nicolas Gallagher</a> 在 Github 上开源的一款项目：</p>
+<p><a href="https://github.com/necolas/normalize.css/blob/master/normalize.css" target="_blank" rel="noopener">https://github.com/necolas/normalize.css/blob/master/normalize.css</a></p>
+<h3 id="Reset-CSS"><a href="#Reset-CSS" class="headerlink" title="Reset CSS"></a>Reset CSS</h3><p>使用 Reset CSS 就意味着我们不再需要浏览器的默认样式。<strong>“CSS Reset” 会把浏览器的 user-agent 样式全部重置掉</strong>，这样我们在写项目的时候就可以按需定义 CSS 样式。</p>
+<p>上个章节的示例中使用 Reset CSS 也是可以正常工作的，对于 <code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 这些标签的默认样式：更多情况下我们并不想要浏览器提供的默认的 <code>font-size</code> 和 <code>margin</code>。</p>
+<p>CSS Reset 分很多种，如下是从 <a href="https://meyerweb.com/eric/tools/css/reset/" target="_blank" rel="noopener">Eric Meyer</a> 编写的 CSS Reset 样式文件中摘取的一小部分：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span>, <span class="selector-tag">div</span>, <span class="selector-tag">span</span>, <span class="selector-tag">applet</span>, <span class="selector-tag">object</span>, <span class="selector-tag">iframe</span>, <span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>, <span class="selector-tag">p</span>, <span class="selector-tag">blockquote</span>, <span class="selector-tag">pre</span>, <span class="selector-tag">a</span>, <span class="selector-tag">abbr</span>, <span class="selector-tag">acronym</span>, <span class="selector-tag">address</span>, <span class="selector-tag">big</span>, <span class="selector-tag">cite</span>, <span class="selector-tag">code</span>, <span class="selector-tag">del</span>, <span class="selector-tag">dfn</span>, <span class="selector-tag">em</span>, <span class="selector-tag">img</span>, <span class="selector-tag">ins</span>, <span class="selector-tag">kbd</span>, <span class="selector-tag">q</span>, <span class="selector-tag">s</span>, <span class="selector-tag">samp</span>, <span class="selector-tag">small</span>, <span class="selector-tag">strike</span>, <span class="selector-tag">strong</span>, <span class="selector-tag">sub</span>, <span class="selector-tag">sup</span>, <span class="selector-tag">tt</span>, <span class="selector-tag">var</span>, <span class="selector-tag">b</span>, <span class="selector-tag">u</span>, <span class="selector-tag">i</span>, <span class="selector-tag">center</span>, <span class="selector-tag">dl</span>, <span class="selector-tag">dt</span>, <span class="selector-tag">dd</span>, <span class="selector-tag">ol</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">li</span>, <span class="selector-tag">fieldset</span>, <span class="selector-tag">form</span>, <span class="selector-tag">label</span>, <span class="selector-tag">legend</span>, <span class="selector-tag">table</span>, <span class="selector-tag">caption</span>, <span class="selector-tag">tbody</span>, <span class="selector-tag">tfoot</span>, <span class="selector-tag">thead</span>, <span class="selector-tag">tr</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span>, <span class="selector-tag">article</span>, <span class="selector-tag">aside</span>, <span class="selector-tag">canvas</span>, <span class="selector-tag">details</span>, <span class="selector-tag">embed</span>,  <span class="selector-tag">figure</span>, <span class="selector-tag">figcaption</span>, <span class="selector-tag">footer</span>, <span class="selector-tag">header</span>, <span class="selector-tag">hgroup</span>,  <span class="selector-tag">menu</span>, <span class="selector-tag">nav</span>, <span class="selector-tag">output</span>, <span class="selector-tag">ruby</span>, <span class="selector-tag">section</span>, <span class="selector-tag">summary</span>, <span class="selector-tag">time</span>, <span class="selector-tag">mark</span>, <span class="selector-tag">audio</span>, <span class="selector-tag">video</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">font</span>: inherit;</span><br><span class="line">  <span class="attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解释一下上面的代码：我们给所有 HTML 元素定义了无内边距、无外边距、无边框、相同的字体大小以及相同的对齐方式。</p>
+<p>上面的代码虽然已经重置了 <code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 以及 <code>&lt;ul&gt;</code> 和 <code>&lt;li&gt;</code> 等标签的样式，但事实上看起来很臃肿，原因如下：</p>
+<ul>
+<li>充斥了大量的选择器</li>
+<li>大量无意义的样式覆盖</li>
+<li>很难调试</li>
+</ul>
+<p><img src="https://oos.blog.yyge.top/2021/2/22/%E3%80%90%E8%AF%91%E3%80%91NormalizeCSS%E5%92%8CResetCSS%EF%BC%8C%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F/images/3.png" alt="3.png"></p>
+<h2 id="如何同时使用-Normalize-CSS-amp-CSS-Reset"><a href="#如何同时使用-Normalize-CSS-amp-CSS-Reset" class="headerlink" title="如何同时使用 Normalize CSS &amp; CSS Reset"></a>如何同时使用 Normalize CSS &amp; CSS Reset</h2><hr>
+<p>我的建议是<strong>使用 Normalize CSS，但是你可以在其中掺杂一些 CSS Reset</strong>。</p>
+<p>在我自己的项目里面，我深切地体会到了 Normalize CSS 和 CSS Reset 带来的好处：一方面是 <strong>Normalize CSS</strong>；而另一方面是 <strong>CSS Reset</strong> 可以避免冗长的 CSS 选择器链条。</p>
+<h3 id="编写你自己的-CSS-Reset"><a href="#编写你自己的-CSS-Reset" class="headerlink" title="编写你自己的 CSS Reset"></a>编写你自己的 CSS Reset</h3><p>在我这 13 年的工作生涯里，对于一些频繁的需要重置样式的 HTML 标签，比如：链接的颜色、按钮的默认样式和列表的默认样式等等，我颇有见解。</p>
+<p>除了使用 <code>normalize.css</code> 之外，我还编写了自己的样式覆盖文件——<code>reset.local.css</code>。与传统的 <strong>CSS Reset</strong> 不同的是：我在其中只重置了一小部分 HTML 标签的样式，而不是全部的。</p>
+<p>下面的例子教你<strong>怎么自定义 CSS Reset</strong>：</p>
+<p><strong>我的 CSS Reset——reset.local.css</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/****** Elad Shechter's RESET *******/</span></span><br><span class="line"><span class="comment">/*** box sizing border-box for all elements ***/</span></span><br><span class="line">*,</span><br><span class="line">*<span class="selector-pseudo">::before</span>,</span><br><span class="line">*<span class="selector-pseudo">::after</span>&#123;<span class="attribute">box-sizing</span>:border-box;&#125;</span><br><span class="line"><span class="selector-tag">a</span>&#123;<span class="attribute">text-decoration</span>:none; <span class="attribute">color</span>:inherit; <span class="attribute">cursor</span>:pointer;&#125;</span><br><span class="line"><span class="selector-tag">button</span>&#123;<span class="attribute">background-color</span>:transparent; <span class="attribute">color</span>:inherit; <span class="attribute">border-width</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">cursor</span>:pointer;&#125;</span><br><span class="line"><span class="selector-tag">figure</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::-moz-focus-inner</span> &#123;<span class="attribute">border</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">margin</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">ol</span>, <span class="selector-tag">dd</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">list-style</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>; <span class="attribute">font-size</span>:inherit; <span class="attribute">font-weight</span>:inherit;&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">cite</span> &#123;<span class="attribute">font-style</span>:normal;&#125;</span><br><span class="line"><span class="selector-tag">fieldset</span>&#123;<span class="attribute">border-width</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">margin</span>:<span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的样式看起来更加具有可读性。</p>
+<h3 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h3><p>在我的项目中除了使用 <code>normalize.css</code> 和 <code>local.reset.css</code> 之外，还有其它的基本布局文件。这个文件和 <strong>normalize CSS</strong>、<strong>CSS reset</strong>没啥关系，是网站排版的基础样式，包含：<code>direction</code>、<code>font-family</code>、<code>font-size</code>、<code>line-height</code>、文字颜色等属性。</p>
+<p><strong>typography.css</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">   <span class="attribute">font-size</span>: <span class="number">1px</span>;<span class="comment">/*for using REM units*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">'Segoe UI'</span>, <span class="string">'Roboto'</span>, <span class="string">'Oxygen'</span>, <span class="string">'Ubuntu'</span>, <span class="string">'Fira Sans'</span>, <span class="string">'Droid Sans'</span>, <span class="string">'Helvetica Neue'</span>,sans-serif;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16rem</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">400</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.3</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#222</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结合使用"><a href="#结合使用" class="headerlink" title="结合使用"></a>结合使用</h3><p>得益于 SASS 预处理器的强大功能，我创建了一个 <code>_reset.scss</code> 文件，包括三个部分：</p>
+<ul>
+<li><strong>Normalize.css</strong> —— <a href="https://github.com/necolas/normalize.css/blob/master/normalize.css" target="_blank" rel="noopener">Github 上最新版本的 CSS Normalize</a></li>
+<li>我自己的 CSS Reset</li>
+<li><strong>一份基本布局文件</strong></li>
+</ul>
+<p><strong>_resets.scss 文件如下：</strong></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">"resets/normalize.scss"</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">"resets/reset.local.scss"</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">"resets/typography.scss"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>本文主要向大家介绍了 Normalizing &amp; Resetting 样式，同时这也是我的 CSS 系列文章的第一篇，接下来的几周，我将陆续撰写其它的相关文章。</p>
+<p>如果你对这个专题感兴趣的话，欢迎订阅我的 <a href="https://twitter.com/eladsc" target="_blank" rel="noopener">twitter</a> 或 <a href="https://medium.com/@elad" target="_blank" rel="noopener">medium</a>。</p>
+<h2 id="我的-CSS-架构系列文章"><a href="#我的-CSS-架构系列文章" class="headerlink" title="我的 CSS 架构系列文章"></a>我的 CSS 架构系列文章</h2><hr>
+<ul>
+<li><a href="https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e" target="_blank" rel="noopener">Normalize CSS 和 CSS Reset，我该如何选择？</a></li>
+<li><a href="https://medium.com/@elad/css-architecture-folders-files-structure-f92b40c78d0b" target="_blank" rel="noopener">CSS 架构之——文件夹 &amp; 文件结构</a></li>
+<li><a href="https://medium.com/@elad/css-architecture-for-multiple-websites-ad696c9d334" target="_blank" rel="noopener">多站点下的 CSS 架构</a></li>
+<li><a href="https://medium.com/@elad/naming-things-in-css-a7de9ad31cd9" target="_blank" rel="noopener">CSS 命名</a></li>
+</ul>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2021/02/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/">https://ddzy.github.io/blog/2021/02/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2021/03/01/【译】深入讲解WebSockets/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>【译】深入讲解WebSockets
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2021/02/20/【译】理解CSS关键字：“Initial”，“Inherit”和“Unset”/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          【译】理解CSS关键字：“Initial”，“Inherit”和“Unset”<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '【译】NormalizeCSS和ResetCSS，我该如何选择？',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="jQuery, ts, Nlvi">
+
+  <title> jQuery源码解析系列(四) -构造函数 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">jQuery源码解析系列(四) -构造函数</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、前置知识点"><span class="toc-text">二、前置知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-XSS"><span class="toc-text">2.1 XSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-exec和match"><span class="toc-text">2.2 exec和match</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#三、jQuery构造函数"><span class="toc-text">三、jQuery构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-思路规划"><span class="toc-text">3.1 思路规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-逐个击破"><span class="toc-text">3.2 逐个击破</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-无效参数值"><span class="toc-text">3.2.1 无效参数值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-2-字符串"><span class="toc-text">3.2.2 字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-3-DOM节点处理"><span class="toc-text">3.2.3 DOM节点处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-4-函数处理"><span class="toc-text">3.2.4 函数处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-5-其它类型"><span class="toc-text">3.2.5 其它类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总结"><span class="toc-text">四、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、示例代码"><span class="toc-text">五、示例代码</span></a></li>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-03-31</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/jQuery/">jQuery</a>
+              
+                <a href="/blog/tags/ts/">ts</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          jQuery源码解析系列(四) -构造函数
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>接着上一篇说到的<code>jQuery工厂函数</code>内部机制, 本篇将会阅读jq真正的构造函数, 也就是<code>jQuery.fn.init</code>部分.</p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><hr>
+<h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>文章格式优化</li>
+</ul>
+<h2 id="二、前置知识点"><a href="#二、前置知识点" class="headerlink" title="二、前置知识点"></a>二、前置知识点</h2><hr>
+<h4 id="2-1-XSS"><a href="#2-1-XSS" class="headerlink" title="2.1 XSS"></a>2.1 XSS</h4><p>关于<code>XSS</code>的描述, 网上也有很多, 就不在这里总结. 但是有一点还是要着重记录以下, 那就是:</p>
+<ul>
+<li><strong>PS</strong>: 由<code>location.hash</code>引起的<code>XSS</code>攻击问题</li>
+</ul>
+<p>为什么要说这个? jQuery源码中有这么一段代码和注释:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A simple way to check for HTML strings</span></span><br><span class="line"><span class="comment">// Prioritize #id over &lt;tag&gt; to avoid XSS via location.hash (#9521)</span></span><br><span class="line"><span class="comment">// Strict HTML recognition (#11290: must start with &lt;)</span></span><br><span class="line"><span class="comment">// Shortcut simple #id case for speed</span></span><br><span class="line">rquickExpr = <span class="regexp">/^(?:\s*(&lt;[\w\W]+&gt;)[^&gt;]*|#([\w-]+))$/</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意第二句, 假设<code>$.append()</code>方法接收一个<code>用户输入值</code>, 该用户正好使用location.href作为输入, 而<code>location.hash</code>存在恶意代码, 那么就会造成<code>XSS</code>. 而<code>rquickExpr</code>则是作为严格匹配:</p>
+<ul>
+<li>诸如<code>&lt;p&gt;xxx&lt;/p&gt;</code>的html片段</li>
+<li>形如<code>#xxx-xxx</code>之类的IP选择器</li>
+</ul>
+<p>结论很简单, 在<code>CentBrowser</code>中测试一下即可:</p>
+<p><img src="https://oos.blog.yyge.top/2019/3/31/jQuery%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%B3%BB%E5%88%97%28%E5%9B%9B%29%20-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/images/1.png?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="测试rquickExpr正则"></p>
+<h4 id="2-2-exec和match"><a href="#2-2-exec和match" class="headerlink" title="2.2 exec和match"></a>2.2 exec和match</h4><p>源码中用到了<code>exec()</code>方法, 由于它和<code>match</code>方法比较相似, 好吧, 总是搞混这两个, 这里就说一下它们的最主要的区别:</p>
+<ul>
+<li><code>exec</code>只返回第一个匹配的元素</li>
+<li><code>match</code>返回匹配样本的数量, 与<code>g</code>有关</li>
+</ul>
+<h2 id="三、jQuery构造函数"><a href="#三、jQuery构造函数" class="headerlink" title="三、jQuery构造函数"></a>三、jQuery构造函数</h2><hr>
+<h4 id="3-1-思路规划"><a href="#3-1-思路规划" class="headerlink" title="3.1 思路规划"></a>3.1 <strong>思路规划</strong></h4><p>有了上述的前置知识加持, 再来阅读源码.</p>
+<p>首先, <code>copy</code>一下源码中的<code>构造函数</code>相关内容:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">init = jQuery.fn.init = <span class="function"><span class="keyword">function</span> (<span class="params">selector, context, root</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> match, elem;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// HANDLE: $(""), $(null), $(undefined), $(false)</span></span><br><span class="line">	<span class="keyword">if</span> (!selector) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Method init() accepts an alternate rootjQuery</span></span><br><span class="line">	<span class="comment">// so migrate can support jQuery.sub (gh-2101)</span></span><br><span class="line">	root = root || rootjQuery;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Handle HTML strings</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> selector === <span class="string">"string"</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (selector[<span class="number">0</span>] === <span class="string">"&lt;"</span> &amp;&amp;</span><br><span class="line">			selector[selector.length - <span class="number">1</span>] === <span class="string">"&gt;"</span> &amp;&amp;</span><br><span class="line">			selector.length &gt;= <span class="number">3</span>) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Assume that strings that start and end with &lt;&gt; are HTML and skip the regex check</span></span><br><span class="line">			match = [<span class="literal">null</span>, selector, <span class="literal">null</span>];</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			match = rquickExpr.exec(selector);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Match html or make sure no context is specified for #id</span></span><br><span class="line">		<span class="keyword">if</span> (match &amp;&amp; (match[<span class="number">1</span>] || !context)) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// HANDLE: $(html) -&gt; $(array)</span></span><br><span class="line">			<span class="keyword">if</span> (match[<span class="number">1</span>]) &#123;</span><br><span class="line">				context = context <span class="keyword">instanceof</span> jQuery ? context[<span class="number">0</span>] : context;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Option to run scripts is true for back-compat</span></span><br><span class="line">				<span class="comment">// Intentionally let the error be thrown if parseHTML is not present</span></span><br><span class="line">				jQuery.merge(<span class="keyword">this</span>, jQuery.parseHTML(</span><br><span class="line">					match[<span class="number">1</span>],</span><br><span class="line">					context &amp;&amp; context.nodeType ? context.ownerDocument || context : <span class="built_in">document</span>,</span><br><span class="line">					<span class="literal">true</span></span><br><span class="line">				));</span><br><span class="line"></span><br><span class="line">				<span class="comment">// HANDLE: $(html, props)</span></span><br><span class="line">				<span class="keyword">if</span> (rsingleTag.test(match[<span class="number">1</span>]) &amp;&amp; jQuery.isPlainObject(context)) &#123;</span><br><span class="line">					<span class="keyword">for</span> (match <span class="keyword">in</span> context) &#123;</span><br><span class="line"></span><br><span class="line">						<span class="comment">// Properties of context are called as methods if possible</span></span><br><span class="line">						<span class="keyword">if</span> (jQuery.isFunction(<span class="keyword">this</span>[match])) &#123;</span><br><span class="line">							<span class="keyword">this</span>[match](context[match]);</span><br><span class="line"></span><br><span class="line">							<span class="comment">// ...and otherwise set as attributes</span></span><br><span class="line">						&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">							<span class="keyword">this</span>.attr(match, context[match]);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// HANDLE: $(#id)</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				elem = <span class="built_in">document</span>.getElementById(match[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (elem) &#123;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// Inject the element directly into the jQuery object</span></span><br><span class="line">					<span class="keyword">this</span>[<span class="number">0</span>] = elem;</span><br><span class="line">					<span class="keyword">this</span>.length = <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// HANDLE: $(expr, $(...))</span></span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!context || context.jquery) &#123;</span><br><span class="line">			<span class="keyword">return</span> (context || root).find(selector);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// HANDLE: $(expr, context)</span></span><br><span class="line">			<span class="comment">// (which is just equivalent to: $(context).find(expr)</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.constructor(context).find(selector);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// HANDLE: $(DOMElement)</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector.nodeType) &#123;</span><br><span class="line">		<span class="keyword">this</span>[<span class="number">0</span>] = selector;</span><br><span class="line">		<span class="keyword">this</span>.length = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// HANDLE: $(function)</span></span><br><span class="line">		<span class="comment">// Shortcut for document ready</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (jQuery.isFunction(selector)) &#123;</span><br><span class="line">		<span class="keyword">return</span> root.ready !== <span class="literal">undefined</span> ?</span><br><span class="line">			root.ready(selector) :</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Execute immediately if ready is not present</span></span><br><span class="line">			selector(jQuery);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> jQuery.makeArray(selector, <span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 虽然简简单单的百十来行代码, 其内部逻辑还是挺复杂的. 但是并不慌, 我们先从<code>参数</code>分析:</p>
+<ul>
+<li>selector<ul>
+<li>具体的选择器, 可以是<code>DOM</code>、<code>CSS选择器</code>、<code>jQuery对象</code>等, 作为重点, 后续会具体分析</li>
+</ul>
+</li>
+<li>context<ul>
+<li><code>DOM元素</code>或者<code>jQuery对象</code></li>
+<li>好像很少用? 查了下资料, 它的作用是: <strong>限制(减少)搜索的范围</strong>. 假设要获取一个<code>.text</code>元素, 此时按照<code>context</code>的提供与否, 会出现两种不同的内部机制:<ul>
+<li>(<em>已提供</em>): 会在<code>context</code>下查找<code>.text</code>元素</li>
+<li>(<em>未提供</em>): 默认会在<code>document</code>下查找</li>
+</ul>
+</li>
+<li>这对于性能来说是至关重要的——由于CSS解析<code>从右至左</code>进行, 浏览器看到<code>.text</code>会依次去判断其父级是不是<code>context</code>, 所以添加<code>context</code>可减少判断层级.</li>
+</ul>
+</li>
+<li>root<ul>
+<li>jQueyr根节点, 默认为<code>document</code></li>
+</ul>
+</li>
+</ul>
+<p>经过对<code>参数</code>的简单分析, 接着来到构造函数内部, 大致浏览一下, 会发现大部分是根据<code>selector</code>参数做不同的逻辑处理, 这也是<code>jQuery</code>的核心部分.</p>
+<p>好吧, 一眼看上去的确很乱, 但是其内部逻辑的目的是差不多的:</p>
+<ul>
+<li>根据<code>selector</code>的不同, 作不同的处理</li>
+</ul>
+<p>所以, 我将其分为以下几个区块, 来逐个分析:</p>
+<ul>
+<li>无效参数值</li>
+<li>字符串</li>
+<li>DOM节点</li>
+<li>函数</li>
+<li>其他<ul>
+<li>类数组</li>
+<li>对象</li>
+<li>数组</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-逐个击破"><a href="#3-2-逐个击破" class="headerlink" title="3.2 逐个击破"></a>3.2 <strong>逐个击破</strong></h4><h5 id="3-2-1-无效参数值"><a href="#3-2-1-无效参数值" class="headerlink" title="3.2.1 无效参数值"></a>3.2.1 <strong>无效参数值</strong></h5><p>先来看对<code>无效参数值</code>的处理逻辑:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!selector) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果传入了一个无效的、没有意义(null, undefined, false, 0, ‘’)的值, 直接返回空的<code>jQuery.fn.init</code>实例, 不作任何操作.</p>
+<h5 id="3-2-2-字符串"><a href="#3-2-2-字符串" class="headerlink" title="3.2.2 字符串"></a>3.2.2 <strong>字符串</strong></h5><ol>
+<li><p>处理步骤</p>
+<ul>
+<li>计算<code>match</code><ul>
+<li><code>match</code>是之前提到的<code>rquickExpr</code>正则匹配到的结果, 这里要注意, 该正则执行后的<a href="https://segmentfault.com/a/1190000004429477" target="_blank" rel="noopener">分组匹配</a>结果分别作为数组的第二和第三项<ul>
+<li><code>match[1]</code> -&gt; 标签字串(如: <code>&lt;kbd&gt;xxx&lt;/kbd&gt;</code>)</li>
+<li><code>match[2]</code> -&gt; id选择器(如: <code>#xxx</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据<code>match</code>的结果来决定后续操作:<ul>
+<li>如果<code>match</code>的值存在且为(<code>html字符串</code>或<code>id</code>选择器), 会出现以下几种情况:<ul>
+<li>match[1] -&gt; $(array)</li>
+<li>如果只匹配到单个<code>html</code>字符串, 调用<code>**jQuery.merge**</code>和<code>**jQuery.parseHTML**</code>方法, 将该字符串转化为jq对象<ul>
+<li>match[1] &amp;&amp; context -&gt; $(array)</li>
+</ul>
+</li>
+<li>如果同时匹配到<code>html</code>字符串, 且用户提供了<code>context</code>上下文, 会转化为jquery对象, 并作为<code>fragment</code>挂载到<code>context</code>下<ul>
+<li>match[2] -&gt; $(array)</li>
+</ul>
+</li>
+<li>如果匹配到形如<code>#xxx</code>之类的选择器, 调用<code>getElementById</code>, 并转化为jquery对象<ul>
+<li>match[2] &amp;&amp; context -&gt; $(array) –&gt;<ul>
+<li>如果匹配到诸如<code>#xxx</code>, 并且用户提供了<code>context</code>, 则继续判断<code>context</code>是否为原生DOM节点或者jquery对象, 进一步执行选取操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>反之则表明是一个正常的<code>CSS选择器</code>, 继续判断<code>context</code>是否存在<ul>
+<li>存在则通过调用<code>this.constructor(context)</code>, 将其转化为jquery对象, 使用原型上的<code>find</code>方法来执行查询</li>
+<li>不存在则根据<code>rootJquery</code>来找寻</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>jQuery.parseHTML&amp;jQuery.merge</p>
+</li>
+</ol>
+<hr>
+<p>分割线 - [2019-4-10]更新</p>
+<hr>
+<p>上述简单的列出了一部分逻辑, 并没有陈述过于详细, 毕竟作者的思路太严谨了.</p>
+<p>但是你以为就这么简单?(好吧, 其实是我自己认为.), 将目光转向<code>jQuery.merge</code>和<code>jQuery.parseHTML</code>这两个方法:</p>
+<blockquote>
+<p><strong>PS</strong>:  偷了几天懒, 翘课回家好好睡了几天觉, 周一继续更新…</p>
+</blockquote>
+<p>这是两个挂载到jQuery上的<code>静态方法</code>, 何所谓<code>静态方法</code>, 它和<code>实例方法</code>的区别是什么? 对于此问题, 我觉得<code>简书</code>上的一篇文章写的通俗易懂:</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/ea7c44f31cdf" target="_blank" rel="noopener">简书——实例方法和静态方法有什么不一样?</a></p>
+</blockquote>
+<p>简单来说:</p>
+<ul>
+<li>静态方法(<code>static-method</code>挂载于类本身), 常用于<ul>
+<li>工具函数的定义</li>
+<li>复用性强的函数</li>
+</ul>
+</li>
+<li>实例方法(<code>ins-method</code>)则反之</li>
+</ul>
+<ol start="3">
+<li>jQuery.parseHTML</li>
+</ol>
+<hr>
+<p>分割线 - [2019-4-11]更新</p>
+<hr>
+<p>吃个饭回来继续更新…</p>
+<blockquote>
+<p><strong>PS</strong>:  源码太长, 不全部<code>Ctrl+CV</code>了, 大概在<code>9771</code> - <code>9815</code>行</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Argument "data" should be string of html</span></span><br><span class="line"><span class="comment">// context (optional): If specified, the fragment will be created in this context,</span></span><br><span class="line"><span class="comment">// defaults to document</span></span><br><span class="line"><span class="comment">// keepScripts (optional): If true, will include scripts passed in the html string</span></span><br><span class="line">jQuery.parseHTML = <span class="function"><span class="keyword">function</span>(<span class="params">data, context, keepScripts</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 很多处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单看一下函数上面的注释,</p>
+<blockquote>
+<p><strong>PS</strong>:  源码上方的每一行注释都很重要, 通过它, 可以了解该方法的具体意图</p>
+</blockquote>
+<p>其接收三个参数:</p>
+<ul>
+<li>data<ul>
+<li>(必选)-必须为<code>html</code>字符串</li>
+</ul>
+</li>
+<li>context<ul>
+<li>(可选)-以<code>Fragment</code>的形式, 挂载解析后的结果</li>
+</ul>
+</li>
+<li>keepScripts<ul>
+<li>(可选)-是否过滤<code>js</code></li>
+</ul>
+</li>
+</ul>
+<p>不难看出, <code>parseHTML</code>这个方法, 顾名思义, 它的作用就是:</p>
+<ul>
+<li>解析<code>html</code>字符串</li>
+<li>挂载到对应<code>context</code></li>
+</ul>
+<p>俗话说——<code>擒贼先擒王</code>, 代码也是如此, 知道了函数的作用, 那么其内部运作机理也就理所当然的显现了, 顶多就是做一些<code>逻辑判断</code>, 那么接下来就对其内部逻辑做个简单梳理.</p>
+<p>对于<code>parseHTML</code>内部, 大致进行了以下处理流程:</p>
+<ul>
+<li><p>非法参数过滤</p>
+<ul>
+<li>对于无意义的参数直接返回<code>空数组</code></li>
+</ul>
+</li>
+<li><p>理解三个变量</p>
+<ul>
+<li>base<ul>
+<li>给所有解析出来的元素指定<code>默认链接</code>, 诸如<code>a</code>、<code>img</code>此类</li>
+</ul>
+</li>
+<li>parsed<ul>
+<li><code>数组</code></li>
+<li>保存解析到的符合<code>H5标准令牌规范</code>的<code>标签字符串(尖括号字符串)</code></li>
+</ul>
+</li>
+<li>scripts<ul>
+<li>数组</li>
+<li>根据参数<code>keepScripts</code>, 来决定是否解析<code>script</code>标签</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算<code>context</code></p>
+<ul>
+<li><p>如果没有提供<code>context</code>, 则会创建新的<code>document</code>来作为<code>context</code></p>
+</li>
+<li><p>看到源码中有这么一段注释</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Support: Safari 8 only</span></span><br><span class="line"><span class="comment">// In Safari 8 documents created via document.implementation.createHTMLDocument</span></span><br><span class="line"><span class="comment">// collapse sibling forms: the second one becomes a child of the first one.</span></span><br><span class="line"><span class="comment">// Because of that, this security measure has to be disabled in Safari 8.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在<code>Safari8</code>中, 使用<code>document.implementation.createHTMLDocument</code>创建<code>document</code>会出现<code>折叠孩子节点</code>的情况, 也就是说, 我们创建了两个相同的兄弟节点, 第一个节点会被忽略, 这是开发中不能接受的</li>
+<li>所以jQuery源码中定义了<code>support</code>对象, 来作为<code>检测兼容性的工具</code>, 在这里使用其中的<code>createHTMLDocument</code>方法来做简单判断, 如果是非<code>Safari8</code>浏览器, 创建全新的<code>document</code>, 反之直接赋值给<code>当前document</code>.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (support.createHTMLDocument) &#123;</span><br><span class="line">	context = <span class="built_in">document</span>.implementation.createHTMLDocument(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Set the base href for the created document</span></span><br><span class="line">	<span class="comment">// so any parsed elements with URLs</span></span><br><span class="line">	<span class="comment">// are based on the document's URL (gh-2965)</span></span><br><span class="line">	base = context.createElement(<span class="string">"base"</span>);</span><br><span class="line">	base.href = <span class="built_in">document</span>.location.href;</span><br><span class="line">	context.head.appendChild(base);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	context = <span class="built_in">document</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算<code>parsed</code></p>
+<ul>
+<li><p>这里用到了<code>rSingleTag</code>这个正则</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rsingleTag = (<span class="regexp">/^&lt;([a-z][^\/\0&gt;:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?&gt;(?:&lt;\/\1&gt;|)$/i</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>它是为了匹配一个相对<code>纯净</code>的标签(<code>$(&#39;&lt;span /&gt;&#39;)</code>、<code>$(&#39;&lt;span&gt;&lt;/span&gt;&#39;)</code>), 何为<code>相对纯净</code>?</p>
+<ul>
+<li>子节点为空</li>
+<li>不具有任何属性</li>
+</ul>
+</li>
+<li><p>如果<code>rSingleTag</code>捕获到标签</p>
+<ul>
+<li>直接在当前<code>context</code>作用域下创建新的<code>HTMLElement</code></li>
+</ul>
+</li>
+<li><p>反之, 表明有多层嵌套的标签, 通过调用<code>buildFragment</code>方法来统一处理</p>
+<ul>
+<li>那么问题来了, <code>buildFragment</code>又是什么鬼? 不急, VS Code按住<kbd>Ctrl + MouseLeft</kbd>, 去它内部看一看:<ul>
+<li>我将其内部源码结构简化了一下, 大概是这样的:<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildFragment</span>(<span class="params">elems, context, scripts, ...args[]</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 保存源html字符串</span></span><br><span class="line">	<span class="comment">// 也就是遍历elems得到的每一项</span></span><br><span class="line">	<span class="keyword">var</span> elem = <span class="string">''</span>;</span><br><span class="line">	<span class="comment">// 源码中创建了div, 将其innerHTML的值设为elem</span></span><br><span class="line">	<span class="comment">// tmp保存该div的每个后代元素</span></span><br><span class="line">	<span class="keyword">var</span> tmp = <span class="string">''</span>;</span><br><span class="line">	<span class="comment">// 保存解析elem得到的所有标签</span></span><br><span class="line">	<span class="comment">// 为了得到`script`标签</span></span><br><span class="line">	<span class="keyword">var</span> nodes = [];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 迭代操作, 取代传统递归方式</span></span><br><span class="line">	<span class="comment">// 遍历所有节点, 存储到`nodes`数组</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elems.length; i++) &#123;</span><br><span class="line">		...</span><br><span class="line">		<span class="keyword">var</span> elem = elems[i];</span><br><span class="line"></span><br><span class="line">		tmp = context.createElement(<span class="string">'div'</span>);</span><br><span class="line">		tmp.innerHTML = elem;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(j--) &#123;</span><br><span class="line">			tmp = tmp.lastChild;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		tmp = fragment.firstChild;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 计算`scripts`</span></span><br><span class="line">	<span class="comment">// 将取得的`script`标签存放入`scripts`数组</span></span><br><span class="line">	<span class="keyword">while</span>((elem = nodes[i++])) &#123;</span><br><span class="line">		tmp = getAll(fragment.appendChild(elem), <span class="string">'scripts'</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(scripts) &#123;</span><br><span class="line">			<span class="keyword">while</span>((elem = tmp[j++])) &#123;</span><br><span class="line">				scripts.push(elem);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算<code>scripts</code></p>
+<ul>
+<li>实际的计算操作位于<code>buildFragment</code>内部</li>
+</ul>
+</li>
+<li><p>返回<code>jQuery.merge()</code></p>
+<ul>
+<li><code>merge</code>方法会在下面说到</li>
+</ul>
+</li>
+</ul>
+<p>以上就是<code>jQuery.parseHTML</code>内部的复杂逻辑, 总结来说, 就是以下两方面:</p>
+<ul>
+<li>对于<code>纯净的</code>html标签字符串, 直接返回该标签数组</li>
+<li>对于<code>多层嵌套的</code>html标签字符串, 迭代其后代节点, 并保存<code>script</code>标签.</li>
+</ul>
+<ol start="4">
+<li>jQuery.merge</li>
+</ol>
+<hr>
+<p>分割线 - [2019-4-12]更新</p>
+<hr>
+<blockquote>
+<p>之前的解析过程有些太啰嗦了, 对一个函数的内部剖析, 觉得没有必要, 看源码只是了解它的大致结构即可, 所以后面开始会对函数内部的处理逻辑加以简化, 对不常用的<code>API</code>不作解析, 避免浪费不必要的时间.</p>
+</blockquote>
+<p>好了, 接着上一小节的<code>jQuery.parseHTML</code>的函数内部剖析, 了解到了:</p>
+<ul>
+<li>其内部通过对html令牌类型的<code>标签字符串</code>做处理, 返回<code>jQuery.merge</code>处理过的<code>节点数组</code></li>
+</ul>
+<p>这里问题就来了:</p>
+<blockquote>
+<p>jQuery.merge是什么鬼?</p>
+</blockquote>
+<p>好了, 定位到<code>merge</code>方法, 发现它是挂载于<code>jQuery类</code>上的方法, <code>jQuery.parseHTML</code>、<code>buildFragment</code>等多处都调用了它, 这表明它是一个单纯的<code>工具方法</code>或者<code>多复用函数</code></p>
+<blockquote>
+<p><strong>PS</strong>: 诸如类似的方法还有很多, 比如<code>jQuery.ajax</code>等等, 在后面的实例<code>get</code>、<code>post</code>方法都会使用到.</p>
+</blockquote>
+<p>🆗, 看到其内部源码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Support: Android &lt;=4.0 only, PhantomJS 1 only</span></span><br><span class="line"><span class="comment">// push.apply(_, arraylike) throws on ancient WebKit</span></span><br><span class="line">merge: <span class="function"><span class="keyword">function</span> (<span class="params">first, second</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> len = +second.length,</span><br><span class="line">	j = <span class="number">0</span>,</span><br><span class="line">	i = first.length;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (; j &lt; len; j++) &#123;</span><br><span class="line">		first[i++] = second[j];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	first.length = i;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> first;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>函数内部的逻辑也很简单:</p>
+<ul>
+<li>将第二个数组的值传递到第一个数组</li>
+</ul>
+<p>这里就不多说了, 那么, 可以总结出这么一个结论, 该函数的作用就是:</p>
+<ul>
+<li>合并第二个<code>类数组的内容</code>到第一项</li>
+</ul>
+<p><code>第一项</code>可以是:</p>
+<ul>
+<li>一个数组</li>
+<li>jQuery对象<ul>
+<li><code>jQuery.merge</code>内部会新增一个<code>length</code>属性,</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-2-3-DOM节点处理"><a href="#3-2-3-DOM节点处理" class="headerlink" title="3.2.3 DOM节点处理"></a>3.2.3 <strong>DOM节点处理</strong></h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(selector.nodeType) &#123;</span><br><span class="line">	<span class="keyword">this</span>[<span class="number">0</span>] = selector;</span><br><span class="line">	<span class="keyword">this</span>.length = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于传递的<code>DOM节点</code>选择器, 直接包装成<code>jQuery对象</code>并返回.</p>
+<h5 id="3-2-4-函数处理"><a href="#3-2-4-函数处理" class="headerlink" title="3.2.4 函数处理"></a>3.2.4 <strong>函数处理</strong></h5><p>在分析jQuery内部对于选择器为<code>函数</code>时的处理逻辑之前, 先来回顾一下它的用法:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>或者直接使用<code>简写</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>那么问题来了:</p>
+<blockquote>
+<p><strong>Q</strong>: 上述的两种方法有啥区别呢?</p>
+</blockquote>
+<p>带着问题, 来看源码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(jQuery.isFunction(selector)) &#123;</span><br><span class="line">	<span class="keyword">return</span> root.ready !=== <span class="literal">undefined</span></span><br><span class="line">		? root.ready(selector)</span><br><span class="line">		: selector(jQuery);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, jQuery对传入的<code>function</code>调用了<code>rootjQuery</code>原型上的<code>ready()</code>方法, 该<code>rootjQuery</code>也就是<code>$(document)</code>, 看到这里, 相信已经豁然开朗, 其实就是简化了代码量, 但是其本质都是一样的.</p>
+<h5 id="3-2-5-其它类型"><a href="#3-2-5-其它类型" class="headerlink" title="3.2.5 其它类型"></a>3.2.5 其它类型</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line"><span class="keyword">return</span> jQuery.makeArray(selector, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+
+<p>对于:</p>
+<ul>
+<li>不为<code>0</code>的数字</li>
+<li>数组</li>
+<li>类数组<ul>
+<li>HTMLCollection</li>
+<li>NodeList</li>
+</ul>
+</li>
+</ul>
+<p>等等这些类型的数据, 会调用其静态方法——<code>jQuery.makeArray</code>来包装为<code>jQuery</code>对象.</p>
+<p>既然用到了<code>makeArray</code>这个方法, 那么我们来简单分析一下它:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// results is for internal usage only</span></span><br><span class="line">makeArray: <span class="function"><span class="keyword">function</span> (<span class="params">arr, results</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ret = results || [];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (arr != <span class="literal">null</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (isArrayLike(<span class="built_in">Object</span>(arr))) &#123;</span><br><span class="line">			jQuery.merge(ret,</span><br><span class="line">				<span class="keyword">typeof</span> arr === <span class="string">"string"</span> ?</span><br><span class="line">					[arr] : arr</span><br><span class="line">			);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			push.call(ret, arr);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>它根据参数<code>arr</code>的类型来做了不同的处理:</p>
+<ul>
+<li><code>arr</code>为数组or类数组<ul>
+<li>调用<code>jQuery.merge</code>合并二者</li>
+</ul>
+</li>
+<li><code>arr</code>为其它<ul>
+<li>直接合并</li>
+</ul>
+</li>
+</ul>
+<p>最终返回处理过的<code>ret</code>, 也就是<code>result</code>结果, 此时, <code>arr</code>的每一项, 已经被转化为<code>results</code>的各项, 当然, 由于<code>该函数</code>外部已经注明了:</p>
+<blockquote>
+<p><strong>注意</strong>: results is for internal usage only(该函数的结果仅供内部使用)</p>
+</blockquote>
+<p>那么, 此时的<code>results</code>理所当然就是包装过的<code>jQuery</code>的实例(<code>jQuery.fn.init</code>)了.</p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><hr>
+<p>写到这里, jQuery构造函数的内部处理逻辑大概就分析完了, 由于太多太杂, 所以在最后, 画了一张脑图来串联一下这些知识点:</p>
+<p><img src="https://oos.blog.yyge.top/2019/3/31/jQuery%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%B3%BB%E5%88%97%28%E5%9B%9B%29%20-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/images/2.png?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="总结"></p>
+<h2 id="五、示例代码"><a href="#五、示例代码" class="headerlink" title="五、示例代码"></a>五、示例代码</h2><hr>
+<p>代码已用<code>ts</code>重构, 放置于<a href="https://github.com/ddzy/my-simple-jquery/tree/branch/dev" target="_blank" rel="noopener">Gayhub</a></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/03/31/jQuery源码解析系列-四-构造函数/">https://ddzy.github.io/blog/2019/03/31/jQuery源码解析系列-四-构造函数/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/04/06/leetcode-medianOfTwoSortedArrays/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>leetcode -medianOfTwoSortedArrays
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/03/31/排序算法集锦系列之——选择/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          排序算法集锦系列之——选择<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'jQuery源码解析系列(四) -构造函数',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

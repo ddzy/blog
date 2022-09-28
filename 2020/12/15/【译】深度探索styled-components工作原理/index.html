@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="css, react, styled-components, Nlvi">
+
+  <title> 【译】深度探索styled-components工作原理 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">【译】深度探索styled-components工作原理</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-12-25"><span class="toc-text">[2020-12-25]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-12-28"><span class="toc-text">[2020-12-28]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-5"><span class="toc-text">[2021-2-5]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed-1"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#魔性语法"><span class="toc-text">魔性语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重构-styled-components"><span class="toc-text">重构 styled-components</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#styled-components-底层原理"><span class="toc-text">styled-components 底层原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入-styled-components"><span class="toc-text">引入 styled-components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用-styled-tag-name-工厂函数"><span class="toc-text">调用 styled.tag-name 工厂函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化技巧"><span class="toc-text">性能优化技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2020-12-15</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/translation/">translation</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/css/">css</a>
+              
+                <a href="/blog/tags/react/">react</a>
+              
+                <a href="/blog/tags/styled-components/">styled-components</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          【译】深度探索styled-components工作原理
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>原文链接:</p>
+<p><a href="https://medium.com/styled-components/how-styled-components-works-618a69970421" target="_blank" rel="noopener">https://medium.com/styled-components/how-styled-components-works-618a69970421</a></p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2020-12-25"><a href="#2020-12-25" class="headerlink" title="[2020-12-25]"></a>[2020-12-25]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2020-12-28"><a href="#2020-12-28" class="headerlink" title="[2020-12-28]"></a>[2020-12-28]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更改文章标题, 避免 hexo 部署的问题</li>
+</ul>
+<h3 id="2021-2-5"><a href="#2021-2-5" class="headerlink" title="[2021-2-5]"></a>[2021-2-5]</h3><h4 id="Changed-1"><a href="#Changed-1" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更改文章标题</li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><hr>
+<p>现在的前端开发特别是 React 社区, CSS-in-JS 越来越常见了. <a href="https://www.styled-components.com/" target="_blank" rel="noopener">styled-components</a> 凭借着以下几种特性 <a href="https://github.com/tuchk4/awesome-css-in-js#libraries" target="_blank" rel="noopener">脱颖而出</a>:</p>
+<ul>
+<li>它基于 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates" target="_blank" rel="noopener">标记模板</a> 语法</li>
+<li>以编写 React 组件的形式来定义样式</li>
+<li>解决 CSS 模块化的问题</li>
+<li>提供了 CSS 不具备的功能, 比如嵌套</li>
+<li>上述特性都无需配置</li>
+</ul>
+<p>开发者不再需要费尽脑汁去想 CSS 的类名. 那么, 上面所说的种种, 是如何实现的呢?</p>
+<p><strong>注意:</strong> 如果你不熟悉 styled-components, 请先阅读 <a href="https://www.styled-components.com/docs" target="_blank" rel="noopener">这篇文档</a></p>
+<h2 id="魔性语法"><a href="#魔性语法" class="headerlink" title="魔性语法"></a>魔性语法</h2><hr>
+<p>我们使用 styled-components 创建一个简单的按钮:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = styled.button<span class="string">`</span></span><br><span class="line"><span class="string">  color: coral;</span></span><br><span class="line"><span class="string">  padding: 0.25rem 1rem;</span></span><br><span class="line"><span class="string">  border: solid 2px coral;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">  margin: 0.5rem;</span></span><br><span class="line"><span class="string">  font-size: 1rem;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://miro.medium.com/max/306/1*8wJLnE1QXl8jtkbp2AWQmw.png" alt="img"></p>
+<p><a href="https://jsfiddle.net/gevgeny/r07th16o/?utm_source=website&utm_medium=embed&utm_campaign=r07th16o" target="_blank" rel="noopener">在线示例</a></p>
+<p><code>styled.button</code> 只是 <code>styled(&#39;button&#39;)</code> 的简写, <code>styled</code> 方法接收一个 <a href="https://github.com/styled-components/styled-components/blob/v3.3.3/src/utils/domElements.js#L4" target="_blank" rel="noopener">可用的标签名称</a> 作为参数. 如果你熟悉标记模板的话, 你就会知道, 其实 <code>button</code> 只是一个函数, 可以接收一个字符串数组作为参数. 看一下下面的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = styled(<span class="string">'button'</span>)([</span><br><span class="line">  <span class="string">'color: coral;'</span> +</span><br><span class="line">  <span class="string">'padding: 0.25rem 1rem;'</span> +</span><br><span class="line">  <span class="string">'border: solid 2px coral;'</span> +</span><br><span class="line">  <span class="string">'border-radius: 3px;'</span> +</span><br><span class="line">  <span class="string">'margin: 0.5rem;'</span> +</span><br><span class="line">  <span class="string">'font-size: 1rem;'</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://jsfiddle.net/gevgeny/o3zhc7xw/" target="_blank" rel="noopener">在线示例</a></p>
+<p>现在你可以看到其实 <code>styled</code> 就是一个组件工厂, 我们可以想象一下它是怎么实现的.</p>
+<h2 id="重构-styled-components"><a href="#重构-styled-components" class="headerlink" title="重构 styled-components"></a>重构 styled-components</h2><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myStyled = <span class="function">(<span class="params">TargetComponent</span>) =&gt;</span> <span class="function">(<span class="params">[style]</span>) =&gt;</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.element.setAttribute(<span class="string">'style'</span>, style);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;TargetComponent &#123;...this.props&#125; ref=&#123;element =&gt; <span class="keyword">this</span>.element = element &#125; /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Button = myStyled(<span class="string">'button'</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  color: coral;</span></span><br><span class="line"><span class="string">  padding: 0.25rem 1rem;</span></span><br><span class="line"><span class="string">  border: solid 2px coral;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">  margin: 0.5rem;</span></span><br><span class="line"><span class="string">  font-size: 1rem;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://jsfiddle.net/gevgeny/dxc6gumn/?utm_source=website&utm_medium=embed&utm_campaign=dxc6gumn" target="_blank" rel="noopener">在线示例</a></p>
+<p>上面的代码实现看起来很简单——<code>myStyled</code> 工厂函数基于给定的标签名创建了一个新的组件, 在组件挂载之后设置行内样式. 但是如果我们的组件样式依赖于某个  props   呢?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> primaryColor = <span class="string">'coral'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Button = styled(<span class="string">'button'</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  background: <span class="subst">$&#123;(&#123; primary &#125;</span>) =&gt; primary ? 'white ' : primaryColor&#125;;</span></span><br><span class="line"><span class="string">  color: <span class="subst">$&#123;(&#123; primary &#125;</span>) =&gt; primary ? primaryColor : 'white'&#125;;</span></span><br><span class="line"><span class="string">  padding: 0.25rem 1rem;</span></span><br><span class="line"><span class="string">  border: solid 2px <span class="subst">$&#123;primaryColor&#125;</span>;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">  margin: 0.5rem;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p>为了在组件挂载或者组件的 props 更新的时候计算样式中的相关插值, 我们需要更新上面代码的实现:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myStyled = <span class="function">(<span class="params">TargetComponent</span>) =&gt;</span> <span class="function">(<span class="params">strs, ...exprs</span>) =&gt;</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  interpolateStyle() &#123;</span><br><span class="line">    <span class="keyword">const</span> style = exprs.reduce(<span class="function">(<span class="params">result, expr, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> isFunc = <span class="keyword">typeof</span> expr === <span class="string">'function'</span>;</span><br><span class="line">      <span class="keyword">const</span> value = isFunc ? expr(<span class="keyword">this</span>.props) : expr;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result + value + strs[index + <span class="number">1</span>];</span><br><span class="line">    &#125;, strs[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.element.setAttribute(<span class="string">'style'</span>, style);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.interpolateStyle();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidUpdate() &#123;</span><br><span class="line">    <span class="keyword">this</span>.interpolateStyle();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">TargetComponent</span> &#123;<span class="attr">...this.props</span>&#125; <span class="attr">ref</span>=<span class="string">&#123;element</span> =&gt;</span> this.element = element &#125; /&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> primaryColor = <span class="string">'coral'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Button = myStyled(<span class="string">'button'</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  background: <span class="subst">$&#123;(&#123; primary &#125;</span>) =&gt; primary ? primaryColor : 'white'&#125;;</span></span><br><span class="line"><span class="string">  color: <span class="subst">$&#123;(&#123; primary &#125;</span>) =&gt; primary ? 'white' : primaryColor&#125;;</span></span><br><span class="line"><span class="string">  padding: 0.25rem 1rem;</span></span><br><span class="line"><span class="string">  border: solid 2px <span class="subst">$&#123;primaryColor&#125;</span>;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">  margin: 0.5rem;</span></span><br><span class="line"><span class="string">  font-size: 1rem;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://jsfiddle.net/gevgeny/et4wu96y/?utm_source=website&utm_medium=embed&utm_campaign=et4wu96y" target="_blank" rel="noopener">在线示例</a></p>
+<p>上述代码最棘手的部分在于如何得到样式字符串:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> style = exprs.reduce(<span class="function">(<span class="params">result, expr, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> isFunc = <span class="keyword">typeof</span> expr === <span class="string">'function'</span>;</span><br><span class="line">  <span class="keyword">const</span> value = isFunc ? expr(<span class="keyword">this</span>.props) : expr;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result + value + strs[index + <span class="number">1</span>];</span><br><span class="line">&#125;, strs[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>我们把所有的字符串片段拼接得到一个一个的 result; 如果某个插值是函数类型, 那么就会把组件的 props 传递给它, 同时调用它.</p>
+<p>上面这个简单的工厂看起来很像 styled-components 提供的, 但是实际上 styled-components 的底层实现更加有意思: <strong>它不用内联样式</strong>. 让我们走近 styled-components 以了解当导入并且创建组件的时候究竟发生了什么.</p>
+<h2 id="styled-components-底层原理"><a href="#styled-components-底层原理" class="headerlink" title="styled-components 底层原理"></a><code>styled-components</code> 底层原理</h2><hr>
+<h3 id="引入-styled-components"><a href="#引入-styled-components" class="headerlink" title="引入 styled-components"></a>引入 styled-components</h3><p>当你首次引入 styled-components 库的时候, 它内部会创建一个 <code>counter</code> 变量, 用来记录每一个通过 <code>styled</code> 工厂函数创建的组件.</p>
+<h3 id="调用-styled-tag-name-工厂函数"><a href="#调用-styled-tag-name-工厂函数" class="headerlink" title="调用 styled.tag-name 工厂函数"></a>调用 styled.tag-name 工厂函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = styled.button<span class="string">`</span></span><br><span class="line"><span class="string">  font-size: <span class="subst">$&#123;(&#123; sizeValue &#125;</span>) =&gt; sizeValue + 'px'&#125;;</span></span><br><span class="line"><span class="string">  color: coral;</span></span><br><span class="line"><span class="string">  padding: 0.25rem 1rem;</span></span><br><span class="line"><span class="string">  border: solid 2px coral;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">  margin: 0.5rem;</span></span><br><span class="line"><span class="string">  &amp;:hover &#123;</span></span><br><span class="line"><span class="string">    background-color: bisque;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p>styled-components 创建新组件的同时会给该组件创建一个 <code>componentId</code> 标识符. 代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">counter++;</span><br><span class="line"><span class="keyword">const</span> componentId = <span class="string">'sc-'</span> + hash(<span class="string">'sc'</span> + counter);</span><br></pre></td></tr></table></figure>
+
+<p>第一个创建的 styled-components 组件的 <code>componentId</code> 为 <code>sc-bdVaJa</code></p>
+<p>一般情况下 styled-components 会使用 <a href="https://www.wikiwand.com/en/MurmurHash" target="_blank" rel="noopener">MurmurHash</a> 算法创建唯一的标识符, 接着将 <a href="https://github.com/styled-components/styled-components/blob/v3.3.3/src/utils/generateAlphabeticName.js#L13" target="_blank" rel="noopener">哈希值转化为乱序字母组成的字符串</a>.</p>
+<p>一旦创建好标识符, styled-components 会将 <code>&lt;style&gt;</code> 元素插入到 <code>&lt;head&gt;</code> 内部, 并且插入一条带有 <code>componentId</code> 的注释, 就像下面这样:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">data-styled-components</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="comment">/* sc-component-id: sc-bdVaJa */</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建好新组件之后, <code>componentId</code> 和 <code>target</code> 都会以静态属性的形式存储于 <code>button</code> 这个组件上:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StyledComponent.componentId = componentId;</span><br><span class="line">StyledComponent.target = TargetComponent;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 仅仅创建一个 styled-components 组件, 并不会消耗太多性能. 甚至如果你定义了成百上千的组件而不去使用它们, 你最终得到的也只是一个或多个带有注释的 <code>&lt;style&gt;</code> 元素.</p>
+<p>通过 <code>styled</code> 工厂函数创建的组件有个很重要的点: 它们都继承了一个隐藏的 <code>BaseStyledComponents</code> 类, 这个类实现了一些生命周期方法. 让我们看一下.</p>
+<p><code>componentWillMount()</code></p>
+<p>我们给 <code>Button</code> 组件创建一个实例并挂载到页面上:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Button sizeValue=&#123;<span class="number">24</span>&#125;&gt;I<span class="string">'m a button&lt;/Button&gt;,</span></span><br><span class="line"><span class="string">  document.getElementById('</span>root<span class="string">')</span></span><br><span class="line"><span class="string">);</span></span><br></pre></td></tr></table></figure>
+
+<p><code>BaseStyledComponent</code> 组件的 <code>componentWillMount()</code> 生命周期被调用了, 这释放了一些重要信号:</p>
+<ol>
+<li><strong>解析标记模板</strong>: 这个算法和我们实现过的 <code>myStyled</code> 工厂很相似. 对于 <code>Button</code> 组件的实例:</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">sizeValue</span>=<span class="string">&#123;24&#125;</span>&gt;</span>I'm a button<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们得到了如下所示的 CSS 样式字符串:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-size</span>: 24<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">color</span>: <span class="selector-tag">coral</span>;</span><br><span class="line"><span class="selector-tag">padding</span>: 0<span class="selector-class">.25rem</span> 1<span class="selector-tag">rem</span>;</span><br><span class="line"><span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 2<span class="selector-tag">px</span> <span class="selector-tag">coral</span>;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 3<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin</span>: 0<span class="selector-class">.5rem</span>;</span><br><span class="line">&amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: bisque;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>生成 CSS 类名</strong>: 每个组件实例都会有一个唯一的 CSS 类名, 这个类名也是基于 <a href="https://www.wikiwand.com/en/MurmurHash" target="_blank" rel="noopener">MurmurHash</a> 算法、<code>componentId</code> 以及 <code>evaluatedStyles</code> 字符串生成的:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> className = hash(componentId + evaluatedStyles);</span><br></pre></td></tr></table></figure>
+
+<p>所以我们的 <code>Button</code> 实例生成的 <code>className</code> 是 <code>jsZVzX</code>.</p>
+<p>之后这个类名会保存到组件的 state 上, 字段名为 <code>generatedClassName</code>.</p>
+<ol start="3">
+<li><strong>预处理 CSS</strong>: 我们使用流行的 CSS 预处理器——<a href="https://github.com/thysultan/stylis.js" target="_blank" rel="noopener">stylis</a>, 提取 CSS 字符串:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selector = <span class="string">'.'</span> + className;</span><br><span class="line"><span class="keyword">const</span> cssStr = stylis(selector, evaluatedStyles);</span><br></pre></td></tr></table></figure>
+
+<p>下面是 <code>Button</code> 实例最终的 CSS 样式:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.jsZVzX</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">  <span class="attribute">color</span>: coral;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.25rem</span> <span class="number">1rem</span>;</span><br><span class="line">  <span class="attribute">border</span>: solid <span class="number">2px</span> coral;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0.5rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.jsZVzX</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: bisque;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>将 CSS 字符串注入到页面上</strong>: 现在可以将 CSS 注入到 <code>&lt;style&gt;</code> 标签内部的带有组件标识注释的后面:</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span> <span class="selector-tag">data-styled-components</span>&gt;</span><br><span class="line">  <span class="comment">/* sc-component-id: sc-bdVaJa */</span></span><br><span class="line">  .sc-bdVaJa &#123;&#125; .jsZVzX&#123;font-size:24px;color:coral; ... &#125;</span><br><span class="line">  <span class="selector-class">.jsZVzX</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">background-color</span>:bisque;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>正如你看到的, styled-components 也将 <code>componentId</code>(<code>.sc-bdVaJa</code>) 注入到页面上, 并且没有给 <code>.sc-bdVaJa</code> 定义样式.</p>
+<p><code>render()</code></p>
+<p>当完成 CSS 的相关工作后, styled-components 只需要去创建组件的类名(<code>className</code>)即可:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TargetComponent = <span class="keyword">this</span>.constructor.target; <span class="comment">// In our case just 'button' string.</span></span><br><span class="line"><span class="keyword">const</span> componentId = <span class="keyword">this</span>.constructor.componentId;</span><br><span class="line"><span class="keyword">const</span> generatedClassName = <span class="keyword">this</span>.state.generatedClassName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;TargetComponent</span><br><span class="line">    &#123;...this.props&#125;</span><br><span class="line">    className=&#123;<span class="keyword">this</span>.props.className + <span class="string">' '</span> + componentId + <span class="string">' '</span> + generatedClassName&#125;</span><br><span class="line">  /&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>styled-components 给渲染的元素(<code>TargetComponent</code>)添加了 3 个类名:</p>
+<ol>
+<li><code>this.props.className</code> —— 从父组件传递过来的类名, 是可选的.</li>
+<li><code>componentId</code> —— 一个组件唯一的标识, 但是要注意不是组件实例. 这个类名没有 CSS 样式, 但是当需要 <a href="https://www.styled-components.com/docs/advanced#referring-to-other-components" target="_blank" rel="noopener">引用其它组件</a> 的时候, 可以作为一个嵌套选择器来使用.</li>
+<li><code>generatedClassName</code> —— 具有 CSS 样式的组件的唯一前缀</li>
+</ol>
+<p>很棒! 最终渲染出来的 HTML 是这样的:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"sc-bdVaJa jsZVzX"</span>&gt;</span>I'm a button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>componentWillReceiveProps()</code></p>
+<p>现在让我们尝试着在 Button 组件挂载完成之后更改它的 props. 需要做的是给 <code>Button</code> 组件添加一个交互式的事件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sizeValue = <span class="number">24</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> updateButton = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    &lt;Button sizeValue=&#123;sizeValue&#125; onClick=&#123;updateButton&#125;&gt;</span><br><span class="line">      Font size is &#123;sizeValue&#125;px</span><br><span class="line">    &lt;<span class="regexp">/Button&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('root')</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">  sizeValue++;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">updateButton();</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://jsfiddle.net/gevgeny/0ezu72Ly/" target="_blank" rel="noopener">在线示例</a></p>
+<p>你点击一次按钮, <code>componentWillReceiveProps()</code> 会被调用, 并且 <code>sizeValue</code> 会自增, 之后的流程和 <code>componentWillMount()</code> 一样:</p>
+<ol>
+<li>解析标记模板</li>
+<li>生成新的 CSS 类名</li>
+<li><a href="https://github.com/thysultan/stylis.js" target="_blank" rel="noopener">stylis</a> 预处理样式</li>
+<li>将 CSS 注入到页面上</li>
+</ol>
+<p>在多次点击按钮之后查看浏览器开发者工具, 可以看到:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">data-styled-components</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="comment">/* sc-component-id: sc-bdVaJa */</span></span></span><br><span class="line"><span class="css">  <span class="selector-class">.sc-bdVaJa</span> &#123;&#125;</span></span><br><span class="line">  .jsZVzX&#123;font-size:24px;color:coral; ... &#125; .jsZVzX:hover&#123;background-color:bisque;&#125;</span><br><span class="line">  .kkRXUB&#123;font-size:25px;color:coral; ... &#125; .kkRXUB:hover&#123;background-color:bisque;&#125;</span><br><span class="line">  .jvOYbh&#123;font-size:26px;color:coral; ... &#125; .jvOYbh:hover&#123;background-color:bisque;&#125;</span><br><span class="line">  .ljDvEV&#123;font-size:27px;color:coral; ... &#125; .ljDvEV:hover&#123;background-color:bisque;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>是的, 所有类只有 <code>font-size</code> 属性不同, 并且无用的 CSS 类都没有被移除. 这是为什么? 因为移除无用的类会增加性能开销, 具体可以看 <a href="https://github.com/styled-components/styled-components/issues/1431#issuecomment-358097912" target="_blank" rel="noopener">这篇文章</a>.</p>
+<p>这里有个小的优化点: 可以添加一个 <code>isStatic</code> 变量, 在 <code>componentWillReceiveProps()</code> 检查这个变量, 如果组件不需要插入样式的话, 直接跳过, 从而避免不必要的样式计算.</p>
+<h2 id="性能优化技巧"><a href="#性能优化技巧" class="headerlink" title="性能优化技巧"></a>性能优化技巧</h2><hr>
+<p>了解了 styled-components 底层是如何工作的, 之后才能更好的专注于性能优化.</p>
+<p>这是一个有彩蛋的 <a href="https://jsfiddle.net/gevgeny/0ezu72Ly/" target="_blank" rel="noopener">按钮例子</a>(<em>提示: 点击按钮超过 200 次, 你会在控制台看到 styled-components 的隐藏信息. 不是开玩笑的哦</em>!😉).</p>
+<p>下面就是隐藏的彩蛋:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">styled.button 组件生成了超过 200 个类名</span><br><span class="line">需要频繁更改样式的话, 可以考虑使用 attrs 方法</span><br><span class="line">Example:</span><br><span class="line">  const Component = styled.div.attrs(&#123;</span><br><span class="line">    style: (&#123; background &#125;) =&gt; (&#123;</span><br><span class="line">      background,</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;)`width: 100%;`</span><br><span class="line">&lt;Component /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>重构后的 <code>Button</code> 组件是这样的:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = styled.button.attrs(&#123;</span><br><span class="line">  style: <span class="function">(<span class="params">&#123; sizeValue &#125;</span>) =&gt;</span> (&#123; <span class="attr">fontSize</span>: sizeValue + <span class="string">'px'</span> &#125;)</span><br><span class="line">&#125;)<span class="string">`</span></span><br><span class="line"><span class="string">  color: coral;</span></span><br><span class="line"><span class="string">  padding: 0.25rem 1rem;</span></span><br><span class="line"><span class="string">  border: solid 2px coral;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">  margin: 0.5rem;</span></span><br><span class="line"><span class="string">  &amp;:hover &#123;</span></span><br><span class="line"><span class="string">    background-color: bisque;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然而, 并不是所有的动态样式都应该采取这种方式. <strong>我自己的规则是对于起伏比较大的数值, 使用 style 属性</strong>. 比如:</p>
+<ul>
+<li>像 <a href="https://www.jasondavies.com/wordcloud/" target="_blank" rel="noopener"><u>word cloud</u></a> 这种可以高度定制 <code>font-size</code> 的组件</li>
+<li>从服务端获取的具有不同颜色的标签列表</li>
+</ul>
+<p>但是, 如果你的按钮是多样化的, 比如 default、primary、warn等, 还是使用样式字符串比较好.</p>
+<p>在下面的例子里面, 我使用的是开发版本的 styled-components 包, 而你应该使用速度更快的生产版本. 在 React 项目里面, styled-components 的生产包禁用了很多开发环境下的警告, 这些警告是很重要的, 它使用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule" target="_blank" rel="noopener">CSSStyleSheet.insertRule()</a> 将生成的样式注入到页面上, 但是开发环境下却用了 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank" rel="noopener">Node.appendChild()</a>(<u>Evan Scott</u> <a href="https://medium.com/styled-components/v3-1-0-such-perf-wow-many-streams-c45c434dbd03" target="_blank" rel="noopener">在这里</a> 展示了 <code>insertRule</code> 到底有多快)</p>
+<p>同时你也可以考虑使用 <a href="https://www.styled-components.com/docs/tooling#babel-plugin" target="_blank" rel="noopener">babel-plugin-styled-components</a> 插件, 它可以压缩并预处理样式文件.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>styled-components 的工作流程是很简洁的, 它会在组件渲染之前创建必要的 CSS 样式, 并且在需要解析标签字符串和预处理 CSS 的前提下也足够快.</p>
+<p>这篇文章的讲解并没有覆盖到 styled-components 的各个方面, 但是我尽量的去专注于主要的点.</p>
+<p>在这篇文章里面, 我使用的 styled-components 版本是 <a href="https://github.com/styled-components/styled-components/tree/v3.3.3" target="_blank" rel="noopener">v3.3.3</a>. 在后续的版本中它的源码可能会发生变化.</p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2020/12/15/【译】深度探索styled-components工作原理/">https://ddzy.github.io/blog/2020/12/15/【译】深度探索styled-components工作原理/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2020/12/24/js-xlsx-日期处理的坑点/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>js-xlsx 日期处理的坑点
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2020/12/10/vue摸摸手系列之——vue-cli2打包后-IE-白屏的解决方案/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          vue摸摸手系列之——vue-cli2打包后 IE 白屏的解决方案<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '【译】深度探索styled-components工作原理',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

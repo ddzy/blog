@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="react, fiber, linked-list, Nlvi">
+
+  <title> 【译】React为何要使用链表遍历Fiber树 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">【译】React为何要使用链表遍历Fiber树</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-11-29"><span class="toc-text">[2020-11-29]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-12-15"><span class="toc-text">[2020-12-15]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-12-28"><span class="toc-text">[2020-12-28]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed-1"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-5"><span class="toc-text">[2021-2-5]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed-2"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前置知识"><span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是堆栈"><span class="toc-text">什么是堆栈?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么栈和-React-有关"><span class="toc-text">为什么栈和 React 有关?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归遍历"><span class="toc-text">递归遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表遍历"><span class="toc-text">链表遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React-事件循环"><span class="toc-text">React 事件循环</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2020-11-29</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/translation/">translation</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/react/">react</a>
+              
+                <a href="/blog/tags/fiber/">fiber</a>
+              
+                <a href="/blog/tags/linked-list/">linked-list</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          【译】React为何要使用链表遍历Fiber树
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>原文链接: <a href="https://indepth.dev/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree" target="_blank" rel="noopener">https://indepth.dev/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree</a></p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2020-11-29"><a href="#2020-11-29" class="headerlink" title="[2020-11-29]"></a>[2020-11-29]</h3><ul>
+<li>Initital release</li>
+</ul>
+<h3 id="2020-12-15"><a href="#2020-12-15" class="headerlink" title="[2020-12-15]"></a>[2020-12-15]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更新文章标题</li>
+</ul>
+<h3 id="2020-12-28"><a href="#2020-12-28" class="headerlink" title="[2020-12-28]"></a>[2020-12-28]</h3><h4 id="Changed-1"><a href="#Changed-1" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更改文章标题, 避免 hexo 部署的问题</li>
+</ul>
+<h3 id="2021-2-5"><a href="#2021-2-5" class="headerlink" title="[2021-2-5]"></a>[2021-2-5]</h3><h4 id="Changed-2"><a href="#Changed-2" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更改文章标题</li>
+</ul>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><hr>
+<p>Fiber 架构有两个主要的渲染阶段:</p>
+<ul>
+<li>reconciliation/render</li>
+<li>commit</li>
+</ul>
+<p>在源码中 reconciliation 阶段也被视为 “render” 阶段. 在该阶段, React 会遍历整个组件树, 并且进行如下操作:</p>
+<ul>
+<li>更新 state 和 props</li>
+<li>调用生命周期方法</li>
+<li>检索当前组件的子组件</li>
+<li>比对新老子组件</li>
+<li>计算出需要在 commit 阶段被执行的 DOM 更新</li>
+</ul>
+<p><strong>上述所有操作被称为 Fiber 内部工作(<code>work inside Fiber</code>)</strong>. 需要完成的工作类型取决于 React Element 的类型. 比如, 对于 <code>Class Component</code>, React 会进行实例化, 然而不会实例化 <code>Functional Component</code>. 如果感兴趣的话, <a href="https://github.com/facebook/react/blob/340bfd9393e8173adca5380e6587e1ea1a23cefa/packages/shared/ReactWorkTags.js?source=post_page---------------------------#L29-L28" target="_blank" rel="noopener">在这里</a> 你可以看到 Fiber 上所有的工作类型. Andrew  也在演讲中提到了这些:</p>
+<blockquote>
+<p>当处理 UI 的时候, 如果<strong>一次性执行太多的 React 工作</strong>, 那么可能会导致动画掉帧…</p>
+</blockquote>
+<p>那么 ‘一次性执行 指的是什么?  如果 React 以<strong>同步</strong>的方式遍历整个组件树, 并且对每个组件进行更新, 那么代码的执行时间有可能会超过 16ms 有效时间, 从而造成掉帧卡顿现象.</p>
+<p>那么这个问题可以解决吗?</p>
+<blockquote>
+<p>较新的浏览器以及 React Native 实现了相关 API, 来解决这个问题…</p>
+</blockquote>
+<p>全局函数——<a href="https://developers.google.com/web/updates/2015/08/using-requestidlecallback?source=post_page---------------------------" target="_blank" rel="noopener">requestIdleCallback</a>, 可以把函数加入到队列中, 等到浏览器空闲的时候再去调用. 下面的例子告诉你如何使用它:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">requestIdleCallback(<span class="function">(<span class="params">deadline</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(deadline.timeRemaining(), deadline.didTimeout)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果在 console 控制台执行上述代码, Chrome 浏览器会打印 <code>49.9 false</code>. 这表明我有 <code>49.9ms</code> 去做任何我想做的工作, 并且时间还有富余, 否则 <code>deadline.didTimeout</code> 会变为 <code>true</code>. 记住, 一旦浏览器执行工作, <code>timeRemaining</code> 会立刻改变, 所以应该随时检查它.</p>
+<blockquote>
+<p><strong>requestIdleCallback</strong> 在使用上其实是有局限性的, 不能 <a href="https://github.com/facebook/react/issues/13206?source=post_page---------------------------#issuecomment-418923831" target="_blank" rel="noopener">频繁地调用</a> 它去实现平滑的 UI 渲染, 所以 React 团队 <a href="https://github.com/facebook/react/blob/eeb817785c771362416fd87ea7d2a1a32dde9842/packages/scheduler/src/Scheduler.js?source=post_page---------------------------#L212-L222" target="_blank" rel="noopener">不得不实现他们自己的版本</a>.</p>
+</blockquote>
+<p>假如我们将 React 更新组件的代码放到 <code>performWork</code> 函数, 使用 <code>requestIdleCallback</code> 去调度, 代码会变成下面这样:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">requestIdleCallback(<span class="function">(<span class="params">deadline</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// while we have time, perform work for a part of the components tree</span></span><br><span class="line">    <span class="keyword">while</span> ((deadline.timeRemaining() &gt; <span class="number">0</span> || deadline.didTimeout) &amp;&amp; nextComponent) &#123;</span><br><span class="line">        nextComponent = performWork(nextComponent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上述代码对于单个组件执行相关更新工作, 并且返回了指向下一个组件的引用. 不用再像之前的 <a href="https://reactjs.org/docs/codebase-overview.html?source=post_page---------------------------#stack-reconciler" target="_blank" rel="noopener">reconciliation</a> 算法那样, 同步处理组件树. Andrew 也谈到了这个问题:</p>
+<blockquote>
+<p>为了使用这些 API, 你需要一种可以将渲染工作拆分为单元</p>
+</blockquote>
+<p>为了解决这个问题, React 重新实现了树的遍历算法, <strong>原本的算法采用基于内置堆栈的同步递归策略, 而新的算法则是基于链表和指针的异步策略</strong>. Andrew 的文章也提到了:</p>
+<blockquote>
+<p>如果只依赖内置的调用栈, 那么 React 会一直工作直到调用栈为空… 如果可以中断调用栈并且手动操作调用栈的每一帧, 那不是美滋滋么? 这其实就是 React Fiber 的思想. <strong>Fiber 专为 React 组件设计, 它重新实现了调用栈</strong>. 你也可以把每个 Fiber 当作一个帧.</p>
+</blockquote>
+<h2 id="什么是堆栈"><a href="#什么是堆栈" class="headerlink" title="什么是堆栈?"></a>什么是堆栈?</h2><hr>
+<p>我假设你已经熟悉了调用栈的相关概念. 给代码打个断点, 然后在浏览器调试窗口就可以看到它的调用栈. 下面是 <a href="https://en.wikipedia.org/wiki/Call_stack?fbclid=IwAR06VWEQnwoEawg0NsoR8loBJwIbmPWsXXKqbAuOFBjkawHThK7zlIBsJ_U&source=post_page---------------------------#Structure" target="_blank" rel="noopener">维基百科</a> 对它的解释:</p>
+<blockquote>
+<p>In computer science, a <strong><em>\</em>call stack**</strong> is a stack data structure that stores information about the active subroutines of a computer program… the main reason for having call stack is <strong><em>\</em>to keep track of the point**</strong> to which each active subroutine should return control when it finishes executing… A <strong><em>\</em>call stack**</strong> is composed of <strong><em>\</em>stack frames**</strong>… Each stack frame corresponds to a call to a subroutine which has not yet terminated with a <strong><em>\</em>return**</strong>. For example, if a subroutine named <code>DrawLine</code> is currently running, having been called by a subroutine <code>DrawSquare</code>, the top part of the call stack might be laid out like in the adjacent picture.</p>
+</blockquote>
+<p><img src="https://admin.indepth.dev/content/images/2019/07/image-46.png" alt="调用栈图例"></p>
+<h2 id="为什么栈和-React-有关"><a href="#为什么栈和-React-有关" class="headerlink" title="为什么栈和 React 有关?"></a>为什么栈和 React 有关?</h2><hr>
+<p>我在文章的第一部分提到了, React 在 reconciliation/render 阶段遍历组件树并更新组件. 之前的算法采用的是基于内置调用栈进行同步递归遍历组件树的策略. <a href="https://reactjs.org/docs/reconciliation.html?source=post_page---------------------------#recursing-on-children" target="_blank" rel="noopener">这篇文章</a> 介绍了 reconciliation 递归算法:</p>
+<p>在文章的第一部分我们提到, React 在 reconciliation/render 阶段遍历组件树并更新组件. 之前的 reconciler 算法采用的是同步递归内置调用栈的策略. <a href="https://reactjs.org/docs/reconciliation.html?source=post_page---------------------------#recursing-on-children" target="_blank" rel="noopener">官方文档</a> 阐述了这个过程并且解释了递归算法:</p>
+<blockquote>
+<p>默认情况下, 当递归遍历某个 DOM 节点的子节点时, React 只同时遍历两个子节点列表, 在遍历过程中找到它们的差异并生成一个 mutation(突变).</p>
+</blockquote>
+<p>你想想, <strong>每次递归都会在栈中添加一个帧. 并且它是同步的</strong>. 假设有如下的组件树:</p>
+<p><img src="https://admin.indepth.dev/content/images/2019/07/image-47.png" alt="img"></p>
+<p>如下所示的 <code>render</code> 函数会返回一些对象. 你可以把这些对象看作 React 组件的实例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a1 = &#123;<span class="attr">name</span>: <span class="string">'a1'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> b1 = &#123;<span class="attr">name</span>: <span class="string">'b1'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> b2 = &#123;<span class="attr">name</span>: <span class="string">'b2'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> b3 = &#123;<span class="attr">name</span>: <span class="string">'b3'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> c1 = &#123;<span class="attr">name</span>: <span class="string">'c1'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> c2 = &#123;<span class="attr">name</span>: <span class="string">'c2'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> d1 = &#123;<span class="attr">name</span>: <span class="string">'d1'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> d2 = &#123;<span class="attr">name</span>: <span class="string">'d2'</span>&#125;;</span><br><span class="line"></span><br><span class="line">a1.render = <span class="function"><span class="params">()</span> =&gt;</span> [b1, b2, b3];</span><br><span class="line">b1.render = <span class="function"><span class="params">()</span> =&gt;</span> [];</span><br><span class="line">b2.render = <span class="function"><span class="params">()</span> =&gt;</span> [c1];</span><br><span class="line">b3.render = <span class="function"><span class="params">()</span> =&gt;</span> [c2];</span><br><span class="line">c1.render = <span class="function"><span class="params">()</span> =&gt;</span> [d1, d2];</span><br><span class="line">c2.render = <span class="function"><span class="params">()</span> =&gt;</span> [];</span><br><span class="line">d1.render = <span class="function"><span class="params">()</span> =&gt;</span> [];</span><br><span class="line">d2.render = <span class="function"><span class="params">()</span> =&gt;</span> [];</span><br></pre></td></tr></table></figure>
+
+<p>React 需要遍历整个组件树并对每一个组件进行更新操作. 为了简化这个过程, 在更新每个组件的时候, 只会打印当前组件的 <code>name</code> 属性的值以及返回它的子组件. 下面是递归的实现方式.</p>
+<h2 id="递归遍历"><a href="#递归遍历" class="headerlink" title="递归遍历"></a>递归遍历</h2><hr>
+<p>通过递归调用 <code>walk</code> 函数来遍历整个树, 代码如下所示:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">walk(a1);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">instance</span>) </span>&#123;</span><br><span class="line">    doWork(instance);</span><br><span class="line">    <span class="keyword">const</span> children = instance.render();</span><br><span class="line">    children.forEach(walk);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doWork</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码会输出:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a1, b1, b2, c1, d1, d2, b3, c2</span><br></pre></td></tr></table></figure>
+
+<p>如果你不是很熟悉递归, 可以看我的这篇文章: <a href="https://medium.com/angular-in-depth/learn-recursion-in-10-minutes-e3262ac08a1" target="_blank" rel="noopener">深度理解递归</a>.</p>
+<p>递归非常适合遍历树型结构. 但是它有一个最大的局限性, 那就是不能将某个工作拆分为粒度更小的单元. 我们不能暂停组件的更新工作并且在后续的某个时间段内恢复它. React 会一直通过这种方式来遍历, 直到处理完所有的组件并且调用栈为空.</p>
+<p><strong>那么 React 是如何不通过递归的形式去遍历整棵树的呢? 事实上, React 采用了单链表树状结构的遍历算法. 这使得可以暂定遍历并且抑制调用栈的增长.</strong></p>
+<h2 id="链表遍历"><a href="#链表遍历" class="headerlink" title="链表遍历"></a>链表遍历</h2><hr>
+<p>幸运的是, 我在 Sebastian Markbåge 的 issue 发现了关于这个算法的 <a href="https://github.com/facebook/react/issues/7942?source=post_page---------------------------#issue-182373497" target="_blank" rel="noopener">代码片段</a>. 要实现这个算法, 需要一个数据结构, 它有三个字段:</p>
+<ul>
+<li>child - 指向第一个子节点</li>
+<li>sibling - 指向第一个兄弟节点</li>
+<li>return - 指向父节点</li>
+</ul>
+<p>在新的 reconciliation 算法条件下, 由 Fiber 来调用上述字段组成的数据结构. 在底层它代表一个 React Element. 我的下一篇文章会讲述更多的有关于它的知识.</p>
+<p>如下所示的流程图展示了各个节点间的关系:</p>
+<p><img src="https://admin.indepth.dev/content/images/2019/07/image-48.png" alt="img"></p>
+<p>因此我们首先定义节点的数据结构:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(instance) &#123;</span><br><span class="line">        <span class="keyword">this</span>.instance = instance;</span><br><span class="line">        <span class="keyword">this</span>.child = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.sibling = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.return = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如下所示, 使用 <code>link</code> 函数将由  <code>render</code> 函数返回的子节点列表连结:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">link</span>(<span class="params">parent, elements</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (elements === <span class="literal">null</span>) elements = [];</span><br><span class="line"></span><br><span class="line">    parent.child = elements.reduceRight(<span class="function">(<span class="params">previous, current</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> node = <span class="keyword">new</span> Node(current);</span><br><span class="line">        node.return = parent;</span><br><span class="line">        node.sibling = previous;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> parent.child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>link</code> 方法从后往前遍历节点列表, 将它们以单链表的形式连接. 函数最终返回一个指针, 指向列表中的第一个节点. 如下代码所示:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> children = [&#123;<span class="attr">name</span>: <span class="string">'b1'</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">'b2'</span>&#125;];</span><br><span class="line"><span class="keyword">const</span> parent = <span class="keyword">new</span> Node(&#123;<span class="attr">name</span>: <span class="string">'a1'</span>&#125;);</span><br><span class="line"><span class="keyword">const</span> child = link(parent, children);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the following two statements are true</span></span><br><span class="line"><span class="built_in">console</span>.log(child.instance.name === <span class="string">'b1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(child.sibling.instance === children[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>同时, 我们也实现了一个 <code>doWork</code> 辅助函数, 执行对单个节点的操作. 函数内部打印了组件的名称(<code>component.name</code>). 除此之外, 它检索了子节点列表, 并且将子节点连结起来, 代码如下所示:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doWork</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(node.instance.name);</span><br><span class="line">    <span class="keyword">const</span> children = node.instance.render();</span><br><span class="line">    <span class="keyword">return</span> link(node, children);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好的, 现在我们实现了核心的遍历算法. 采用的是深度优先的策略, 代码如下所示:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> root = o;</span><br><span class="line">    <span class="keyword">let</span> current = o;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="comment">// perform work for a node, retrieve &amp; link the children</span></span><br><span class="line">        <span class="keyword">let</span> child = doWork(current);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if there's a child, set it as the current active node</span></span><br><span class="line">        <span class="keyword">if</span> (child) &#123;</span><br><span class="line">            current = child;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if we've returned to the top, exit the function</span></span><br><span class="line">        <span class="keyword">if</span> (current === root) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// keep going up until we find the sibling</span></span><br><span class="line">        <span class="keyword">while</span> (!current.sibling) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// if we've returned to the top, exit the function</span></span><br><span class="line">            <span class="keyword">if</span> (!current.return || current.return === root) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// set the parent as the current active node</span></span><br><span class="line">            current = current.return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if found, set the sibling as the current active node</span></span><br><span class="line">        current = current.sibling;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>尽管上面的代码实现不难理解, 你还是要自己 <a href="https://stackblitz.com/edit/js-tle1wr?source=post_page---------------------------" target="_blank" rel="noopener">尝试一下</a>. 上述算法的理念是保持对 current node(当前节点) 的引用, 并且在遍历树中的某一条路径的时候重新赋值, 直到遍历到尽头. 之后使用 <code>return</code> 指针返回父级节点.</p>
+<p>如果我们检查上述算法的调用栈, 就会看到:</p>
+<p><img src="https://admin.indepth.dev/content/images/2019/07/callstack.gif" alt="img"></p>
+<p>可以看到, 调用栈并没有随着树的遍历而增长. 但是如果现在给 <code>doWork</code> 方法打个断点, 可以看到如下结果:</p>
+<p><img src="https://admin.indepth.dev/content/images/2019/07/callstack2.gif" alt="img"></p>
+<p><strong>这看起来很像浏览器的调用栈</strong>. 因此通过这个算法, 我们有效地利用我们自己实现的调用栈替代了浏览器默认的调用栈. Andrew 也提到了这一点:</p>
+<blockquote>
+<p>Fiber 是调用栈的重新实现, 专为 React 组件设计. 你可以将一个 fiber 看作一个虚拟的栈帧.</p>
+</blockquote>
+<p>因为我们现在通过保持对节点的引用来管理调用栈, 所以该节点可以看作一个顶级帧:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> root = o;</span><br><span class="line">    <span class="keyword">let</span> current = o;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            ...</span><br><span class="line"></span><br><span class="line">            current = child;</span><br><span class="line">            ...</span><br><span class="line"></span><br><span class="line">            current = current.return;</span><br><span class="line">            ...</span><br><span class="line"></span><br><span class="line">            current = current.sibling;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以在任何时候中断或恢复遍历. 这正是使用 <code>requestIdleCallback</code> API 的前置条件.</p>
+<h2 id="React-事件循环"><a href="#React-事件循环" class="headerlink" title="React 事件循环"></a>React 事件循环</h2><hr>
+<p>React 实现事件循环(<code>work loop</code>)的代码 <a href="https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js?source=post_page---------------------------#L1118" target="_blank" rel="noopener">在这里</a>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">workLoop</span>(<span class="params">isYieldy</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!isYieldy) &#123;</span><br><span class="line">        <span class="comment">// Flush work without yielding</span></span><br><span class="line">        <span class="keyword">while</span> (nextUnitOfWork !== <span class="literal">null</span>) &#123;</span><br><span class="line">            nextUnitOfWork = performUnitOfWork(nextUnitOfWork);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Flush asynchronous work until the deadline runs out of time.</span></span><br><span class="line">        <span class="keyword">while</span> (nextUnitOfWork !== <span class="literal">null</span> &amp;&amp; !shouldYield()) &#123;</span><br><span class="line">            nextUnitOfWork = performUnitOfWork(nextUnitOfWork);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 上述代码的算法和我提到的很相似. 通过 <code>nextUnitOfWork</code> 变量保存当前 fiber 节点的引用.</p>
+<p>这个算法可以同步遍历组件树并且对每个 fiber 节点执行更新(nextUnitOfWork). 诸如 click、input 之类的 UI 事件产生的交互式更新(interactive updates)也是这种情况. 除了<strong>同步遍历</strong>, 上述算法还可以<strong>异步遍历</strong>组件树, 在遍历的过程中可以检查在更新完一个 Fiber 节点之后是否还有剩余时间. <code>shouldYield</code> 方法返回一个值, 这个值是在 React 更新组件的过程中由 <a href="https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js?source=post_page---------------------------#L1806" target="_blank" rel="noopener">deadlineDidExpire</a> 和 <a href="https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js?source=post_page---------------------------#L1809" target="_blank" rel="noopener">deadline</a> 实时计算出来的.</p>
+<p>想深入理解 <code>performUnitOfWork</code> 函数, 可以看 <a href="https://indepth.dev/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react/" target="_blank" rel="noopener">这篇文章</a>.</p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2020/11/29/【译】React为何要使用链表遍历Fiber树/">https://ddzy.github.io/blog/2020/11/29/【译】React为何要使用链表遍历Fiber树/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2020/11/30/关于-React-的一些疑点思考/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>关于 React 的一些疑点思考
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2020/11/25/git-clone龟速的解决方案/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          git clone龟速的解决方案<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '【译】React为何要使用链表遍历Fiber树',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

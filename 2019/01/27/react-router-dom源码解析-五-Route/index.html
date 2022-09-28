@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="react, Nlvi">
+
+  <title> react-router-dom源码解析(五) -Route · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">react-router-dom源码解析(五) -Route</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、前言"><span class="toc-text">二、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、细说"><span class="toc-text">三、细说</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-前置知识"><span class="toc-text">3.1 前置知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-path-to-regexp"><span class="toc-text">3.2 path-to-regexp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-源码分析"><span class="toc-text">3.3 源码分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、实践"><span class="toc-text">四、实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-定义interface"><span class="toc-text">4.1 定义interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-拆分处理函数"><span class="toc-text">4.2 拆分处理函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-计算location"><span class="toc-text">4.3 计算location</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-计算match"><span class="toc-text">4.4 计算match</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-融合"><span class="toc-text">4.5 融合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-重置Provider"><span class="toc-text">4.6 重置Provider</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-render"><span class="toc-text">4.7 render</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、测试"><span class="toc-text">五、测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、源码"><span class="toc-text">六、源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、总结"><span class="toc-text">七、总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-01-27</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/react/">react</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          react-router-dom源码解析(五) -Route
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>react-router-dom源码解析系列第五篇 - Route, 一起来学习<code>Route</code>组件的思想和继续完善我们自己的<code>react-router</code>库.</p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><hr>
+<h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>改进文章排版</li>
+</ul>
+<h2 id="二、前言"><a href="#二、前言" class="headerlink" title="二、前言"></a>二、前言</h2><hr>
+<p>上一篇主要学习了<code>react-router-dom</code>中<code>Router</code>组件的基本思想和简单实现, 我们可以发现, <code>Router</code>作为整个体系的<code>Powered by</code>-动力来源, 起着至关重要的作用. 而这一篇将要学习的<code>Route</code>组件, 是整个体系中的<code>执行者</code>:</p>
+<blockquote>
+<p><strong>PS</strong>: 给你一个<code>path</code>, 你拿去, 把对应的<code>component</code>render出来.</p>
+</blockquote>
+<p>由此可见, <code>Route</code>同样是多么的重要.</p>
+<h2 id="三、细说"><a href="#三、细说" class="headerlink" title="三、细说"></a>三、细说</h2><hr>
+<h3 id="3-1-前置知识"><a href="#3-1-前置知识" class="headerlink" title="3.1 前置知识"></a>3.1 前置知识</h3><p>花了几分钟时间, 画了一张脑图, 大概是这一篇文章的大致脉络😰…</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/27/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E4%BA%94%29%20-Route/images/3.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="文章大致脉络"></p>
+<h3 id="3-2-path-to-regexp"><a href="#3-2-path-to-regexp" class="headerlink" title="3.2 path-to-regexp"></a>3.2 path-to-regexp</h3><p>学习<code>Route</code>组件源码之前, 先来看一下这个库:</p>
+<p><code>react-router-dom</code>官方再源码中引用了这个库, 库的地址也可以在<a href="https://github.com/pillarjs/path-to-regexp" target="_blank" rel="noopener">这里</a>找到. 见名闻其意 —— path-to-regexp, 顾名思义, 就是将path, 例如<code>url</code>转化为不同模式的<code>RegExp</code>, 同时也提供了一些配置项供我们使用.</p>
+<p>来看一下path-to-regexp库提供的这个方法:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="string">'/user/:id/profile/:secret'</span>;</span><br><span class="line"><span class="keyword">const</span> keys: pathToRegexp.Key[] = [];</span><br><span class="line"><span class="keyword">const</span> regexp: <span class="built_in">RegExp</span> = pathToRegexp(path, keys, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(&#123; path, keys, regexp &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这是官方提供的例子, 我们在控制台打印可以看到如下结果:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/27/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E4%BA%94%29%20-Route/images/1.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="path-to-regexp示例"></p>
+<p>我们可以看到, <code>path-to-regexp</code>根据我们输入的<code>path</code>路径, 以及<code>keys</code>空数组, 生成了对应的<code>regexp</code>对象, 以及保存着url参数的数组. 那么我们可以思考一下, 我们能否将这个小例子, 引申到<code>react-router-dom</code>中呢? 答案是肯定的.</p>
+<p>先来捋一下<code>Route</code>组件的设计思路:</p>
+<ol>
+<li>接收到带有{ path, sensitive, exact, … }的props</li>
+<li>判断props是否具有<code>Switch</code>组件已经计算好的的<code>match</code>对象<ul>
+<li>有的话, 执行下一步<code>render</code></li>
+<li>没有的话, 计算<code>match</code></li>
+</ul>
+</li>
+<li>根据props的{ children, component, render }执行<code>render</code></li>
+</ol>
+<p>再将目光转向上面提到的例子, 我们可否将例子里的<code>path</code>当作<code>Route</code>的<code>path</code>props? 接着第一个例子, 抛砖引玉, 我们再来看一个:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="string">'/user/:id/profile/:secret'</span>;</span><br><span class="line"><span class="keyword">const</span> keys: pathToRegexp.Key[] = [];</span><br><span class="line"><span class="keyword">const</span> pathname = <span class="string">'/user/19980808/profile/duan'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> regexp: <span class="built_in">RegExp</span> = pathToRegexp(path, keys, &#123;&#125;);</span><br><span class="line"><span class="keyword">const</span> result = pathname.match(regexp);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+
+<p>可以看到打印出了如下结果:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/27/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E4%BA%94%29%20-Route/images/2.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="例子2"></p>
+<p>这里, 我增加了<code>pathname</code>常量, 根据例子一中生成的<code>regexp</code>的<code>match</code>方法, 来生成一个捕获之后的对象. 生成的数组的前三项分别是<code>精确匹配后的url</code>, <code>:id</code>参数, <code>:secret</code>参数. 得出这个结果, 我们可以整合一下, 能否例子二中的<code>pathname</code>当作<code>props.location.pathname</code>?</p>
+<p><code>Route</code>的<code>path</code>props根据<code>path-to-reg</code>生成一个<code>regexp</code>对象, 该<code>regexp</code>根据<code>porps.location.pathname</code>生成捕获到的对象, 该数组对象中具有匹配之后的<code>pathname</code>, 以及<code>path</code>中携带的参数.</p>
+<h3 id="3-3-源码分析"><a href="#3-3-源码分析" class="headerlink" title="3.3 源码分析"></a>3.3 源码分析</h3><p>根据前置知识的分析, 了解到其实<code>Route</code>组件是引用了<code>path-to-regexp</code>这个库, 可以说一切的核心都是围绕这个库展开的, 下面来看一看具体的源码…</p>
+<p>首先来看一下:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/Route.js</span></span><br><span class="line"><span class="keyword">const</span> match = <span class="keyword">this</span>.props.computedMatch</span><br><span class="line">  ? <span class="keyword">this</span>.props.computedMatch <span class="comment">// &lt;Switch&gt; already computed the match for us</span></span><br><span class="line">    : <span class="keyword">this</span>.props.path</span><br><span class="line">      ? matchPath(location.pathname, <span class="keyword">this</span>.props)</span><br><span class="line">      : context.match;</span><br></pre></td></tr></table></figure>
+
+<p>这一段代码刚好印证了之前提到了<code>Route</code>组件设计思路的第二步, 当然目前<code>Switch</code>组件的源码还没看… 其中可以看到, 当<code>props.computedMatch</code>不存在的话, 就会执行<code>matchPath</code>这个method. 接着, 我们进入到<code>matchPath</code>这个函数内部, 也就是<code>Route</code>同目录下的<code>matchPath.js</code>看一看…</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPath.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchPath</span>(<span class="params">pathname, options = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, matchPath函数接受两个参数:</p>
+<ul>
+<li>pathname<ul>
+<li>也就是对应的<code>context.location.pathname</code></li>
+</ul>
+</li>
+<li>options<ul>
+<li>Route接收到的<code>props</code> —— { path, sensitive, exact, strict }</li>
+</ul>
+</li>
+</ul>
+<p>可以说, 余下的一切都是围绕这两个参数展开的…</p>
+<p>接着再往下看:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPath.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; path, exact = <span class="literal">false</span>, strict = <span class="literal">false</span>, sensitive = <span class="literal">false</span> &#125; = options;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> paths = [].concat(path);</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>path</code>可以将单个string, 也可以接收string[]数组作为值, 所以这里将<code>path</code>统一转化为数组进行操作.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPath.js</span></span><br><span class="line"><span class="keyword">return</span> paths.reduce(<span class="function">(<span class="params">matched, path</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(matched) &#123;</span><br><span class="line">    <span class="keyword">return</span> matched;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用了<code>reduce</code>方法, 通过遍历<code>path</code>数组, 如果迭代的<code>match</code>对象存在, 也就是说匹配到了一个<code>path</code>, 则直接返回.</p>
+<p>紧接着来看:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPath.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; regexp, keys &#125; = compilePath(path, &#123;</span><br><span class="line">  end: exact, <span class="comment">// 精确匹配, path === pathname</span></span><br><span class="line">  strict,  <span class="comment">// 是否忽略url后的斜杠/</span></span><br><span class="line">  sensitive, <span class="comment">// 是否忽略大小写</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里, 也是<strong>重点</strong>: 通过执行一个名叫<code>compilePath</code>方法, 传递了相关的props参数, 接收到了{ regexp, keys }两个返回值, 是不是很熟悉? 没错, 和我们的<code>例子一</code>中的是一样的, 将<code>path</code>转化成了对应的<code>regexp</code>, 将<code>path</code>中携带的参数提取到了<code>keys</code>数组中.</p>
+<p>顺藤摸瓜, 来到<code>compilePath()</code>函数:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPatch.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compilePath</span>(<span class="params">path, options</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该函数作为连接<code>path-to-regexp</code>的桥梁, 主要任务是通过传入的<code>options</code>配置项 ,将<code>path</code>转化为<code>regexp</code> ,该函数同样接收两个参数:</p>
+<ul>
+<li>path 需要转化的路径</li>
+<li>options 配置项<ul>
+<li>sensitive 是否区分大小写</li>
+<li>strict 是否忽略路径后的斜杠</li>
+<li>end 是否精确匹配, 在做嵌套<code>Route</code>的时候非常有用, 本人被坑过🙂🙂🙂…</li>
+</ul>
+</li>
+</ul>
+<p>接着下一步:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/Route.js</span></span><br><span class="line"><span class="keyword">const</span> cacheKey = <span class="string">'`$&#123;options.end&#125;$&#123;options.strict&#125;$&#123;options.sensitive&#125;`'</span>;</span><br><span class="line"><span class="keyword">const</span> pathCache = cache[cacheKey] || (cache[cacheKey] = &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (pathCache[path]) <span class="keyword">return</span> pathCache[path];</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cacheCount &lt; cacheLimit) &#123;</span><br><span class="line">  pathCache[path] = result;</span><br><span class="line">  cacheCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中, 用到了几个全局常量对象, 这里就不做标注了.</p>
+<p><strong><em>如上所示, 其实是对<code>path-to-regexp</code>处理的结果进行了缓存, 由于<code>options</code>的参数是可选的, 所以这时对其进行缓存处理, 每一次计算<code>regexp</code>都会查询<code>cache</code>中有无缓存, 有利于优化性能</em></strong>. 这也是看源码值得学习的地方, 理解作者思路, 学习大牛写法🙂…</p>
+<p>最后, 和我们之前写的例子一样:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> keys = [];</span><br><span class="line"><span class="keyword">const</span> regexp = pathToRegexp(path, keys, options);</span><br><span class="line"><span class="keyword">const</span> result = &#123; regexp, keys &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<p>将处理后的<code>regexp</code>返回给调用者, 供调用者使用.</p>
+<p>分析完<code>compilePath</code>方法之后, 回到<code>matchPath</code>:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPath.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; regexp, keys &#125; = compilePath(path, &#123;</span><br><span class="line">  end: exact,</span><br><span class="line">  strict,</span><br><span class="line">  sensitive,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// const match = pathname.match(regexp);</span></span><br><span class="line"><span class="comment">// 两者都可, 任选其一</span></span><br><span class="line"><span class="keyword">const</span> match = regexp.exec(pathname);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匹配值为null, 直接return</span></span><br><span class="line"><span class="keyword">if</span>(!match) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [url, ...values] = match;</span><br></pre></td></tr></table></figure>
+
+<p>上面的源码中, 接收到了<code>compilePath</code>的返回值, 通过调用<code>regexp</code>正则对象的<code>exec</code>方法获取匹配值, 然后通过解构赋值, 将match匹配到的url, 也就是第一个参数赋值给了<code>url</code>, 该<code>url</code>日后将为<code>Link</code>组件享用. 余下的参数统一赋值给了<code>rest</code>参数, 方便接下来的<code>params</code>赋值操作…</p>
+<p>最后一步, 返回整个<code>match</code>对象, 包括:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/matchPath.js</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">const</span> isExact = pathname === url;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">  path,</span><br><span class="line">  url,</span><br><span class="line">  isExact,</span><br><span class="line">  params: keys.reduce(<span class="function">(<span class="params">memo, key, index</span>) =&gt;</span> &#123;</span><br><span class="line">    memo[key.name] = values[index];</span><br><span class="line">    <span class="keyword">return</span> memo;</span><br><span class="line">  &#125;, &#123;&#125;),</span><br><span class="line">&#125;;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>keys</code>数组中保存着<code>path</code>中的参数, <code>values</code>中保存着对应的参数值, 通过<code>reduce</code>迭代, 最终返回<code>match</code>对象…</p>
+<hr>
+<p>终于分析完了<code>matchPath</code>这个方法, 我们回到<code>Route.js</code>文件, 继续之前的进度, 接着往下看:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/Route.js</span></span><br><span class="line"><span class="keyword">const</span> props = &#123; ...context, location, match &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; children, component, render &#125; = <span class="keyword">this</span>.props;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Preact uses an empty array as children by</span></span><br><span class="line"><span class="comment">// default, so use null if that's the case.</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(children) &amp;&amp; children.length === <span class="number">0</span>) &#123;</span><br><span class="line">  children = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> children === <span class="string">"function"</span>) &#123;</span><br><span class="line">  children = children(props);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(children === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(__DEV__) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; path &#125; = <span class="keyword">this</span>.props;</span><br><span class="line"></span><br><span class="line">      warning(...);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    children = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中, 通过es6的解构赋值, 将原<code>context</code>中的<code>location</code>和<code>match</code>对象替换成处理过的location和match. 接着, 由于<code>Route</code>组件可能接收到{ children, render, component }这三个props, 所以这里分别做了处理… 当然, 上面有一段兼容<code>preact</code>框架的代码, 这里就不管他了😀…</p>
+<p>最后, 到了<code>render</code>环节, 继续来看源码:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/Route.js</span></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;RouterContext.Provider value=&#123;props&#125;&gt;</span><br><span class="line">      children &amp;&amp; !isEmptyChildren(children)</span><br><span class="line">        ? children</span><br><span class="line">        : props.match</span><br><span class="line">          ? component</span><br><span class="line">            ? React.createElement(component, props)</span><br><span class="line">            : render</span><br><span class="line">              ? render(props)</span><br><span class="line">              : <span class="literal">null</span></span><br><span class="line">          : <span class="literal">null</span></span><br><span class="line">  &lt;<span class="regexp">/RouterContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>render</code>中, 将更新之后的<code>context</code>提供给<code>Provider</code>, 然后再根据<code>children</code> -&gt; <code>component</code> -&gt; <code>render</code>的顺序依次判断是否据此渲染.</p>
+<p>其中有使用到了一个名为<code>isEmptyChildren</code>的方法, 在<code>vscode</code>内追踪到该函数:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断props.children是否为空?</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyChildren</span>(<span class="params">children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> React.Children.count(children) === <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们发现, 该函数内部其实是调用了<code>React</code>的静态方法, 所以, 不是那么神秘.</p>
+<p>到了这里, 基本上<code>Route</code>组件的源码已经看完了, 剩下了一些<code>Error</code>或者<code>Warning</code>处理, 可以当作参考. 下面该继续来完善自己的<code>react-router-dom</code>库…</p>
+<h2 id="四、实践"><a href="#四、实践" class="headerlink" title="四、实践"></a>四、实践</h2><hr>
+<blockquote>
+<p><strong>PS</strong>: 隔了一天写的, 接着上面的源码简单分析, 今天主要是完善一下自己的<code>yyg-react-router-dom库</code></p>
+</blockquote>
+<p>话不多说, 顺着昨天的思路: <code>Route</code>通过传入的<code>props</code>计算<code>match</code>, 在计算<code>match</code>的过程中引用了<code>path-to-regexp</code>npm包, 用来转化<code>path</code>为<code>RegExp</code>, 从而与<code>location.pathname</code>作匹配, 得出计算之后的<code>match</code>对象.</p>
+<p>紧接着, 由于<code>Route</code>的props有三种渲染方式-<code>children</code> | <code>render</code> | <code>component</code>, 所以这里做了一些判断, 同时, 加入了对<code>preact</code>的兼容处理以及<code>错误处理</code>.</p>
+<p>那么, 回顾了一下昨天的思路, 就开始动手coding了…</p>
+<h3 id="4-1-定义interface"><a href="#4-1-定义interface" class="headerlink" title="4.1 定义interface"></a>4.1 定义interface</h3><blockquote>
+<p><strong>PS</strong>: 由于之前已经写入了基本结构, 所以首先要约束所需的<code>props</code></p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/route.tsx</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> IRouteProps &#123;</span><br><span class="line">  location?: Location;</span><br><span class="line">  component?: React.ComponentType&lt;IStaticRouteComponentParams&gt; | React.ComponentType&lt;<span class="built_in">any</span>&gt;;</span><br><span class="line">  render?: <span class="function">(<span class="params">(<span class="params">props: IStaticRouteComponentParams</span>) =&gt; React.ReactNode</span>);</span></span><br><span class="line"><span class="function">  <span class="params">children</span>?: (<span class="params">(<span class="params">props: IStaticRouteComponentParams</span>) =&gt; React.ReactNode</span>) | <span class="params">React</span>.<span class="params">ReactNode</span>;</span></span><br><span class="line"><span class="function">  <span class="params">path</span>?: <span class="params">string</span> | <span class="params">string</span>[];</span></span><br><span class="line"><span class="function">  <span class="params">exact</span>?: <span class="params">boolean</span>;</span></span><br><span class="line"><span class="function">  <span class="params">sensitive</span>?: <span class="params">boolean</span>;</span></span><br><span class="line"><span class="function">  <span class="params">strict</span>?: <span class="params">boolean</span>;</span></span><br><span class="line"><span class="function">&#125;;</span></span><br><span class="line"><span class="function">...</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-拆分处理函数"><a href="#4-2-拆分处理函数" class="headerlink" title="4.2 拆分处理函数"></a>4.2 拆分处理函数</h3><p>本来, 这里是不想写的. 但是, 由于比较重要, 也当作是加深记忆把, 所以还是记录下来…</p>
+<blockquote>
+<p><strong>PS</strong>: 在<code>render</code>中, 尽量减少逻辑代码</p>
+</blockquote>
+<p>也就是说, 尽量将<code>render</code>中的处理逻辑拆分成单个函数来处理, 这个, 我觉得对于整个组件的整洁是非常重要的…</p>
+<p>了解了这点, 我们可以这样 —— 将<code>render</code>中的处理逻辑提取至<code>handleProcess</code>这个处理函数:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;RouterContext.Consumer&gt;</span><br><span class="line">    &#123;<span class="function">(<span class="params">context: IStaticRouteComponentParams</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> handleProcess(context);</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &lt;<span class="regexp">/RouterContext.Consumer&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p>我们在组件中生成一个名为<code>handleProcess</code>的主进程处理函数, 该函数接收一个名为<code>context</code>的参数.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleProcess</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  context: IStaticRouteComponentParams,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">JSX</span>.<span class="title">Element</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 将任务分发至 多个子进程</span></span><br><span class="line">  <span class="keyword">const</span> xxx1 = handleXXX1();</span><br><span class="line">  <span class="keyword">const</span> xxx2 = handleXXX2(xxx1);</span><br><span class="line">  <span class="keyword">const</span> xxx3 = handleXXX3(xxx2);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样一来, 整个代码的可读性就好了很多, 同时美观程度也大有改观.</p>
+<h3 id="4-3-计算location"><a href="#4-3-计算location" class="headerlink" title="4.3 计算location"></a>4.3 计算location</h3><p><code>location</code>的来源有两个方面:</p>
+<ul>
+<li>context.location</li>
+<li>props.location</li>
+</ul>
+<p>当然, <code>props</code>的优先级肯定是要比<code>context</code>的高了, 所以对其作一下简单的处理:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/route.tsx</span></span><br><span class="line"><span class="keyword">return</span> props.location</span><br><span class="line">  ? props.location</span><br><span class="line">  : context.location</span><br><span class="line">    ? context.location</span><br><span class="line">    : History.createLocation(<span class="string">'/'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-计算match"><a href="#4-4-计算match" class="headerlink" title="4.4 计算match"></a>4.4 计算match</h3><p>主函数接收到计算后的<code>location</code>之后, 将其传递给<code>matchProcess</code>, 也就是这一步 —— <code>计算match</code>:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/route.tsx</span></span><br><span class="line"><span class="keyword">const</span> location = handleLocationProcess(context);</span><br><span class="line"><span class="keyword">const</span> match = handleMatchProcess(context, location);</span><br></pre></td></tr></table></figure>
+
+<p>对应的<code>match</code>处理主函数接收到<code>context</code>和<code>location</code>, 进行一系列判断, 如果父组件不是<code>Switch</code>并且<code>props.path</code>存在, 则进入<code>computeMatchProcess</code>处理函数:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/route.tsx</span></span><br><span class="line"><span class="keyword">return</span> props.computedMatch</span><br><span class="line">  ? props.computedMatch</span><br><span class="line">  : props.path</span><br><span class="line">    ? computeMatchProcess(location)</span><br><span class="line">    : context.match;</span><br></pre></td></tr></table></figure>
+
+<p>在computeMatchProcess中, 我们要做的就是对<code>path</code>进行<code>迭代</code>处理, 将处理后的<code>match</code>对象返回, 该<code>match</code>可能为<code>null</code>或者<code>键值对</code>. 这样, 就可以在<code>render</code>阶段根据<code>match</code>的值存在与否来决定是否渲染对应的<code>components</code>.</p>
+<p>注意, <code>computedMatchProcess</code>中引入了<code>computePath</code>辅助函数, 主要是为了代码分割, 避免一个函数内部的代码过于繁杂…</p>
+<h3 id="4-5-融合"><a href="#4-5-融合" class="headerlink" title="4.5 融合"></a>4.5 融合</h3><p>计算完相应的<code>match</code>对象, 在我们自己的主进程处理函数中, 现在已经获取到了计算完毕的<code>location</code>和<code>match</code>对象. 这一步, 就是将原来的<code>context</code>中的对应的location和match替换为计算之后的, 也就是融合.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> composedContext = &#123;...context, match, location&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-重置Provider"><a href="#4-6-重置Provider" class="headerlink" title="4.6 重置Provider"></a>4.6 重置Provider</h3><p>将融合后的context, 作为新的value传递给<code>Provider</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;RouterContext.Provider</span><br><span class="line">    value=&#123;composedContext&#125;</span><br><span class="line">  &gt;</span><br><span class="line">    &#123; ...render... &#125;</span><br><span class="line">  &lt;<span class="regexp">/RouterContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-render"><a href="#4-7-render" class="headerlink" title="4.7 render"></a>4.7 render</h3><p>根据不同的途径 —— <code>render</code> | <code>component</code> | <code>children</code>, 来进行渲染:</p>
+<blockquote>
+<p><strong>PS</strong>: <code>react-router-dom</code>官方采用的渲染权重是: children &gt; component &gt; render</p>
+</blockquote>
+<p>在这里, 我们自己玩, 所以不必在意这个东西</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;RouterContext.Provider</span><br><span class="line">    value=&#123;composedContext&#125;</span><br><span class="line">  &gt;</span><br><span class="line">    props.children</span><br><span class="line">      ? props.children</span><br><span class="line">        ? <span class="keyword">typeof</span> props.children === <span class="string">'function'</span></span><br><span class="line">          ? props.children(composedContext <span class="keyword">as</span> IStaticRouteComponentParams)</span><br><span class="line">          : props.children</span><br><span class="line">        : props.children</span><br><span class="line">      : match</span><br><span class="line">        ? props.component</span><br><span class="line">          ? React.createElement(props.component, composedContext)</span><br><span class="line">          : props.render</span><br><span class="line">            ? props.render(composedContext <span class="keyword">as</span> IStaticRouteComponentParams)</span><br><span class="line">            : <span class="literal">null</span></span><br><span class="line">        : <span class="literal">null</span></span><br><span class="line">  &lt;<span class="regexp">/RouterContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="五、测试"><a href="#五、测试" class="headerlink" title="五、测试"></a>五、测试</h2><hr>
+<p>经过上面的实践环节, <code>Route</code>组件基本完成了, 现在应该做个测试…</p>
+<p>在<code>src/test</code>下新建一个测试组件, 内容随意</p>
+<p>在<code>src/App.tsx</code>中引入我们自己的<code>Route</code>和测试组件:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/App.tsx</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  BrowserRouter,</span><br><span class="line">  Route,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">"./yyg-react-router-dom/index"</span>;</span><br><span class="line"><span class="keyword">import</span> Test <span class="keyword">from</span> <span class="string">"./test/One.tsx"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>App</code>中写入我们的测试代码:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/App.tsx</span></span><br><span class="line"><span class="keyword">const</span> App = React.memo&lt;IAppProps&gt;((</span><br><span class="line">  props: IAppProps,</span><br><span class="line">): JSX.Element =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;Route</span><br><span class="line">          path=&#123;[<span class="string">"/user/:name/profile/:secret"</span>]&#125;</span><br><span class="line">          exact</span><br><span class="line">          component=&#123;One&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/BrowserRouter&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器, 可以看到, 我们自己的组件可以正常渲染, 并且测试组件<code>Test.tsx</code>中也正常打印出了<code>context</code>对象, 像这样:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/27/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E4%BA%94%29%20-Route/images/4.gif?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="动图展示测试Route组件"></p>
+<p>测试成功<code>exact</code>和<code>component</code>配置项之后, 再来试一下<code>render</code>.</p>
+<p>在<code>src/test/</code>下新建<code>Three.tsx</code>, 作为我们的第三个测试组件, 当然, 内容随意, 能展示出具体内容就ok:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/test/Three.tsx</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;h1&gt;Three pages&amp;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+
+<p>然后, 在<code>src/App.tsx</code>中引入该组件, 并且更改测试代码:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/App.tsx</span></span><br><span class="line">  <span class="keyword">import</span> Three <span class="keyword">from</span> ./test/Three;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;Route</span><br><span class="line">          path=&#123;[<span class="string">"/user/:name/profile/:secret"</span>]&#125;</span><br><span class="line">          render=&#123;<span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">              &lt;Route path=<span class="string">"/user/:name/profile/:secret"</span> exact component=&#123;One&#125; /&gt;</span><br><span class="line">              &lt;Route path=<span class="string">"/user/:name/profile/:secret/test"</span> exact component=&#123;Three&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">          )&#125;</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/BrowserRouter&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 这个开发中经常用到的结构, 完成之后, 重新编译, 在<code>CentBrowser</code>中作测试:</p>
+<p>首先, 当url为<code>/user/:name/profile/:secret</code>时, 也就是匹配到了component为<code>One</code>的<code>Route</code>, 理所当然, 渲染这个组件:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/27/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E4%BA%94%29%20-Route/images/5.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="测试render嵌套Route"></p>
+<p>可以看到, 结果是预期所示的, 没有问题, 那么, 接着将<code>url</code>改为<code>Three</code>组件对应的<code>path</code>, 再来看:</p>
+<p><img src="https://oos.blog.yyge.top/2019/1/27/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E4%BA%94%29%20-Route/images/6.gif?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="测试render嵌套Route"></p>
+<p>结果是<code>Three</code>组件的内容被完全渲染了出来, 这也证实, 我封装的组件系没有啥大问题的📍</p>
+<p>同理, 测试其他配置项都是没有问题的, 这里由于文章篇幅太长, 就不一一展示了…</p>
+<h2 id="六、源码"><a href="#六、源码" class="headerlink" title="六、源码"></a>六、源码</h2><hr>
+<p>源码地址: <a href="https://github.com/ddzy/yyg-react-router-dom" target="_blank" rel="noopener">点我</a></p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><hr>
+<p>写了两天, 终于搞定了这篇文章, 还是收获颇丰的: 通过<code>Route</code>组件, 掌握了内部的运作机理, 比如<code>match</code>计算, location计算等, 又通过计算match, 初步了解了<code>path-to-regexp</code>这个库.</p>
+<blockquote>
+<p><strong>PS</strong>: 不静下心看看源码, 永远不知道你和别人查了多远</p>
+</blockquote>
+<p>学无止境, 下一篇文章继续阅读学习<code>Switch</code>组件的源码, 再会!</p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/01/27/react-router-dom源码解析-五-Route/">https://ddzy.github.io/blog/2019/01/27/react-router-dom源码解析-五-Route/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/01/30/七牛云域名HTTPS配置/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>七牛云域名HTTPS配置
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/01/26/react-router-dom源码解析-四-Router/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          react-router-dom源码解析(四) -Router<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'react-router-dom源码解析(五) -Route',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

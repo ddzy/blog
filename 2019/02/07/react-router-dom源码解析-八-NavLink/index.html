@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="react, Nlvi">
+
+  <title> react-router-dom源码解析(八) -NavLink · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">react-router-dom源码解析(八) -NavLink</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、前言"><span class="toc-text">二、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、细说"><span class="toc-text">三、细说</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、实践"><span class="toc-text">四、实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、测试"><span class="toc-text">五、测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、源码"><span class="toc-text">六、源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、总结"><span class="toc-text">七、总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-02-07</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/react/">react</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          react-router-dom源码解析(八) -NavLink
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>前天学习了<code>Link</code>组件源码, 今天再来看一下与之相似的<code>NavLink</code></p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><hr>
+<h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>改进文章排版👌</li>
+</ul>
+<h2 id="二、前言"><a href="#二、前言" class="headerlink" title="二、前言"></a>二、前言</h2><hr>
+<p>经过上一篇文章<a href="https://blog.yyge.top/2019/02/05/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-%E4%B8%83-Link" target="_blank" rel="noopener">Link</a>的战火洗礼, 可以了解到, <code>Link</code>作为沟通<code>react-router</code>和<code>react</code>之间的桥梁, 经历<code>click -&gt; url变化 -&gt; history(onListen) -&gt; Switch -&gt; Route render</code>的过程, 据此, 有关<code>Link</code>的面试题便可迎刃而解.</p>
+<p>正式开始分析之前, 先来回想一下我们平时是如何使用<code>NavLink</code>的?</p>
+<blockquote>
+<p><strong>PS</strong>: 传入对应的<code>activeStyle</code>或者<code>activeClass</code>, 点击之后, 如果对应的组件成功渲染, 则该<code>NavLink</code>的样式也会改变.</p>
+</blockquote>
+<p>带着平时使用的思路去分析源码, 会又事半功倍的效果.</p>
+<p>OK, 正式开始对<code>NavLink</code>的探索.</p>
+<h2 id="三、细说"><a href="#三、细说" class="headerlink" title="三、细说"></a>三、细说</h2><hr>
+<p>先来看一下<code>NavLink</code>的大致结构, 可以看到, 其实<code>NavLink</code>是一个<code>functional</code>组件, <code>functional</code>相较于<code>classes</code>的优势很多:</p>
+<ul>
+<li>高度可拓展</li>
+<li>易于优化重构</li>
+<li>渲染性能较优</li>
+</ul>
+<p>在<code>react v16.7</code>之后的<code>hooks</code>加持之下, 可用性更是飞步提升.</p>
+<p>接着来看一下<code>NavLink</code>接收了哪些<code>props</code>?</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NavLink</span>(<span class="params">&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">  "aria-current": ariaCurrent = "page",</span></span></span><br><span class="line"><span class="function"><span class="params">  activeClassName = "active",</span></span></span><br><span class="line"><span class="function"><span class="params">  activeStyle,</span></span></span><br><span class="line"><span class="function"><span class="params">  className: classNameProp,</span></span></span><br><span class="line"><span class="function"><span class="params">  exact,</span></span></span><br><span class="line"><span class="function"><span class="params">  isActive: isActiveProp,</span></span></span><br><span class="line"><span class="function"><span class="params">  location,</span></span></span><br><span class="line"><span class="function"><span class="params">  strict,</span></span></span><br><span class="line"><span class="function"><span class="params">  style: styleProp,</span></span></span><br><span class="line"><span class="function"><span class="params">  to,</span></span></span><br><span class="line"><span class="function"><span class="params">  ...rest</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span>) </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对应的props的功能如下表所示:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aria-current</td>
+<td>残障人士专用, 可参考<a href="https://www.w3.org/TR/wai-aria-1.1/#aria-current" target="_blank" rel="noopener">这里</a></td>
+</tr>
+<tr>
+<td>activeClassName</td>
+<td>匹配时添加的类名</td>
+</tr>
+<tr>
+<td>activeStyle</td>
+<td>匹配时添加的样式</td>
+</tr>
+<tr>
+<td>className</td>
+<td>NavLink的类名, 会附加到Link</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>是否实行完全匹配</td>
+</tr>
+<tr>
+<td>strict</td>
+<td>是否实行严格匹配</td>
+</tr>
+<tr>
+<td>isActive</td>
+<td>自行计算高亮条件</td>
+</tr>
+<tr>
+<td>location</td>
+<td>与当前<code>to</code>进行比较的location, 默认是<code>context.location</code></td>
+</tr>
+<tr>
+<td>style</td>
+<td>默认样式</td>
+</tr>
+<tr>
+<td>to</td>
+<td>跳转的url</td>
+</tr>
+<tr>
+<td>…rest</td>
+<td>额外参数</td>
+</tr>
+</tbody></table>
+<p>接着, 可以看到下面:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="keyword">typeof</span> to === <span class="string">"object"</span> ? to.pathname : to;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Regex taken from: https://github.com/pillarjs/path-to-regexp/blob/master/index.js#L202</span></span><br><span class="line"><span class="keyword">const</span> escapedPath = path &amp;&amp; path.replace(<span class="regexp">/([.+*?=^!:$&#123;&#125;()[\]|/\\])/g</span>, <span class="string">"\\$1"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是, 这里的<code>excapedPath</code>很奇怪, 一直想不通为什么要进行这个操作? 怀着好奇的心理点开注释的链接, 可以看到:</p>
+<p><img src="https://oos.blog.yyge.top/2019/2/7/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E5%85%AB%29%20-NavLink/images/1.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="excapedPath"></p>
+<p>该函数会将字符串中的特殊字符进行转义处理, 那么这到底有咩用? 假设有一个特殊的<code>path</code>序列是这样的:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path: <span class="built_in">string</span> = <span class="string">'/user\duan/profile/se+cr*et'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>用户想传递该<code>path</code>, 该<code>path</code>中含有特殊字符, 那么<code>escaped</code>会将转义字符再此进行转义, 便于传递.</p>
+<p>接着往下看:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;Route</span><br><span class="line">    path=&#123;escapedPath&#125;</span><br><span class="line">    exact=&#123;exact&#125;</span><br><span class="line">    strict=&#123;strict&#125;</span><br><span class="line">    location=&#123;location&#125;</span><br><span class="line">    children=&#123;<span class="function">(<span class="params">&#123; location, match &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> isActive = !!(isActiveProp</span><br><span class="line">        ? isActiveProp(match, location)</span><br><span class="line">        : match);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> className = isActive</span><br><span class="line">        ? joinClassnames(classNameProp, activeClassName)</span><br><span class="line">        : classNameProp;</span><br><span class="line">      <span class="keyword">const</span> style = isActive ? &#123; ...styleProp, ...activeStyle &#125; : styleProp;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;Link</span><br><span class="line">          aria-current=&#123;(isActive &amp;&amp; ariaCurrent) || <span class="literal">null</span>&#125;</span><br><span class="line">          className=&#123;className&#125;</span><br><span class="line">          style=&#123;style&#125;</span><br><span class="line">          to=&#123;to&#125;</span><br><span class="line">          &#123;...rest&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  /&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>通过一个<code>Route</code>组件包裹, 根据其的<code>match</code>判断是否<code>active</code>, 然后在<code>Route</code>中返回对应的<code>Link</code>组件, 将处理后的<code>rest</code>等参数传递给<code>Link</code>组件.</p>
+<p>这一步, 我刚开始看了好几遍都没看懂, 很难理解, 难点在于为什么要用一个<code>Route</code>??? 它的本质是为了获取<code>match</code>, 根据<code>match</code>匹配成功与否, 进行动态添加样式, 理解了这点, 就没啥可说的了.</p>
+<p>另外, 还有一种思路 —— 通过获取<code>Link</code>的<code>innerRef</code>, 然后通过<code>matchPath</code>自行比对<code>location.pathname === to</code>, 根据判断的结果, 直接操作<code>DOM</code>, 这么做也是可以的, 不过值得思考的是, 这不正好违背了<code>Route</code>组件的设计原则:</p>
+<blockquote>
+<p><strong>PS</strong>: 匹配路径规则, 渲染组件</p>
+</blockquote>
+<p>既然有更专业的<code>Route</code>来帮我们作这件事, 何乐而不为呢? 为什么还要再次比对呢? 得不偿失.</p>
+<p>🆗, <code>NavLink</code>的源码思路解析大致已经完成, 接下来继续完善自己的<code>yyg-react-router-dom</code>库.</p>
+<h2 id="四、实践"><a href="#四、实践" class="headerlink" title="四、实践"></a>四、实践</h2><hr>
+<p>老样子, 首先定义我们所需的一切<code>props</code>, 具体的<code>props</code>可以看<a href="https://reacttraining.com/react-router/web/api/NavLink" target="_blank" rel="noopener">这里</a>.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/yyg-react-router-dom/components/NavLink.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> <span class="keyword">extends</span> React.HtmlHTMLAttributes&lt;HTMLAnchorElement&gt; &#123;</span><br><span class="line">  to: <span class="built_in">string</span> | LocationDescriptorObject&lt;&#123;</span><br><span class="line">    [key: <span class="built_in">string</span>]: <span class="built_in">any</span>,</span><br><span class="line">  &#125;&gt;;</span><br><span class="line">  activeClassName?: <span class="built_in">string</span>;</span><br><span class="line">  activeStyle?: React.HtmlHTMLAttributes&lt;HTMLAnchorElement&gt;;</span><br><span class="line">  exact?: <span class="built_in">boolean</span>;</span><br><span class="line">  strict?: <span class="built_in">boolean</span>;</span><br><span class="line">  sensitive?: <span class="built_in">boolean</span>;</span><br><span class="line">  isActive?: (</span><br><span class="line">    data: &#123;</span><br><span class="line">      location: Location,</span><br><span class="line">      match: IStaticMatchParams,</span><br><span class="line">    &#125;,</span><br><span class="line">  ) =&gt; <span class="built_in">boolean</span>;</span><br><span class="line">  location?: Location;</span><br><span class="line">  ariaCurrent?: ARIA_CURRENT;</span><br><span class="line">  children?: React.ReactChild;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接着, 到了下面, 根据判断<code>match</code>是否为null来断定path是否匹配:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  ...</span><br><span class="line">  &lt;Route</span><br><span class="line">    children=&#123;<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> isActive = !!(p.match);</span><br><span class="line">      <span class="keyword">const</span> activeStyles = isActive ? activeStyle : &#123;&#125;;</span><br><span class="line">      <span class="keyword">const</span> activeClassNames = isActive ? activeClassName : <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;Link</span><br><span class="line">          &#123;...rests&#125;</span><br><span class="line">          to=&#123;path&#125;</span><br><span class="line">          style=&#123;activeStyles&#125;</span><br><span class="line">          className=&#123;activeClassNames&#125;</span><br><span class="line">        &gt;&#123;children&#125;&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">      );</span></span><br><span class="line"><span class="regexp">    &#125;&#125;</span></span><br><span class="line"><span class="regexp">  &gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p>注意! 上面有一个值得注意的点, 那就是<code>Route</code>的<code>children</code>和<code>render</code>是不同的, 两者的具体差别可以看<a href="https://blog.yyge.top/2019/02/07/%E8%A7%A3%E6%9E%90Route%E4%B8%AD%E7%9A%84render%E5%92%8Cchildren/" target="_blank" rel="noopener">这里</a>, 所以, 这里只能使用<code>children</code>来渲染.</p>
+<h2 id="五、测试"><a href="#五、测试" class="headerlink" title="五、测试"></a>五、测试</h2><hr>
+<p>完成了自己的<code>yyg-react-router-dom</code>库, 可以来做一个简单的测试.</p>
+<blockquote>
+<p><strong>PS</strong>: 当然, 测试用例是随意的</p>
+</blockquote>
+<p>打开<code>App.tsx</code>, 修改<code>render</code>中的测试逻辑如下:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//src/App.tsx</span></span><br><span class="line">...</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;Switch&gt;</span><br><span class="line">          &lt;Route</span><br><span class="line">            path=&#123;<span class="string">"/test"</span>&#125;</span><br><span class="line">            component=&#123;One&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>BrowserRouter&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+
+<p>然后, 在<code>vscode</code>的指引下, 进入<code>One.tsx</code>组件, 同样修改<code>render</code>中的逻辑:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Page One&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">      &lt;li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Link</span></span><br><span class="line"><span class="regexp">          to="/</span>test/home<span class="string">"</span></span><br><span class="line"><span class="string">        &gt;</span></span><br><span class="line"><span class="string">          Home</span></span><br><span class="line"><span class="string">        &lt;/Link&gt;</span></span><br><span class="line"><span class="string">      &lt;/li&gt;</span></span><br><span class="line"><span class="string">      &lt;li&gt;</span></span><br><span class="line"><span class="string">        &lt;NavLink</span></span><br><span class="line"><span class="string">          to=&#123;&#123;</span></span><br><span class="line"><span class="string">            pathname: '/test/product',</span></span><br><span class="line"><span class="string">            state: &#123;</span></span><br><span class="line"><span class="string">              id: '19980808',</span></span><br><span class="line"><span class="string">              name: 'duan',</span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string">          &#125;&#125;</span></span><br><span class="line"><span class="string">          activeStyle=&#123;&#123;</span></span><br><span class="line"><span class="string">            color: 'red',</span></span><br><span class="line"><span class="string">          &#125;&#125;</span></span><br><span class="line"><span class="string">        &gt;Product&lt;/NavLink&gt;</span></span><br><span class="line"><span class="string">      &lt;/li&gt;</span></span><br><span class="line"><span class="string">      &lt;li&gt;</span></span><br><span class="line"><span class="string">        &lt;NavLink</span></span><br><span class="line"><span class="string">          to="</span>/test/contact<span class="string">"</span></span><br><span class="line"><span class="string">          activeStyle=&#123;&#123;</span></span><br><span class="line"><span class="string">            color: 'red',</span></span><br><span class="line"><span class="string">          &#125;&#125;</span></span><br><span class="line"><span class="string">        &gt;</span></span><br><span class="line"><span class="string">          Contact</span></span><br><span class="line"><span class="string">      &lt;/NavLink&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;/ul&gt;</span></span><br><span class="line"><span class="string">    &lt;Two render=&#123;(&#123; point &#125;) =&gt; (</span></span><br><span class="line"><span class="string">      &lt;div&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;&#123;point.x&#125;&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;&#123;point.y&#125;&lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    )&#125; /&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      &lt;Route exact path="</span>/test/home<span class="string">" component=&#123;Three&#125; /&gt;</span></span><br><span class="line"><span class="string">      &lt;Route exact path="</span>/test/product<span class="string">" component=&#123;Four&#125; /&gt;</span></span><br><span class="line"><span class="string">      &lt;Route exact path="</span>/test/contact<span class="string">" component=&#123;Five&#125; /&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">);</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 总共有三个<code>锚点</code>, 第一个为<code>Link</code>, 为了与<code>NavLink</code>的效果加以区分, 然后在最下方放置需要<code>router-view</code>, 也就是需要渲染的组件. 大致结构与在项目中使用的差不多的…</p>
+<p>接着, 在浏览器中可以看到效果:</p>
+<p><img src="https://oos.blog.yyge.top/2019/2/7/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E5%85%AB%29%20-NavLink/images/2.gif?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="测试NavLink"></p>
+<p>点击<code>Home</code>按钮, 视图变了, 但是链接颜色没变化? 当然了, 因为这只是普通的<code>Link</code>组件, 你想它有啥效果? 接着看下面两个, prefect, 两个锚点样式随着url变化而改变.</p>
+<p>此时, 对于<code>NavLink</code>的测试工作已经完美结束了</p>
+<h2 id="六、源码"><a href="#六、源码" class="headerlink" title="六、源码"></a>六、源码</h2><hr>
+<p>源码已上传, 点<a href="https://github.com/ddzy/yyg-react-router-dom" target="_blank" rel="noopener">这里</a></p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><hr>
+<blockquote>
+<p><strong>PS</strong>: 路漫漫其修远兮, 吾必反复求其知</p>
+</blockquote>
+<p>最后, 一张思维脑图来结束今天的源码学习</p>
+<p><img src="https://oos.blog.yyge.top/2019/2/7/react-router-dom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%28%E5%85%AB%29%20-NavLink/images/3.jpg?imageView2/0/q/75%7Cwatermark/2/text/6Ziz5ZOl5bCP56uZ/font/5b6u6L2v6ZuF6buR/fontsize/440/fill/IzE4OTBGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10%7Cimageslim" alt="NavLink思维图解"></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/02/07/react-router-dom源码解析-八-NavLink/">https://ddzy.github.io/blog/2019/02/07/react-router-dom源码解析-八-NavLink/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/02/07/match-path和match-url的爱恨情仇/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>match.path和match.url的爱恨情仇
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/02/05/react-router-dom源码解析-七-Link/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          react-router-dom源码解析(七) -Link<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'react-router-dom源码解析(八) -NavLink',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

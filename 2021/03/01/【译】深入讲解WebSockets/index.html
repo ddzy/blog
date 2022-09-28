@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="http, websocket, Nlvi">
+
+  <title> 【译】深入讲解WebSockets · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">【译】深入讲解WebSockets</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-3-1"><span class="toc-text">[2021-3-1]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSockets-体系"><span class="toc-text">WebSockets 体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实时通信"><span class="toc-text">实时通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-连接"><span class="toc-text">WebSocket 连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断线重连的容错机制"><span class="toc-text">断线重连的容错机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可伸缩的连接"><span class="toc-text">可伸缩的连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据传输模式"><span class="toc-text">数据传输模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#给-web-app-发送通知"><span class="toc-text">给 web app 发送通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实时数据传输"><span class="toc-text">实时数据传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据压缩"><span class="toc-text">数据压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-Sockets-安全性"><span class="toc-text">Web Sockets 安全性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器兼容性"><span class="toc-text">浏览器兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐阅读"><span class="toc-text">推荐阅读</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2021-03-01</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/backend/">backend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/backend/translation/">translation</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/http/">http</a>
+              
+                <a href="/blog/tags/websocket/">websocket</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          【译】深入讲解WebSockets
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>原文链接：</p>
+<p><a href="https://blog.bitsrc.io/deep-dive-into-websockets-e6c4c7622423" target="_blank" rel="noopener">https://blog.bitsrc.io/deep-dive-into-websockets-e6c4c7622423</a></p>
+<p>本文已同步归纳在 <a href="https://github.com/ddzy/translations" target="_blank" rel="noopener">Github</a>。</p>
+<a id="more"></a>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><hr>
+<h3 id="2021-3-1"><a href="#2021-3-1" class="headerlink" title="[2021-3-1]"></a>[2021-3-1]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><hr>
+<p><img src="https://oos.blog.yyge.top/2021/3/1/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%85%A5%E8%AE%B2%E8%A7%A3WebSockets/images/1.jpeg" alt="1.jpeg"></p>
+<p>在早期的互联网世界里面，web 应用都是基于 HTTP 请求构建的，同时 HTTP 请求由用户的交互触发。随着技术的发展，出现了以实时数据传输和双向通信为要求的<strong>低延时应用</strong>，比如：</p>
+<ul>
+<li>多人在线游戏</li>
+<li>聊天应用</li>
+<li>实时更新的 RSS 订阅</li>
+<li>体育直播等</li>
+</ul>
+<p>WebSockets 就是为解决这些问题而生的。一些三方库简化了 WebSockets，让我们可以方便的使用 WebSockets 而不需要懂太多的底层原理，提高开发效率。</p>
+<p>本文致力于讲解 WebSockets 的一些基本特性，为大家知识扫盲。</p>
+<h2 id="WebSockets-体系"><a href="#WebSockets-体系" class="headerlink" title="WebSockets 体系"></a>WebSockets 体系</h2><hr>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API" target="_blank" rel="noopener">WebSockets</a> 定义了一个 API，用来在客户端与服务端之间建立一个 socket 连接。使得浏览器可以和服务器双向发送数据，另外，WebSockets 相较于 HTTP 做了很多优化，为实时通信带来了更好的体验。</p>
+<h3 id="实时通信"><a href="#实时通信" class="headerlink" title="实时通信"></a>实时通信</h3><p>HTTP 请求耗费了几百个字节来发送 cookie 和其它的请求头，这无异于会增加实时通信的性能开销。</p>
+<blockquote>
+<p>然而 WebSockets 仅仅只消耗 6 个字节（请求头占 2 个，传输的值占 4 个）。</p>
+</blockquote>
+<p>所以 WebSockets 更适合实时的数据传输，并且由于性能开销比较小，用来实现低延时的应用也再好不过了。</p>
+<h3 id="WebSocket-连接"><a href="#WebSocket-连接" class="headerlink" title="WebSocket 连接"></a>WebSocket 连接</h3><p>直接给 WebSocket 构造函数传一个 URL 就可以开启一个 WebSocket 连接了。如果你要指定子协议，可以传入第二个参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个新的 WebSocket 连接</span></span><br><span class="line"><span class="keyword">let</span> socketConnection = <span class="keyword">new</span> WebSocket(<span class="string">'ws://websocket.mysite.com'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个带有子协议的 WebSocket 连接</span></span><br><span class="line"><span class="keyword">let</span> socketConnection = <span class="keyword">new</span> WebSocket(<span class="string">'ws://websocket.mysite.com'</span>, [<span class="string">'soap'</span>, <span class="string">'xmpp'</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>创建连接之后，你可以添加一些额外的事件句柄，分别当连接开启时、传输数据时、连接出错时触发：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WebSocket 连接开启之后，会发送一些数据给服务器</span></span><br><span class="line">socketConnection.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  connection.send(<span class="string">'Hello, the socket connection is open!'</span>); <span class="comment">// 发送信息给服务器</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印错误</span></span><br><span class="line">socketConnection.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'WebSocket Error '</span> + error);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印服务器返回的数据</span></span><br><span class="line">socketConnection.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Server: '</span> + e.data);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>建立连接之后，会触发 WebSocket 实例上的 <code>onopen</code> 事件，此时就意味着完成了握手，之后就可以在任意时刻互相发送数据了；当客户端的 WebSocket 接收到了数据，就会触发 <code>onmessage</code> 事件；而 <code>onerror</code> 事件则可以用来处理异常。</p>
+<p><strong>你可能会问：“创建一个连接，监听发送消息的事件”，这个操作不是很常见吗？有什么新意吗？</strong></p>
+<p>事实上，在 WebSockets 中针对连接做处理是很重要的。</p>
+<blockquote>
+<p>我们处理 WebSocket 连接的方式以及当连接异常的时候进行重连的操作，决定了会话的整体容错程度。</p>
+</blockquote>
+<h3 id="断线重连的容错机制"><a href="#断线重连的容错机制" class="headerlink" title="断线重连的容错机制"></a>断线重连的容错机制</h3><p>目前使用 WebSockets 普遍遇到的问题是：当客户端或者服务器没有响应的时候如何断开连接，为了解决这个问题，你应当实现一套优雅的机制。特别是如果某个 WebSocket 连接的生命周期比较长的话，就需要定义一个方法，周期性的刷新连接（本质上就是重复的关闭/开启连接）以确保当前连接的有效性，通过这种方式来实现一个平滑的会话。</p>
+<h3 id="可伸缩的连接"><a href="#可伸缩的连接" class="headerlink" title="可伸缩的连接"></a>可伸缩的连接</h3><p>因为服务器需要保持高可用性来让 WebSockets 进行持久化连接，所以需要实现可伸缩的服务器，用来应对大量的 WebSocket 连接。然而，在一个 <code>ws</code> 连接开启之后的大多数时间，该连接都是闲置的。</p>
+<p><strong>因此你可能会问：后端怎么实现可伸缩的 WebSockets？</strong></p>
+<p>实现可伸缩的 WebSocket 是一项复杂的任务，需要用一个类似背板的东西来记录出现故障的服务器节点的连接和已发送的信息。</p>
+<blockquote>
+<p>此外，实现可伸缩的 WebSocket 的最佳实践可能就是：结合开启的连接数量，实现一个向外拓展的策略。</p>
+</blockquote>
+<p>因为用户可能并不会频繁的进行重连操作，所以基于已开启的 WebSockets 连接来改善可伸缩性是很有意义的。</p>
+<h2 id="数据传输模式"><a href="#数据传输模式" class="headerlink" title="数据传输模式"></a>数据传输模式</h2><hr>
+<p>Web Sockets 有多种不同的模式来传输数据。你可以直接通过 WebSockets 发送消息，也可以向客户端推送消息。</p>
+<h3 id="给-web-app-发送通知"><a href="#给-web-app-发送通知" class="headerlink" title="给 web app 发送通知"></a>给 web app 发送通知</h3><p>在 APP 内部发送通知是 WebSockets 的一个很常见的用途，WebSockets 仅仅只在新的消息可用时通知浏览器。</p>
+<p>每当用户收到消息通知，并且进入通知详情页的时候，应用程序就会发起一个 HTTP 请求来获取该消息的内容。</p>
+<blockquote>
+<p>根据上面的用途，WebSocket 并不会把消息的具体内容发给前端，而是传递一个“信号”，告诉前端：“这个消息可用了”。</p>
+</blockquote>
+<h3 id="实时数据传输"><a href="#实时数据传输" class="headerlink" title="实时数据传输"></a>实时数据传输</h3><p>像多人游戏和聊天应用这样的程序，对于实时度要求比较高，所以必须低延迟的发送数据。</p>
+<blockquote>
+<p>针对这种情况，我们可以直接通过 WebSocket 连接来快速的传输数据。</p>
+</blockquote>
+<h2 id="数据压缩"><a href="#数据压缩" class="headerlink" title="数据压缩"></a>数据压缩</h2><hr>
+<p>WebSockets 的数据压缩一直以来都不是被经常讨论的话题，但是假如在某个时刻需要同时发送大量数据，使用一种合理的压缩方式就显得格外重要。</p>
+<p>然而要实现 WebSockets 的数据压缩，客户端和服务端的意见必须一致。</p>
+<blockquote>
+<p>你知道 WebSockets 为了解决数据压缩的问题，专门提供了一个拓展么？</p>
+</blockquote>
+<p>当客户端给 WebSockets 连接的请求头的 <code>Sec-Websocket-Extensions</code> 字段指定了 <code>permessage-deflate</code> 拓展，服务端必须在响应头中返回相应的拓展字段，以确认该拓展是否可用。</p>
+<p>客户端发起请求：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/socket</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: thirdparty.com</span><br><span class="line"><span class="attribute">Origin</span>: http://example.com</span><br><span class="line"><span class="attribute">Connection</span>: Upgrade</span><br><span class="line"><span class="attribute">Upgrade</span>: websocket</span><br><span class="line"><span class="attribute">Sec-WebSocket-Version</span>: 13</span><br><span class="line"><span class="attribute">Sec-WebSocket-Key</span>: dGhlIHNhbXBsZSBub25jZQ==</span><br><span class="line"><span class="attribute">Sec-WebSocket-Extensions</span>: permessage-deflate</span><br></pre></td></tr></table></figure>
+
+<p>服务端响应：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">101</span> Switching Protocols</span><br><span class="line"><span class="attribute">Upgrade</span>: websocket</span><br><span class="line"><span class="attribute">Connection</span>: Upgrade</span><br><span class="line"><span class="attribute">Access-Control-Allow-Origin</span>: http://example.com</span><br><span class="line"><span class="attribute">Sec-WebSocket-Accept</span>: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=</span><br><span class="line"><span class="attribute">Sec-WebSocket-Extensions</span>: permessage-deflate</span><br></pre></td></tr></table></figure>
+
+<h2 id="Web-Sockets-安全性"><a href="#Web-Sockets-安全性" class="headerlink" title="Web Sockets 安全性"></a>Web Sockets 安全性</h2><hr>
+<p>WebSockets 没有限制传输数据的数量，攻击者可能会利用这个特性进行 DoS 攻击。</p>
+<p>因此，最基本的做法是使用一套鉴权机制，强制进行安全认证。目前较为普遍的做法是使用 JWT，JWT 可以快速的验证请求的签名。</p>
+<p>除此之外，可以使用 <code>wss</code> 代替 <code>ws</code>，<code>wss</code> 和 HTTPS 类似，可以对 WebSocket 连接进行加密。</p>
+<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><hr>
+<p>大多数浏览器对于 WebSockets 的支持度都是蛮好的：</p>
+<p><img src="https://oos.blog.yyge.top/2021/3/1/%E3%80%90%E8%AF%91%E3%80%91%E6%B7%B1%E5%85%A5%E8%AE%B2%E8%A7%A3WebSockets/images/2.png" alt="2.png"></p>
+<p>WebSockets 内置了跨域通信功能，意味着不同域名之间可以进行通信。你可以自行指定一个可用的域名，通过这种方式来提高安全性。</p>
+<blockquote>
+<p>除此之外，诸如 socket.IO（NodeJS）和 SignalR（.NET）这样的三方 WebSockets 库，会针对老旧的浏览器，使用 HTTP 协议。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>无论何时何地，只要你需要在客户端和服务器之间建立一个低延迟的连接，那么 WebSockets 就是你最好的选择。</p>
+<p>然而，由于使用 WebSockets 会更改项目的架构，所以直接把 WebSockets 集成到现有的项目中可能会有问题。另外，这篇文章：<a href="https://microservices.io/patterns/data/event-sourcing.html" target="_blank" rel="noopener">事件源</a>，会影响你使用 WebSockets 进行通信，我也推荐你阅读一下。</p>
+<p>如果你想了解其它的有关于 WebSockets 的知识，可以在评论区交流；另外，WebSocket 的示例 demo 可以 <a href="http://websocket.org/echo.html" target="_blank" rel="noopener">点这里</a>。</p>
+<p>感谢阅读。</p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><hr>
+<ul>
+<li><a href="https://blog.bitsrc.io/build-a-realtime-editor-using-socket-io-f11703afd55" target="_blank" rel="noopener">利用 Socket.IO 构建一个所见即所得的编辑器</a></li>
+</ul>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2021/03/01/【译】深入讲解WebSockets/">https://ddzy.github.io/blog/2021/03/01/【译】深入讲解WebSockets/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2021/03/02/win10深度挖掘系列之——开启clash之后，微软全家桶无法同步的问题/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>win10深度挖掘系列之——开启clash之后，微软全家桶无法同步的问题
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2021/02/22/【译】NormalizeCSS和ResetCSS，我该如何选择？/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          【译】NormalizeCSS和ResetCSS，我该如何选择？<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '【译】深入讲解WebSockets',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

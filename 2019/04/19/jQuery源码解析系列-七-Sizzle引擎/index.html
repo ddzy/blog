@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="jQuery, ts, Nlvi">
+
+  <title> jQuery源码解析系列(七) -Sizzle引擎 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">jQuery源码解析系列(七) -Sizzle引擎</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、更新"><span class="toc-text">一、更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-4-21"><span class="toc-text">[2019-4-21]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、前置"><span class="toc-text">二、前置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-正则"><span class="toc-text">2.1 正则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、是什么"><span class="toc-text">三、是什么?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-querySelector-amp-querySelectorAll"><span class="toc-text">3.1 querySelector&amp;querySelectorAll</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-基本选择器"><span class="toc-text">2.1.1 基本选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-CSS3选择器"><span class="toc-text">2.1.2 CSS3选择器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Sizzle"><span class="toc-text">3.2 Sizzle</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、为什么"><span class="toc-text">四、为什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、怎么做"><span class="toc-text">五、怎么做?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-准备工作"><span class="toc-text">5.1 准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-如何使用"><span class="toc-text">5.2 如何使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-大致结构"><span class="toc-text">5.3 大致结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-简单分析"><span class="toc-text">5.4 简单分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-1-正则组合"><span class="toc-text">5.4.1 正则组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-2-Sizzle主函数"><span class="toc-text">5.4.2 Sizzle主函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-2-1-debugger调试"><span class="toc-text">5.4.2.1 debugger调试</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-2-2-内部逻辑"><span class="toc-text">5.4.2.2 内部逻辑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-2-3-两个疑问"><span class="toc-text">5.4.2.3 两个疑问</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-3-select主操作函数"><span class="toc-text">5.4.3 select主操作函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-4-filters过滤器"><span class="toc-text">5.4.4 filters过滤器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-5-tokenize令牌化"><span class="toc-text">5.4.5 tokenize令牌化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-6-compile编译器"><span class="toc-text">5.4.6 compile编译器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、我学到了"><span class="toc-text">六、我学到了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-有用的正则"><span class="toc-text">6.1 有用的正则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-1-匹配空白字符"><span class="toc-text">6.1.1 匹配空白字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-2-匹配简单选择器"><span class="toc-text">6.1.2 匹配简单选择器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、示例代码"><span class="toc-text">七、示例代码</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-04-19</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/jQuery/">jQuery</a>
+              
+                <a href="/blog/tags/ts/">ts</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          jQuery源码解析系列(七) -Sizzle引擎
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>经过了前<code>六</code>篇文章的分析, 大致了解了<code>jQuery</code>的总体架构, 今天就来看一下非常重要的知识点————Sizzle</p>
+<a id="more"></a>
+
+
+<h2 id="一、更新"><a href="#一、更新" class="headerlink" title="一、更新"></a>一、更新</h2><hr>
+<h3 id="2019-4-21"><a href="#2019-4-21" class="headerlink" title="[2019-4-21]"></a>[2019-4-21]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>改进文章排版格式</li>
+</ul>
+<h2 id="二、前置"><a href="#二、前置" class="headerlink" title="二、前置"></a>二、前置</h2><hr>
+<h3 id="2-1-正则"><a href="#2-1-正则" class="headerlink" title="2.1 正则"></a>2.1 正则</h3><p>由于只分析几种常用的选择器的实现原理, 所以需要点<code>正则</code>能力, 起码要对<code>*</code>、<code>.</code>、<code>[]</code>、<code>分组匹配</code>、<code>?:x</code>等…了如指掌.</p>
+<h2 id="三、是什么"><a href="#三、是什么" class="headerlink" title="三、是什么?"></a>三、是什么?</h2><hr>
+<h3 id="3-1-querySelector-amp-querySelectorAll"><a href="#3-1-querySelector-amp-querySelectorAll" class="headerlink" title="3.1 querySelector&amp;querySelectorAll"></a>3.1 querySelector&amp;querySelectorAll</h3><p>要了解<code>Sizzle</code>的<code>存在意义</code>以及<code>原理</code>, 首先得了解<code>querySelector</code>和<code>querySelectorAll</code>这两个<code>API</code>.</p>
+<blockquote>
+<p><strong>Q</strong>: 什么是<code>querySelector</code>&amp;<code>querySelectorAll</code>?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: <code>CSS3</code>新推出的API.</p>
+<blockquote>
+<p><strong>Q</strong>: 它有什么用?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 用来替代传统的<code>document.getElementsByTagName</code>、<code>document.getElementById</code>方法, 来执行<code>更复杂</code>的<code>DOM选取</code>操作.</p>
+<blockquote>
+<p><strong>Q</strong>: 如何使用其选取?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 两种用途(以<code>querySelector</code>为例)</p>
+<blockquote>
+<p><strong>Q</strong>: 它的兼容性如何?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 截取了<code>MDN</code>上对其兼容性的描述, 如下图:</p>
+<p><img src="/images/1.png" alt="querySelector&amp;querySelectorAll兼容性"></p>
+<h4 id="2-1-1-基本选择器"><a href="#2-1-1-基本选择器" class="headerlink" title="2.1.1 基本选择器"></a>2.1.1 基本选择器</h4><blockquote>
+<p><strong>PS</strong>: 较常用, 我基本只用到过这几个😄</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#app'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.app'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'span'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-CSS3选择器"><a href="#2-1-2-CSS3选择器" class="headerlink" title="2.1.2 CSS3选择器"></a>2.1.2 CSS3选择器</h4><blockquote>
+<p><strong>PS</strong>: 针对<code>CSS3</code>新推出的较为复杂、高级的选择器.</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'p.text span:nth-of-type(2)'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'input[type="radio"]:checked'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Sizzle"><a href="#3-2-Sizzle" class="headerlink" title="3.2 Sizzle"></a>3.2 Sizzle</h3><p>上面提到了关于<code>querySelector</code>的兼容性问题, 其实, 这就是<code>Sizzle</code>的诞生原因:</p>
+<ul>
+<li>解决低版本IE(<code>IE8</code>)不支持<code>querySelector</code>的情况</li>
+</ul>
+<p>它本质上就是一个<code>**polyfill**</code>, 那么:</p>
+<blockquote>
+<p><strong>Q</strong>: 何所谓polyfill?</p>
+</blockquote>
+<p>我的理解是:</p>
+<ul>
+<li>实现了某个浏览器不支持的API</li>
+</ul>
+<p>这样一来, 问题就清晰多了, 其实:</p>
+<ul>
+<li><code>Sizzle</code>实现的功能和<code>document.querySelector</code>是一样的.</li>
+</ul>
+<h2 id="四、为什么"><a href="#四、为什么" class="headerlink" title="四、为什么?"></a>四、为什么?</h2><hr>
+<blockquote>
+<p><strong>Q</strong>: 为什么jQuery要搞一个<code>Sizzle</code>?</p>
+</blockquote>
+<p>jQuery将处理选择器的功能交给了Sizzle, 也是为了抽取核心逻辑, 目前<code>Sizzle</code>已经是一个单独的模块, 可以供开发者使用了.</p>
+<h2 id="五、怎么做"><a href="#五、怎么做" class="headerlink" title="五、怎么做?"></a>五、怎么做?</h2><hr>
+<h3 id="5-1-准备工作"><a href="#5-1-准备工作" class="headerlink" title="5.1 准备工作"></a>5.1 准备工作</h3><p>源码中有关<code>Sizzle</code>的部分是一个自执行函数, 所以将它单独拎出来到外部文件, 大概两千多行的样子.</p>
+<p>由于能力有限, 所以, 只会简单了解一下其<code>大致的运作原理</code>即可.</p>
+<h3 id="5-2-如何使用"><a href="#5-2-如何使用" class="headerlink" title="5.2 如何使用"></a>5.2 如何使用</h3><p>正式开始之前, 先来了解一下<code>Sizzle</code>是如何使用的, 由于<code>jQuery</code>已经将其抽离出了一个单独的库, 所以直接引入测试项目集就行了.</p>
+<p>在浏览器中可以看到:</p>
+<p><img src="/images/2.png" alt="如何使用Sizzle.js"></p>
+<p>可以发现, <code>Sizzle</code>返回了匹配到的<code>DOM结果集</code>.</p>
+<h3 id="5-3-大致结构"><a href="#5-3-大致结构" class="headerlink" title="5.3 大致结构"></a>5.3 大致结构</h3><p>了解了<code>Sizzle.js</code>的基础用法, 接下来就是看源码了.</p>
+<p>我将其源码分为了以下几部分:</p>
+<blockquote>
+<p><strong>PS</strong>: 标出的位置均位于<code>origin/Sizzle.js</code>中, <a href="https://github.com/ddzy/my-simple-jquery/blob/branch/dev/origin/Sizzle.js" target="_blank" rel="noopener">文件地址</a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sizzle.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一部分: 正则组合(71 - 171)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二部分: `Sizzle`主函数(217 - 351)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三部分: `select`选择函数(2128 - 2196)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第四部分 `compile`编译函数(2089 - 2117)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第五部分 其它工具函数</span></span><br></pre></td></tr></table></figure>
+
+<p>划分好了<code>基本结构</code>, 那么接下来就照着它来进行下一步——<code>**简单分析**</code>.</p>
+<blockquote>
+<p><strong>PS</strong>: 力荐<code>VS Code</code>插件——<code>**Bookmarks**</code>, 源码阅读必备!</p>
+</blockquote>
+<ul>
+<li>市场截图:</li>
+</ul>
+<p><img src="/images/3.png" alt="bookmarks插件名称"></p>
+<ul>
+<li>使用截图</li>
+</ul>
+<p><img src="/images/4.png" alt="bookmarks插件使用"></p>
+<h3 id="5-4-简单分析"><a href="#5-4-简单分析" class="headerlink" title="5.4 简单分析"></a>5.4 简单分析</h3><h4 id="5-4-1-正则组合"><a href="#5-4-1-正则组合" class="headerlink" title="5.4.1 正则组合"></a>5.4.1 正则组合</h4><blockquote>
+<p><strong>总览</strong>: 定义一系列针对<code>CSS2</code>、<code>CSS3</code>选择器规范的<code>标准正则</code>, 组装为<code>正则表达式组</code>, 塞入<code>matchExpr</code>对象.</p>
+</blockquote>
+<p>先来梳理几个问题:</p>
+<blockquote>
+<p><strong>Q</strong>: 何为<code>标准正则</code>?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 这只是我取的名字, 因为其根据<code>CSS</code>选择器规范来指定.</p>
+<blockquote>
+<p><strong>Q</strong>: <code>组装</code>的过程?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 本质就是字符串的拼接.</p>
+<blockquote>
+<p><strong>Q</strong>: CSS选择器的种类?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: <code>id选择器(#)</code>、<code>类选择器(.)</code>、<code>标签选择器(tag)</code>、<code>属性选择器(input[type=&quot;&quot;])</code>、<code>伪类选择器(:hover、:nth)</code>、<code>组合选择器(+、~、&gt;、&#39; &#39;)</code></p>
+<p>接着, 继续往下看:</p>
+<blockquote>
+<p><strong>PS</strong>: 由于代码太多, 因此我挑选了几个贴出来</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匹配空白字符</span></span><br><span class="line"><span class="keyword">var</span> rwhitespace = <span class="regexp">/[\x20\t\r\n\f]+/g</span>;</span><br><span class="line"><span class="comment">// 匹配以`组合选择器`开头的字符串</span></span><br><span class="line"><span class="keyword">var</span> rcombinators = <span class="regexp">/^[\x20\t\r\n\f]*([&gt;+~]|[\x20\t\r\n\f])[\x20\t\r\n\f]*/</span>;</span><br><span class="line"><span class="comment">// 测试选择器是否符合`CSS`标准</span></span><br><span class="line"><span class="comment">// http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier</span></span><br><span class="line"><span class="keyword">var</span> ridentifier = <span class="regexp">/^(?:\.|[\w-]|[^\0-\xa0])+$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> matchExpr = &#123;</span><br><span class="line">  <span class="string">'ID'</span>: <span class="regexp">/^#((?:\.|[\w-]|[^\0-\xa0])+)/</span>,</span><br><span class="line">  <span class="string">'CLASS'</span>: <span class="regexp">/^\.((?:\.|[\w-]|[^\0-\xa0])+)/</span>,</span><br><span class="line">  <span class="string">'TAG'</span>: <span class="regexp">/^((?:\.|[\w-]|[^\0-\xa0])+|[*])/</span>,</span><br><span class="line">  <span class="string">'ATTR'</span>: <span class="regexp">/\[[\x20\t\r\n\f]*((?:\\.|[\w-]|[^-\xa0])+)(?:[\x20\t\r\n\f]*([*^$|!~]?=)[\x20\t\r\n\f]*(?:'((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)"|((?:\\.|[\w-]|[^-\xa0])+))|)[\x20\t\r\n\f]*\]/</span>,</span><br><span class="line">  <span class="string">"PSEUDO"</span>: ...,</span><br><span class="line">  <span class="string">"CHILD"</span>: ...,</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 终究是噩梦般的正则, 特别是<code>ATTR</code>, 抄都抄错了…</p>
+<p>上述几个正则都可以从字面意思上看出它们的用途, 干巴巴的说可能很枯燥, 所以还是去<code>console</code>试一下比较好</p>
+<blockquote>
+<p>PS: 我这里就不贴<code>测试正则</code>的截图了, 可以自行尝试, 毕竟与后续的编译相挂钩.</p>
+</blockquote>
+<p>总结一下, jQuery通过定义一系列<code>匹配CSS选择器类型</code>的正则, 将诸如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selector = <span class="string">'#app .post span.text &gt; input[type="text"]'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>此类的复杂选择器拆分为小的<code>chunk</code>:</p>
+<ul>
+<li>‘#app’</li>
+<li>‘&nbsp;&nbsp;’</li>
+<li>‘.post’</li>
+<li>‘&nbsp;&nbsp;’</li>
+<li>‘span.text’</li>
+<li>‘&gt;’</li>
+<li>‘input[type = “text”]‘</li>
+</ul>
+<p>对于<code>chunk</code>的操作, 后续会说到.</p>
+<h4 id="5-4-2-Sizzle主函数"><a href="#5-4-2-Sizzle主函数" class="headerlink" title="5.4.2 Sizzle主函数"></a>5.4.2 Sizzle主函数</h4><blockquote>
+<p><strong>PS</strong>: 满怀期待的守在电脑前, 准备欣赏<strong><code>海军70周年庆</code></strong>, 结果…听说是由于大雾取消了直播, 很可惜.</p>
+</blockquote>
+<blockquote>
+<p><strong>PS</strong>: 但是文章不能不写, 因为今天的任务还未完成, 趁着有精力赶紧把<code>Sizzle主函数</code>相关的内容写一下.</p>
+</blockquote>
+<h5 id="5-4-2-1-debugger调试"><a href="#5-4-2-1-debugger调试" class="headerlink" title="5.4.2.1 debugger调试"></a>5.4.2.1 debugger调试</h5><blockquote>
+<p>PS: 对于经常阅读源码的码农来说, 灵活的应用<code>DevTools</code>是至关重要的, 对于简单的库, 可以追踪<code>变量引用</code>、<code>函数堆栈</code>信息, 比起<strong>傻傻的翻源码</strong>方便多了(<code>但是对于大型框架并不适用</code>).</p>
+</blockquote>
+<p>这里简单演示一下:</p>
+<p><img src="/images/5.gif" alt="演示使用debugger调试"></p>
+<h5 id="5-4-2-2-内部逻辑"><a href="#5-4-2-2-内部逻辑" class="headerlink" title="5.4.2.2 内部逻辑"></a>5.4.2.2 内部逻辑</h5><p>照例, 先贴出一部分<code>比较重要</code>的源码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sizzle</span>(<span class="params">selector, context, results, seed</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// [MARK]: nodeType默认是`9`, 也就是`document`</span></span><br><span class="line">  <span class="keyword">var</span> nodeType = context ? context.nodeType : <span class="number">9</span>;</span><br><span class="line">  <span class="keyword">var</span> results = results || [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// [MARK]: 如果selector不是字符串, 直接return</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> selector !== <span class="string">'string'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * [MARK]: 检测能否直接使用原生API, 分两种情况👇</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   *    1) 对于简单的单选择器</span></span><br><span class="line"><span class="comment">   *      a) getElementById</span></span><br><span class="line"><span class="comment">   *      b) getElementsByTagName</span></span><br><span class="line"><span class="comment">   *      c) getElementsByClassName</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   *    2) 对于复杂的组合选择器</span></span><br><span class="line"><span class="comment">   *      a) querySelectorAll</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span>( !seed ) &#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="keyword">if</span>(nodeType !== <span class="number">11</span> &amp;&amp; (</span><br><span class="line">      match = rquickExpr.exec(selector)</span><br><span class="line">    )) &#123;</span><br><span class="line">      <span class="comment">// [TODO]: ID选择器</span></span><br><span class="line">      <span class="keyword">if</span>(match[<span class="number">1</span>]) &#123;</span><br><span class="line">        ......</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">document</span>.getElementById(match[<span class="number">1</span>])) &#123;</span><br><span class="line">          results.push(context.getElementById(match[<span class="number">1</span>]));</span><br><span class="line">          <span class="keyword">return</span> results;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> results;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// [TODO]: 标签选择器</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span>(</span><br><span class="line">        match[<span class="number">2</span>]</span><br><span class="line">      ) &#123;</span><br><span class="line">        push.apply(results, context.getElementsByTagName( selector ));</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// [TODO]: class选择器</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span></span><br><span class="line">        match[<span class="number">3</span>]</span><br><span class="line">        &amp;&amp; support.getElementsByClassName</span><br><span class="line">        &amp;&amp; context.getElementsByClassName</span><br><span class="line">      ) &#123;</span><br><span class="line">        push.apply(results, context.getElementsByClassName( match[<span class="number">3</span>] ));</span><br><span class="line">        <span class="keyword">return</span> results;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * [MARK]: 如果支持`querySelectorAll`, 直接使用它</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span>(support.qsa) &#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      push.apply(results, newContext.querySelectorAll( newSelector ))</span><br><span class="line">      <span class="keyword">return</span> results;</span><br><span class="line">    &#125; <span class="keyword">catch</span>( qsaError ) &#123;</span><br><span class="line">      <span class="comment">// [TODO]: 疑问①</span></span><br><span class="line">      nonnativeSelectorCache( selector, <span class="literal">true</span> );</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      ......</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对于其它的</span></span><br><span class="line">  <span class="comment">// [TODO]: 疑问②</span></span><br><span class="line">  <span class="keyword">return</span> select(</span><br><span class="line">    selector.replace( rtrim, <span class="string">'$1'</span> ),</span><br><span class="line">    context,</span><br><span class="line">    results,</span><br><span class="line">    seed,</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述就是我抽取出来的部分逻辑代码, 可以看到, 其内部主要进行了以下几种操作:</p>
+<ol>
+<li>非法值过滤</li>
+<li>简单选择器匹配</li>
+<li>querySelectorAll检测</li>
+<li>select主操作函数</li>
+</ol>
+<p>可以用一句话概括其处理逻辑:</p>
+<blockquote>
+<p>能用浏览器<strong>原生API</strong>, 就不用<strong>Sizzle</strong>了</p>
+</blockquote>
+<h5 id="5-4-2-3-两个疑问"><a href="#5-4-2-3-两个疑问" class="headerlink" title="5.4.2.3 两个疑问"></a>5.4.2.3 两个疑问</h5><blockquote>
+<p><strong>Q</strong>: 源码中的<code>nonnativeSelectorCache</code>函数是什么?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 对应<code>createCache</code>闭包函数, 为<code>Sizzle</code>的缓存机制, 将<code>selector</code>以<code>Key-value-pair</code>的形式存储于<code>createCache</code>内部维护的<code>keys</code>数组中.</p>
+<blockquote>
+<p><strong>PS</strong>: <code>createCache</code>源码可参考<a href="https://github.com/ddzy/my-simple-jquery/blob/branch/dev/origin/Sizzle.js#L359" target="_blank" rel="noopener">这里</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Q</strong>: 源码中<code>select</code>方法起何种作用?</p>
+</blockquote>
+<p><strong><em>A</em></strong>: 下一区块再议</p>
+<h4 id="5-4-3-select主操作函数"><a href="#5-4-3-select主操作函数" class="headerlink" title="5.4.3 select主操作函数"></a>5.4.3 select主操作函数</h4><h4 id="5-4-4-filters过滤器"><a href="#5-4-4-filters过滤器" class="headerlink" title="5.4.4 filters过滤器"></a>5.4.4 filters过滤器</h4><h4 id="5-4-5-tokenize令牌化"><a href="#5-4-5-tokenize令牌化" class="headerlink" title="5.4.5 tokenize令牌化"></a>5.4.5 tokenize令牌化</h4><h4 id="5-4-6-compile编译器"><a href="#5-4-6-compile编译器" class="headerlink" title="5.4.6 compile编译器"></a>5.4.6 compile编译器</h4><h2 id="六、我学到了"><a href="#六、我学到了" class="headerlink" title="六、我学到了"></a>六、我学到了</h2><hr>
+<h3 id="6-1-有用的正则"><a href="#6-1-有用的正则" class="headerlink" title="6.1 有用的正则"></a>6.1 有用的正则</h3><h4 id="6-1-1-匹配空白字符"><a href="#6-1-1-匹配空白字符" class="headerlink" title="6.1.1 匹配空白字符"></a>6.1.1 匹配空白字符</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rwhitespace = <span class="regexp">/[\x20\t\r\n\f]+/g</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-1-2-匹配简单选择器"><a href="#6-1-2-匹配简单选择器" class="headerlink" title="6.1.2 匹配简单选择器"></a>6.1.2 匹配简单选择器</h4><blockquote>
+<p><strong>PS</strong>: 形如<code>#app</code>、<code>.text</code>、<code>span</code>等单选择器.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rsimpleselector = <span class="regexp">/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、示例代码"><a href="#七、示例代码" class="headerlink" title="七、示例代码"></a>七、示例代码</h2><hr>
+<p>示例代码参考<a href="https://github.com/ddzy/my-simple-jquery" target="_blank" rel="noopener">仓库地址</a></p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2019/04/19/jQuery源码解析系列-七-Sizzle引擎/">https://ddzy.github.io/blog/2019/04/19/jQuery源码解析系列-七-Sizzle引擎/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2019/04/25/前端基础重拾系列之——字符编码方式/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>前端基础重拾系列之——字符编码方式
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2019/04/17/jQuery源码解析系列-六-拓展机制/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          jQuery源码解析系列(六) -拓展机制<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: 'jQuery源码解析系列(七) -Sizzle引擎',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

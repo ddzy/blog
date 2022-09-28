@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="js, ES2021, JavaScript, ECMAScript, Nlvi">
+
+  <title> 【译】ES2021新特性提前知，附案例 · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">【译】ES2021新特性提前知，附案例</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-1-6"><span class="toc-text">[2021-1-6]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021-2-5"><span class="toc-text">[2021-2-5]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-protype-replaceAll"><span class="toc-text">String.protype.replaceAll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-any"><span class="toc-text">Promise.any</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeakRef"><span class="toc-text">WeakRef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑赋值运算符"><span class="toc-text">逻辑赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字分隔符"><span class="toc-text">数字分隔符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2021-01-06</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/frontend/">frontend</a></span>
+            
+              <span class="post-category"><a href="/blog/categories/frontend/translation/">translation</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/js/">js</a>
+              
+                <a href="/blog/tags/ES2021/">ES2021</a>
+              
+                <a href="/blog/tags/JavaScript/">JavaScript</a>
+              
+                <a href="/blog/tags/ECMAScript/">ECMAScript</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          【译】ES2021新特性提前知，附案例
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>原文链接：</p>
+<p><a href="https://medium.com/better-programming/javascript-es2021-features-with-simple-examples-ada723b55355" target="_blank" rel="noopener">https://medium.com/better-programming/javascript-es2021-features-with-simple-examples-ada723b55355</a></p>
+<a id="more"></a>
+
+<p>以下是 ECMAScript 2015 - 2021 新特性概览：</p>
+<ul>
+<li><p>ES2015</p>
+</li>
+<li><p><a href="https://medium.com/better-programming/javascript-es2016-features-with-examples-a41b7aead589" target="_blank" rel="noopener">ES2016</a></p>
+</li>
+<li><p><a href="https://medium.com/better-programming/javascript-es2017-features-with-examples-877f8406e770" target="_blank" rel="noopener">ES2017</a></p>
+</li>
+<li><p><a href="https://medium.com/better-programming/javascript-es2018-features-with-examples-30fda8ac50fa" target="_blank" rel="noopener">ES2018</a></p>
+</li>
+<li><p><a href="https://medium.com/better-programming/twelve-es10-features-in-twelve-simple-examples-6e8cc109f3d3" target="_blank" rel="noopener">ES2019</a></p>
+</li>
+<li><p><a href="https://medium.com/better-programming/javascript-es2020-features-with-simple-examples-d301dbef2c37" target="_blank" rel="noopener">ES2020</a></p>
+</li>
+<li><p>ES2021</p>
+</li>
+</ul>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><h3 id="2021-1-6"><a href="#2021-1-6" class="headerlink" title="[2021-1-6]"></a>[2021-1-6]</h3><ul>
+<li>Initial release</li>
+</ul>
+<h3 id="2021-2-5"><a href="#2021-2-5" class="headerlink" title="[2021-2-5]"></a>[2021-2-5]</h3><h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更改文章标题</li>
+</ul>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><hr>
+<p>ES2021 也就是 2021 年的 ECMAScript 版本。ES2021 并没有像 ES2015 那样提出很多新特性，但却合并了一些有用的特性。</p>
+<p>本文将会用通俗易懂的代码示例来介绍 ES2021 的新特性。当然在这之前，你需要了解 JavaScript 的基础知识。</p>
+<p>以下是 ES2021 的新特性概览：</p>
+<ul>
+<li><code>String.prototype.replaceAll</code></li>
+<li><code>Promise.any</code></li>
+<li><code>WeakRef</code></li>
+<li>逻辑赋值运算符</li>
+<li>数字分隔符</li>
+</ul>
+<h2 id="String-protype-replaceAll"><a href="#String-protype-replaceAll" class="headerlink" title="String.protype.replaceAll"></a>String.protype.replaceAll</h2><hr>
+<p>在 ES2021 之前，要替换掉一个字符串中的所有指定字符，我们可以这么做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = <span class="string">'🍎+🍐+🍓+'</span>;</span><br><span class="line"><span class="keyword">const</span> fruitsWithBanana = fruits.replace(<span class="regexp">/\+/g</span>, <span class="string">'🍌'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fruitsWithBanana); <span class="comment">//🍎🍌🍐🍌🍓🍌</span></span><br></pre></td></tr></table></figure>
+
+<p>ES2021 则提出了 <code>replaceAll</code> 方法，并将其挂载在 String 的原型上，可以这么用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = <span class="string">'🍎+🍐+🍓+'</span>;</span><br><span class="line"><span class="keyword">const</span> fruitsWithBanana = fruits.replaceAll(<span class="string">'+'</span>, <span class="string">'🍌'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fruitsWithBanana); <span class="comment">//🍎🍌🍐🍌🍓🍌</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-any"><a href="#Promise-any" class="headerlink" title="Promise.any"></a>Promise.any</h2><hr>
+<p><code>Promise.any</code> 方法和 <code>Promise.race</code> 类似——只要给定的迭代中的一个 promise 成功，就采用第一个 promise 的值作为它的返回值，但与 <code>Promise.race</code> 的不同之处在于——它会等到所有 promise 都失败之后，才返回失败的值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFetch = <span class="function"><span class="params">url</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> fetch(url), <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">3000</span>));</span><br><span class="line"><span class="keyword">const</span> promises = [</span><br><span class="line">  myFetch(<span class="string">'/endpoint-1'</span>),</span><br><span class="line">  myFetch(<span class="string">'/endpoint-2'</span>),</span><br><span class="line">  myFetch(<span class="string">'/endpoint-3'</span>),</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 使用 .then .catch</span></span><br><span class="line"><span class="built_in">Promise</span>.any(promises) <span class="comment">// 任何一个 promise 成功。</span></span><br><span class="line">       .then(<span class="built_in">console</span>.log) <span class="comment">// 比如 ‘3’</span></span><br><span class="line">       .catch(<span class="built_in">console</span>.error); <span class="comment">// 所有的 promise 都失败了</span></span><br><span class="line"><span class="comment">// 使用 async-await</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> first = <span class="keyword">await</span> <span class="built_in">Promise</span>.any(promises); <span class="comment">// 任何一个 promise 成功返回。</span></span><br><span class="line"> <span class="built_in">console</span>.log(first);</span><br><span class="line">&#125;<span class="keyword">catch</span> (error) &#123; <span class="comment">// 所有的 promise 都失败了</span></span><br><span class="line">  <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="WeakRef"><a href="#WeakRef" class="headerlink" title="WeakRef"></a>WeakRef</h2><hr>
+<p><code>WeakRef</code> 提案主要包含两个新功能：</p>
+<ul>
+<li>可以通过 <code>WeakRef</code> 类来给某个对象创建一个弱引用</li>
+<li>可以通过 <code>FinalizationRegistry</code> 类，在某个对象被垃圾回收之后，执行一些自定义方法</li>
+</ul>
+<p>上述两个新功能可以同时使用，也可以单独使用，取决于你的需求。</p>
+<p>一个 <code>WeakRef</code> 对象包含一个对于某个对象的弱引用，被称为 <em>目标</em> 或 <em>引用</em>。通过弱引用一个对象，可以让该对象在没有其它引用的情况下被垃圾回收机制回收。</p>
+<p><code>WeakRef</code> 主要用来 <strong>缓存</strong> 和 <strong>映射</strong> 一些大型对象，当你希望某个对象在不被其它地方引用的情况下及时地被垃圾回收，那么你就可以使用它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toogle</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> weakElement = <span class="keyword">new</span> WeakRef(element);</span><br><span class="line">  <span class="keyword">let</span> intervalId = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">toggle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> el = weakElement.deref();</span><br><span class="line">    <span class="keyword">if</span> (!el) &#123;</span><br><span class="line">       <span class="keyword">return</span> clearInterval(intervalId);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> decoration = weakElement.style.textDecoration;</span><br><span class="line">   <span class="keyword">const</span> style= decoration === <span class="string">'none'</span> ? <span class="string">'underline'</span> : <span class="string">'none'</span>;</span><br><span class="line">   decoration = style;</span><br><span class="line">  &#125;</span><br><span class="line">  intervalId = setInterval(toggle, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</span><br><span class="line">toogle(element);</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> element.remove(), <span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>FinalizationRegistry</code> 接收一个注册器回调函数，可以利用该注册器为指定对象注册一个事件监听器，当这个对象被垃圾回收之后，会触发监听的事件，具体步骤如下。</p>
+<p>首先，创建一个注册器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> registry = <span class="keyword">new</span> FinalizationRegistry(<span class="function"><span class="params">heldValue</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ....</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>接着注册一个指定对象，同时也可以给注册器回调传递一些参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">registry.register(theObject, <span class="string">"some value"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="逻辑赋值运算符"><a href="#逻辑赋值运算符" class="headerlink" title="逻辑赋值运算符"></a>逻辑赋值运算符</h2><hr>
+<blockquote>
+<p>译者注：<strong>赋值运算符</strong> 和 <strong>表达式</strong> 的区别可以 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#带有赋值运算符的左值（left_operand）" target="_blank" rel="noopener">看这里</a>。</p>
+</blockquote>
+<p>逻辑赋值运算符结合了 <strong>逻辑运算符</strong> 和 <strong>赋值表达式</strong>。逻辑赋值运算符有两种：</p>
+<ul>
+<li>或等于（<code>||=</code>）</li>
+<li>且等于（<code>&amp;&amp;=</code>）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 或等于</span></span><br><span class="line">|   a   |   b   | a ||= b | a (运算后) |</span><br><span class="line">| <span class="literal">true</span>  | <span class="literal">true</span>  |   <span class="literal">true</span>  |        <span class="literal">true</span>         |</span><br><span class="line">| <span class="literal">true</span>  | <span class="literal">false</span> |   <span class="literal">true</span>  |        <span class="literal">true</span>         |</span><br><span class="line">| <span class="literal">false</span> | <span class="literal">true</span>  |   <span class="literal">true</span>  |        <span class="literal">true</span>         |</span><br><span class="line">| <span class="literal">false</span> | <span class="literal">false</span> |   <span class="literal">false</span> |        <span class="literal">false</span>        |</span><br><span class="line">a ||= b</span><br><span class="line"><span class="comment">// 等同于:</span></span><br><span class="line">a || (a = b);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 且等于</span></span><br><span class="line">|   a   |   b   | a &amp;&amp;= b | a (运算后) |</span><br><span class="line">| <span class="literal">true</span>  | <span class="literal">true</span>  |   <span class="literal">true</span>  |        <span class="literal">true</span>         |</span><br><span class="line">| <span class="literal">true</span>  | <span class="literal">false</span> |   <span class="literal">false</span> |        <span class="literal">false</span>        |</span><br><span class="line">| <span class="literal">false</span> | <span class="literal">true</span>  |   <span class="literal">false</span> |        <span class="literal">false</span>        |</span><br><span class="line">| <span class="literal">false</span> | <span class="literal">false</span> |   <span class="literal">false</span> |        <span class="literal">false</span>        |</span><br><span class="line">a &amp;&amp;= b</span><br><span class="line"><span class="comment">// 等同于:</span></span><br><span class="line">a &amp;&amp; (a = b);</span><br></pre></td></tr></table></figure>
+
+<h2 id="数字分隔符"><a href="#数字分隔符" class="headerlink" title="数字分隔符"></a>数字分隔符</h2><hr>
+<p>通过这个功能，我们利用 “（_，U+005F）” 分隔符来将数字分组，提高数字的可读性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>_000_000_000           <span class="comment">// 十亿</span></span><br><span class="line"><span class="number">101</span>_475_938<span class="number">.38</span>          <span class="comment">// 亿万</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> amount = <span class="number">12345</span>_00;  <span class="comment">// 12,345</span></span><br><span class="line"><span class="keyword">const</span> amount = <span class="number">123</span>_4500;  <span class="comment">// 123.45 (保留 4 位小数)</span></span><br><span class="line"><span class="keyword">const</span> amount = <span class="number">1</span>_234_500; <span class="comment">// 1,234,500</span></span><br><span class="line"></span><br><span class="line"><span class="number">0.000</span>_001 <span class="comment">// 百万分之一</span></span><br><span class="line"><span class="number">1e10</span>_000  <span class="comment">// 10^10000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> binary_literals = <span class="number">0b1010</span>_0001_1000_0101;</span><br><span class="line"><span class="keyword">const</span> hex_literals = <span class="number">0xA0</span>_B0_C0;</span><br><span class="line"><span class="keyword">const</span> bigInt_literals = <span class="number">1</span>_000_000_000_000n;</span><br><span class="line"><span class="keyword">const</span> octal_literal = <span class="number">0o1234</span>_5670;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>JavaScript 是一门动态类型语言，这在某些方面来说对于 web 开发是有益的。自 ES2015 之后，JavaScript 正在快速发展。在这篇文章里面，我们着重回顾了 ES2021 的一些新特性。</p>
+<p>尽管你的项目可能并不会用到这些新特性，但是它们的确为项目开发提供了多种可能性，不是么？</p>
+
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2021/01/06/【译】ES2021新特性提前知，附案例/">https://ddzy.github.io/blog/2021/01/06/【译】ES2021新特性提前知，附案例/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2021/02/03/【译】Web开发者应该知道的5个CSS小技巧/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>【译】Web开发者应该知道的5个CSS小技巧
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2021/01/03/【译】掌握这个框架-助力你命名函数、类和变量/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          【译】掌握这个框架-助力你命名函数、类和变量<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '【译】ES2021新特性提前知，附案例',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

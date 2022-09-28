@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" href="/blog/style/style.css">
+<script>
+  var nlviconfig = {
+    title: "DZY",
+    author: "zhaoyang Duan",
+    baseUrl: "/blog/",
+    theme: {
+      scheme: "balance",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      lazy: true
+    }
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/blog/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/blog/syuanpi/syuanpi.min.css">
+
+
+
+
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DZY">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="nlvi, Nlvi">
+
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon.ico">
+
+
+  <meta name="subtitle" content="frontender">
+
+
+  <meta name="description" content="个人博客 - 多做, 多思考, 多记录">
+
+
+  <meta name="keywords" content="博客 blog 个人博客">
+
+
+  <meta name="keywords" content="心情, 感想, Nlvi">
+
+  <title> 大四随笔(下) · DZY </title>
+</head>
+<body>
+  <div class="progress">
+  <div class="progress-inner"></div>
+</div>
+
+  
+
+  <div class="container" style="display:none;">
+
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn">
+    <span><a href="/blog/">DZY</a></span>
+    
+      <span id="subtitle">frontender</span>
+    
+  </div>
+</div>
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search">
+        <span>搜索</span>
+        
+          <span class="menu-item-label">search</span>
+        
+      </a>
+    </li>
+  
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/" id="article">
+        <span class="base-name">文章</span>
+        
+          <span class="menu-item-label">article</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="/blog/archives" id="archives">
+        <span class="base-name">归档</span>
+        
+          <span class="menu-item-label">archives</span>
+        
+      </a>
+    </li>
+  
+    
+      
+    
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">标签</span>
+        
+          <span class="menu-item-label">tags</span>
+        
+      </a>
+    </li>
+  
+  </ul>
+  
+</nav>
+
+    
+    
+      <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-inner">
+    <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+  </div>
+</div>
+
+  
+  <aside class="post-toc">
+    <span class="title" id="toc-switch"><span>文章导航</span></span>
+    <div class="toc-inner syuanpi back-1" style="display:none;">
+      <li class="title-link"><a href="javascript:;" class="toTop">大四随笔(下)</a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#🚀-更新"><span class="toc-text">🚀 更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-4"><span class="toc-text">[2020-1-4]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-5"><span class="toc-text">[2020-1-5]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added"><span class="toc-text">Added</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Changed"><span class="toc-text">Changed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-6"><span class="toc-text">[2020-1-6]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-1"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-7"><span class="toc-text">[2020-1-7]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-2"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-8"><span class="toc-text">[2020-1-8]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-9"><span class="toc-text">[2020-1-9]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-10"><span class="toc-text">[2020-1-10]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-1-13"><span class="toc-text">[2020-1-13]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-4"><span class="toc-text">[2020-2-4]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-5"><span class="toc-text">[2020-2-5]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-6"><span class="toc-text">[2020-2-6]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-7"><span class="toc-text">[2020-2-7]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-17"><span class="toc-text">[2020-2-17]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-18"><span class="toc-text">[2020-2-18]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-19"><span class="toc-text">[2020-2-19]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-20"><span class="toc-text">[2020-2-20]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-24"><span class="toc-text">[2020-2-24]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-25"><span class="toc-text">[2020-2-25]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-26"><span class="toc-text">[2020-2-26]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-27"><span class="toc-text">[2020-2-27]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-28"><span class="toc-text">[2020-2-28]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-3"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-2-29"><span class="toc-text">[2020-2-29]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-4"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-2"><span class="toc-text">[2020-3-2]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-5"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-3"><span class="toc-text">[2020-3-3]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-6"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-4"><span class="toc-text">[2020-3-4]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-5"><span class="toc-text">[2020-3-5]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-9"><span class="toc-text">[2020-3-9]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-7"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-10"><span class="toc-text">[2020-3-10]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-8"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-11"><span class="toc-text">[2020-3-11]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-9"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-12"><span class="toc-text">[2020-3-12]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-10"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-13"><span class="toc-text">[2020-3-13]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-11"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-16"><span class="toc-text">[2020-3-16]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-12"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-17"><span class="toc-text">[2020-3-17]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-13"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-18"><span class="toc-text">[2020-3-18]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-14"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-22"><span class="toc-text">[2020-3-22]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-15"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-23"><span class="toc-text">[2020-3-23]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-16"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-24"><span class="toc-text">[2020-3-24]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-17"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-25"><span class="toc-text">[2020-3-25]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-18"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-26"><span class="toc-text">[2020-3-26]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-19"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-27"><span class="toc-text">[2020-3-27]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-20"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-28"><span class="toc-text">[2020-3-28]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-21"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-30"><span class="toc-text">[2020-3-30]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-22"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-3-31"><span class="toc-text">[2020-3-31]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-23"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-1"><span class="toc-text">[2020-4-1]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-24"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-2"><span class="toc-text">[2020-4-2]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-25"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-3"><span class="toc-text">[2020-4-3]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-26"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-7"><span class="toc-text">[2020-4-7]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-27"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-8"><span class="toc-text">[2020-4-8]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-28"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-10"><span class="toc-text">[2020-4-10]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-29"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-12"><span class="toc-text">[2020-4-12]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-30"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-13"><span class="toc-text">[2020-4-13]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-31"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-14"><span class="toc-text">[2020-4-14]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Added-32"><span class="toc-text">Added</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-20"><span class="toc-text">[2020-4-20]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-21"><span class="toc-text">[2020-4-21]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-23"><span class="toc-text">[2020-4-23]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-4-27"><span class="toc-text">[2020-4-27]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-5-12"><span class="toc-text">[2020-5-12]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-5-16"><span class="toc-text">[2020-5-16]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020-7-2"><span class="toc-text">[2020-7-2]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-4"><span class="toc-text">🚩2020-1-4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#头铁主公"><span class="toc-text">头铁主公</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日踩坑"><span class="toc-text">1. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日知识点"><span class="toc-text">2. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-今日-CHANGELOG"><span class="toc-text">3. 今日 CHANGELOG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-5"><span class="toc-text">🚩2020-1-5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#头铁主公-1"><span class="toc-text">头铁主公</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日踩坑-1"><span class="toc-text">1. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日知识点-1"><span class="toc-text">2. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-今日-CHANGELOG-1"><span class="toc-text">3. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客更新"><span class="toc-text">博客更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-6"><span class="toc-text">🚩2020-1-6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#头铁主公-2"><span class="toc-text">头铁主公</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日安排"><span class="toc-text">1. 今日安排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日踩坑"><span class="toc-text">2. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-今日知识点"><span class="toc-text">3. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-今日-CHANGELOG"><span class="toc-text">4. 今日 CHANGELOG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-7"><span class="toc-text">🚩2020-1-7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#头铁主公玩家站"><span class="toc-text">头铁主公玩家站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日踩坑-2"><span class="toc-text">1. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日知识点-2"><span class="toc-text">2. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-今日-CHANGELOG-2"><span class="toc-text">3. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#古今江湖联合活动"><span class="toc-text">古今江湖联合活动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日踩坑-3"><span class="toc-text">1. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日知识点-3"><span class="toc-text">2. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-今日-CHANGELOG-3"><span class="toc-text">3. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第八神谕"><span class="toc-text">第八神谕</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日-CHANGELOG"><span class="toc-text">1. 今日 CHANGELOG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-明日计划"><span class="toc-text">2. 明日计划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-8"><span class="toc-text">🚩2020-1-8</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第八神谕-1"><span class="toc-text">第八神谕</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日完成"><span class="toc-text">1. 今日完成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日-CHANGELOG"><span class="toc-text">2. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#古今江湖"><span class="toc-text">古今江湖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日-CHANGELOG-1"><span class="toc-text">1. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#头铁主公-3"><span class="toc-text">头铁主公</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日知识点"><span class="toc-text">1. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日踩坑-1"><span class="toc-text">2. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-今日-CHANGELOG-4"><span class="toc-text">3. 今日 CHANGELOG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-9"><span class="toc-text">🚩2020-1-9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#古今江湖-1"><span class="toc-text">古今江湖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日踩坑-4"><span class="toc-text">1. 今日踩坑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日-CHANGELOG-1"><span class="toc-text">2. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#头铁主公-4"><span class="toc-text">头铁主公</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日知识点-1"><span class="toc-text">1. 今日知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-今日-CHANGELOG-2"><span class="toc-text">2. 今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第八神谕-2"><span class="toc-text">第八神谕</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-今日-CHANGELOG-2"><span class="toc-text">1. 今日 CHANGELOG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-10"><span class="toc-text">🚩2020-1-10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-1-13"><span class="toc-text">🚩2020-1-13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#今日完成"><span class="toc-text">今日完成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#今日知识点"><span class="toc-text">今日知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#text-overflow-妙用"><span class="toc-text">text-overflow 妙用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#今日-CHANGELOG"><span class="toc-text">今日 CHANGELOG</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-2-17"><span class="toc-text">🚩2020-2-17</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目情况"><span class="toc-text">项目情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-demo-qq"><span class="toc-text">vue-demo-qq</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#项目简介"><span class="toc-text">项目简介</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#项目进度"><span class="toc-text">项目进度</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hd-20190711-cjjs-dl-阅读"><span class="toc-text">hd-20190711-cjjs-dl(阅读)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#项目简介-1"><span class="toc-text">项目简介</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作总结"><span class="toc-text">工作总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#🚩2020-2-18"><span class="toc-text">🚩2020-2-18</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目情况-1"><span class="toc-text">项目情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-hd-20190917-gq-阅读"><span class="toc-text">1. hd-20190917-gq(阅读)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-项目简介"><span class="toc-text">1.1 项目简介</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-项目进度"><span class="toc-text">1.2 项目进度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-项目地址"><span class="toc-text">1.3 项目地址</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务重点"><span class="toc-text">事务重点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作总结-1"><span class="toc-text">工作总结</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+  
+    
+  </div>
+</header>
+<div class="mobile-header">
+  <div class="mobile-header-body">
+    <div class="mobile-header-list">
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+            <div class="mobile-nav-item">
+                <a href="/blog/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </div>
+        
+      
+        
+          <div class="mobile-nav-item inner-cloud">
+            <div class="mobile-nav-tag">
+              <a href="javascript:;" id="mobile-tags">
+                <span>标签</span>
+                
+                    <span class="menu-item-label">tags</span>
+                
+              </a>
+            </div>
+            <div class="mobile-nav-tagcloud">
+              <div class="mobile-tagcloud-inner">
+                <a href="/blog/tags/ByteDance/" style="font-size: 14px;">ByteDance</a> <a href="/blog/tags/Didi/" style="font-size: 14px;">Didi</a> <a href="/blog/tags/ECMAScript/" style="font-size: 14px;">ECMAScript</a> <a href="/blog/tags/ES2021/" style="font-size: 14px;">ES2021</a> <a href="/blog/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/blog/tags/SSL/" style="font-size: 14px;">SSL</a> <a href="/blog/tags/TLS/" style="font-size: 14px;">TLS</a> <a href="/blog/tags/animation/" style="font-size: 14px;">animation</a> <a href="/blog/tags/backend/" style="font-size: 14px;">backend</a> <a href="/blog/tags/browser/" style="font-size: 14px;">browser</a> <a href="/blog/tags/cdn/" style="font-size: 14px;">cdn</a> <a href="/blog/tags/chrome/" style="font-size: 14px;">chrome</a> <a href="/blog/tags/clash/" style="font-size: 14px;">clash</a> <a href="/blog/tags/cli/" style="font-size: 14px;">cli</a> <a href="/blog/tags/cmder/" style="font-size: 14px;">cmder</a> <a href="/blog/tags/code/" style="font-size: 14px;">code</a> <a href="/blog/tags/computer/" style="font-size: 14px;">computer</a> <a href="/blog/tags/csrf/" style="font-size: 14px;">csrf</a> <a href="/blog/tags/css/" style="font-size: 14px;">css</a> <a href="/blog/tags/date/" style="font-size: 14px;">date</a> <a href="/blog/tags/dns/" style="font-size: 14px;">dns</a> <a href="/blog/tags/domain/" style="font-size: 14px;">domain</a> <a href="/blog/tags/excel/" style="font-size: 14px;">excel</a> <a href="/blog/tags/fiber/" style="font-size: 14px;">fiber</a> <a href="/blog/tags/freebie/" style="font-size: 14px;">freebie</a> <a href="/blog/tags/frontend/" style="font-size: 14px;">frontend</a> <a href="/blog/tags/git/" style="font-size: 14px;">git</a> <a href="/blog/tags/github/" style="font-size: 14px;">github</a> <a href="/blog/tags/google/" style="font-size: 14px;">google</a> <a href="/blog/tags/h5/" style="font-size: 14px;">h5</a> <a href="/blog/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 14px;">html</a> <a href="/blog/tags/http/" style="font-size: 14px;">http</a> <a href="/blog/tags/iOS/" style="font-size: 14px;">iOS</a> <a href="/blog/tags/ie/" style="font-size: 14px;">ie</a> <a href="/blog/tags/interview/" style="font-size: 14px;">interview</a> <a href="/blog/tags/ioredis/" style="font-size: 14px;">ioredis</a> <a href="/blog/tags/ip/" style="font-size: 14px;">ip</a> <a href="/blog/tags/jQuery/" style="font-size: 14px;">jQuery</a> <a href="/blog/tags/jenkins/" style="font-size: 14px;">jenkins</a>
+              </div>
+            </div>
+          </div>
+        
+      
+    </div>
+  </div>
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <span class="header-menu-line"></span>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">DZY</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+</div>
+    <div class="container-inner">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2020-01-04</span>
+          
+            
+              <span class="post-category"><a href="/blog/categories/essay/">essay</a></span>
+            
+          
+          
+            
+              <aside class="post-tags syuanpi fadeInUpShort back-3">
+              
+                <a href="/blog/tags/心情/">心情</a>
+              
+                <a href="/blog/tags/感想/">感想</a>
+              
+              </aside>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          大四随笔(下)
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        <p>大四(实习)生活下篇</p>
+<a id="more"></a>
+
+<h2 id="🚀-更新"><a href="#🚀-更新" class="headerlink" title="🚀 更新"></a>🚀 更新</h2><hr>
+<h3 id="2020-1-4"><a href="#2020-1-4" class="headerlink" title="[2020-1-4]"></a>[2020-1-4]</h3><details>
+
+<ul>
+<li>Initial release</li>
+</ul>
+</details>
+
+<h3 id="2020-1-5"><a href="#2020-1-5" class="headerlink" title="[2020-1-5]"></a>[2020-1-5]</h3><details>
+
+<h4 id="Added"><a href="#Added" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>日常更新日志</li>
+</ul>
+<h4 id="Changed"><a href="#Changed" class="headerlink" title="Changed"></a>Changed</h4><ul>
+<li>更新文章格式</li>
+</ul>
+</details>
+
+<h3 id="2020-1-6"><a href="#2020-1-6" class="headerlink" title="[2020-1-6]"></a>[2020-1-6]</h3><details>
+
+<h4 id="Added-1"><a href="#Added-1" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>更新实习日志</li>
+</ul>
+</details>
+
+<h3 id="2020-1-7"><a href="#2020-1-7" class="headerlink" title="[2020-1-7]"></a>[2020-1-7]</h3><details>
+
+<h4 id="Added-2"><a href="#Added-2" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>更新日志</li>
+</ul>
+</details>
+
+<h3 id="2020-1-8"><a href="#2020-1-8" class="headerlink" title="[2020-1-8]"></a>[2020-1-8]</h3><details>
+
+<ul>
+<li>日常更新</li>
+</ul>
+</details>
+
+<h3 id="2020-1-9"><a href="#2020-1-9" class="headerlink" title="[2020-1-9]"></a>[2020-1-9]</h3><details>
+
+<ul>
+<li>日常更新</li>
+</ul>
+</details>
+
+<h3 id="2020-1-10"><a href="#2020-1-10" class="headerlink" title="[2020-1-10]"></a>[2020-1-10]</h3><details>
+
+<ul>
+<li>更新实习日志</li>
+</ul>
+</details>
+
+<h3 id="2020-1-13"><a href="#2020-1-13" class="headerlink" title="[2020-1-13]"></a>[2020-1-13]</h3><details>
+
+<ul>
+<li>日常更新</li>
+</ul>
+</details>
+
+<h3 id="2020-2-4"><a href="#2020-2-4" class="headerlink" title="[2020-2-4]"></a>[2020-2-4]</h3><details>
+
+<ul>
+<li>日常更新日志</li>
+<li>构建样式布局体系调研报告</li>
+</ul>
+</details>
+
+<h3 id="2020-2-5"><a href="#2020-2-5" class="headerlink" title="[2020-2-5]"></a>[2020-2-5]</h3><details>
+
+<ul>
+<li>更新日志</li>
+<li>完善样式布局体系调研报告(<code>汇总</code>)</li>
+<li>完善样式布局体系调研报告(<code>我的世界</code>)</li>
+</ul>
+</details>
+
+<h3 id="2020-2-6"><a href="#2020-2-6" class="headerlink" title="[2020-2-6]"></a>[2020-2-6]</h3><details>
+
+<ul>
+<li>完成样式布局体系调研报告(<code>春节活动</code>)</li>
+</ul>
+</details>
+
+<h3 id="2020-2-7"><a href="#2020-2-7" class="headerlink" title="[2020-2-7]"></a>[2020-2-7]</h3><details>
+
+<ul>
+<li>完成样式布局体系调研报告(<code>总结篇</code>)</li>
+</ul>
+</details>
+
+<h3 id="2020-2-17"><a href="#2020-2-17" class="headerlink" title="[2020-2-17]"></a>[2020-2-17]</h3><details>
+
+<ul>
+<li>模拟手 Q 移动端, 初步构建</li>
+<li>阅读平台活动项目源码</li>
+</ul>
+</details>
+
+<h3 id="2020-2-18"><a href="#2020-2-18" class="headerlink" title="[2020-2-18]"></a>[2020-2-18]</h3><details>
+
+<ul>
+<li>优化日志格式</li>
+<li>更新日志</li>
+</ul>
+</details>
+
+<h3 id="2020-2-19"><a href="#2020-2-19" class="headerlink" title="[2020-2-19]"></a>[2020-2-19]</h3><details>
+
+<ul>
+<li>整理独立 &amp; 海外项目, 输出项目文档 &amp; 技术文档</li>
+<li>今日完成搭建 <code>奇想江湖</code> 独立游戏基本骨架</li>
+</ul>
+</details>
+
+<h3 id="2020-2-20"><a href="#2020-2-20" class="headerlink" title="[2020-2-20]"></a>[2020-2-20]</h3><details>
+
+<ul>
+<li>组内 SDK code review</li>
+<li>完成古今江湖项目文档</li>
+<li>更新博客文章: <code>git常用命令集锦</code></li>
+</ul>
+</details>
+
+<h3 id="2020-2-24"><a href="#2020-2-24" class="headerlink" title="[2020-2-24]"></a>[2020-2-24]</h3><details>
+
+<ul>
+<li>完成年会评优的项目文档</li>
+<li>更新 <code>ts-web-diary</code> 项目的 README, 添加相关依赖项说明</li>
+</ul>
+</details>
+
+<h3 id="2020-2-25"><a href="#2020-2-25" class="headerlink" title="[2020-2-25]"></a>[2020-2-25]</h3><details>
+
+<ul>
+<li>文章格式调整</li>
+<li>继续完成 YAPI 文档重构工作</li>
+</ul>
+</details>
+
+<h3 id="2020-2-26"><a href="#2020-2-26" class="headerlink" title="[2020-2-26]"></a>[2020-2-26]</h3><details>
+
+<ul>
+<li><input checked disabled type="checkbox"> 重构 YAPI 文档, 完成元数据相关<ul>
+<li><input checked disabled type="checkbox"> 事件管理部分</li>
+<li><input checked disabled type="checkbox"> 事件属性管理部分</li>
+<li><input checked disabled type="checkbox"> 用户属性管理部分</li>
+</ul>
+</li>
+<li><input disabled type="checkbox"> 计划完成用户分析相关<ul>
+<li><input disabled type="checkbox"> 完成属性分析部分</li>
+<li><input disabled type="checkbox"> 完成用户分群部分</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-2-27"><a href="#2020-2-27" class="headerlink" title="[2020-2-27]"></a>[2020-2-27]</h3><details>
+
+<ul>
+<li><input checked disabled type="checkbox"> 重构 YAPI 文档, 构建用户分析相关</li>
+<li><input checked disabled type="checkbox"> 组内 Code Review</li>
+</ul>
+</details>
+
+<h3 id="2020-2-28"><a href="#2020-2-28" class="headerlink" title="[2020-2-28]"></a>[2020-2-28]</h3><details>
+
+<h4 id="Added-3"><a href="#Added-3" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>补充 <code>2-27</code> 号的日志</li>
+<li>更新今日日志</li>
+</ul>
+</details>
+
+<h3 id="2020-2-29"><a href="#2020-2-29" class="headerlink" title="[2020-2-29]"></a>[2020-2-29]</h3><details>
+
+<h4 id="Added-4"><a href="#Added-4" class="headerlink" title="Added"></a>Added</h4><ul>
+<li><input checked disabled type="checkbox"> 更新个人 fe-necessary-book 项目</li>
+<li><input checked disabled type="checkbox"> 重构 YAPI 文档<ul>
+<li><input checked disabled type="checkbox"> 完成行为分析-SQL 查询部分</li>
+<li><input checked disabled type="checkbox"> 完成数据看板部分</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-3-2"><a href="#2020-3-2" class="headerlink" title="[2020-3-2]"></a>[2020-3-2]</h3><details>
+
+<h4 id="Added-5"><a href="#Added-5" class="headerlink" title="Added"></a>Added</h4><ul>
+<li><input checked disabled type="checkbox"> 再次重构数据平台 YAPI 接口文档, 将所有的公共接口按照 “同接口不同参数&amp;返回值” 的原则拆分</li>
+<li><input checked disabled type="checkbox"> 为所有接口添加备注信息</li>
+</ul>
+</details>
+
+<h3 id="2020-3-3"><a href="#2020-3-3" class="headerlink" title="[2020-3-3]"></a>[2020-3-3]</h3><details>
+
+<h4 id="Added-6"><a href="#Added-6" class="headerlink" title="Added"></a>Added</h4><ul>
+<li><input checked disabled type="checkbox"> 再次检查数据平台 YAPI 文档是否具有纰漏</li>
+<li><input checked disabled type="checkbox"> 结对编程了解公司的项目配置、环境等信息</li>
+</ul>
+</details>
+
+<h3 id="2020-3-4"><a href="#2020-3-4" class="headerlink" title="[2020-3-4]"></a>[2020-3-4]</h3><details>
+
+<ul>
+<li><input disabled type="checkbox"> 我的使命关注任务活动跟进</li>
+<li><input checked disabled type="checkbox"> 更新博客, 新增文章: 移动端知识集锦系列之——0.01rem 边框无法显示的问题</li>
+<li><input checked disabled type="checkbox"> 同步昨日任务</li>
+</ul>
+</details>
+
+<h3 id="2020-3-5"><a href="#2020-3-5" class="headerlink" title="[2020-3-5]"></a>[2020-3-5]</h3><details>
+
+<ul>
+<li><input checked disabled type="checkbox"> 我的使命引流活动优化</li>
+<li><input checked disabled type="checkbox"> 完成年会评优项目文档撰写</li>
+<li><input checked disabled type="checkbox"> 更新 <code>ts-utility-plugins</code></li>
+</ul>
+</details>
+
+<h3 id="2020-3-9"><a href="#2020-3-9" class="headerlink" title="[2020-3-9]"></a>[2020-3-9]</h3><details>
+
+<h4 id="Added-7"><a href="#Added-7" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>独立游戏零下记忆预约活动</li>
+</ul>
+</details>
+
+<h3 id="2020-3-10"><a href="#2020-3-10" class="headerlink" title="[2020-3-10]"></a>[2020-3-10]</h3><details>
+
+<h4 id="Added-8"><a href="#Added-8" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>继续完成零下记忆预约活动</li>
+<li>初步对接</li>
+</ul>
+</details>
+
+<h3 id="2020-3-11"><a href="#2020-3-11" class="headerlink" title="[2020-3-11]"></a>[2020-3-11]</h3><details>
+
+<h4 id="Added-9"><a href="#Added-9" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>沟通处理零下记忆的联调问题</li>
+<li>交付测试, 但是有一些 <code>video</code> 的问题, 后续再做总结</li>
+</ul>
+</details>
+
+<h3 id="2020-3-12"><a href="#2020-3-12" class="headerlink" title="[2020-3-12]"></a>[2020-3-12]</h3><details>
+
+<h4 id="Added-10"><a href="#Added-10" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>零下记忆测试 + 验收工作</li>
+<li>更新博客, 新增相关文章</li>
+</ul>
+</details>
+
+<h3 id="2020-3-13"><a href="#2020-3-13" class="headerlink" title="[2020-3-13]"></a>[2020-3-13]</h3><details>
+
+<h4 id="Added-11"><a href="#Added-11" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成零下记忆预约的验收工作</li>
+<li>新增文章: <a href="https://blog.yyge.top/blog/2020/03/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%B0%BA%E5%AF%B8%E8%AE%B0%E5%BD%95/" target="_blank" rel="noopener">移动端知识点集锦系列之——常用尺寸记录</a></li>
+</ul>
+</details>
+
+<h3 id="2020-3-16"><a href="#2020-3-16" class="headerlink" title="[2020-3-16]"></a>[2020-3-16]</h3><details>
+
+<h4 id="Added-12"><a href="#Added-12" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>搭建零下记忆抽奖活动的基本骨架</li>
+</ul>
+</details>
+
+<h3 id="2020-3-17"><a href="#2020-3-17" class="headerlink" title="[2020-3-17]"></a>[2020-3-17]</h3><details>
+
+<h4 id="Added-13"><a href="#Added-13" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成零下记忆页面布局和部分逻辑, 包括诸多兼容问题(<code>iOS 多输入框</code>)</li>
+<li>预计明日进行前后端联调工作</li>
+</ul>
+</details>
+
+<h3 id="2020-3-18"><a href="#2020-3-18" class="headerlink" title="[2020-3-18]"></a>[2020-3-18]</h3><details>
+
+<h4 id="Added-14"><a href="#Added-14" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>与后端商讨具体字段, 并完善接口文档</li>
+</ul>
+</details>
+
+<h3 id="2020-3-22"><a href="#2020-3-22" class="headerlink" title="[2020-3-22]"></a>[2020-3-22]</h3><details>
+
+<h4 id="Added-15"><a href="#Added-15" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>继续完善零下记忆抽奖活动</li>
+<li>今日主要对抽奖的动画加以优化, 重构抽奖转盘的实现; 并重构获奖列表的动画, 使用 <code>setTimeout</code> 代替 <code>setInterval</code> 解决卡顿问题</li>
+</ul>
+</details>
+
+<h3 id="2020-3-23"><a href="#2020-3-23" class="headerlink" title="[2020-3-23]"></a>[2020-3-23]</h3><details>
+
+<h4 id="Added-16"><a href="#Added-16" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>对接零下记忆活动</li>
+<li>今日主要是对微信、QQ 分享加以完善; 并完善业务方提出的几个新需求, 其中遇到几个问题<ul>
+<li>微信分享的安全域名, 需要在微信公众平台配置</li>
+<li>QQ 分享不能使用动态数据, 只能写静态文案</li>
+<li>直接使用 <code>location.href</code> 做链接跳转, 微信浏览器底部会产生白条; 其中一种解决方案是: 使用 <code>location.replace</code> 代替</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-3-24"><a href="#2020-3-24" class="headerlink" title="[2020-3-24]"></a>[2020-3-24]</h3><details>
+
+<h4 id="Added-17"><a href="#Added-17" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>对接零下记忆活动验收<ul>
+<li>重构了预约页, 根据后台配置的预约 or 下载, 展示不同的图片和样式, 以后也采取这种方式</li>
+</ul>
+</li>
+<li>更新个人博客<ul>
+<li>新增文章: <a href="https://blog.yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94H5%E9%A1%B5%E9%9D%A2%E7%9A%84QQ%E5%88%86%E4%BA%AB/" target="_blank" rel="noopener">移动端知识点集锦系列之——H5 页面的 QQ 分享</a></li>
+<li>新增文章: <a href="https://blog.yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94%E5%BE%AE%E4%BF%A1webview%E5%BA%95%E9%83%A8%E7%99%BD%E6%9D%A1%E7%9A%84%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">移动端知识点集锦系列之——微信 webview 底部白条的应对方案</a></li>
+<li>新增文章: <a href="https://blog.yyge.top/blog/2020/03/24/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E9%94%A6%E7%B3%BB%E5%88%97%E4%B9%8B%E2%80%94%E2%80%94iOS%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E7%84%A6%E5%90%8E%E9%A1%B5%E9%9D%A2%E5%BA%95%E9%83%A8%E7%95%99%E7%99%BD%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">移动端知识点集锦系列之——iOS 输入框失焦后页面底部留白的问题</a></li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-3-25"><a href="#2020-3-25" class="headerlink" title="[2020-3-25]"></a>[2020-3-25]</h3><details>
+
+<h4 id="Added-18"><a href="#Added-18" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>零下记忆活动验收<ul>
+<li>今日主要针对需求更改, 对项目加以完善. 由于预约和抽奖位于一个项目, 百度统计无法区分. 故采取进入页面直接打点的形式</li>
+</ul>
+</li>
+<li>数据平台 YAPI 接口测试<ul>
+<li>完成公共接口部分</li>
+<li>完成个人设置部分</li>
+<li>完成项目信息部分</li>
+<li>完成成员管理部分</li>
+</ul>
+</li>
+<li>react 源码阅读<ul>
+<li>着重复习 fiber 树的结构, 即单链表树状结构, 并对 github 笔记加以更新</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-3-26"><a href="#2020-3-26" class="headerlink" title="[2020-3-26]"></a>[2020-3-26]</h3><details>
+
+<h4 id="Added-19"><a href="#Added-19" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>零下记忆活动验收<ul>
+<li>今日也主要是零下记忆的一些逻辑上的需求更改, 业务方要求手机验证码输入框不能禁用, 这会导致用户输入错误的时候, 不能更改输入值; 故改进了实现方案, 只限制输入的最大字数, 但是不做锁定处理</li>
+</ul>
+</li>
+<li>react 源码阅读<ul>
+<li>今日完成构建 createElement, 并简单回顾了 ReactDOM.render 的流程</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-3-27"><a href="#2020-3-27" class="headerlink" title="[2020-3-27]"></a>[2020-3-27]</h3><details>
+
+<h4 id="Added-20"><a href="#Added-20" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>TA 系统 DatePicker 组件编写<ul>
+<li>今天主要的工作是构建 DatePicker 组件, 由于需要与原 TA 相似, 故大部分时间都用来重构 vuejs-datepicker 组件, 包括添加了新的时间选择器以及大部分样式重构</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-3-28"><a href="#2020-3-28" class="headerlink" title="[2020-3-28]"></a>[2020-3-28]</h3><details>
+
+<h4 id="Added-21"><a href="#Added-21" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>TA 数据平台 YAPI 接口测试, 但是由于后端暂时有一些问题未处理, 故暂时无法推进</li>
+<li>继续完善 TA 数据平台的 DatePicker 组件, 完成组件的基本样式重构, 正在构建大体的逻辑</li>
+</ul>
+</details>
+
+<h3 id="2020-3-30"><a href="#2020-3-30" class="headerlink" title="[2020-3-30]"></a>[2020-3-30]</h3><details>
+
+<h4 id="Added-22"><a href="#Added-22" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>继续完成数据平台的 DatePicker 组件, 今日主要构建其日期对比功能, 已完成基本逻辑, 预计明日会修改 vuejs-datepicker 源码, 添加对比状态的样式和逻辑</li>
+<li>后端(<code>20:45</code>)解决周六提出的两个问题:<ul>
+<li>解决创建公司、项目后, 重新登录才能看到的问题</li>
+<li>解决删除公司、项目的无效问题</li>
+</ul>
+</li>
+<li>故继续进行 <code>项目信息</code> 和 <code>公司信息</code> 的测试工作</li>
+</ul>
+</details>
+
+<h3 id="2020-3-31"><a href="#2020-3-31" class="headerlink" title="[2020-3-31]"></a>[2020-3-31]</h3><details>
+
+<h4 id="Added-23"><a href="#Added-23" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>今日初步完成日期选择组件的对比功能, 但是仍存在几个问题(1. 对比状态下日期匹配但是无法高亮(<code>已解决</code>); 2. 对比状态下的标题设置有缺陷; 3. 对比状态下暂时未同步更新禁用日期), 故明日继续进行处理</li>
+<li>后端(<code>13:38</code>)解决周一提出的两个问题:<ul>
+<li>删除公司还是失败的问题</li>
+<li>描述为空的问题</li>
+</ul>
+</li>
+<li>故继续进行 <code>项目信息</code> 和 <code>公司信息</code> 的测试工作</li>
+</ul>
+</details>
+
+<h3 id="2020-4-1"><a href="#2020-4-1" class="headerlink" title="[2020-4-1]"></a>[2020-4-1]</h3><details>
+
+<h4 id="Added-24"><a href="#Added-24" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>数据平台 YAPI 接口文档测试<ul>
+<li>今日<code>10:36</code>后端修复描述为空时, 不返回字段的问题, 故今日继续测试<code>公司信息</code>相关接口</li>
+</ul>
+</li>
+<li>数据平台 DatePicker 组件构建<ul>
+<li>今日基本完成<code>日期对比</code>相关逻辑, 但是目前仍有不完善的点(1. 无缝的 DatePicker、2. 提取可配置参数)</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-4-2"><a href="#2020-4-2" class="headerlink" title="[2020-4-2]"></a>[2020-4-2]</h3><details>
+
+<h4 id="Added-25"><a href="#Added-25" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>数据平台 DatePicker 组件构建<ul>
+<li>今日(<code>11:43</code>)修复昨日存留的问题(1. 对比状态下结束时间 <code>DatePicker</code> 的当前日期被禁用的问题)</li>
+<li>今日(<code>16:04</code>)修复昨日提出的可完善的点(1. 无缝的 DatePicker)</li>
+<li>还有一些待优化的点, 比如(1. 提取可配置参数; 2. 时间选择器有 BUG)</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="2020-4-3"><a href="#2020-4-3" class="headerlink" title="[2020-4-3]"></a>[2020-4-3]</h3><details>
+
+<h4 id="Added-26"><a href="#Added-26" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>数据平台 DatePicker 组件构建<ul>
+<li>今日(<code>11:53</code>)修复昨日存留的问题(1. 时间选择器的 BUG)</li>
+<li>今日(<code>15:43</code>)新增新功能(1. 提取可配置参数和 hook)</li>
+</ul>
+</li>
+</ul>
+<h3 id="2020-4-7"><a href="#2020-4-7" class="headerlink" title="[2020-4-7]"></a>[2020-4-7]</h3><details>
+
+<h4 id="Added-27"><a href="#Added-27" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>数据平台 YAPI 接口测试, 明日预计对不同权限的角色的行为加以测试</li>
+</ul>
+</details>
+
+<h3 id="2020-4-8"><a href="#2020-4-8" class="headerlink" title="[2020-4-8]"></a>[2020-4-8]</h3><details>
+
+<h4 id="Added-28"><a href="#Added-28" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>重构数据平台 DatePicker 组件, 使用新的主题, 并撰写波浪按钮插件</li>
+</ul>
+</details>
+
+<h3 id="2020-4-10"><a href="#2020-4-10" class="headerlink" title="[2020-4-10]"></a>[2020-4-10]</h3><details>
+
+<h4 id="Added-29"><a href="#Added-29" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成波浪按钮插件制作, 可在 <code>vue</code>、<code>react</code> 等所有环境下使用, 可自行配置多种参数</li>
+<li>将博客由 <code>github</code> 迁移到阿里云, 并配置 <code>ci</code> 自动拉取&amp;自动部署(<code>jenkins</code>)</li>
+<li>将简历由 <code>github</code> 迁移到阿里云, 并配置自动部署</li>
+<li>将个人主页由 <code>github</code> 迁移到阿里云并配置自动部署</li>
+<li>将 <code>canvas</code> 波浪按钮项目迁移到阿里云, 并配置自动部署</li>
+</ul>
+</details>
+
+<h3 id="2020-4-12"><a href="#2020-4-12" class="headerlink" title="[2020-4-12]"></a>[2020-4-12]</h3><details>
+
+<h4 id="Added-30"><a href="#Added-30" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成零下记忆-预约项目交接文档</li>
+</ul>
+</details>
+
+<h3 id="2020-4-13"><a href="#2020-4-13" class="headerlink" title="[2020-4-13]"></a>[2020-4-13]</h3><details>
+
+<h4 id="Added-31"><a href="#Added-31" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成零下记忆-抽奖项目交接文档</li>
+<li>完成我的使命-微信关注任务交接文档</li>
+</ul>
+</details>
+
+<h3 id="2020-4-14"><a href="#2020-4-14" class="headerlink" title="[2020-4-14]"></a>[2020-4-14]</h3><details>
+
+<h4 id="Added-32"><a href="#Added-32" class="headerlink" title="Added"></a>Added</h4><ul>
+<li>完成工作交接文档</li>
+<li>更新博客文章: <code>git 命令集合</code></li>
+</ul>
+</details>
+
+<h3 id="2020-4-20"><a href="#2020-4-20" class="headerlink" title="[2020-4-20]"></a>[2020-4-20]</h3><details>
+
+<ul>
+<li>毕业论文撰写</li>
+</ul>
+</details>
+
+<h3 id="2020-4-21"><a href="#2020-4-21" class="headerlink" title="[2020-4-21]"></a>[2020-4-21]</h3><details>
+
+<ul>
+<li>完成毕业论文初稿</li>
+<li>计划于明日完成维普周志 10 篇</li>
+</ul>
+</details>
+
+<h3 id="2020-4-23"><a href="#2020-4-23" class="headerlink" title="[2020-4-23]"></a>[2020-4-23]</h3><details>
+
+<ul>
+<li>今日主要是优化毕业论文的格式</li>
+<li>完成维普周志三篇</li>
+</ul>
+</details>
+
+<h3 id="2020-4-27"><a href="#2020-4-27" class="headerlink" title="[2020-4-27]"></a>[2020-4-27]</h3><details>
+
+<ul>
+<li>完成维普周志剩余四篇</li>
+</ul>
+</details>
+
+<h3 id="2020-5-12"><a href="#2020-5-12" class="headerlink" title="[2020-5-12]"></a>[2020-5-12]</h3><details>
+
+<ul>
+<li><input checked disabled type="checkbox"> 毕业答辩 PPT 制作</li>
+<li><input checked disabled type="checkbox"> 系统演示视频录制</li>
+</ul>
+</details>
+
+<h3 id="2020-5-16"><a href="#2020-5-16" class="headerlink" title="[2020-5-16]"></a>[2020-5-16]</h3><details>
+
+<ul>
+<li><input checked disabled type="checkbox"> 录制毕设演示视频</li>
+</ul>
+</details>
+
+<h3 id="2020-7-2"><a href="#2020-7-2" class="headerlink" title="[2020-7-2]"></a>[2020-7-2]</h3><details>
+
+<ul>
+<li><input checked disabled type="checkbox"> 学习微信小程序开发基础</li>
+</ul>
+</details>
+
+<h2 id="🚩2020-1-4"><a href="#🚩2020-1-4" class="headerlink" title="🚩2020-1-4"></a>🚩2020-1-4</h2><hr>
+<details>
+
+<p>💦 今日实习任务概览 💦:</p>
+<ul>
+<li>头铁主公玩家站</li>
+</ul>
+<h3 id="头铁主公"><a href="#头铁主公" class="headerlink" title="头铁主公"></a>头铁主公</h3><h4 id="1-今日踩坑"><a href="#1-今日踩坑" class="headerlink" title="1. 今日踩坑"></a>1. 今日踩坑</h4><blockquote>
+<p>[css]: 父级设置 <code>display: -webkit-box</code> 导致子元素高度塌陷的问题</p>
+</blockquote>
+<p><strong>解决方式</strong>: 子元素设置绝对定位, 形成 BFC, 脱离文档流即可</p>
+<blockquote>
+<p>[微信浏览器]: vue-router 导致微信浏览器出现白条后, 遮挡页面(<code>单屏页面</code>)内容</p>
+</blockquote>
+<p><strong>需求背景</strong>: 之前遇到了很多次这样的情况, 真的想吐槽一下微信的设计. 我的需求是一个单屏玩家站页面, 里面的页面使用 vue-router 加以路由分发, 并且内容的高度是自适应的.</p>
+<p><strong>问题描述</strong>: 当我点击 router-link 跳转时, 微信浏览器底部的导航条遮挡住了页面的内容部分, 严重影响用户体验.</p>
+<p><strong>解决办法</strong>: 经过一番摸索, 通过监听路由变化, 动态更新整个应用的高度, 因为内容的高度是通过 <code>display: -webkit-box</code> 来自适应的.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  watch: &#123;</span><br><span class="line">    $route() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$el.style.cssText += <span class="string">`</span></span><br><span class="line"><span class="string">        height: <span class="subst">$&#123;<span class="built_in">window</span>.innerHeight&#125;</span>px;</span></span><br><span class="line"><span class="string">      `</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-今日知识点"><a href="#2-今日知识点" class="headerlink" title="2. 今日知识点"></a>2. 今日知识点</h4><blockquote>
+<p>[vue-router]: 通过 GET 形式传参</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="keyword">const</span> groupId = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">const</span> postId = <span class="number">100.1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.$router.push(&#123;</span><br><span class="line">      path: <span class="string">`/detail<span class="subst">$&#123;groupId&#125;</span>`</span>,</span><br><span class="line">      query: &#123;</span><br><span class="line">        postId: postId</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[less]: less 循环</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"loading-list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"loading-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"loading-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"loading-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"loading-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"loading-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@LOADING_ITEM_TOTAL:</span> <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.loading-item-loop</span>(<span class="variable">@i</span>) <span class="keyword">when</span> (<span class="variable">@i</span> &lt; <span class="variable">@LOADING_ITEM_TOTAL</span>) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">&amp;</span><span class="selector-pseudo">:nth-of-type(</span><span class="variable">@&#123;i&#125;</span>) &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="variable">@i</span> * <span class="number">30deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.loading-item-loop</span>(<span class="variable">@i</span> + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 调用 <span class="selector-class">.loading-item</span> &#123;</span><br><span class="line">  <span class="selector-class">.loading-item-loop</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-今日-CHANGELOG"><a href="#3-今日-CHANGELOG" class="headerlink" title="3. 今日 CHANGELOG"></a>3. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md" target="_blank" rel="noopener">http://git.3k.com/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md</a></p>
+</details>
+
+<h2 id="🚩2020-1-5"><a href="#🚩2020-1-5" class="headerlink" title="🚩2020-1-5"></a>🚩2020-1-5</h2><hr>
+<details>
+
+<p>👓 今日任务计划 👓:</p>
+<ul>
+<li>头铁主公玩家站</li>
+<li>更新博客</li>
+</ul>
+<h3 id="头铁主公-1"><a href="#头铁主公-1" class="headerlink" title="头铁主公"></a>头铁主公</h3><h4 id="1-今日踩坑-1"><a href="#1-今日踩坑-1" class="headerlink" title="1. 今日踩坑"></a>1. 今日踩坑</h4><p>略</p>
+<h4 id="2-今日知识点-1"><a href="#2-今日知识点-1" class="headerlink" title="2. 今日知识点"></a>2. 今日知识点</h4><p>略</p>
+<h4 id="3-今日-CHANGELOG-1"><a href="#3-今日-CHANGELOG-1" class="headerlink" title="3. 今日 CHANGELOG"></a>3. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md" target="_blank" rel="noopener">http://git.3k.com/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md</a></p>
+<h3 id="博客更新"><a href="#博客更新" class="headerlink" title="博客更新"></a>博客更新</h3></details>
+
+<h2 id="🚩2020-1-6"><a href="#🚩2020-1-6" class="headerlink" title="🚩2020-1-6"></a>🚩2020-1-6</h2><hr>
+<details>
+
+<p>💦 今日任务概览 💦:</p>
+<ul>
+<li>头铁主公玩家站</li>
+</ul>
+<h3 id="头铁主公-2"><a href="#头铁主公-2" class="headerlink" title="头铁主公"></a>头铁主公</h3><h4 id="1-今日安排"><a href="#1-今日安排" class="headerlink" title="1. 今日安排"></a>1. 今日安排</h4><ul>
+<li>前后端联调</li>
+</ul>
+<h4 id="2-今日踩坑"><a href="#2-今日踩坑" class="headerlink" title="2. 今日踩坑"></a>2. 今日踩坑</h4><blockquote>
+<p>[vue]: 首次路由切换时, 无法监听到微信浏览器的视窗大小变化</p>
+</blockquote>
+<p><strong>问题背景</strong>: 项目中有一个需求, 页面的区域需要跟进不同屏幕高度进行自适应, 所以就需要在:</p>
+<ul>
+<li>路由改变时</li>
+<li>窗口大小改变时</li>
+</ul>
+<p>动态获取 <code>window.innerHeight</code> 视窗高度, 来更新页面 DOM 元素的高度. 但是在微信浏览器内部会产生白色滚动条的问题, 当第一次切换路由的时候, 无法获取到准确的视窗大小.</p>
+<p><strong>尝试解决</strong>: 采用延时器解决, 但是需要调整全局 loading 的等待时间</p>
+<h4 id="3-今日知识点"><a href="#3-今日知识点" class="headerlink" title="3. 今日知识点"></a>3. 今日知识点</h4><blockquote>
+<p>[git]: git 将指定文件提交到暂存区</p>
+</blockquote>
+<p><strong>问题背景</strong>: 用惯了 <code>git add .</code> 命令, 今天刚好遇到了这样一个问题: 我同时更改了多个功能, 同时也修改了多个文件, 我想将每个功能点保存为不同的 commit 记录, 进而需要将不同的文件加入暂存区.</p>
+<p><strong>问题解决</strong>: 依旧采用 <code>git add</code> 命令, 但是不同的是, 可以自定义需要提交的文件名称:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提交单个指定文件</span></span><br><span class="line">git add <span class="string">"src/pages/App.vue"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交多个指定文件</span></span><br><span class="line">git add <span class="string">"src/pages/1.vue"</span> <span class="string">"2.vue"</span> <span class="string">"3.vue"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-今日-CHANGELOG"><a href="#4-今日-CHANGELOG" class="headerlink" title="4. 今日 CHANGELOG"></a>4. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md" target="_blank" rel="noopener">http://git.3k.com/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md</a></p>
+</details>
+
+<h2 id="🚩2020-1-7"><a href="#🚩2020-1-7" class="headerlink" title="🚩2020-1-7"></a>🚩2020-1-7</h2><hr>
+<details>
+
+<p>今日任务:</p>
+<ul>
+<li>头铁主公玩家站</li>
+<li>古今江湖联合活动</li>
+<li>第八神谕</li>
+</ul>
+<h3 id="头铁主公玩家站"><a href="#头铁主公玩家站" class="headerlink" title="头铁主公玩家站"></a>头铁主公玩家站</h3><h4 id="1-今日踩坑-2"><a href="#1-今日踩坑-2" class="headerlink" title="1. 今日踩坑"></a>1. 今日踩坑</h4><p>需求更新, 略</p>
+<h4 id="2-今日知识点-2"><a href="#2-今日知识点-2" class="headerlink" title="2. 今日知识点"></a>2. 今日知识点</h4><ul>
+<li>[css]: 文本强制不换行</li>
+</ul>
+<p>解决办法: 使用 <code>white-space:nowrap</code> 属性, 但是要注意其与 <code>work-break</code> 的区别, 后者是在前者设为换行的条件下, 使用何种策略来断行.</p>
+<h4 id="3-今日-CHANGELOG-2"><a href="#3-今日-CHANGELOG-2" class="headerlink" title="3. 今日 CHANGELOG"></a>3. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md</a></p>
+<h3 id="古今江湖联合活动"><a href="#古今江湖联合活动" class="headerlink" title="古今江湖联合活动"></a>古今江湖联合活动</h3><h4 id="1-今日踩坑-3"><a href="#1-今日踩坑-3" class="headerlink" title="1. 今日踩坑"></a>1. 今日踩坑</h4><p>需求更新</p>
+<h4 id="2-今日知识点-3"><a href="#2-今日知识点-3" class="headerlink" title="2. 今日知识点"></a>2. 今日知识点</h4><p>需求更新</p>
+<h4 id="3-今日-CHANGELOG-3"><a href="#3-今日-CHANGELOG-3" class="headerlink" title="3. 今日 CHANGELOG"></a>3. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/dl-20191223-gjjh-lhhd/blob/develop/CHANGELOG.md" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/dl-20191223-gjjh-lhhd/blob/develop/CHANGELOG.md</a></p>
+<h3 id="第八神谕"><a href="#第八神谕" class="headerlink" title="第八神谕"></a>第八神谕</h3><h4 id="1-今日-CHANGELOG"><a href="#1-今日-CHANGELOG" class="headerlink" title="1. 今日 CHANGELOG"></a>1. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/dl-20191213-d8sy/blob/branch/rebuild-2020-1-7/CHANGELOG.md" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/dl-20191213-d8sy/blob/branch/rebuild-2020-1-7/CHANGELOG.md</a></p>
+<h4 id="2-明日计划"><a href="#2-明日计划" class="headerlink" title="2. 明日计划"></a>2. 明日计划</h4><ul>
+<li>适应需求, 重构页面组件</li>
+</ul>
+</details>
+
+<h2 id="🚩2020-1-8"><a href="#🚩2020-1-8" class="headerlink" title="🚩2020-1-8"></a>🚩2020-1-8</h2><hr>
+<details>
+
+<p>今日任务:</p>
+<ul>
+<li>第八神谕重构</li>
+<li>古今江湖需求更新</li>
+<li>头铁主公需求更新</li>
+</ul>
+<h3 id="第八神谕-1"><a href="#第八神谕-1" class="headerlink" title="第八神谕"></a>第八神谕</h3><h4 id="1-今日完成"><a href="#1-今日完成" class="headerlink" title="1. 今日完成"></a>1. 今日完成</h4><ul>
+<li>提取新版 PSD 的相关图片</li>
+</ul>
+<h4 id="2-今日-CHANGELOG"><a href="#2-今日-CHANGELOG" class="headerlink" title="2. 今日 CHANGELOG"></a>2. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/dl-20191213-d8sy/blob/wap/CHANGELOG.md#2020-1-8" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/dl-20191213-d8sy/blob/wap/CHANGELOG.md#2020-1-8</a></p>
+<h3 id="古今江湖"><a href="#古今江湖" class="headerlink" title="古今江湖"></a>古今江湖</h3><h4 id="1-今日-CHANGELOG-1"><a href="#1-今日-CHANGELOG-1" class="headerlink" title="1. 今日 CHANGELOG"></a>1. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/dl-20191223-gjjh-lhhd/blob/develop/CHANGELOG.md#2020-1-8" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/dl-20191223-gjjh-lhhd/blob/develop/CHANGELOG.md#2020-1-8</a></p>
+<h3 id="头铁主公-3"><a href="#头铁主公-3" class="headerlink" title="头铁主公"></a>头铁主公</h3><h4 id="1-今日知识点"><a href="#1-今日知识点" class="headerlink" title="1. 今日知识点"></a>1. 今日知识点</h4><blockquote>
+<p>[css]: 去除<hr>标签的默认阴影</p>
+</blockquote>
+<p>今日看到 <code>&lt;hr/&gt;</code> 标签在浏览器中有默认的白色阴影效果, 与页面的整体配色看起来很不协调, 故想将其去掉, 很简单:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">hr</span> &#123;</span><br><span class="line">  <span class="attribute">border-bottom</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-今日踩坑-1"><a href="#2-今日踩坑-1" class="headerlink" title="2. 今日踩坑"></a>2. 今日踩坑</h4><blockquote>
+<p>[css]: 容器内 a 链接点击无法跳转</p>
+</blockquote>
+<p><strong>问题背景</strong>: 后端返回了一段富文本, 需要展示到页面上, 但是预览时发现内部的链接并无法点击.</p>
+<p><strong>解决办法</strong>: 原因是 <code>pointer-events: none</code> 禁用掉了穿透事件, 导致无法点击, 将其设为 <code>auto</code> 即可.</p>
+<h4 id="3-今日-CHANGELOG-4"><a href="#3-今日-CHANGELOG-4" class="headerlink" title="3. 今日 CHANGELOG"></a>3. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md#2020-1-8" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md#2020-1-8</a></p>
+</details>
+
+<h2 id="🚩2020-1-9"><a href="#🚩2020-1-9" class="headerlink" title="🚩2020-1-9"></a>🚩2020-1-9</h2><hr>
+<details>
+
+<p>今日任务概览:</p>
+<ul>
+<li>第八神谕重构</li>
+<li>头铁主公验收</li>
+<li>古今江湖 BUG 修改</li>
+</ul>
+<h3 id="古今江湖-1"><a href="#古今江湖-1" class="headerlink" title="古今江湖"></a>古今江湖</h3><h4 id="1-今日踩坑-4"><a href="#1-今日踩坑-4" class="headerlink" title="1. 今日踩坑"></a>1. 今日踩坑</h4><blockquote>
+<p>[swiper]: swiper 的数据动态获取时, 无法初始化的问题</p>
+</blockquote>
+<p><strong>解决方式</strong>: 在 vue 父组件中, 可以通过 <code>this.$refs.childRef.method()</code> 调用子组件的方法, 所以需要在父组件执行完异步操作后, 再执行子组件的异步数据获取操作.</p>
+<p>问题描述:</p>
+<blockquote>
+<p>[css]: user-select 的兼容性写法</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">user-select</span>: all;</span><br><span class="line">  <span class="attribute">-webkit-user-select</span>: all;</span><br><span class="line">  <span class="attribute">-moz-user-select</span>: all;</span><br><span class="line">  <span class="attribute">-ms-user-select</span>: text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-今日-CHANGELOG-1"><a href="#2-今日-CHANGELOG-1" class="headerlink" title="2. 今日 CHANGELOG"></a>2. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/dl-20191223-gjjh-lhhd/blob/develop/CHANGELOG.md#2020-1-9" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/dl-20191223-gjjh-lhhd/blob/develop/CHANGELOG.md#2020-1-9</a></p>
+<h3 id="头铁主公-4"><a href="#头铁主公-4" class="headerlink" title="头铁主公"></a>头铁主公</h3><h4 id="1-今日知识点-1"><a href="#1-今日知识点-1" class="headerlink" title="1. 今日知识点"></a>1. 今日知识点</h4><blockquote>
+<p>[css]: 文字渐变效果实现</p>
+</blockquote>
+<p>其实是有多种方式的, 比如 <code>svg</code>, 但是略显麻烦:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>测试文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fbffe2</span>;</span><br><span class="line">  <span class="attribute">word-break</span>: keep-all;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(</span><br><span class="line">    to top,</span><br><span class="line">    #f0bd79 <span class="number">2%</span>,</span><br><span class="line">    #f8d9a3 <span class="number">29%</span>,</span><br><span class="line">    #fff4cd <span class="number">57%</span>,</span><br><span class="line">    #fffffa <span class="number">100%</span></span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">color</span>: transparent;</span><br><span class="line">  <span class="attribute">-webkit-background-clip</span>: text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-今日-CHANGELOG-2"><a href="#2-今日-CHANGELOG-2" class="headerlink" title="2. 今日 CHANGELOG"></a>2. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md#2020-1-9" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/hw-20200102-ttzg-wjz/blob/develop/CHANGELOG.md#2020-1-9</a></p>
+<h3 id="第八神谕-2"><a href="#第八神谕-2" class="headerlink" title="第八神谕"></a>第八神谕</h3><h4 id="1-今日-CHANGELOG-2"><a href="#1-今日-CHANGELOG-2" class="headerlink" title="1. 今日 CHANGELOG"></a>1. 今日 CHANGELOG</h4><p><a href="http://git.3k.com/rdc/web/PM/dl-20191213-d8sy/blob/wap/CHANGELOG.md#2020-1-9" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/dl-20191213-d8sy/blob/wap/CHANGELOG.md#2020-1-9</a></p>
+</details>
+
+<h2 id="🚩2020-1-10"><a href="#🚩2020-1-10" class="headerlink" title="🚩2020-1-10"></a>🚩2020-1-10</h2><hr>
+<details>
+
+<p>今日总结:</p>
+<p>前两天的项目出现线上 BUG, 一方面是由于自己对应技术栈的不熟悉, 代码方面有问题; 另一方面是由于自己的沟通不到位, 包括与其他部门:</p>
+<ul>
+<li>美工</li>
+<li>产品</li>
+<li>测试</li>
+</ul>
+<p>之间的交流, 之前只是单纯的一股脑完成指派的任务, 然后交给测试, 并没有想到去和项目经理沟通… 而这所有的原因归结于自己对于开发时的整套流程, 所以今天花多点时间总结反思一下.</p>
+<p><a href="https://oos.blog.yyge.top/2020/1/4/%E5%A4%A7%E5%9B%9B%E9%9A%8F%E7%AC%94(%E4%B8%8B)/images/1_10/1_%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D.png" target="_blank" rel="noopener">https://oos.blog.yyge.top/2020/1/4/%E5%A4%A7%E5%9B%9B%E9%9A%8F%E7%AC%94(%E4%B8%8B)/images/1_10/1_%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D.png</a></p>
+</details>
+
+<h2 id="🚩2020-1-13"><a href="#🚩2020-1-13" class="headerlink" title="🚩2020-1-13"></a>🚩2020-1-13</h2><hr>
+<details>
+
+<h3 id="今日完成"><a href="#今日完成" class="headerlink" title="今日完成"></a>今日完成</h3><h3 id="今日知识点"><a href="#今日知识点" class="headerlink" title="今日知识点"></a>今日知识点</h3><h4 id="text-overflow-妙用"><a href="#text-overflow-妙用" class="headerlink" title="text-overflow 妙用"></a>text-overflow 妙用</h4><p><code>text-overflow</code> 用来控制一段文本的溢出时的展示状态, 比如溢出显示省略号, 兼容性良好. 但是需要注意, 如果当前元素没有设置 <code>overflow: hidden</code>, 效果无法显示.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="今日-CHANGELOG"><a href="#今日-CHANGELOG" class="headerlink" title="今日 CHANGELOG"></a>今日 CHANGELOG</h3></details>
+
+<h2 id="🚩2020-2-17"><a href="#🚩2020-2-17" class="headerlink" title="🚩2020-2-17"></a>🚩2020-2-17</h2><hr>
+<details>
+
+<h3 id="项目情况"><a href="#项目情况" class="headerlink" title="项目情况"></a>项目情况</h3><h4 id="vue-demo-qq"><a href="#vue-demo-qq" class="headerlink" title="vue-demo-qq"></a>vue-demo-qq</h4><h5 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h5><p>模拟手机 QQ 的相关布局, 加深强化对于样式布局体系的理解, 查漏补缺.</p>
+<h5 id="项目进度"><a href="#项目进度" class="headerlink" title="项目进度"></a>项目进度</h5><table>
+<thead>
+<tr>
+<th>进度标题</th>
+<th>进度概述</th>
+<th>预备方案</th>
+<th>落地方案</th>
+<th>完成度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整体布局</td>
+<td>对于手 Q 的整体结构进行划分, 包括: <code>左右固定, 中间自适应</code>、<code>上下堆叠</code> 式布局, 并采用语义化的标签和规范的 CSS 属性来书写代码</td>
+<td>计划采用 <code>display: flex</code> 式布局, 但是其在安卓 <code>UC</code> 浏览器的兼容性较差, 故不采用</td>
+<td>最终采用兼容性较好并且功能较符合要求的 <code>display: box</code></td>
+<td>100%</td>
+</tr>
+<tr>
+<td>tab 切换</td>
+<td>点击首页的底部一级导航, 首页中部的试图需要对应展示不同的区块(<code>消息</code>、<code>好友</code>、<code>动态</code>)</td>
+<td>点击每个 <code>tab</code> 项, 记录其唯一的标识 <code>key</code>, 视图根据 <code>key</code> 来动态更新</td>
+<td>实施预备方案</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="hd-20190711-cjjs-dl-阅读"><a href="#hd-20190711-cjjs-dl-阅读" class="headerlink" title="hd-20190711-cjjs-dl(阅读)"></a>hd-20190711-cjjs-dl(<code>阅读</code>)</h4><h5 id="项目简介-1"><a href="#项目简介-1" class="headerlink" title="项目简介"></a>项目简介</h5><p>初步阅读超级巨兽调研活动的项目代码, 熟悉代码.</p>
+<h3 id="工作总结"><a href="#工作总结" class="headerlink" title="工作总结"></a>工作总结</h3><ul>
+<li>今日主要对于上周所总结的样式布局体系做个练手, 对于项目布局来说, 要<strong>由浅入深</strong>, 先分析整体布局, 优先采用 <code>box</code> 布局</li>
+<li>上下堆叠式布局, 可以采用一行内一块级的形式, 自动排版</li>
+</ul>
+</details>
+
+<h2 id="🚩2020-2-18"><a href="#🚩2020-2-18" class="headerlink" title="🚩2020-2-18"></a>🚩2020-2-18</h2><hr>
+<details>
+
+<h3 id="项目情况-1"><a href="#项目情况-1" class="headerlink" title="项目情况"></a>项目情况</h3><hr>
+<h4 id="1-hd-20190917-gq-阅读"><a href="#1-hd-20190917-gq-阅读" class="headerlink" title="1. hd-20190917-gq(阅读)"></a>1. hd-20190917-gq(<code>阅读</code>)</h4><h5 id="1-1-项目简介"><a href="#1-1-项目简介" class="headerlink" title="1.1 项目简介"></a>1.1 项目简介</h5><p>2019 国庆活动项目, 阅读源码并初步了解简单的业务逻辑和样式布局体系.</p>
+<h5 id="1-2-项目进度"><a href="#1-2-项目进度" class="headerlink" title="1.2 项目进度"></a>1.2 项目进度</h5><table>
+<thead>
+<tr>
+<th>进度标题</th>
+<th>进度概述</th>
+<th>预备方案</th>
+<th>落地方案</th>
+<th>完成度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整体 DOM 结构</td>
+<td>阅读分析该项目整体的 <strong>DOM</strong> 结构, 由浅入深, 发现其与抖音、快手等短视频应用的布局类似, 都是全屏布局, 手指触摸可切换页码</td>
+<td>略</td>
+<td>项目中采用的方式是使用<strong>轮播图</strong>来承载不同的页面, 使得整体的可配置性大大提高, 我想这是最简便的方法</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>阅读体会项目中存在的大量业务功能, 比如<code>点赞</code>、<code>打点</code>、<code>微信分享</code>功能</td>
+<td>略</td>
+<td>详见<strong>事务重点</strong>部分</td>
+<td>40%</td>
+</tr>
+</tbody></table>
+<h5 id="1-3-项目地址"><a href="#1-3-项目地址" class="headerlink" title="1.3 项目地址"></a>1.3 项目地址</h5><p><a href="http://git.3k.com/rdc/web/PM/hd-20190917-gq" target="_blank" rel="noopener">http://git.3k.com/rdc/web/PM/hd-20190917-gq</a></p>
+<h3 id="事务重点"><a href="#事务重点" class="headerlink" title="事务重点"></a>事务重点</h3><hr>
+<table>
+<thead>
+<tr>
+<th>业务标题</th>
+<th>业务重点(<code>问题</code>)</th>
+<th>解决方案</th>
+<th>完成度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全屏切换</td>
+<td>由于项目类似于短视频应用, 故需要在移动端全屏展示, 用户通过触摸交互来切换上(<code>下</code>)一页</td>
+<td>最简便的方式, 即采用<strong>轮播</strong>的形式来切换</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>视频自动播放</td>
+<td>当首次进入活动页面, 或者手指触摸进入其某个短视频页时, 该页内部的视频需要自动播放. 经测试, 在 <code>iOS</code> 微信浏览器上, 正常工作; 但是在 <code>Android</code> 微信浏览器却不行</td>
+<td>动态判断 <code>Android</code> 和 <code>iOS</code> 机器, <code>iOS</code> 设备则使用基本的 <code>video</code> 标签和属性; <code>Android</code> 设备则使用兼容性较好的 <code>jsmpeg</code> 库来解决, 当然该库的原理是: 利用 <code>canvas</code> 的 <code>drawImage()</code> 方法, 通过定时器, 获取视频的每一帧, 绘制到画布上</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>自定义事件(<code>CustomEvent</code>)</td>
+<td>项目中存在一个全局 <code>loading</code> 提示组件, 需要在该 <code>loading</code> 消失之后执行一段逻辑代码, 传统的异步方案(<code>回调</code>、<code>promise</code>)较为繁琐.</td>
+<td>可以采用兼容性较好, 相对于快捷简便的 <code>自定义事件</code> 的形式, 主要是利用了 <code>CustomEvent</code> 这个 原生 API</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="工作总结-1"><a href="#工作总结-1" class="headerlink" title="工作总结"></a>工作总结</h3><hr>
+<ul>
+<li>今日主要的任务是阅读之前的平台活动项目代码, 完善布局体系的短板, 了解业务逻辑</li>
+<li>其中有个把问题, 在之前的项目中时常遇到, 比如 <code>视频自动播放</code> 功能, 由于安卓和苹果的不同策略, 导致效果不尽相同</li>
+<li>还有更多的业务相关的逻辑, 比如 <code>点赞</code>、<code>微信分享</code>, 需要逐渐理解</li>
+</ul>
+</details>
+</details>
+      
+    
+    </div>
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>作者 :</span>
+      <span>zhaoyang Duan</span>
+    </div>
+    <div class="copy-url">
+      <span>地址 :</span>
+      <a href="https://ddzy.github.io/blog/2020/01/04/大四随笔-下/">https://ddzy.github.io/blog/2020/01/04/大四随笔-下/</a>
+    </div>
+    <div class="copy-origin">
+      <span>来源 :</span>
+      <a href="https://ddzy.github.io/blog">https://ddzy.github.io/blog</a>
+    </div>
+    <div class="copy-license">
+      
+      著作权归作者所有，转载请联系作者获得授权。
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/blog/2020/03/04/移动端知识集锦系列之——0-01rem边框无法显示的问题/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>移动端知识集锦系列之——0.01rem边框无法显示的问题
+        </span>
+      </a>
+    
+    
+      <a href="/blog/2020/01/02/移动端知识总结系列之——QQ浏览器下video无法循环播放的问题/" id="art-right" class="art-right">
+        <span class="prev-title"> 
+          移动端知识总结系列之——QQ浏览器下video无法循环播放的问题<i class="iconfont icon-right"></i>  
+        </span>
+      </a>
+    
+  </nav>
+
+    
+  <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+<!-- Gitalk Comments -->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'f6cc91c3b7fe75e2fee1',
+  clientSecret: '6e51b95137173fd574d6298de23039e44405adff',
+  owner: "ddzy",
+  repo: 'blog',
+  admin: ['ddzy'],
+  title: '大四随笔(下)',
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+
+    
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+
+
+        </div>
+      </main>
+
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+            <a href="https://www.zhihu.com/people/bu-jing-tong-jsbu-zhao-dui-xiang-81/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+        
+        
+        
+        
+    
+        
+            <a href="https://github.com/ddzy" class="iconfont icon-social-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+        
+    
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2018 ~ 2022</span>
+        <span>❤</span>
+        <span>zhaoyang Duan</span>
+    </div>
+    <!--<div class="theme">
+        <span>
+            动力来源于
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            主题
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div> -->
+    
+    <div class="visit_count">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量:
+            <span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+  <script src="/blog/script/lib/jquery/jquery-3.2.1.min.js"></script>
+
+
+  <script src="/blog/script/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+  <script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}});</script>
+
+
+
+  <script src="/blog/script/lib/lazyload/lazyload.min.js"></script>
+
+
+
+
+<script src="/blog/script/src/nlvi.js"></script>
+
+  <script src="/blog/script/scheme/balance.js"></script>
+
+<script src="/blog/script/bootstarp.js"></script>
+
+
+<div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+
+  <div class="search" id="search">
+    <div class="mask" id="mask"></div>
+    <div class="search-wrapper syuanpi">
+      <h2 id="search-header" class="syuanpi">搜索一下？</h2>
+      <div class="input">
+        <input type="text" id="local-search-input" results="0" name>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>
