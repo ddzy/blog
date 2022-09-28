@@ -82,4 +82,4 @@ theme: Nlvi
 deploy:
   type: git
   repository: https://github.com/ddzy/blog.git
-  branch: master
+  branch: gh-pages
