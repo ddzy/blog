@@ -812,9 +812,9 @@
             
             <tag> http </tag>
             
-            <tag> cdn </tag>
-            
             <tag> dns </tag>
+            
+            <tag> cdn </tag>
             
             <tag> html </tag>
             
@@ -953,9 +953,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
             <tag> iOS </tag>
             
@@ -984,9 +984,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
             <tag> wechat </tag>
             
@@ -1015,9 +1015,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
             <tag> qq </tag>
             
@@ -1046,9 +1046,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
         </tags>
       
@@ -1075,9 +1075,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
         </tags>
       
@@ -1104,9 +1104,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
             <tag> rem </tag>
             
@@ -1437,9 +1437,9 @@
             
             <tag> h5 </tag>
             
-            <tag> wep </tag>
-            
             <tag> mobile </tag>
+            
+            <tag> wep </tag>
             
         </tags>
       
