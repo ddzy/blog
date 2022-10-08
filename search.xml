@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/blog/2022/10/08/testjenkins/"/>
+      <url>/blog/2022/10/08/testjenkins/</url>
+      
+        <content type="html"><![CDATA[<p>测试1</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>jenkins意外宕机的解决记录</title>
       <link href="/blog/2021/12/27/jenkins%E6%84%8F%E5%A4%96%E5%AE%95%E6%9C%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/"/>
       <url>/blog/2021/12/27/jenkins%E6%84%8F%E5%A4%96%E5%AE%95%E6%9C%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/</url>
